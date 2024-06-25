@@ -14,6 +14,13 @@
 		B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837D72BCB103000BBC748 /* MuscleMemoryTests.swift */; };
 		B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */; };
 		B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */; };
+		B2D220D02BD70B4400E55834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
+		B2D220D12BD70B4500E55834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
+		B2D220D22BD70BA600E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
+		B2D220D32BD70BA700E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
+		B2D220D42BD70BA800E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
+		B2D220DC2BD981B800E55834 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DB2BD981B800E55834 /* WidgetKit.framework */; };
+		B2D220DE2BD981B800E55834 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notionAPICaller.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +52,9 @@
 		B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuscleMemoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITests.swift; sourceTree = "<group>"; };
 		B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B2D220D92BD981B800E55834 /* dynamicIslandAnimationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = dynamicIslandAnimationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2D220DB2BD981B800E55834 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +79,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2D220D62BD981B800E55834 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2D220DE2BD981B800E55834 /* SwiftUI.framework in Frameworks */,
+				B2D220DC2BD981B800E55834 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -77,6 +97,7 @@
 				B2B837C52BCB102F00BBC748 /* MuscleMemory */,
 				B2B837D62BCB103000BBC748 /* MuscleMemoryTests */,
 				B2B837E02BCB103000BBC748 /* MuscleMemoryUITests */,
+				B2D220DA2BD981B800E55834 /* Frameworks */,
 				B2B837C42BCB102F00BBC748 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,6 +108,7 @@
 				B2B837C32BCB102F00BBC748 /* MuscleMemory.app */,
 				B2B837D32BCB103000BBC748 /* MuscleMemoryTests.xctest */,
 				B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */,
+				B2D220D92BD981B800E55834 /* dynamicIslandAnimationsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,8 +116,9 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
-				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2B837C82BCB102F00BBC748 /* ContentView.swift */,
+				B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */,
+				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
 				B2B837CC2BCB103000BBC748 /* Preview Content */,
 			);
@@ -125,6 +148,15 @@
 				B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */,
 			);
 			path = MuscleMemoryUITests;
+			sourceTree = "<group>";
+		};
+		B2D220DA2BD981B800E55834 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2D220DB2BD981B800E55834 /* WidgetKit.framework */,
+				B2D220DD2BD981B800E55834 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +215,23 @@
 			productReference = B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B2D220D82BD981B800E55834 /* dynamicIslandAnimationsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2D220EE2BD981B900E55834 /* Build configuration list for PBXNativeTarget "dynamicIslandAnimationsExtension" */;
+			buildPhases = (
+				B2D220D52BD981B800E55834 /* Sources */,
+				B2D220D62BD981B800E55834 /* Frameworks */,
+				B2D220D72BD981B800E55834 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = dynamicIslandAnimationsExtension;
+			productName = dynamicIslandAnimationsExtension;
+			productReference = B2D220D92BD981B800E55834 /* dynamicIslandAnimationsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -204,6 +253,9 @@
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = B2B837C22BCB102F00BBC748;
 					};
+					B2D220D82BD981B800E55834 = {
+						CreatedOnToolsVersion = 15.3;
+					};
 				};
 			};
 			buildConfigurationList = B2B837BE2BCB102F00BBC748 /* Build configuration list for PBXProject "MuscleMemory" */;
@@ -222,6 +274,7 @@
 				B2B837C22BCB102F00BBC748 /* MuscleMemory */,
 				B2B837D22BCB103000BBC748 /* MuscleMemoryTests */,
 				B2B837DC2BCB103000BBC748 /* MuscleMemoryUITests */,
+				B2D220D82BD981B800E55834 /* dynamicIslandAnimationsExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +303,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B2D220D72BD981B800E55834 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,6 +319,7 @@
 			files = (
 				B2B837C92BCB102F00BBC748 /* ContentView.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
+				B2D220D22BD70BA600E55834 /* notionAPICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +327,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D220D02BD70B4400E55834 /* ContentView.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
+				B2D220D32BD70BA700E55834 /* notionAPICaller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +337,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2D220D42BD70BA800E55834 /* notionAPICaller.swift in Sources */,
 				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
 				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,
+				B2D220D12BD70B4500E55834 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B2D220D52BD981B800E55834 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +419,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"INFOPLIST_FILE[sdk=*]" = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -425,6 +498,7 @@
 				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +528,7 @@
 				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -516,6 +591,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L96XRPBK46;
@@ -534,6 +610,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L96XRPBK46;
@@ -545,6 +622,60 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MuscleMemory;
+			};
+			name = Release;
+		};
+		B2D220EF2BD981B900E55834 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L96XRPBK46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dynamicIslandAnimations/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = dynamicIslandAnimations;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemory.dynamicIslandAnimations;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B2D220F02BD981B900E55834 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L96XRPBK46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = dynamicIslandAnimations/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = dynamicIslandAnimations;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemory.dynamicIslandAnimations;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -583,6 +714,15 @@
 			buildConfigurations = (
 				B2B837EE2BCB103000BBC748 /* Debug */,
 				B2B837EF2BCB103000BBC748 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B2D220EE2BD981B900E55834 /* Build configuration list for PBXNativeTarget "dynamicIslandAnimationsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2D220EF2BD981B900E55834 /* Debug */,
+				B2D220F02BD981B900E55834 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

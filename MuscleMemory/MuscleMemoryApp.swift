@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import WidgetKit
+import ActivityKit
+
+
 
 @main
 struct MuscleMemoryApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
+           
+            
+           
+           
         }
+           
     }
+        
 }
