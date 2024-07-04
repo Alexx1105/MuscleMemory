@@ -5,7 +5,7 @@
 # Intro
 
 
-### MuscleMemory is an iOS swift-built app that will use the dynamic island on iPhone as a digital flash card meant to deliver bite sized info from your notes throughout the day. Repitition is key to memory for many people, and MuscleMemory is a tool for these types of learners. Being an integration of the popular productivity app Notion, MuscleMemory uses Notion's public API to access a users Notion page and deliver a [Block](https://developers.notion.com/reference/block) of their notes as a digital flashcard through the dynamic island throughout the day for memory repitition and users will be able to time how often and when they want these flash card reminders. 
+### MuscleMemory is an iOS app that uses the iPhone’s dynamic island as a digital flashcard, delivering bite-sized info from your Notion notes throughout the day. It uses Notion’s public API to access and display a [Block](https://developers.notion.com/reference/block) of notes from your Notion page, also allowing users to schedule the Dynamic Island flashcard reminders for their repitition based learning.
 
 
  # Main Application Scenerios
