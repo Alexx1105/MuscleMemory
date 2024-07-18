@@ -7,7 +7,7 @@
 
 import Foundation
 
-    
+
 
 struct BlockBody: Codable, Hashable, Identifiable {     //top level struct body for holding block content
     let id = UUID()
@@ -21,31 +21,37 @@ struct BlockBody: Codable, Hashable, Identifiable {     //top level struct body 
     struct Block: Codable, Hashable, Identifiable {
         var id = UUID()
         let paragraph: Paragraph?
+        var ExtractedFields: [String] = []
         
         private enum CodingKeys: String, CodingKey {
             case paragraph
+        
         }
     }
     struct Paragraph: Codable, Hashable, Identifiable {
         let id = UUID()
-        let richText: [RichText]
+        let textFields: [TextFields]
+      
         
-        private enum CodingKeys: String,CodingKey {
-            case richText = "rich_text"
+        private enum CodingKeys: String, CodingKey {
+            case textFields 
+   
         }
     }
-    struct RichText: Codable, Hashable, Identifiable {
+    struct TextFields: Codable, Hashable, Identifiable {
         var id = UUID()
-        let PlainText: String?
+        let RichText: String?
         let content: String?
         
         private enum CodingKeys: String, CodingKey {
-            case PlainText = "plain_text"
+            case RichText = "rich_text"
             case content = "content"
+       
         }
     }
 }
     
+
     
     let url = URL(string: "https://api.notion.com/v1/blocks/8efc0ca3d9cc44fbb1f34383b794b817/children?page_size=100")   //change page size later
     let apiKey = "secret_Olc3LXnpDW6gI8o0Eu11lQr2krU4b870ryjFPJGCZs4"
@@ -85,25 +91,17 @@ struct BlockBody: Codable, Hashable, Identifiable {     //top level struct body 
                     decoder.keyDecodingStrategy = .convertFromSnakeCase    //convert snake_case values notion forces me to use
                     
                     let codeUnwrappedData = try decoder.decode(BlockBody.self,from: unwrapData)     //"BlockBody." specifies the struct, from: passes the data parmeter that contains the api data to be decoded
+                    Task { @MainActor in
+                        completion(codeUnwrappedData.results)
+                    }
                     
-                    let FilterFields = codeUnwrappedData.results.filter { block in
-                        if let paragraph = block.paragraph {
-                            return paragraph.richText.contains { richText in richText.PlainText != nil || richText.content != nil
-                            }
-        
-                        }
-                        return false
-                    }
-                    DispatchQueue.main.async {
-                        completion(FilterFields)
-                    }
+                   
                 } catch let decodeError as DecodingError {
                     print("could not parse json data\(decodeError)")
                 } catch {
                     print("data:",String(data: unwrapData, encoding: .utf8) ?? "data")
                     
                 }
-                
                 
                 if let httpResponse = response as? HTTPURLResponse {
                     if httpResponse.statusCode == 200 {

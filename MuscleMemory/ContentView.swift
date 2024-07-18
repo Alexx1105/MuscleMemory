@@ -42,75 +42,87 @@ extension Color {
 struct ContentView: View {
     
     class NotionCall: ObservableObject {
-        @Published var makeapirequest: [BlockBody.Block] = []
+        @Published var extractedContent: [BlockBody.Block] = []
         
         func makeAPIRequest() {
             
-            makeRequest { data in
-                self.makeapirequest = data
+            makeRequest { results in
                 
-                
+                let extractedData = results.map { block -> BlockBody.Block in
+                    var extractedBlock = block
+                    extractedBlock.ExtractedFields = block.paragraph?.textFields.compactMap { textField in
+                        textField.content         //iterate over Content fields and return the non nill values
+                        
+                    } ?? []   //validate objects even if they are nil
+                    return extractedBlock
+                }
+              
+                DispatchQueue.main.async {
+                        self.extractedContent = extractedData
+                    
+                    print("extracted data fields from notion:\(self.extractedContent)")
+                       }
             }
         }
-        
     }
     
     
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
     @State var searchKeywords = String()    //modify text field to search keywords later
-   
+    
     @State var menuFunc = String()   //modify to take user back to menu later
     @State var notificationSettings = String() //modify to take user to notifications settings page later
     @State var importNotionFile = String() //modify for user to be able to import their notion file for parsing
- 
+    
+    
+    
+    
+    
     var body: some View {
-    
-            NavigationStack {
+        
+      
+       
+           
+            
+        ZStack {
+            
+            List(NotionCaller.extractedContent) { block in
+                ForEach(block.ExtractedFields, id: \.self) {textField in
+                    Text(textField)
+                
+                }
+            }
+            
+            
+         
+            ZStack {
                 
                 
-                ZStack {
+                Color(hex: "#f9f9f9")
+                    .ignoresSafeArea()
+                
+                
+                VStack {
                     
-                    Color(hex: "#f9f9f9")
-                        .ignoresSafeArea()
+                    TextField("   Search keywords", text: $searchKeywords)  //change font later
+                        .frame(height: 48)
+                        .overlay(RoundedRectangle(cornerRadius: 30).strokeBorder(style: StrokeStyle()))
+                        .foregroundColor(.white)
+                        .background(.white)
+                        .cornerRadius(30)
+                        .padding()
+                        .scaledToFit()
+                        .frame(maxHeight: .infinity, alignment: .top)
                     
+                }
+                
+                VStack {
                     
+                    Spacer()
                     
-                    VStack {
-                       
-                        
-                        TextField("   Search keywords", text: $searchKeywords)  //change font later
-                            .frame(height: 48)
-                            .overlay(RoundedRectangle(cornerRadius: 30).strokeBorder(style: StrokeStyle()))
-                            .foregroundColor(.white)
-                            .background(.white)
-                            .cornerRadius(30)
-                            .padding()
-                            .scaledToFit()
-                            .frame(maxHeight: .infinity, alignment: .top)
-                        
-                        List(NotionCaller.makeapirequest) { textBlock in
-                            if let unwrapFields = textBlock.paragraph {
-                                ForEach(unwrapFields.richText) { richText in
-                                    if let plainTextValue = richText.PlainText {
-                                        Text(plainTextValue)
-                                    }
-                                }
-                            }
-                        }
-                        
-                        Divider()
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                            .padding()
-                            .padding(.bottom)
-                            .padding()
-    
-                        
-                            .onAppear {
-                                NotionCaller.makeAPIRequest()
-                        }
-                    }
-                    
+                    Divider()
+                        .padding()
                     
                     
                     HStack {
@@ -119,7 +131,7 @@ struct ContentView: View {
                         }) {
                             
                             Image("menuButton")
-                                .frame(maxHeight: .infinity, alignment: .bottom)
+                                .frame(alignment: .bottom)
                                 .padding(.horizontal, 42)
                             Spacer()
                             
@@ -130,10 +142,9 @@ struct ContentView: View {
                             }) {
                                 
                                 Image("notificationButton")
-                                    .frame(maxHeight: .infinity, alignment: .bottomLeading)
+                                    .frame(alignment: .leading)
                                     .padding(.leading, 30)
                                 Spacer()
-                            
                             }
                         }
                         
@@ -141,25 +152,25 @@ struct ContentView: View {
                             Button(action: {
                             }) {
                                 Image("notionImportButton")
-                                    .frame(maxHeight: .infinity, alignment: .bottom)
+                                    .frame( alignment: .trailing)
                                     .padding(.horizontal)
                                     .padding(.horizontal)
-                        }
+                            }
                         }
                     }
-                            
-                        
-                    }
-                
                 }
-                
             }
-            
         }
-        
-    
-
-    
-#Preview {
-    ContentView()
+        .onAppear {
+            NotionCaller.makeAPIRequest()
+         }
+            
+    }
 }
+
+
+    #Preview {
+        ContentView()
+    }
+
+
