@@ -60,8 +60,8 @@ struct ContentView: View {
                 DispatchQueue.main.async {
                         self.extractedContent = extractedData
                     
-                    print("extracted data fields from notion:\(self.extractedContent)")
-                       }
+                    
+                }
             }
         }
     }
@@ -163,8 +163,9 @@ struct ContentView: View {
         }
         .onAppear {
             NotionCaller.makeAPIRequest()
-         }
             
+         }
+        
     }
 }
 
