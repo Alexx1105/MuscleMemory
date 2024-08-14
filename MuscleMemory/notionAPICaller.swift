@@ -9,46 +9,31 @@ import Foundation
 
 
 
-struct BlockBody: Codable, Hashable, Identifiable {     //top level struct body for holding block content
+struct BlockBody: Codable, Identifiable {     //top level struct body for holding block content
     let id = UUID()
     let results: [Block]           // This will hold the list of Block objects
-
     
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: CodingKey {
         case results
-    
     }
     
-    struct Block: Codable, Hashable, Identifiable {
-        var id = UUID()
+    struct Block: Codable, Identifiable {
+        let id = UUID()
         let paragraph: Paragraph?
         var ExtractedFields: [String] = []
         
-        private enum CodingKeys: String, CodingKey {
+        private enum CodingKeys: CodingKey {
             case paragraph
-        
         }
     }
-    struct Paragraph: Codable, Hashable, Identifiable {
-        let id = UUID()
-        let textFields: [TextFields]
-      
-        
-        private enum CodingKeys: String, CodingKey {
-            case textFields 
-   
-        }
+    struct Paragraph: Codable {
+        let richText: [RichText]?
     }
-    struct TextFields: Codable, Hashable, Identifiable {
-        var id = UUID()
-        let RichText: String?
+    struct RichText: Codable {
+        let text: NotionText?
+    }
+    struct NotionText: Codable {
         let content: String?
-        
-        private enum CodingKeys: String, CodingKey {
-            case RichText = "rich_text"
-            case content = "content"
-       
-        }
     }
 }
     
@@ -60,7 +45,7 @@ struct BlockBody: Codable, Hashable, Identifiable {     //top level struct body 
     
     
     
-func makeRequest(completion: @escaping([BlockBody.Block]) -> Void) {
+func makeRequest(completion: @escaping ([BlockBody.Block]) -> Void) {
     guard let url = url else {return}
     
     var request = URLRequest(url: url)
@@ -91,13 +76,29 @@ func makeRequest(completion: @escaping([BlockBody.Block]) -> Void) {
                 let decoder = JSONDecoder()   //JSONDecoder method to decode api data
                 decoder.keyDecodingStrategy = .convertFromSnakeCase    //convert snake_case values notion forces me to use
                 
-                let decodedData = try decoder.decode(BlockBody.self, from: unwrapData )
-                completion(decodedData.results)
+                let decodedData = try decoder.decode(BlockBody.self, from: unwrapData)
+                var blocks = decodedData.results
                 
-            } catch let decodeError as DecodingError {
-                print("unable to decode data\(decodeError)")
+                for i in 0..<blocks.count {
+                    var extractedFields: [String] = []
+                    if let paragraph = blocks[i].paragraph, let richText = paragraph.richText {
+                        for text in richText {
+                            if let content = text.text?.content {
+                                extractedFields.append(content)
+                            }
+                        }
+                    }
+                    blocks[i].ExtractedFields = extractedFields
+                }
+                
+                completion(blocks)
             } catch {
-                print("error returning decoded data:\(error)")
+                print(error)
+                if let decodeError = error as? DecodingError {
+                    print("unable to decode data\(decodeError)")
+                } else {
+                    print("error returning decoded data:\(error)")
+                }
             }
             
             if let httpResponse = response as? HTTPURLResponse {
