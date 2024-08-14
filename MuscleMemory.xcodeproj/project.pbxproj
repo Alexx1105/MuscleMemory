@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
+		5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
+		5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
@@ -16,9 +19,6 @@
 		B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */; };
 		B2D220D02BD70B4400E55834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
 		B2D220D12BD70B4500E55834 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
-		B2D220D22BD70BA600E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
-		B2D220D32BD70BA700E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
-		B2D220D42BD70BA800E55834 /* notionAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */; };
 		B2D220DC2BD981B800E55834 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DB2BD981B800E55834 /* WidgetKit.framework */; };
 		B2D220DE2BD981B800E55834 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
 /* End PBXBuildFile section */
@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notionAPICaller.swift; sourceTree = "<group>"; };
+		5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionCall.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				B2B837C82BCB102F00BBC748 /* ContentView.swift */,
-				B211E96A2BCD8BCD00608474 /* notionAPICaller.swift */,
+				5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
 				B2B837CC2BCB103000BBC748 /* Preview Content */,
@@ -319,7 +319,7 @@
 			files = (
 				B2B837C92BCB102F00BBC748 /* ContentView.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
-				B2D220D22BD70BA600E55834 /* notionAPICaller.swift in Sources */,
+				5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +329,7 @@
 			files = (
 				B2D220D02BD70B4400E55834 /* ContentView.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
-				B2D220D32BD70BA700E55834 /* notionAPICaller.swift in Sources */,
+				5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,9 +337,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2D220D42BD70BA800E55834 /* notionAPICaller.swift in Sources */,
 				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
 				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,
+				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

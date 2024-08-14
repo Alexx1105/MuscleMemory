@@ -41,18 +41,6 @@ extension Color {
 
 struct ContentView: View {
     
-    class NotionCall: ObservableObject {
-        @Published var extractedContent: [BlockBody.Block] = []
-        
-        func makeAPIRequest() {
-            makeRequest { results in
-                DispatchQueue.main.async {
-                    self.extractedContent = results
-                }
-            }
-        }
-    }
-    
     
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
@@ -115,7 +103,7 @@ struct ContentView: View {
                 .padding(.horizontal)
             }
         }
-        .background(Color(hex: "#f9f9f9"))
+        .background(Color.mmBackground)
         .onAppear {
             NotionCaller.makeAPIRequest()
             
