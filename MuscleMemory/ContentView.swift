@@ -41,31 +41,6 @@ extension Color {
 
 struct ContentView: View {
     
-    class NotionCall: ObservableObject {
-        @Published var extractedContent: [BlockBody.Block] = []
-        
-        func makeAPIRequest() {
-            
-            makeRequest { results in
-                
-                let extractedData = results.map { block -> BlockBody.Block in
-                    var extractedBlock = block
-                    extractedBlock.ExtractedFields = block.paragraph?.textFields.compactMap { textField in
-                        textField.content         //iterate over Content fields and return the non nill values
-                        
-                    } ?? []   //validate objects even if they are nil
-                    return extractedBlock
-                }
-              
-                DispatchQueue.main.async {
-                        self.extractedContent = extractedData
-                    
-                    
-                }
-            }
-        }
-    }
-    
     
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
@@ -80,98 +55,65 @@ struct ContentView: View {
     
     
     var body: some View {
-        
-      
-       
-           
+        VStack {
             
-        ZStack {
+            // Search Bar
+            TextField("Search keywords", text: $searchKeywords)  //change font later
+                .foregroundColor(.black)
+                .frame(maxWidth: .infinity)
+                .padding(13)
+                .background(RoundedRectangle(cornerRadius: 30).fill(.white))
+                .padding()
             
-            List(NotionCaller.extractedContent) { block in
-                ForEach(block.ExtractedFields, id: \.self) {textField in
-                    Text(textField)
-                
-                }
-            }
-            
-            
-         
-            ZStack {
-                
-                
-                Color(hex: "#f9f9f9")
-                    .ignoresSafeArea()
-                
-                
-                VStack {
-                    
-                    TextField("   Search keywords", text: $searchKeywords)  //change font later
-                        .frame(height: 48)
-                        .overlay(RoundedRectangle(cornerRadius: 30).strokeBorder(style: StrokeStyle()))
-                        .foregroundColor(.white)
-                        .background(.white)
-                        .cornerRadius(30)
-                        .padding()
-                        .scaledToFit()
-                        .frame(maxHeight: .infinity, alignment: .top)
-                    
-                }
-                
-                VStack {
-                    
-                    Spacer()
-                    
-                    Divider()
-                        .padding()
-                    
-                    
-                    HStack {
-                        
-                        Button(action: {              //add functionality later
-                        }) {
-                            
-                            Image("menuButton")
-                                .frame(alignment: .bottom)
-                                .padding(.horizontal, 42)
-                            Spacer()
-                            
-                        }
-                        
-                        HStack {
-                            Button(action: {              //add functionality later
-                            }) {
-                                
-                                Image("notificationButton")
-                                    .frame(alignment: .leading)
-                                    .padding(.leading, 30)
-                                Spacer()
-                            }
-                        }
-                        
-                        HStack {
-                            Button(action: {
-                            }) {
-                                Image("notionImportButton")
-                                    .frame( alignment: .trailing)
-                                    .padding(.horizontal)
-                                    .padding(.horizontal)
-                            }
-                        }
+            // List of Data
+            VStack {
+                List(NotionCaller.extractedContent, id: \.id) { block in
+                    ForEach(block.ExtractedFields, id: \.self) { textField in
+                        Text(textField)
                     }
                 }
+                .listStyle(.plain)
+                Spacer()
+            }
+            
+            // Navigation Tab Bar
+            VStack {
+                Divider()
+                    .padding()
+                
+                HStack {
+                    Button(action: {              //add functionality later
+                    }) {
+                        Image("menuButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                                            
+                    Button(action: {              //add functionality later
+                    }) {
+                        Image("notificationButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                                            
+                    Button(action: {
+                    }) {
+                        Image("notionImportButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                }
+                .padding(.horizontal)
             }
         }
+        .background(Color.mmBackground)
         .onAppear {
             NotionCaller.makeAPIRequest()
             
-         }
-        
+        }
     }
 }
 
 
-    #Preview {
-        ContentView()
-    }
+#Preview {
+    ContentView()
+}
 
 
