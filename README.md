@@ -25,6 +25,7 @@ ___
 
 ---
 
+
 # Requirements
 * **User must have an iPhone that supports DynamicIsland:** _iPhone 14 Pro/iPhone 15 & 15 Pro and later on_
 * **Must have an account with Notion:** _This application is a Notion integration_
