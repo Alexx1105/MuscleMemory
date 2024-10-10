@@ -12,6 +12,7 @@
 ___
 ## DynamicIsland "digital flashcard" example
 
+
 <div style="display: flex; justify-content: center;">
     <img src="https://github.com/Alexx1105/MuscleMemory/assets/132936435/85aa1cbd-14fd-4bd5-a43d-59c9c2681741" width="50%" style="border-radius: 30px;" />
 </div>
