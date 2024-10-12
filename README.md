@@ -17,7 +17,7 @@ ___
     <img src="https://github.com/Alexx1105/MuscleMemory/assets/132936435/85aa1cbd-14fd-4bd5-a43d-59c9c2681741" width="50%" style="border-radius: 30px;" />
 </div>
 
----
+--
 
 # Features
 * Use of DynamicIsland and LiveActivities
