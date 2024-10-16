@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import WidgetKit
 import ActivityKit
-
+import AuthenticationServices
 
 
 @main
@@ -17,12 +16,10 @@ struct MuscleMemoryApp: App {
         WindowGroup {
             ContentView()
             
-           
             
-           
-           
+            
         }
-           
-    }
         
+    }
+    
 }

@@ -10,6 +10,12 @@
 		5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
 		5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
 		5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */; };
+		B2177BAF2CBB3DA500DDF4E7 /* authView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* authView.swift */; };
+		B2177BB02CBB3DA500DDF4E7 /* authView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* authView.swift */; };
+		B2177BB12CBB3DA500DDF4E7 /* authView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* authView.swift */; };
+		B2177BB32CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* UIDeclarations.swift */; };
+		B2177BB42CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* UIDeclarations.swift */; };
+		B2177BB52CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* UIDeclarations.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ContentView.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
@@ -42,6 +48,8 @@
 
 /* Begin PBXFileReference section */
 		5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionCall.swift; sourceTree = "<group>"; };
+		B2177BAE2CBB3DA500DDF4E7 /* authView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authView.swift; sourceTree = "<group>"; };
+		B2177BB22CBC13B500DDF4E7 /* UIDeclarations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeclarations.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -116,6 +124,8 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
+				B2177BB22CBC13B500DDF4E7 /* UIDeclarations.swift */,
+				B2177BAE2CBB3DA500DDF4E7 /* authView.swift */,
 				B2B837C82BCB102F00BBC748 /* ContentView.swift */,
 				5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
@@ -240,7 +250,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					B2B837C22BCB102F00BBC748 = {
 						CreatedOnToolsVersion = 15.3;
@@ -317,8 +327,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2177BB32CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ContentView.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
+				B2177BB12CBB3DA500DDF4E7 /* authView.swift in Sources */,
 				5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,8 +339,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2177BB42CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */,
 				B2D220D02BD70B4400E55834 /* ContentView.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
+				B2177BAF2CBB3DA500DDF4E7 /* authView.swift in Sources */,
 				5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +351,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2177BB52CBC13C700DDF4E7 /* UIDeclarations.swift in Sources */,
 				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
+				B2177BB02CBB3DA500DDF4E7 /* authView.swift in Sources */,
 				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ContentView.swift in Sources */,
@@ -550,7 +566,6 @@
 		B2B837EB2BCB103000BBC748 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -570,7 +585,6 @@
 		B2B837EC2BCB103000BBC748 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -590,7 +604,6 @@
 		B2B837EE2BCB103000BBC748 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -609,7 +622,6 @@
 		B2B837EF2BCB103000BBC748 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
