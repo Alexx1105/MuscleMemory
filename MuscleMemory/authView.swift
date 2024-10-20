@@ -22,12 +22,14 @@ struct authView: View {
                 .frame(width: 330, height: 330)
                 .padding(.trailing, 10)
                 .padding(.top, 60)
+          
             Spacer()
             Text("Sign into MuscleMemory ")
                 .fontWeight(.bold)
                 .font(.system(size: 16))
                 .padding(.trailing, 70)
                 .padding(.bottom, 1)
+         
             Text("Powered by Kimchi Labs  ")
                 .fontWeight(.medium)
                 .foregroundStyle(Color.gray)
