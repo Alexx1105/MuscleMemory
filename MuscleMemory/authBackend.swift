@@ -23,7 +23,7 @@ public class viewController: UIViewController {
 }
 
 public class authBackend: ObservableObject {
-    public func handleSuccessfulLogin(with authorization: ASAuthorization) {
+    public func handleSuccessfulLogin(_ authorization: ASAuthorization) {
         if let userCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             print(userCredential.user)
             

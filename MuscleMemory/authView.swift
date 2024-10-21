@@ -12,6 +12,7 @@ import Foundation
 struct authView: View {
     
     @ObservedObject var auth = authBackend()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         
@@ -20,11 +21,13 @@ struct authView: View {
           
             Spacer()
             Image("auth")
+                .renderingMode(.template)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 330, height: 330)
                 .padding(.trailing, 10)
                 .padding(.top, 60)
+                
           
             Spacer()
             Text("Sign into MuscleMemory ")
@@ -43,19 +46,42 @@ struct authView: View {
                 .frame(width: 360, height: 1)
               
                 .padding(.bottom, 4)
-            SignInWithAppleButton(.signIn, onRequest: { request in
-                request.requestedScopes = [.fullName, .email]
-            }, onCompletion: { result in
-                switch result {
-                case .success(let authorization):
-                    auth.handleSuccessfulLogin(with: authorization)
-                case .failure(let error):
-                    auth.handleLoginError(with: error)
+            
+            Group {
+                switch colorScheme {
+                case .light:
+                    SignInWithAppleButton(.signIn, onRequest: { request in
+                        request.requestedScopes = [.fullName, .email]
+                    }, onCompletion: { result in
+                        switch result {
+                        case .success(let authorization):
+                            auth.handleSuccessfulLogin(authorization)
+                        case .failure(let error):
+                            auth.handleLoginError(with: error)
+                        }
+                    })
+                    .signInWithAppleButtonStyle(.black)
+                case .dark:
+                    SignInWithAppleButton(.signIn, onRequest: { request in
+                        request.requestedScopes = [.fullName, .email]
+                    }, onCompletion: { result in
+                        switch result {
+                        case .success(let authorization):
+                            auth.handleSuccessfulLogin(authorization)
+                        case .failure(let error):
+                            auth.handleLoginError(with: error)
+                        }
+                    })
+                    .signInWithAppleButtonStyle(.white)
+                @unknown default:
+                    EmptyView()
                 }
-            })
+            }
             .frame(width: 297, height:  43)
             .cornerRadius(20)
             .padding(.bottom, 130)
+            
+
             
         } .frame(maxWidth: .infinity, maxHeight: .infinity)
         
