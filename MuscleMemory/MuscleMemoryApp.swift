@@ -6,23 +6,20 @@
 //
 
 import SwiftUI
-import WidgetKit
 import ActivityKit
-
+import AuthenticationServices
 
 
 @main
 struct MuscleMemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            authView()
             
-           
             
-           
-           
+            
         }
-           
-    }
         
+    }
+    
 }

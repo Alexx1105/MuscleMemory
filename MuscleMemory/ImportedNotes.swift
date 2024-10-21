@@ -13,7 +13,7 @@ import UIKit
 
 
 struct ContentView: View {
-    
+
     
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
@@ -25,7 +25,7 @@ struct ContentView: View {
     
     
     
-    
+
     var body: some View {
         VStack {
             
@@ -80,8 +80,13 @@ struct ContentView: View {
             NotionCaller.makeAPIRequest()
             
         }
-    }
-}
+    
+            
+                  
+            }
+        }
+    
+
 
 
 #Preview {
