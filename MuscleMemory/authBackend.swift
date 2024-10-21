@@ -11,8 +11,8 @@ import SwiftUI
 import UIKit
 
 
+ 
 
-let controller = viewController()
 public class viewController: UIViewController {
     
     public override func viewDidLoad() {
@@ -20,32 +20,27 @@ public class viewController: UIViewController {
         view.addSubview(appleSignIn)
     }
     let appleSignIn = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-    
-    public class authController: ASAuthorizationController, ASAuthorizationControllerDelegate {
-        init() {
-            let authRequest = ASAuthorizationAppleIDProvider()
-            let formRequest = authRequest.createRequest()
-            let authControlRequests = ASAuthorizationController(authorizationRequests: [formRequest])
-            super.init(authorizationRequests: [formRequest])
-        }
-        
-        public func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization ) {
-            print("auth type:\(authorization)")
-        }
-        public func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: any Error) {
-            print("authorization was not succuessful or no data was returned\(error)")
-        }
-        func checkResult(authorization: ASAuthorization?, error: Error?) {          //helper func for handling both delegate funcs above 
-            if let authResult = authorization {
-                print("auth successful\(authResult)")
-            } else if let authFailure = error {
-                print("authorization was not succuessful or no data was returned\(authFailure)")
+}
+
+public class authBackend: ObservableObject {
+    public func handleSuccessfulLogin(with authorization: ASAuthorization) {
+        if let userCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            print(userCredential.user)
+            
+            if userCredential.authorizedScopes.contains(.fullName) {
+                print(userCredential.fullName?.givenName ?? "No given name")
+            }
+            
+            if userCredential.authorizedScopes.contains(.email) {
+                print(userCredential.email ?? "No email")
             }
         }
     }
+    
+    public func handleLoginError(with error: Error) {
+        print("Could not authenticate: \(error.localizedDescription)")
+    }
 }
-
-     
 
     public struct AuthControllerRepresentable: UIViewControllerRepresentable {
         public func makeUIViewController(context: Context) -> viewController {

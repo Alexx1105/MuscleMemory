@@ -14,7 +14,7 @@ import AuthenticationServices
 struct MuscleMemoryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            authView()
             
             
             

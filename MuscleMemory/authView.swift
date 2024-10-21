@@ -10,6 +10,9 @@ import AuthenticationServices
 import Foundation
 
 struct authView: View {
+    
+    @ObservedObject var auth = authBackend()
+    
     var body: some View {
         
         
@@ -40,10 +43,19 @@ struct authView: View {
                 .frame(width: 360, height: 1)
               
                 .padding(.bottom, 4)
-            SignInWithAppleButton(.signIn, onRequest: {_ in}, onCompletion: {_ in})
-                .frame(width: 297, height:  43)
-                .cornerRadius(20)
-                .padding(.bottom, 130)
+            SignInWithAppleButton(.signIn, onRequest: { request in
+                request.requestedScopes = [.fullName, .email]
+            }, onCompletion: { result in
+                switch result {
+                case .success(let authorization):
+                    auth.handleSuccessfulLogin(with: authorization)
+                case .failure(let error):
+                    auth.handleLoginError(with: error)
+                }
+            })
+            .frame(width: 297, height:  43)
+            .cornerRadius(20)
+            .padding(.bottom, 130)
             
         } .frame(maxWidth: .infinity, maxHeight: .infinity)
         
@@ -52,9 +64,10 @@ struct authView: View {
         
         
     }
-}
     
-    #Preview {
+}
+
+#Preview {
         authView()
     }
 
