@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import ActivityKit
 import AuthenticationServices
 
 

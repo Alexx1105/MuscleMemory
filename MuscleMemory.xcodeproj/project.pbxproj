@@ -16,6 +16,15 @@
 		B2177BB32CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
 		B2177BB42CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
 		B2177BB52CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
+		B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
+		B26842D02CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
+		B26842D12CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
+		B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
+		B26842D42CC9F5FC00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
+		B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
+		B26842D72CC9F63200471001 /* NotionImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D62CC9F63200471001 /* NotionImportView.swift */; };
+		B26842D82CC9F63200471001 /* NotionImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D62CC9F63200471001 /* NotionImportView.swift */; };
+		B26842D92CC9F63200471001 /* NotionImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D62CC9F63200471001 /* NotionImportView.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
@@ -25,7 +34,6 @@
 		B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */; };
 		B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
-		B2D220DC2BD981B800E55834 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DB2BD981B800E55834 /* WidgetKit.framework */; };
 		B2D220DE2BD981B800E55834 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +58,9 @@
 		5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionCall.swift; sourceTree = "<group>"; };
 		B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
+		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B26842D62CC9F63200471001 /* NotionImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionImportView.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedNotes.swift; sourceTree = "<group>"; };
@@ -61,7 +72,6 @@
 		B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITests.swift; sourceTree = "<group>"; };
 		B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B2D220D92BD981B800E55834 /* dynamicIslandAnimationsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = dynamicIslandAnimationsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2D220DB2BD981B800E55834 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2D220DE2BD981B800E55834 /* SwiftUI.framework in Frameworks */,
-				B2D220DC2BD981B800E55834 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,10 +133,13 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
+				B26842D62CC9F63200471001 /* NotionImportView.swift */,
 				B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */,
+				B26842D22CC9F5FC00471001 /* SettingsView.swift */,
 				B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */,
 				B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */,
 				5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */,
+				B26842CE2CC704DB00471001 /* MainMenu.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
 				B2B837CC2BCB103000BBC748 /* Preview Content */,
@@ -163,7 +175,6 @@
 		B2D220DA2BD981B800E55834 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B2D220DB2BD981B800E55834 /* WidgetKit.framework */,
 				B2D220DD2BD981B800E55834 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
@@ -327,10 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */,
 				B2177BB32CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
+				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
+				B26842D92CC9F63200471001 /* NotionImportView.swift in Sources */,
 				5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,10 +353,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26842D42CC9F5FC00471001 /* SettingsView.swift in Sources */,
 				B2177BB42CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
+				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
 				B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
 				B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
+				B26842D82CC9F63200471001 /* NotionImportView.swift in Sources */,
 				5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -351,8 +368,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26842D72CC9F63200471001 /* NotionImportView.swift in Sources */,
 				B2177BB52CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
+				B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */,
 				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
+				B26842D02CC704DB00471001 /* MainMenu.swift in Sources */,
 				B2177BB02CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
@@ -514,12 +534,14 @@
 				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -544,12 +566,14 @@
 				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
