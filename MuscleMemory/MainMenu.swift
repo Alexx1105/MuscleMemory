@@ -12,7 +12,7 @@ struct MainMenu: View {
     @State var searchKeywords = String()    //modify text field to search keywords later
     
     var body: some View {
-       
+    
         VStack {
             TextField("Search keywords", text: $searchKeywords)
                 .foregroundColor(.black)
@@ -39,26 +39,28 @@ struct MainMenu: View {
                     .padding()
                 
              HStack {
-              
+                 
                      Button(action: {              //add functionality later
                      }) {
                          Image("menuButton")
                      }
                      .frame(maxWidth: .infinity)
                      
-                     Button(action: {              //add functionality later
-                     }) {
+                 
+                     NavigationLink(destination: SettingsView()) {
                          Image("settingsButton")
+                         
                      }
                      .frame(maxWidth: .infinity)
-                     
+                 
                      Button(action: {
                      }) {
                          Image("notionImportButton")
                      }
                      .frame(maxWidth: .infinity)
+                     
+                     .padding(.horizontal)
                  
-                 .padding(.horizontal)
              }
         }
    }
