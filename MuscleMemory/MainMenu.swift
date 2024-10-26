@@ -48,7 +48,7 @@ struct MainMenu: View {
                      
                      Button(action: {              //add functionality later
                      }) {
-                         Image("notificationButton")
+                         Image("settingsButton")
                      }
                      .frame(maxWidth: .infinity)
                      
