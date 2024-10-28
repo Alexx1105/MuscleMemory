@@ -25,6 +25,9 @@
 		B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
 		B26A46642CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
 		B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
+		B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
+		B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
+		B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
@@ -64,6 +67,7 @@
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B26A46622CCFC4250064AF46 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		B26A46662CD04C210064AF46 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedNotes.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				B26842CE2CC704DB00471001 /* MainMenu.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */,
+				B26A46662CD04C210064AF46 /* SignOutView.swift */,
 				B26A46622CCFC4250064AF46 /* LaunchScreen.swift */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
 				B2B837CC2BCB103000BBC748 /* Preview Content */,
@@ -347,6 +352,7 @@
 				B2177BB32CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
 				B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
+				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
@@ -363,6 +369,7 @@
 				B2177BB42CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
 				B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
+				B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
 				B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
@@ -376,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2177BB52CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
+				B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */,
 				B26A46642CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
@@ -555,7 +563,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemory;
+				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -587,7 +595,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemory;
+				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
