@@ -28,6 +28,9 @@
 		B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
 		B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
 		B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
+		B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
+		B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
+		B26A46712CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
@@ -68,6 +71,7 @@
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B26A46622CCFC4250064AF46 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		B26A46662CD04C210064AF46 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
+		B26A466E2CD077950064AF46 /* LightDarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDarkView.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedNotes.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */,
 				B26842D22CC9F5FC00471001 /* SettingsView.swift */,
+				B26A466E2CD077950064AF46 /* LightDarkView.swift */,
 				B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */,
 				B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */,
 				5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */,
@@ -353,6 +358,7 @@
 				B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
+				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
@@ -370,6 +376,7 @@
 				B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
 				B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */,
+				B26A46712CD077950064AF46 /* LightDarkView.swift in Sources */,
 				B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
 				B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
@@ -393,6 +400,7 @@
 				B2FF4B962CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */,
+				B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
