@@ -8,69 +8,82 @@
 import SwiftUI
 
 struct LightDarkView: View {
-    @State private var autoDarkLight = true
+    
+    @Environment(\.colorScheme) var colorScheme
+    @State private var autoLight = true
+    @State private var automatic = true
+   
     var body: some View {
         
-        VStack {
+        VStack(spacing: 20) {
             Text("Light/Dark mode")            //add navigation view to go back later
                 .fontWeight(.semibold)
                 .tracking(-1)
-                .padding(.bottom, 500)
-                .padding(.leading, 230)
-               
-                .overlay {
-                    Image("lightPreview")
-                        .padding(.bottom, 90)
-                        .padding(.trailing, 180)
-                    Text("Light")
-                        .padding(.top, 245)
-                        .padding(.trailing, 180)
-                    
-                    Button(action: {}) {
-                        Circle()
-                            .fill(Color.mmBackground)
-                            .stroke(Color.gray, lineWidth: 1)
-                            .frame(width: 20, height: 20)
-                            .padding(.top,310)
-                            .padding(.trailing, 181)
-                        
-                    }
-                    
-                    Image("darkPreview")
-                        .padding(.bottom, 90)
-                        .padding(.leading, 180)
-                    Text("Dark")
-                        .padding(.top, 245)
-                        .padding(.leading, 180)
-                    
-                    Button(action: {}) {
-                        Circle()
-                            .fill(Color.mmBackground)
-                            .stroke(Color.gray, lineWidth: 1)
-                            .frame(width: 20, height: 20)
-                            .padding(.top,310)
-                            .padding(.leading, 180)
-                        }
-                    
-                     Divider()
-                        .padding(.top, 400)
-                    
-                    Text("Automatic")
-                        .padding(.top, 470)
-                        .padding(.trailing, 250)
-                        .fontWeight(.semibold)
-                    
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.trailing, 20)
+                .padding(.bottom, 30)
             
-                    Toggle("", isOn: $autoDarkLight)
-                        .padding(.top, 470)
-                
-                    if autoDarkLight {
-                        Text("")             //placeholder for now
-                        
-                
+            HStack(spacing: 35) {
+                VStack {
+                    Image("lightPreview")
+                    Text("Light")
+                    Button(action: {
+                        if !autoLight {
+                            automatic = false
+                        }
+                        autoLight = true
+                    }) {
+                        Circle()
+                            .fill(autoLight ? Color.blue : Color.mmBackground)
+                            .stroke(Color.gray, lineWidth: 1)
+                            .frame(width: 20, height: 20)
                     }
                 }
-           
+                
+                VStack {
+                    Image("darkPreview")
+                    Text("Dark")
+                    
+                    Button(action: {
+                        if autoLight {
+                            automatic = false
+                        }
+                        autoLight = false
+                    }) {
+                        Circle()
+                            .fill(!autoLight ? Color.blue : Color.mmBackground)
+                            .stroke(Color.gray, lineWidth: 1)
+                            .frame(width: 20, height: 20)
+                    }
+                }
+            }
+            .padding(.bottom, 15)
+            .disabled(automatic)
+            .opacity(automatic ? 0.4 : 1)
+            
+            Divider()
+                .padding(.horizontal, 20)
+            
+            HStack {
+                Text("Automatic")
+                    .fontWeight(.semibold)
+                
+                
+                Toggle("", isOn: $automatic)
+                    .onChange(of: automatic) { oldValue, newValue in
+                        if newValue {
+                            switch colorScheme {
+                            case .light:
+                                autoLight = true
+                            case .dark:
+                                autoLight = false
+                            @unknown default:
+                                break
+                            }
+                        }
+                    }
+            }
+            .padding(.horizontal, 20)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
