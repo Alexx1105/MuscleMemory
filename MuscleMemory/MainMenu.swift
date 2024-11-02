@@ -53,12 +53,10 @@ struct MainMenu: View {
                      }
                      .frame(maxWidth: .infinity)
                  
-                     Button(action: {
-                     }) {
+                 NavigationLink(destination: NotionImportPageView()) {
                          Image("notionImportButton")
                      }
                      .frame(maxWidth: .infinity)
-                     
                      .padding(.horizontal)
                  
              }

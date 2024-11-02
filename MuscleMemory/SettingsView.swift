@@ -9,91 +9,96 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-      
-        NavigationStack {
-            
-            VStack {
-                
-                Spacer()
-                Rectangle()
-                    .frame(width: 370, height: 78)
-                    .cornerRadius(18)
-                    .padding(.bottom, 250)
-                    .foregroundStyle(.white)
-                    .overlay {
-                       
-                        Text("Settings")
-                            .padding(.bottom, 430)
-                            .padding(.trailing, 300)
-                            .fontWeight(.semibold)
-                        
-                        Button(action:  {
-                        }) { Text("Log out")
-                                .fontWeight(.regular)
-                                .foregroundStyle(Color.gray)
-                                .padding(.bottom, 430)
-                                .padding(.leading, 280)
-                        }  //map to logout later
-                        
-                        Image(systemName: "clock.badge.exclamationmark")
-                            .padding(.bottom, 288)
-                            .padding(.trailing, 330)
-                      
-                        Text("Live flashcards")
-                            .padding(.bottom, 290)
-                            .padding(.trailing, 170)
         
-                        Divider()
-                            .padding(.bottom, 250)
-                            .frame(width: 340)
-                            .padding(.leading, 30)
-                        
-                        Image(systemName: "circle.lefthalf.filled")
-                            .padding(.bottom, 210)
-                            .padding(.trailing, 330)
-                        
-                        Text("Appearence")
-                            .padding(.bottom, 212)
-                            .padding(.trailing, 190)
-                    }
-              
-                Spacer()
-                VStack {
-                    Divider()
-                        .padding()
+        VStack {
+            HStack() {
                     
-                    HStack {
+                    Text("Settings")
+                       .fontWeight(.semibold)
+                Spacer()
+                
+                    Button(action:  {
+                    }) { Text("Log out")
+                            .fontWeight(.regular)
+                            .foregroundStyle(Color.gray)
                         
-                        Button(action: {              //add functionality later
-                        }) {
-                            Image("menuButton")
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        Button(action: {              //add functionality later
-                        }) {
-                            Image("settingsButton")
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        Button(action: {
-                        }) {
-                            Image("notionImportButton")
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        .padding(.horizontal)
-                    }
+                    }  //map to logout later
                 }
+                 .frame(maxWidth: .infinity, alignment: .center)
+                 .frame(maxHeight: 230)
+                 .padding(.horizontal, 25)
+           
+          
+            HStack {
+                ZStack {
+                    
+                    Rectangle()
+                        .frame(width: 370, height: 78)
+                        .cornerRadius(18)
+                        .foregroundStyle(.white)
+                    
+                        Image(systemName: "clock.badge.exclamationmark")
+                        .padding(.trailing, 335)
+                        .padding(.bottom,36)
+                        
+                        Text("Live flashcards")
+                        .padding(.trailing, 170)
+                        .padding(.bottom, 38)
+                        
+                    ZStack {
+                           
+                            Spacer()
+                            Rectangle()
+                                .frame(width: 345, height: 0.5)
+                                .foregroundStyle(Color.gray)
+                                .padding(.leading, 24)
+                            
+                        }
+                            Image(systemName: "circle.lefthalf.filled")
+                               .padding(.trailing, 335)
+                               .padding(.top, 36)
+                            
+                            Text("Appearence")
+                           .padding(.trailing, 190)
+                           .padding(.top, 38)
+                    }
+              }
+
+                       
+            Spacer()
+            VStack {
+                Divider()
+                    .padding()
                 
-                
+                HStack {
+                    
+                    Button(action: {              //add functionality later
+                    }) {
+                        Image("menuButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Button(action: {              //add functionality later
+                    }) {
+                        Image("settingsButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    Button(action: {
+                    }) {
+                        Image("notionImportButton")
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    .padding(.horizontal)
+                }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.mmBackground)
         }
-        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.mmBackground)
     }
-       
+}
+
 
 
 #Preview {

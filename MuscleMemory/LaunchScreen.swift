@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LaunchScreen: View {
-    @State private var launchScreen = true
+    
+    @StateObject var navPath = NavPath.shared
     
     var body: some View {
         
@@ -29,7 +30,8 @@ struct LaunchScreen: View {
         
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline:.now() + 1.5) {
-                launchScreen = false
+                //navPath.path.append(NavPathItem.home)
+                navPath.navigate(to: .home)
             }
         }
     }
