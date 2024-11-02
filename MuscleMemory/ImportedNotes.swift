@@ -6,9 +6,8 @@
 //
 
 import SwiftUI
-import WidgetKit
-import ActivityKit
-import UIKit
+import Foundation
+
 
 
 
@@ -27,61 +26,67 @@ struct ContentView: View {
     
 
     var body: some View {
-        VStack {
-            
-            // Search Bar
-            TextField("Search keywords", text: $searchKeywords)  //change font later
-                .foregroundColor(.black)
-                .frame(maxWidth: .infinity)
-                .padding(13)
-                .background(RoundedRectangle(cornerRadius: 30).fill(.white))
-                .padding()
-            
-            // List of Data
+        NavigationView {
             VStack {
-                List(NotionCaller.extractedContent, id: \.id) { block in
-                    ForEach(block.ExtractedFields, id: \.self) { textField in
-                        Text(textField)
-                    }
-                }
-                .listStyle(.plain)
-                Spacer()
-            }
-            
-            // Navigation Tab Bar
-            VStack {
-                Divider()
+                
+                // Search Bar
+                TextField("Search keywords", text: $searchKeywords)  //change font later
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity)
+                    .padding(13)
+                    .background(RoundedRectangle(cornerRadius: 30).fill(.white))
                     .padding()
                 
-                HStack {
-                    Button(action: {              //add functionality later
-                    }) {
-                        Image("menuButton")
+                // List of Data
+                VStack {
+                    List(NotionCaller.extractedContent, id: \.id) { block in
+                        ForEach(block.ExtractedFields, id: \.self) { textField in
+                            Text(textField)
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                                            
-                    Button(action: {              //add functionality later
-                    }) {
-                        Image("notificationButton")
-                    }
-                    .frame(maxWidth: .infinity)
-                                            
-                    Button(action: {
-                    }) {
-                        Image("notionImportButton")
-                    }
-                    .frame(maxWidth: .infinity)
+                    .listStyle(.plain)
+                    Spacer()
                 }
-                .padding(.horizontal)
+                
+                // Navigation Tab Bar
+                VStack {
+                    Divider()
+                        .padding()
+                    
+                    HStack {
+                        
+                        NavigationLink(destination: MainMenu()) {
+                            Image("menuButton")
+                            
+                        }
+                        
+                        .frame(maxWidth: .infinity)
+                        
+                        
+                        Button(action: {              //add functionality later
+                        }) {
+                            Image("settingsButton")
+                        
+                                
+                        }
+                        .frame(maxWidth: .infinity)
+                        
+                        Button(action: {
+                        }) {
+                            Image("notionImportButton")
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .padding(.horizontal)
+                }
             }
-        }
-        .background(Color.mmBackground)
-        .onAppear {
-            NotionCaller.makeAPIRequest()
+            .background(Color.mmBackground)
+            .onAppear {
+                NotionCaller.makeAPIRequest()
+                
+            }
             
         }
-    
-            
                   
             }
         }
