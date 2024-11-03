@@ -43,6 +43,10 @@ struct SettingsView: View {
                         Text("Live flashcards")
                         .padding(.trailing, 170)
                         .padding(.bottom, 38)
+                    
+                    Image("arrowChevron")
+                  .padding(.leading, 330)
+                  .padding(.bottom, 38)
                         
                     ZStack {
                            
@@ -60,6 +64,20 @@ struct SettingsView: View {
                             Text("Appearence")
                            .padding(.trailing, 190)
                            .padding(.top, 38)
+                    
+                    NavigationLink(destination: LightDarkView()) {
+                        Rectangle()
+                            
+                            .foregroundStyle(Color.clear)
+                        .frame(width: 370, height: 37)
+                        .padding(.top, 38)
+                    }
+                    
+                   
+                    
+                          Image("arrowChevron")
+                        .padding(.leading, 330)
+                        .padding(.top, 38)
                     }
               }
 

@@ -26,6 +26,8 @@ struct ContainerView: View {
                         NotionImportPageView()
                     case .logOut:
                         SignOutView()
+                    case .appearence:
+                        LightDarkView()
                           
                     }
                     

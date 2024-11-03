@@ -19,7 +19,7 @@ struct LightDarkView: View {
             Text("Light/Dark mode")            //add navigation view to go back later
                 .fontWeight(.semibold)
                 .tracking(-1)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.trailing, 20)
                 .padding(.bottom, 30)
             
@@ -87,6 +87,7 @@ struct LightDarkView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
+        .navigationBarBackButtonHidden()
     }
 }
 

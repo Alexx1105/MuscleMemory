@@ -24,5 +24,6 @@ enum NavPathItem: Hashable {
     case settings
     case home
     case importPage
-    case logOut 
+    case logOut
+    case appearence
 }
