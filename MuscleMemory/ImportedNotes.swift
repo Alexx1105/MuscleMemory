@@ -42,11 +42,18 @@ struct ContentView: View {
                     List(NotionCaller.extractedContent, id: \.id) { block in
                         ForEach(block.ExtractedFields, id: \.self) { textField in
                             Text(textField)
+                                .lineSpacing(-7)
+                                .listRowBackground(Color.mmBackground)
+                                .listRowSeparator(.hidden)
+                         
                         }
+                       
                     }
                     .listStyle(.plain)
                     Spacer()
                 }
+                .fontWeight(.medium)
+               
                 
                 // Navigation Tab Bar
                 VStack {
@@ -56,26 +63,22 @@ struct ContentView: View {
                     HStack {
                         
                         NavigationLink(destination: MainMenu()) {
-                            Image("menuButton")
+                                Image("menuButton")
+                            }
+                            .frame(maxWidth: .infinity)
                             
-                        }
                         
-                        .frame(maxWidth: .infinity)
-                        
-                        
-                        Button(action: {              //add functionality later
-                        }) {
-                            Image("settingsButton")
-                        
+                            NavigationLink(destination: SettingsView()) {
+                                Image("settingsButton")
                                 
-                        }
-                        .frame(maxWidth: .infinity)
+                            }
+                            .frame(maxWidth: .infinity)
                         
-                        Button(action: {
-                        }) {
-                            Image("notionImportButton")
-                        }
-                        .frame(maxWidth: .infinity)
+                        NavigationLink(destination: NotionImportPageView()) {
+                                Image("notionImportButton")
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal)
                     }
                     .padding(.horizontal)
                 }
