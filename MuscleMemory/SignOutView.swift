@@ -15,7 +15,7 @@ struct SignOutView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        
+    
         
         VStack {
           
@@ -89,7 +89,7 @@ struct SignOutView: View {
             }
             
         } .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
+            .navigationBarBackButtonHidden()
         
     }
     

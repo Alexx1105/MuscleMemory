@@ -40,8 +40,7 @@ struct MainMenu: View {
                 
              HStack {
                  
-                     Button(action: {              //add functionality later
-                     }) {
+                 NavigationLink(destination: MainMenu()) {
                          Image("menuButton")
                      }
                      .frame(maxWidth: .infinity)
@@ -64,6 +63,7 @@ struct MainMenu: View {
    }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
+        .navigationBarBackButtonHidden()
        
     }
        

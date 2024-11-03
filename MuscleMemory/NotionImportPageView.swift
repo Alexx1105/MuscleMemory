@@ -53,8 +53,7 @@ struct NotionImportPageView: View {
           
             HStack {
                 
-                    Button(action: {              //add functionality later
-                    }) {
+                NavigationLink(destination: MainMenu()) {
                         Image("menuButton")
                     }
                     .frame(maxWidth: .infinity)
@@ -66,18 +65,16 @@ struct NotionImportPageView: View {
                     }
                     .frame(maxWidth: .infinity)
                 
-                    Button(action: {
-                    }) {
+                NavigationLink(destination: NotionImportPageView()) {
                         Image("notionImportButton")
                     }
                     .frame(maxWidth: .infinity)
-                    
                     .padding(.horizontal)
-                
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.mmBackground)
+        .navigationBarBackButtonHidden()
     }
 }
 

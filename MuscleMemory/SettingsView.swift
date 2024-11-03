@@ -17,12 +17,11 @@ struct SettingsView: View {
                        .fontWeight(.semibold)
                 Spacer()
                 
-                    Button(action:  {
-                    }) { Text("Log out")
+                NavigationLink(destination: SignOutView()) {
+                     Text("Log out")
                             .fontWeight(.regular)
                             .foregroundStyle(Color.gray)
-                        
-                    }  //map to logout later
+                    }
                 }
                  .frame(maxWidth: .infinity, alignment: .center)
                  .frame(maxHeight: 230)
@@ -72,31 +71,31 @@ struct SettingsView: View {
                 
                 HStack {
                     
-                    Button(action: {              //add functionality later
-                    }) {
-                        Image("menuButton")
-                    }
-                    .frame(maxWidth: .infinity)
+                    NavigationLink(destination: MainMenu()) {
+                            Image("menuButton")
+                        }
+                        .frame(maxWidth: .infinity)
+                        
                     
-                    Button(action: {              //add functionality later
-                    }) {
-                        Image("settingsButton")
-                    }
-                    .frame(maxWidth: .infinity)
+                        NavigationLink(destination: SettingsView()) {
+                            Image("settingsButton")
+                            
+                        }
+                        .frame(maxWidth: .infinity)
                     
-                    Button(action: {
-                    }) {
-                        Image("notionImportButton")
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    .padding(.horizontal)
+                    NavigationLink(destination: NotionImportPageView()) {
+                            Image("notionImportButton")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
+        .navigationBarBackButtonHidden()
     }
+        
 }
 
 

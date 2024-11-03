@@ -20,14 +20,17 @@ struct ContainerView: View {
                     switch navigationPathItem {
                     case .home:
                         MainMenu()
-                            .navigationBarBackButtonHidden()
                     case .settings:
                         SettingsView()
                     case .importPage:
                         NotionImportPageView()
-         
+                    case .logOut:
+                        SignOutView()
+                          
                     }
+                    
                 }
+            
         }
      
     }
