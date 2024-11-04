@@ -10,7 +10,10 @@ import Foundation
 
 struct MainMenu: View {
     @State var searchKeywords = String()    //modify text field to search keywords later
-    
+    @Environment(\.colorScheme) var colorScheme
+    private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
+    private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
+  
     var body: some View {
     
         VStack {
@@ -18,17 +21,18 @@ struct MainMenu: View {
                 .foregroundColor(.black)
                 .frame(maxWidth: .infinity)
                 .padding(13)
-                .background(RoundedRectangle(cornerRadius: 30).fill(.white))
+                .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(elementOpacityDark)))
                 .padding()
                  Spacer()
-        
+               
+            
         VStack {
             Text("Your notes from Notion:")
                 .fontWeight(.semibold)
                 .padding(.bottom)
                 .frame(maxHeight: .infinity, alignment: .leading)
                 .padding(.trailing, 150)
-  
+                .opacity(textOpacity)
                
             }
         .padding(.bottom, 490)
@@ -44,6 +48,7 @@ struct MainMenu: View {
                          Image("menuButton")
                      }
                      .frame(maxWidth: .infinity)
+                    
                      
                  
                      NavigationLink(destination: SettingsView()) {
@@ -54,11 +59,13 @@ struct MainMenu: View {
                  
                  NavigationLink(destination: NotionImportPageView()) {
                          Image("notionImportButton")
+                      
                      }
                      .frame(maxWidth: .infinity)
                      .padding(.horizontal)
                  
              }
+            
         }
    }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -11,12 +11,12 @@ struct LightDarkView: View {
     
     @Environment(\.colorScheme) var colorScheme
     @State private var autoLight = true
-    @State private var automatic = true
+    @State private var automatic = false
    
     var body: some View {
         
         VStack(spacing: 20) {
-            Text("Light/Dark mode")            //add navigation view to go back later
+            Text("Appearence")            //add navigation view to go back later
                 .fontWeight(.semibold)
                 .tracking(-1)
                 .frame(maxWidth: .infinity, alignment: .center)

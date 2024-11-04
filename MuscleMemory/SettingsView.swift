@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
+    private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
+    
     var body: some View {
         
         VStack {
@@ -15,6 +19,7 @@ struct SettingsView: View {
                     
                     Text("Settings")
                        .fontWeight(.semibold)
+                       .opacity(textOpacity)
                 Spacer()
                 
                 NavigationLink(destination: SignOutView()) {
@@ -35,6 +40,7 @@ struct SettingsView: View {
                         .frame(width: 370, height: 78)
                         .cornerRadius(18)
                         .foregroundStyle(.white)
+                        .opacity(elementOpacityDark)
                     
                         Image(systemName: "clock.badge.exclamationmark")
                         .padding(.trailing, 335)
@@ -43,10 +49,12 @@ struct SettingsView: View {
                         Text("Live flashcards")
                         .padding(.trailing, 170)
                         .padding(.bottom, 38)
+                        .opacity(textOpacity)
                     
                     Image("arrowChevron")
                   .padding(.leading, 330)
                   .padding(.bottom, 38)
+                  .opacity(textOpacity)
                         
                     ZStack {
                            
@@ -60,10 +68,12 @@ struct SettingsView: View {
                             Image(systemName: "circle.lefthalf.filled")
                                .padding(.trailing, 335)
                                .padding(.top, 36)
+                               .opacity(textOpacity)
                             
                             Text("Appearence")
                            .padding(.trailing, 190)
                            .padding(.top, 38)
+                           .opacity(textOpacity)
                     
                     NavigationLink(destination: LightDarkView()) {
                         Rectangle()
@@ -78,6 +88,7 @@ struct SettingsView: View {
                           Image("arrowChevron")
                         .padding(.leading, 330)
                         .padding(.top, 38)
+                        .opacity(textOpacity)
                     }
               }
 
@@ -91,6 +102,7 @@ struct SettingsView: View {
                     
                     NavigationLink(destination: MainMenu()) {
                             Image("menuButton")
+                           
                         }
                         .frame(maxWidth: .infinity)
                         

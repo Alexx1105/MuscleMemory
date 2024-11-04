@@ -27,3 +27,4 @@ enum NavPathItem: Hashable {
     case logOut
     case appearence
 }
+

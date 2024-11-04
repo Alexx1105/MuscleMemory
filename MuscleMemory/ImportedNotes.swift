@@ -12,12 +12,14 @@ import Foundation
 
 
 struct ContentView: View {
-
     
+    @Environment(\.colorScheme) var colorScheme
+    private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
+    private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
+   
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
     @State var searchKeywords = String()    //modify text field to search keywords later
-    
     @State var menuFunc = String()   //modify to take user back to menu later
     @State var notificationSettings = String() //modify to take user to notifications settings page later
     @State var importNotionFile = String() //modify for user to be able to import their notion file for parsing
@@ -29,14 +31,15 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 
-                // Search Bar
+             
                 TextField("Search keywords", text: $searchKeywords)  //change font later
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
                     .padding(13)
-                    .background(RoundedRectangle(cornerRadius: 30).fill(.white))
+                    .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(elementOpacityDark)))
                     .padding()
-                
+                    .foregroundStyle(.opacity(textOpacity))
+                    
                 // List of Data
                 VStack {
                     List(NotionCaller.extractedContent, id: \.id) { block in
@@ -45,7 +48,7 @@ struct ContentView: View {
                                 .lineSpacing(-7)
                                 .listRowBackground(Color.mmBackground)
                                 .listRowSeparator(.hidden)
-                         
+                                
                         }
                        
                     }
@@ -66,7 +69,7 @@ struct ContentView: View {
                                 Image("menuButton")
                             }
                             .frame(maxWidth: .infinity)
-                            
+                           
                         
                             NavigationLink(destination: SettingsView()) {
                                 Image("settingsButton")
