@@ -45,13 +45,14 @@ struct NotionImportPageView: View {
                         .fontWeight(.medium)
                         .padding(.top, 155)
                         .padding(.leading, 29)
-                  
+                        .foregroundStyle(.opacity(textOpacity))
                    
                          Button(action: { }) {     //modify to import notion page later, possibly trigger a class in NotionCall.swift
                             
                             RoundedRectangle(cornerRadius: 20)
-                            
-                                 .strokeBorder(Color.mmDark, lineWidth: 1)
+                                 
+                        
+                                 .strokeBorder(Color.mmDark.opacity(textOpacity), lineWidth: 1)
                                 .frame(width: 297, height: 43)
                                 .foregroundStyle(Color.white)
                                 .padding(.top, 157)
