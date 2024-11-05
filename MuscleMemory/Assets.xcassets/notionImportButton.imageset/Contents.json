@@ -6,12 +6,45 @@
       "scale" : "1x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "tray.and.arrow.down.fill 2.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
       "filename" : "tray.and.arrow.down.fill.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "tray.and.arrow.down.fill 3.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
       "filename" : "notionImportButton.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "tray.and.arrow.down.fill 4.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

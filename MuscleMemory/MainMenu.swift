@@ -46,6 +46,7 @@ struct MainMenu: View {
                  
                  NavigationLink(destination: MainMenu()) {
                          Image("menuButton")
+                     
                      }
                      .frame(maxWidth: .infinity)
                     
