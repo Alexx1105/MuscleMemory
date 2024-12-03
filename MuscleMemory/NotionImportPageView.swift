@@ -9,58 +9,81 @@ import SwiftUI
 
 struct NotionImportPageView: View {
     
+    @Environment(\.openURL) private var openURLRedirect
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
  
     
     var body: some View {
+        
+
         VStack {
-         
             Spacer()
-            Rectangle()
-                .frame(width: 370, height: 228)
-                .cornerRadius(30)
-                .foregroundStyle(Color.white)
-                .opacity(elementOpacityDark)
-            
-                .overlay {
-                    Text("Import notes from your notion")
-                        .fontWeight(.semibold)
-                        .padding(.bottom, 170)
-                        .opacity(textOpacity)
-                    
+            ZStack(alignment: .center) {
+                
+                Rectangle()
+                    .frame(width: 370, height: 228)
+                    .cornerRadius(30)
+                    .foregroundStyle(Color.white)
+                    .opacity(elementOpacityDark)
+                
+                
+                Text("Import notes from your notion")
+                    .fontWeight(.semibold)
+                    .opacity(textOpacity)
+                    .padding(.bottom, 160)
+                
+                HStack {
                     Image(systemName: "tray.and.arrow.down")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 60, height: 60)
-                        .padding(.bottom,20 )
-                        .opacity(elementOpacityDark)
+                        .frame(width: 40, height: 40)
+                        .opacity(textOpacity)
+                        .padding(.bottom, 50)
                     
-                    Image("notion")
-                        .padding(.top, 155)
-                        .padding(.trailing, 110)
+                }
+                .padding(.trailing, 200)
+                
+                Text("Notion will ask for access \nto your Notion account’s \npages to import.")
+                    .font(.system(size: 14))
+                    .fontWeight(.medium)
+                    .opacity(0.25)
+                    .padding(.horizontal)
+                    .padding(.leading, 50)
+                    .padding(.bottom, 60)
                     
-                    Text("Import page")
-                        .fontWeight(.medium)
-                        .padding(.top, 155)
-                        .padding(.leading, 29)
-                        .foregroundStyle(.opacity(textOpacity))
+           
+                
+                VStack {
                    
-                         Button(action: { }) {     //modify to import notion page later, possibly trigger a class in NotionCall.swift
+                    ZStack {
+                        
+                            
+                        
+                        
+                        Button(action: {  if let redirect = URL(string: "https://api.notion.com/v1/oauth/authorize?client_id=138d872b-594c-8050-b985-0037723b58e0&response_type=code&owner=user&redirect_uri=musclememory.kimchilabs.com%2F%2Fcallback%3Fcode%3DAUTHORIZATION_CODE") {
+                            openURLRedirect(redirect)
+                            
+                        }
+                            
+                        }) {
                             
                             RoundedRectangle(cornerRadius: 20)
-                                 
-                        
-                                 .strokeBorder(Color.mmDark.opacity(textOpacity), lineWidth: 1)
+                                .fill(Color.white)
                                 .frame(width: 297, height: 43)
                                 .foregroundStyle(Color.white)
-                                .padding(.top, 157)
-                                
-                                
+                                .opacity(0.75)
+                        }
+                        Text("Import page")
+                            .foregroundStyle(Color.black)
+                            .fontWeight(.medium)
                     }
+                    .padding(.top, 150)
                 }
-            
+
+            }
+           
             Spacer()
             Divider()
                 .padding()
