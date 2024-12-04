@@ -34,13 +34,6 @@ struct ContainerView: View {
                     }
                 }
             }
-              .onOpenURL { url in
-                  if url.scheme == "https", url.host == "musclememory.com", url.path == "/oauth/callback" {
-                      if let composeURL = URLComponents(url: url, resolvingAgainstBaseURL: false) {
-                          let codeQuery = composeURL.queryItems?.first(where:  {$0.name == "code"})?.value
-                      }
-                  }
-            }
        }
   }
 

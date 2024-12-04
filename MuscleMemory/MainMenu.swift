@@ -22,6 +22,9 @@ struct MainMenu: View {
                 .frame(maxWidth: .infinity)
                 .padding(13)
                 .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(elementOpacityDark)))
+                .overlay(RoundedRectangle(cornerRadius: 30)
+                .stroke(Color.white, lineWidth: 0.2)
+                .opacity(0.30))
                 .padding()
                  Spacer()
                

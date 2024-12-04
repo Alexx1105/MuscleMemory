@@ -21,12 +21,17 @@ struct NotionImportPageView: View {
         VStack {
             Spacer()
             ZStack(alignment: .center) {
-                
-                Rectangle()
-                    .frame(width: 370, height: 228)
-                    .cornerRadius(30)
-                    .foregroundStyle(Color.white)
-                    .opacity(elementOpacityDark)
+            
+                    RoundedRectangle(cornerRadius: 30)
+                        .frame(width: 370, height: 228)
+                        .foregroundStyle(Color.white)
+                        .opacity(elementOpacityDark)
+                        .overlay(RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color.white, lineWidth: 0.2)
+                            .opacity(0.30)
+                        )
+                        
+                    
                 
                 
                 Text("Import notes from your notion")
