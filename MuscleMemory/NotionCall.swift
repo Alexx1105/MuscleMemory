@@ -23,7 +23,7 @@ class NotionCall: ObservableObject {
     }
     
     func makeRequest(completion: @escaping ([BlockBody.Block]) -> Void) {
-        guard let url = url else {return}
+        guard let url = url else { return }
         
         var request = URLRequest(url: url)
         let header = "Bearer " + apiKey          //authorization header declaration

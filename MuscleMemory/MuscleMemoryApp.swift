@@ -10,10 +10,12 @@ import AuthenticationServices
 
 
 struct ContainerView: View {
-    
+
+ 
     @StateObject var navigationPath = NavPath.shared
 
     var body: some View {
+        
         NavigationStack(path: $navigationPath.path) {
             LaunchScreen()
                 .navigationDestination(for: NavPathItem.self) { navigationPathItem in
@@ -30,19 +32,17 @@ struct ContainerView: View {
                         LightDarkView()
                           
                     }
-                    
                 }
-            
-        }
-     
-    }
-}
+            }
+       }
+  }
 
 @main
 struct MuscleMemoryApp: App {
-    
-    
     var body: some Scene {
+        
+
+       
         WindowGroup {
             ContainerView()
         }

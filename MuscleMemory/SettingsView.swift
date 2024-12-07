@@ -41,6 +41,10 @@ struct SettingsView: View {
                         .cornerRadius(18)
                         .foregroundStyle(.white)
                         .opacity(elementOpacityDark)
+                        .overlay(RoundedRectangle(cornerRadius: 18)
+                            .stroke(Color.white, lineWidth: 0.2)
+                            .opacity(0.30)
+                        )
                     
                         Image(systemName: "clock.badge.exclamationmark")
                         .padding(.trailing, 335)

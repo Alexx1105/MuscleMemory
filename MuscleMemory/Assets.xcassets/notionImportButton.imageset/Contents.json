@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "tray.and.arrow.down.fill 1.png",
+      "display-gamut" : "sRGB",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,12 +12,29 @@
           "value" : "dark"
         }
       ],
+      "display-gamut" : "sRGB",
       "filename" : "tray.and.arrow.down.fill 2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "tray.and.arrow.down.fill.png",
+      "display-gamut" : "display-P3",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "display-gamut" : "display-P3",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "display-gamut" : "sRGB",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -28,12 +45,29 @@
           "value" : "dark"
         }
       ],
+      "display-gamut" : "sRGB",
       "filename" : "tray.and.arrow.down.fill 3.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "notionImportButton.png",
+      "display-gamut" : "display-P3",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "display-gamut" : "display-P3",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "display-gamut" : "sRGB",
       "idiom" : "universal",
       "scale" : "3x"
     },
@@ -44,7 +78,24 @@
           "value" : "dark"
         }
       ],
+      "display-gamut" : "sRGB",
       "filename" : "tray.and.arrow.down.fill 4.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "display-gamut" : "display-P3",
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "display-gamut" : "display-P3",
       "idiom" : "universal",
       "scale" : "3x"
     }
