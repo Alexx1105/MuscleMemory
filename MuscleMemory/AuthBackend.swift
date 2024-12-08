@@ -1,17 +1,15 @@
 //
-//  declarations.swift
+//  AuthBackend.swift
 //  MuscleMemory
 //
-//  Created by alex haidar on 10/13/24.
+//  Created by alex haidar on 12/7/24.
 //
 
 import Foundation
 import AuthenticationServices
 import SwiftUI
-import UIKit
 
 
- 
 
 public class viewController: UIViewController {
     
@@ -52,5 +50,3 @@ public class authBackend: ObservableObject {
             
         }
     }
-
-
