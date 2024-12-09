@@ -11,7 +11,7 @@ import AuthenticationServices
 
 struct ContainerView: View {
     
-    @StateObject private var OauthTokens = OAuthTokens()
+    @StateObject private var oauthTokens = OAuthTokens()
     @StateObject var navigationPath = NavPath.shared
 
     var body: some View {
