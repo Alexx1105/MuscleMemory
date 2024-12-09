@@ -13,12 +13,15 @@
 		B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
 		B2177BB02CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
 		B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
-		B2177BB32CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
-		B2177BB42CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
-		B2177BB52CBC13C700DDF4E7 /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */; };
 		B22857742D048E1300B0F815 /* UXDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22857732D048E1300B0F815 /* UXDeclarations.swift */; };
 		B22857752D048E1300B0F815 /* UXDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22857732D048E1300B0F815 /* UXDeclarations.swift */; };
 		B22857762D048E1300B0F815 /* UXDeclarations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22857732D048E1300B0F815 /* UXDeclarations.swift */; };
+		B22E10EE2D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
+		B22E10EF2D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
+		B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
+		B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
+		B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
+		B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
 		B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D02CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D12CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
@@ -72,8 +75,9 @@
 /* Begin PBXFileReference section */
 		5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionCall.swift; sourceTree = "<group>"; };
 		B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
 		B22857732D048E1300B0F815 /* UXDeclarations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXDeclarations.swift; sourceTree = "<group>"; };
+		B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
+		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -155,8 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				B248E14F2CE052DF005B9649 /* Info.plist */,
+				B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */,
 				B22857732D048E1300B0F815 /* UXDeclarations.swift */,
-				B2177BB22CBC13B500DDF4E7 /* AuthBackend.swift */,
 				B26842D22CC9F5FC00471001 /* SettingsView.swift */,
 				B271C18F2CD1CEBB00710E70 /* NavPath.swift */,
 				B26A466E2CD077950064AF46 /* LightDarkView.swift */,
@@ -166,6 +170,7 @@
 				B26842CE2CC704DB00471001 /* MainMenu.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */,
+				B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */,
 				B26A46662CD04C210064AF46 /* SignOutView.swift */,
 				B26A46622CCFC4250064AF46 /* LaunchScreen.swift */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
@@ -366,9 +371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */,
-				B2177BB32CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
 				B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
+				B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,
@@ -378,6 +383,7 @@
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */,
+				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,9 +392,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B26842D42CC9F5FC00471001 /* SettingsView.swift in Sources */,
-				B2177BB42CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
 				B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
+				B22E10EE2D04F723003F3D9F /* AuthBackend.swift in Sources */,
 				B271C1922CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B26A46712CD077950064AF46 /* LightDarkView.swift in Sources */,
@@ -398,6 +404,7 @@
 				B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */,
+				B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,7 +412,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2177BB52CBC13C700DDF4E7 /* AuthBackend.swift in Sources */,
 				B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */,
 				B26A46642CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
@@ -418,6 +424,8 @@
 				B271C1912CD1CEC400710E70 /* NavPath.swift in Sources */,
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */,
+				B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
+				B22E10EF2D04F723003F3D9F /* AuthBackend.swift in Sources */,
 				B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
