@@ -42,7 +42,7 @@ class NotionCall: ObservableObject {
                 }
             }
             
-            if let unwrapData = data {     //safely unwrapping the data value using if let
+            if let unwrapData = data {
                 if let makeString = String(data: unwrapData, encoding: .utf8) {
                     print(makeString)
                 } else {

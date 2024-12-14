@@ -22,6 +22,9 @@
 		B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
 		B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
 		B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
+		B22E10F62D067E9A003F3D9F /* ImportUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* ImportUserPages.swift */; };
+		B22E10F72D067E9A003F3D9F /* ImportUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* ImportUserPages.swift */; };
+		B22E10F82D067E9A003F3D9F /* ImportUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* ImportUserPages.swift */; };
 		B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D02CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D12CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
@@ -78,6 +81,7 @@
 		B22857732D048E1300B0F815 /* UXDeclarations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UXDeclarations.swift; sourceTree = "<group>"; };
 		B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
 		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
+		B22E10F52D067E89003F3D9F /* ImportUserPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUserPages.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				B248E14F2CE052DF005B9649 /* Info.plist */,
+				B22E10F52D067E89003F3D9F /* ImportUserPages.swift */,
 				B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */,
 				B22857732D048E1300B0F815 /* UXDeclarations.swift */,
 				B26842D22CC9F5FC00471001 /* SettingsView.swift */,
@@ -384,6 +389,7 @@
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				5D1B7FA62C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
+				B22E10F82D067E9A003F3D9F /* ImportUserPages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +411,7 @@
 				B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				5D1B7FA52C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
+				B22E10F72D067E9A003F3D9F /* ImportUserPages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +429,7 @@
 				B2FF4B962CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				B22857752D048E1300B0F815 /* UXDeclarations.swift in Sources */,
 				B271C1912CD1CEC400710E70 /* NavPath.swift in Sources */,
+				B22E10F62D067E9A003F3D9F /* ImportUserPages.swift in Sources */,
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */,
 				B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,

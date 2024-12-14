@@ -11,7 +11,7 @@ import AuthenticationServices
 
 struct ContainerView: View {
     
-    @StateObject private var OauthTokens = OAuthTokens()
+    
     @StateObject var navigationPath = NavPath.shared
 
     var body: some View {
@@ -47,9 +47,9 @@ struct MuscleMemoryApp: App {
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "codeParse" })?.value {
-                            let OAuthTokens = OAuthTokens()
+                            
                                 print("code Query recieved and parsed\(parseCodeQuery)")
-                            OAuthTokens.exchangeToken(authorizationCode: codeParse)
+                            exchangeToken(authorizationCode: codeParse)
                         } else {
                             print("code query is nil:\(parseCodeQuery)")
                         }
