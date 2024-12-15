@@ -39,7 +39,10 @@ struct ContainerView: View {
 
 @main
 struct MuscleMemoryApp: App {
+    
     var body: some Scene {
+        
+       
 
         WindowGroup {
             ContainerView()

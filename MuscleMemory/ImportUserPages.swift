@@ -39,10 +39,9 @@ class userPages {
         if let passToken = accessToken {
             passHeader = ["Authorization" : "Bearer \(passToken)"]
             if let header = passHeader {
-                for header in header {
-                    request.addValue("Bearer\(passToken)", forHTTPHeaderField: "Authorization")
-                    request.addValue( "2022-06-28", forHTTPHeaderField: "Notion-Version")
-                }
+                    request.addValue("Bearer\(header)", forHTTPHeaderField: "Authorization")
+                    request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
+                
             } else {
                 print("header values could not be added")
             }
@@ -65,8 +64,14 @@ class userPages {
             }
             let decodePageData = JSONDecoder()
             let decodedPageStrings = try decodePageData.decode(NotionSearchRequest.self, from: userData)
-            var returnedBlocks = decodedPageStrings.sort
-           
+            let returnedBlocks = decodedPageStrings.sort
+            
+            if let ts = returnedBlocks?.timestamp, let dir = returnedBlocks?.direction {    // unwrap timestamp and direction fields
+                print("blocks:\(ts)")
+                print("blocks:\(dir)")
+            } else {
+                print("nil body params")
+            }
             
         } catch {
             print("bad response")
