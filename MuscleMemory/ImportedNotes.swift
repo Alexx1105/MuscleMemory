@@ -20,12 +20,7 @@ struct ContentView: View {
     @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
     
     @State var searchKeywords = String()    //modify text field to search keywords later
-    @State var menuFunc = String()   //modify to take user back to menu later
-    @State var notificationSettings = String() //modify to take user to notifications settings page later
-    @State var importNotionFile = String() //modify for user to be able to import their notion file for parsing
-    
-    
-    
+  
 
     var body: some View {
         NavigationView {

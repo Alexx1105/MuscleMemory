@@ -84,7 +84,7 @@ struct NotionImportPageView: View {
                                 .foregroundStyle(Color.white)
                                 .opacity(0.75)
                                 .modifier(animatedBorderStroke(animatableData: animation))
-                            }
+                        }
                         
                         .onTapGesture {
                             withAnimation(.linear(duration: 1).repeatCount(1)) {
@@ -92,48 +92,48 @@ struct NotionImportPageView: View {
                             }
                         }
                         Text("Import page")
-                                .foregroundStyle(Color.black)
-                                .fontWeight(.medium)
-                            
-                        }
-                        .padding(.top, 150)
-                    }
-                    
-                }
-                
-                Spacer()
-                Divider()
-                    .padding()
-                
-                HStack {
-                    
-                    NavigationLink(destination: MainMenu()) {
-                        Image("menuButton")
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    
-                    NavigationLink(destination: SettingsView()) {
-                        Image("settingsButton")
+                            .foregroundStyle(Color.black)
+                            .fontWeight(.medium)
                         
                     }
-                    .frame(maxWidth: .infinity)
-                    
-                    NavigationLink(destination: NotionImportPageView()) {
-                        Image("notionImportButton")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
+                    .padding(.top, 150)
                 }
+                
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.mmBackground)
-            .navigationBarBackButtonHidden()
+            
+            Spacer()
+            Divider()
+                .padding()
+            
+            HStack {
+                
+                NavigationLink(destination: MainMenu()) {
+                    Image("menuButton")
+                }
+                .frame(maxWidth: .infinity)
+                
+                
+                NavigationLink(destination: SettingsView()) {
+                    Image("settingsButton")
+                    
+                }
+                .frame(maxWidth: .infinity)
+                
+                NavigationLink(destination: NotionImportPageView()) {
+                    Image("notionImportButton")
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal)
+            }
         }
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.mmBackground)
+        .navigationBarBackButtonHidden()
     }
     
-    #Preview {
-        NotionImportPageView()
-    }
+}
+
+#Preview {
+    NotionImportPageView()
+}
 
