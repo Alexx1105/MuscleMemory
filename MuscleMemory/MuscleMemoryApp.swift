@@ -13,7 +13,7 @@ struct ContainerView: View {
     
     
     @StateObject var navigationPath = NavPath.shared
-
+    
     var body: some View {
         
         NavigationStack(path: $navigationPath.path) {
@@ -30,35 +30,45 @@ struct ContainerView: View {
                         SignOutView()
                     case .appearence:
                         LightDarkView()
-                          
+                        
                     }
                 }
-            }
-       }
-  }
+        }
+    }
+}
 
 @main
 struct MuscleMemoryApp: App {
     
     var body: some Scene {
         
-       
-
         WindowGroup {
             ContainerView()
+            
+            
+            
+            
             
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "codeParse" })?.value {
+                            print("code Query recieved and parsed\(parseCodeQuery)")
                             
-                                print("code Query recieved and parsed\(parseCodeQuery)")
-                            exchangeToken(authorizationCode: codeParse)
+                            let pages = userPages()
+                            Task {
+                                do {
+                                    try await exchangeToken(authorizationCode: codeParse)
+                                    try await pages.userEndpoint()
+                                    
+                                } catch {
+                                    print("failed async operation(s):\(error)")
+                                }
+                            }
                         } else {
                             print("code query is nil:\(parseCodeQuery)")
                         }
                     }
                 }
-             
         }
     }
 }

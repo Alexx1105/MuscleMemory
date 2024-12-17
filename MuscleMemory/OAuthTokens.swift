@@ -12,7 +12,8 @@ import SwiftUI
 
 public var accessToken: String?
 
-public func exchangeToken(authorizationCode: String) {
+
+public func exchangeToken(authorizationCode: String) async throws {
     let tokenURL = URL(string: "https://api.notion.com/v1/oauth/token")!
     var request = URLRequest(url: tokenURL)
     request.httpMethod = "POST"

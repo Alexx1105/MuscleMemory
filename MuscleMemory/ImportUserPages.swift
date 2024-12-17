@@ -79,9 +79,8 @@ class userPages {
                 print("error in deocing blocks\(decodeBlocksError)")
             }
         }
-        
-        }
-      }
+    }
+}
 
 
 
