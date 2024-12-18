@@ -26,7 +26,7 @@ public func exchangeToken(authorizationCode: String) async throws {
             print("auth token exchange failed")
         }
         
-        func parseAndStoreToken(data: Data) {
+        func parseAndStoreToken(data: Data) async throws {
             
             do {
                 if let parseAndStore = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
