@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NotionImportPageView: View {
     
-    @State private var animation: Double = 0.0
-    
+    @State private var maskHeight: CGFloat = 0
+    @State private var borderOpacity: Double = 1.0
     @Environment(\.openURL) private var openURLRedirect
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
@@ -70,31 +70,56 @@ struct NotionImportPageView: View {
                             .opacity(0.2)
                             .padding(.bottom, 70)
                         
-                        
-                        
-                        Button(action: {  if let redirect = URL(string: "https://api.notion.com/v1/oauth/authorize?client_id=138d872b-594c-8050-b985-0037723b58e0&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fnotionauthbridge-rhuwa73w2a-uc.a.run.app%2Fcallback%3Fcode%3DAUTHORIZATION_CODE") {
-                            openURLRedirect(redirect)
+                        Button {
+                            maskHeight = 0
+                            borderOpacity = 1.0
                             
-                        }
                             
-                        }) {
+                            withAnimation(.easeInOut(duration: 0.1)) {
+                                maskHeight = 60
+                            } completion: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    withAnimation(.linear(duration: 0.2)) {
+                                        borderOpacity = 0.0
+                                    } completion: {
+                                        maskHeight = 0
+                                    }
+                                }
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                if let redirect = URL(string: "https://api.notion.com/v1/oauth/authorize?client_id=138d872b-594c-8050-b985-0037723b58e0&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fnotionauthbridge-rhuwa73w2a-uc.a.run.app%2Fcallback%3Fcode%3DAUTHORIZATION_CODE") {
+                                    openURLRedirect(redirect)
+                                }
+                            }
+                        } label: {
                             RoundedRectangle(cornerRadius: 20)
                                 .fill(Color.white)
                                 .frame(width: 297, height: 43)
                                 .foregroundStyle(Color.white)
                                 .opacity(0.75)
-                                .modifier(animatedBorderStroke(animatableData: animation))
+                            
+                                .padding(3)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 24)
+                                        .stroke(Color.white, lineWidth: 2)
+                                        .opacity(borderOpacity)
+                                        .blur(radius: 0.5)
+                                        .mask(
+                                            VStack {
+                                                Rectangle()
+                                                    .frame(width: 350, height: maskHeight)
+                                                Spacer()
+                                            }
+                                                .blur(radius: 2)
+                                        )
+                                )
                         }
                         
-                        .onTapGesture {
-                            withAnimation(.linear(duration: 1).repeatCount(1)) {
-                                animation = 360
-                            }
-                        }
                         Text("Import page")
                             .foregroundStyle(Color.black)
                             .fontWeight(.medium)
-                        
+ 
                     }
                     .padding(.top, 150)
                 }

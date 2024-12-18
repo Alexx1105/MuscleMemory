@@ -23,17 +23,18 @@ struct LaunchScreen: View {
                 .tracking(-2)
                 .foregroundStyle(.black)
             
-                
+            
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.launch)
         
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline:.now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline:.now() + 0.7) {
                 //navPath.path.append(NavPathItem.home)
                 navPath.navigate(to: .home)
             }
         }
+        
     }
 }
 
