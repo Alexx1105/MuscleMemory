@@ -16,31 +16,42 @@ public var accessToken: String?
 public func exchangeToken(authorizationCode: String) async throws {
     let tokenURL = URL(string: "https://api.notion.com/v1/oauth/token")!
     var request = URLRequest(url: tokenURL)
+    
+    let client = "138d872b-594c-8050-b985-0037723b58e0"
+    let secret = "secret_HgvrwXDCKSYBusm3UorlPpLu9fKWk5aKt5n6vxXo4SX"
+    
+    let idAndSecret = "\(client):\(secret)"
+    let base64EncodedIDAndSecret = Data(idAndSecret.utf8).base64EncodedString()
+    
+    request.addValue("Basic \(base64EncodedIDAndSecret)", forHTTPHeaderField: "Authorization")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.addValue( "2022-06-28", forHTTPHeaderField: "Notion-Version")
+    
+    let requestBody: [String: Any] = ["grant_type": "authorization_code", "code": authorizationCode, "redirect_uri": "https://notionauthbridge-rhuwa73w2a-uc.a.run.app/callback?code=AUTHORIZATION_CODE"]
+    
     request.httpMethod = "POST"
-    let requestBody = "application/x-www-form-urlencoded\(authorizationCode)&https://notionauthbridge-rhuwa73w2a-uc.a.run.app/callback?code=AUTHORIZATION_CODE"    //format post request body for token exchange
-    request.httpBody = requestBody.data(using: .utf8)
-    URLSession.shared.dataTask(with: request ) { data, response, error in
-        if let tokenData = data {
-            print("auth token was recieved\(tokenData)")
-        } else {
-            print("auth token exchange failed")
-        }
-        
-        func parseAndStoreToken(data: Data) async throws {
-            
-            do {
-                if let parseAndStore = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
-                    if let storedToken = parseAndStore["stored_token"] as? String {
-                        accessToken = storedToken
-                        print("stored token: \(storedToken)")
-                    } else {
-                        print("access token could not be stored")
-                    }
+    let jsonData = try? JSONSerialization.data(withJSONObject: requestBody)
+    request.httpBody = jsonData
+    
+    do {
+        let (data, _) = try await URLSession.shared.data(for: request)
+        do {
+            if let dataDict = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
+                print(dataDict)
+                if let storedToken = dataDict["access_token"] as? String {
+                    accessToken = storedToken
+                    print("stored token: \(storedToken)")
+                    
+                }  else {
+                    print("access token could not be stored")
                 }
-            } catch {
-                print("token could not be parsed: \(error)")
             }
+        } catch {
+            print("token could not be parsed:\(error.localizedDescription)")
         }
-    }.resume()
+    } catch let error {
+        print("auth token exchange failed: \(error)")
+    }
 }
+
 

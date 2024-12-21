@@ -45,15 +45,14 @@ struct MuscleMemoryApp: App {
         WindowGroup {
             ContainerView()
             
-            
-            
-            
+
             
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
                             print("code Query recieved and parsed\(parseCodeQuery)")
-                            
+                           
+                                
                             let pages = userPages()
                             Task {
                                 do {
