@@ -30,6 +30,9 @@ private var passHeader: [String : String]?
 
 class userPages {
     
+    @Published var userBlocks: NotionSearchRequest.Sort?
+    
+    
     let searchEndpoint = URL(string: "https://api.notion.com/v1/search")
     
     func userEndpoint() async throws {
@@ -37,18 +40,12 @@ class userPages {
         var request = URLRequest(url: url)
         
         if let passToken = accessToken {
-            passHeader = ["Authorization" : "Bearer \(passToken)"]
-            if let header = passHeader {
-                    request.addValue("Bearer\(header)", forHTTPHeaderField: "Authorization")
-                    request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
-                
-            } else {
-                print("header values could not be added")
-            }
+            request.addValue("Bearer \(passToken)", forHTTPHeaderField: "Authorization")
+            request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
         } else {
-            print("unwrapped token was not passed to the header")
+            print("header values could not be added")
         }
-        
+    
         do {
             request.httpMethod = "POST"
             
@@ -76,7 +73,7 @@ class userPages {
         } catch {
             print("bad response")
             if let decodeBlocksError = error as? DecodingError {
-                print("error in deocing blocks\(decodeBlocksError)")
+                print("error in decoding blocks\(decodeBlocksError)")
             }
         }
     }
