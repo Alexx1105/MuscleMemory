@@ -53,7 +53,7 @@ struct MuscleMemoryApp: App {
                             print("code Query recieved and parsed\(parseCodeQuery)")
                            
                                 
-                            let pages = userPages()
+                            let pages = searchPages()
                             Task {
                                 do {
                                     try await exchangeToken(authorizationCode: codeParse)

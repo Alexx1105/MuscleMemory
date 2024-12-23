@@ -26,9 +26,8 @@ struct NotionSearchRequest: Codable {
 }
 
 
-private var passHeader: [String : String]?
 
-class userPages {
+class searchPages {
     
     @Published var userBlocks: NotionSearchRequest.Sort?
     
@@ -42,6 +41,7 @@ class userPages {
         if let passToken = accessToken {
             request.addValue("Bearer \(passToken)", forHTTPHeaderField: "Authorization")
             request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
+            
         } else {
             print("header values could not be added")
         }
@@ -69,6 +69,8 @@ class userPages {
             } else {
                 print("nil body params")
             }
+            
+            
             
         } catch {
             print("bad response")
