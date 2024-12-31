@@ -52,12 +52,14 @@ struct MuscleMemoryApp: App {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
                             print("code Query recieved and parsed\(parseCodeQuery)")
                            
-                                
+                            let pageData = ImportUserPage()
                             let pages = searchPages()
                             Task {
                                 do {
                                     try await exchangeToken(authorizationCode: codeParse)
                                     try await pages.userEndpoint()
+                                    
+                                    try await pageData.pageEndpoint()
                                     
                                 } catch {
                                     print("failed async operation(s):\(error)")
