@@ -43,68 +43,80 @@ struct MainBlockBody: Codable, Identifiable {     //top level struct body for ho
 
 class ImportUserPage: ObservableObject {
     
-   
+    
     @Published var mainBlockBody: MainBlockBody?
     let pageID = returnedBlocks.first?.id ?? "pageID is nil"
+    var appendedID: String?
     
     public func pageEndpoint() async throws {
-        let pagesEndpoint = "https://api.notion.com/v1/pages"
-        let append = pagesEndpoint + "/pages\(pageID)"
+        let pagesEndpoint = "https://api.notion.com/v1/pages/"
+        let append = pagesEndpoint + "\(pageID)"
         
-        let addURL = URL(string: append)
+        appendedID = append                                //assign before being compared so it is not nill by default
         
-        guard let url = addURL else { return }
-        var request = URLRequest(url: url)
-        
-        if let authToken = accessToken {
-            let appendToken = "Bearer " + authToken
-            request.addValue(appendToken, forHTTPHeaderField: "Authorization")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
-            
+        if appendedID == append {                         //remove error checking later
+            print("page ID was appended")
         } else {
-            print("headers could not be added or token could not be appended")
+            print("page id could not be appended")
         }
         
+        if let unwrappedPageID = appendedID {
+            print("pageID was successfully unwrapped before being passed to URL method:\(unwrappedPageID)")
+        }
         
-        do {
-            request.httpMethod = "POST"
+        let addURL = URL(string: appendedID ?? "appendedID could not be converted back into a URL(nill)")
+      
+            guard let url = addURL else { return }
+            var request = URLRequest(url: url)
             
-            let (userData, response) = try await URLSession.shared.data(for: request)
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                throw URLError(.badServerResponse)
-            }
-            if let decodeString = String(data: userData, encoding: .utf8) {
-                print(decodeString)
+            if let authToken = accessToken {
+                let appendToken = "Bearer " + authToken
+                request.addValue(appendToken, forHTTPHeaderField: "Authorization")
+                request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
+                
             } else {
-                print("error decoding string")
+                print("headers could not be added or token could not be appended")
             }
             
-            let decodePageData = JSONDecoder()
-            let decodePage = try decodePageData.decode(MainBlockBody.self, from: userData)
-            var returnDecodedResults = decodePage.results
             
-            
-            
-            for i in 0..<returnDecodedResults.count {
-                var extractedFields: [String] = []
-                if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.richText {
-                    for text in richText {
-                        if let content = text.text?.content {
-                            extractedFields.append(content)
-                            
+            do {
+                request.httpMethod = "POST"
+                
+                let (userData, response) = try await URLSession.shared.data(for: request)
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+                if let decodeString = String(data: userData, encoding: .utf8) {
+                    print(decodeString)
+                } else {
+                    print("error decoding string")
+                }
+                
+                let decodePageData = JSONDecoder()
+                let decodePage = try decodePageData.decode(MainBlockBody.self, from: userData)
+                var returnDecodedResults = decodePage.results
+                
+                
+                
+                for i in 0..<returnDecodedResults.count {
+                    var extractedFields: [String] = []
+                    if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.richText {
+                        for text in richText {
+                            if let content = text.text?.content {
+                                extractedFields.append(content)
+                                
+                            }
                         }
                     }
+                    returnDecodedResults[i].ExtractedFields = extractedFields
                 }
-                returnDecodedResults[i].ExtractedFields = extractedFields
-            }
-            
-        } catch {
-            print("url session error:\(error)")
-            if let decodeBlocksError = error as? DecodingError {
-                print("error in decoding blocks\(decodeBlocksError)")
+                
+            } catch {
+                print("url session error:\(error)")
+                if let decodeBlocksError = error as? DecodingError {
+                    print("error in decoding blocks\(decodeBlocksError)")
+                }
             }
         }
     }
-}
 
