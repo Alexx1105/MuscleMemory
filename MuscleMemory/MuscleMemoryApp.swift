@@ -54,11 +54,11 @@ struct MuscleMemoryApp: App {
                            
                             let pageData = ImportUserPage()
                             let pages = searchPages()
+                
                             Task {
                                 do {
                                     try await exchangeToken(authorizationCode: codeParse)
                                     try await pages.userEndpoint()
-                                    
                                     try await pageData.pageEndpoint()
           
                                     
