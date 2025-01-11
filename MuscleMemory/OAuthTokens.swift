@@ -41,7 +41,7 @@ public func exchangeToken(authorizationCode: String) async throws {
                 if let storedToken = dataDict["access_token"] as? String {
                     accessToken = storedToken
                     print("stored token: \(storedToken)")
-                    
+            
                 }  else {
                     print("access token could not be stored")
                 }

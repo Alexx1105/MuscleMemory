@@ -8,32 +8,25 @@
 import Foundation
 
 
-struct NotionSearchRequest: Codable {
-    let query: String?
-    let sort: Sort?
-    let filter: Filter?
-
+public struct NotionSearchRequest: Codable {    //add other properties (if needed) later
+    public let results: [result]
+    public let object: String?
+  
     
-    struct Sort: Codable {
-        let direction: String     // "ascending" or "descending"
-        let timestamp: String     // e.g., "last_edited_time"
-    }
-    
-    struct Filter: Codable {
-        let value: String?        // "page" or "database"
-        let property: String?    // Always "object"
+    public struct result: Codable {
+        public let id: String?
+        public let object: String?
     }
 }
 
 
-private var passHeader: [String : String]?
+    public var returnedBlocks: [NotionSearchRequest.result] = []
 
-class userPages {
+class searchPages {
     
-    @Published var userBlocks: NotionSearchRequest.Sort?
-    
-    
+    @Published var userBlocks: NotionSearchRequest.result?
     let searchEndpoint = URL(string: "https://api.notion.com/v1/search")
+  
     
     func userEndpoint() async throws {
         guard let url = searchEndpoint else { return }
@@ -42,6 +35,7 @@ class userPages {
         if let passToken = accessToken {
             request.addValue("Bearer \(passToken)", forHTTPHeaderField: "Authorization")
             request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
+            
         } else {
             print("header values could not be added")
         }
@@ -59,16 +53,19 @@ class userPages {
             } else {
                 print("empty data string")
             }
+           
             let decodePageData = JSONDecoder()
             let decodedPageStrings = try decodePageData.decode(NotionSearchRequest.self, from: userData)
-            let returnedBlocks = decodedPageStrings.sort
+            returnedBlocks = decodedPageStrings.results
+            let accessObject = returnedBlocks.first?.object
+         
+            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject {
+                print("page ID: \(pageID)")
+                print("content: \(objectBlocks)")
+                } else {
+                    print("nil body params")
+                }
             
-            if let ts = returnedBlocks?.timestamp, let dir = returnedBlocks?.direction {    // unwrap timestamp and direction fields
-                print("blocks:\(ts)")
-                print("blocks:\(dir)")
-            } else {
-                print("nil body params")
-            }
             
         } catch {
             print("bad response")
