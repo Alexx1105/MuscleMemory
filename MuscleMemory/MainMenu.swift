@@ -13,9 +13,12 @@ struct MainMenu: View {
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
-  
-    var body: some View {
     
+    @StateObject private var pageTitle = searchPages.shared
+    
+    
+    var body: some View {
+        
         VStack {
             TextField("Search keywords", text: $searchKeywords)
                 .foregroundColor(.black)
@@ -23,62 +26,111 @@ struct MainMenu: View {
                 .padding(13)
                 .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(elementOpacityDark)))
                 .overlay(RoundedRectangle(cornerRadius: 30)
-                .stroke(Color.white, lineWidth: 0.2)
-                .opacity(0.30))
+                    .stroke(Color.white, lineWidth: 0.2)
+                    .opacity(0.30))
                 .padding()
-                 Spacer()
-               
             
-        VStack {
-            Text("Your notes from Notion:")
-                .fontWeight(.semibold)
-                .padding(.bottom)
-                .frame(maxHeight: .infinity, alignment: .leading)
-                .padding(.trailing, 150)
-                .opacity(textOpacity)
-               
+            
+                .padding(.bottom, 50)
+            HStack {
+                Text("Your notes from Notion:")
+                    .fontWeight(.semibold)
+                    .opacity(textOpacity)
+                    .padding(.trailing, 160)
             }
-        .padding(.bottom, 490)
-           
-           
-         VStack {
+            Spacer()
+            
+            
+            VStack {
+                ScrollView {
+                    
+                    Spacer()
+                    ZStack(alignment: .center) {
+                        Rectangle()
+                            .fill(.white.opacity(elementOpacityDark))
+                            .stroke(Color.white, lineWidth: 0.2)
+                            .foregroundStyle(Color.mmDark)
+                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
+                            .opacity(0.8)
+                            .cornerRadius(10)
+                        
+                        
+                        
+                        
+                        
+                        HStack(spacing: 20) {
+                            
+                            Button(action: { }) { Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")}      //TO-DO: prompt "DynamicRep" settings popover
+                                .foregroundStyle(Color.white)
+                                .opacity(0.8)
+                                .frame(width: 24, height: 24)
+                            
+                            
+                            if let title = pageTitle.displaying?.plain_text {
+                                Text("\(title)")
+                                    .fontWeight(.medium)
+                                    .opacity(0.8)
+                                
+                                
+                            } else {
+                                Text("-- --")
+                                    .fontWeight(.medium)
+                                    .opacity(0.8)
+                            }
+                            
+                            Spacer()
+                            Image("arrowChevron")
+                                .opacity(0.8)
+                                .padding(.trailing)
+                            
+                        }
+                        .padding(.leading)
+                       
+                        
+                        
+                    }
+                    .frame(width: 370, height: 57)
+                }
+            }
+            
+            VStack {
                 Divider()
                     .padding()
                 
-             HStack {
-                 
-                 NavigationLink(destination: MainMenu()) {
-                         Image("menuButton")
-                     
-                     }
-                     .frame(maxWidth: .infinity)
+                HStack {
                     
-                     
-                 
-                     NavigationLink(destination: SettingsView()) {
-                         Image("settingsButton")
-                         
-                     }
-                     .frame(maxWidth: .infinity)
-                 
-                 NavigationLink(destination: NotionImportPageView()) {
-                         Image("notionImportButton")
-                      
-                     }
-                     .frame(maxWidth: .infinity)
-                     .padding(.horizontal)
-                 
-             }
-            
+                    NavigationLink(destination: MainMenu()) {
+                        Image("menuButton")
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    
+                    
+                    NavigationLink(destination: SettingsView()) {
+                        Image("settingsButton")
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    NavigationLink(destination: NotionImportPageView()) {
+                        Image("notionImportButton")
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                    
+                }
+                
+            }
         }
-   }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
-       
-    }
-       
         
+    }
+    
+    
 }
 
 #Preview {

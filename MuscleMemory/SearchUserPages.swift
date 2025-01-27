@@ -11,24 +11,44 @@ import Foundation
 public struct NotionSearchRequest: Codable {    //add other properties (if needed) later
     public let results: [result]
     public let object: String?
-  
+    public let emoji: String?
     
     public struct result: Codable {
         public let id: String?
         public let object: String?
+        public let properties: properties?
+    }
+   
+    public struct properties: Codable {
+        public let title: TitleDict?
+        
+    }
+    
+    public struct TitleDict: Codable {
+        public let title: [TitleItem]
+    }
+    public struct TitleItem: Codable {
+        public let plain_text: String?
     }
 }
 
 
     public var returnedBlocks: [NotionSearchRequest.result] = []
-
-class searchPages {
+   
+   
+@MainActor
+public class searchPages: ObservableObject {
     
+    static let shared = searchPages()
+    
+    @Published var displaying: NotionSearchRequest.TitleItem?
     @Published var userBlocks: NotionSearchRequest.result?
+   
     let searchEndpoint = URL(string: "https://api.notion.com/v1/search")
-  
     
-    func userEndpoint() async throws {
+    private init() { }
+    
+    public func userEndpoint() async throws {
         guard let url = searchEndpoint else { return }
         var request = URLRequest(url: url)
         
@@ -58,14 +78,31 @@ class searchPages {
             let decodedPageStrings = try decodePageData.decode(NotionSearchRequest.self, from: userData)
             returnedBlocks = decodedPageStrings.results
             let accessObject = returnedBlocks.first?.object
-         
-            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject {
-                print("page ID: \(pageID)")
-                print("content: \(objectBlocks)")
-                } else {
-                    print("nil body params")
+           
+            let title = decodedPageStrings.results.first
+            let getText = title?.properties?.title
+            let text = getText?.title.first?.plain_text
+           
+            DispatchQueue.main.async {
+               
+                if let titles = text {
+                    self.displaying = NotionSearchRequest.TitleItem(plain_text: titles)
+                        print("being passed to main thread: \(titles)")
+                    } else {
+                        print("plain text is not being run on main")
+                    }
                 }
             
+            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text {
+                print("page ID: \(pageID)")
+                print("content: \(objectBlocks)")
+                print("title of page: \(displayTitle)")
+            
+                } else {
+                    print("nil body params")
+                    print("title page could not be stored")
+                }
+         
             
         } catch {
             print("bad response")

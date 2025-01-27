@@ -30,7 +30,8 @@ struct ContainerView: View {
                         SignOutView()
                     case .appearence:
                         LightDarkView()
-                        
+                    case .importpageUser:
+                        ImportedNotes()
                     }
                 }
         }
@@ -52,16 +53,15 @@ struct MuscleMemoryApp: App {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
                             print("code Query recieved and parsed\(parseCodeQuery)")
                            
-                            let pageData = ImportUserPage()
-                            let pages = searchPages()
-                
+                            let pageData = ImportUserPage.shared
+                            let pages = searchPages.shared
+                           
                             Task {
                                 do {
                                     try await exchangeToken(authorizationCode: codeParse)
                                     try await pages.userEndpoint()
                                     try await pageData.pageEndpoint()
-          
-                                    
+                                    print(pageData.mainBlockBody)
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
@@ -71,9 +71,9 @@ struct MuscleMemoryApp: App {
                         }
                     }
                 }
+            }
         }
     }
-}
 
 #Preview {
     ContainerView()

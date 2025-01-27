@@ -11,13 +11,13 @@ import Foundation
 
 
 
-struct ContentView: View {
+struct ImportedNotes: View {
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
    
-    @StateObject var NotionCaller = NotionCall()   //manage lifecycle of instance
+    @StateObject var NotionCaller = ImportUserPage.shared
     
     @State var searchKeywords = String()    //modify text field to search keywords later
   
@@ -27,7 +27,7 @@ struct ContentView: View {
             VStack {
                 
              
-                TextField("Search keywords", text: $searchKeywords)  //change font later
+                TextField("Search keywords", text: $searchKeywords)
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
                     .padding(13)
@@ -38,9 +38,9 @@ struct ContentView: View {
                     .padding()
                     .foregroundStyle(.opacity(textOpacity))
                     
-                // List of Data
+        
                 VStack {
-                    List(NotionCaller.extractedContent, id: \.id) { block in
+                    List(NotionCaller.mainBlockBody, id: \.id) { block in
                         ForEach(block.ExtractedFields, id: \.self) { textField in
                             Text(textField)
                                 .lineSpacing(-7)
@@ -64,42 +64,37 @@ struct ContentView: View {
                     HStack {
                         
                         NavigationLink(destination: MainMenu()) {
-                                Image("menuButton")
-                            }
-                            .frame(maxWidth: .infinity)
-                           
+                            Image("menuButton")
+                        }
+                        .frame(maxWidth: .infinity)
                         
-                            NavigationLink(destination: SettingsView()) {
-                                Image("settingsButton")
-                                
-                            }
-                            .frame(maxWidth: .infinity)
+                        
+                        NavigationLink(destination: SettingsView()) {
+                            Image("settingsButton")
+                            
+                        }
+                        .frame(maxWidth: .infinity)
                         
                         NavigationLink(destination: NotionImportPageView()) {
-                                Image("notionImportButton")
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding(.horizontal)
+                            Image("notionImportButton")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
                     }
                     .padding(.horizontal)
                 }
             }
             .background(Color.mmBackground)
-            .onAppear {
-                NotionCaller.makeAPIRequest()
-                
-            }
-            
-        }
-                  
-            }
-        }
+          }
+       }
+     
+    }
     
 
 
 
 #Preview {
-    ContentView()
+    ImportedNotes()
 }
 
 

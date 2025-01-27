@@ -10,26 +10,26 @@ import Foundation
 
 
 
-struct MainBlockBody: Codable, Identifiable {     //top level struct body for holding block content
+struct MainBlockBody: Codable, Identifiable {
     let id = UUID()
-    let results: [Block]           // This will hold the list of Block objects
+    let results: [Block]
     
     private enum CodingKeys: CodingKey {
         case results
     }
     
     struct Block: Codable {
-        let id = UUID()
+        let id: String
         let paragraph: Paragraph?
         var ExtractedFields: [String] = []
         
         private enum CodingKeys: CodingKey {
+            case id
             case paragraph
-            
         }
     }
     struct Paragraph: Codable {
-        let richText: [RichText]?
+        let rich_text: [RichText]?
     }
     struct RichText: Codable {
         let text: NotionText?
@@ -43,18 +43,23 @@ struct MainBlockBody: Codable, Identifiable {     //top level struct body for ho
 
 class ImportUserPage: ObservableObject {
     
+    public static let shared = ImportUserPage()
     
-    @Published var mainBlockBody: MainBlockBody?
+    @Published var mainBlockBody: [MainBlockBody.Block] = []
+  
     var appendedID: String?
+    
     
     public func pageEndpoint() async throws {
         let pageID = returnedBlocks.first?.id ?? "pageID is nil"
         let pagesEndpoint = "https://api.notion.com/v1/blocks/"
         let append = pagesEndpoint + "\(pageID)/children"
         
-        appendedID = append                                //assign before being compared so it is not nill by default
+       
         
-        if appendedID == append {                         //remove error checking later
+        appendedID = append                                //assign before being compared so it is not nil by default
+        
+        if appendedID == append {                        
             print("page ID was appended")
         } else {
             print("page id could not be appended")
@@ -67,7 +72,7 @@ class ImportUserPage: ObservableObject {
         let addURL = URL(string: appendedID ?? "appendedID could not be converted back into a URL (nill)")
       
        
-            guard let url = addURL else { return }
+        guard let url = addURL else { return }
             var request = URLRequest(url: url)
             
             if let authToken = accessToken {
@@ -99,10 +104,9 @@ class ImportUserPage: ObservableObject {
                 var returnDecodedResults = decodePage.results
                 
                 
-                
                 for i in 0..<returnDecodedResults.count {
                     var extractedFields: [String] = []
-                    if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.richText {
+                    if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.rich_text {
                         for text in richText {
                             if let content = text.text?.content {
                                 extractedFields.append(content)
@@ -112,6 +116,9 @@ class ImportUserPage: ObservableObject {
                     }
                     returnDecodedResults[i].ExtractedFields = extractedFields
                 }
+               
+                mainBlockBody = returnDecodedResults
+                
                 
             } catch {
                 print("url session error:\(error)")
