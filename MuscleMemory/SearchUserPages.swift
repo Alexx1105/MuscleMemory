@@ -17,10 +17,10 @@ public struct NotionSearchRequest: Codable {    //add other properties (if neede
         public let id: String?
         public let object: String?
         public let properties: properties?
-        public let icon: icon?
+        public let icon: Icon?
     }
     
-    public struct icon: Codable {
+    public struct Icon: Codable {
         public let type: String?
         public let emoji: String?
     }
@@ -46,7 +46,7 @@ public class searchPages: ObservableObject {
     
     static let shared = searchPages()
    
-    
+    @Published var emojis: NotionSearchRequest.Icon?
     @Published var displaying: NotionSearchRequest.TitleItem?
     @Published var userBlocks: NotionSearchRequest.result?
    
@@ -89,7 +89,7 @@ public class searchPages: ObservableObject {
             let getText = title?.properties?.title
             let text = getText?.title.first?.plain_text
             let emojis = title?.icon?.emoji
-          
+            let customType = title?.icon?.type
           
            
             DispatchQueue.main.async {
@@ -101,9 +101,16 @@ public class searchPages: ObservableObject {
                     } else {
                         print("plain text is not being run on main")
                     }
-    
+                
+                if let storeEmoji = emojis {
+                    self.emojis = NotionSearchRequest.Icon(type: customType, emoji: storeEmoji)
+                    print("emoji has been stored🫡\(storeEmoji)")
+                } else {
+                    print("emoji could not be successfully stored")
                 }
-            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text, let showEmoji = emojis{
+            }
+          
+            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text, let showEmoji = emojis {
                 print("page ID: \(pageID)")
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
