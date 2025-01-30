@@ -11,17 +11,22 @@ import Foundation
 public struct NotionSearchRequest: Codable {    //add other properties (if needed) later
     public let results: [result]
     public let object: String?
-    public let emoji: String?
+  
     
     public struct result: Codable {
         public let id: String?
         public let object: String?
         public let properties: properties?
+        public let icon: icon?
     }
-   
+    
+    public struct icon: Codable {
+        public let type: String?
+        public let emoji: String?
+    }
+    
     public struct properties: Codable {
         public let title: TitleDict?
-        
     }
     
     public struct TitleDict: Codable {
@@ -40,6 +45,7 @@ public struct NotionSearchRequest: Codable {    //add other properties (if neede
 public class searchPages: ObservableObject {
     
     static let shared = searchPages()
+   
     
     @Published var displaying: NotionSearchRequest.TitleItem?
     @Published var userBlocks: NotionSearchRequest.result?
@@ -82,22 +88,26 @@ public class searchPages: ObservableObject {
             let title = decodedPageStrings.results.first
             let getText = title?.properties?.title
             let text = getText?.title.first?.plain_text
+            let emojis = title?.icon?.emoji
+          
+          
            
             DispatchQueue.main.async {
-               
+                
                 if let titles = text {
+                   
                     self.displaying = NotionSearchRequest.TitleItem(plain_text: titles)
                         print("being passed to main thread: \(titles)")
                     } else {
                         print("plain text is not being run on main")
                     }
+    
                 }
-            
-            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text {
+            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text, let showEmoji = emojis{
                 print("page ID: \(pageID)")
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
-            
+                print("emoji from title:\(showEmoji)")
                 } else {
                     print("nil body params")
                     print("title page could not be stored")
