@@ -15,7 +15,7 @@ struct MainMenu: View {
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
     @StateObject private var pageTitle = searchPages.shared
-    
+ 
     
     var body: some View {
         
@@ -60,11 +60,16 @@ struct MainMenu: View {
                         
                         HStack(spacing: 20) {
                             
-                            Button(action: { }) { Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90")}      //TO-DO: prompt "DynamicRep" settings popover
+                            Button(action: { }) { Image(systemName: "ellipsis.circle")}      //TO-DO: prompt "DynamicRep" settings popover
                                 .foregroundStyle(Color.white)
                                 .opacity(0.8)
-                                .frame(width: 24, height: 24)
+                                .frame(width: 20, height: 24)
                             
+                            if let emojis = pageTitle.emojis?.emoji {
+                                Text("\(emojis)")
+                            } else {
+                                Text("could not display emojis")
+                            }
                             
                             if let title = pageTitle.displaying?.plain_text {
                                 Text("\(title)")
