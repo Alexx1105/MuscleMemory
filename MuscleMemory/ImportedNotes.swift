@@ -23,7 +23,10 @@ struct ImportedNotes: View {
   
 
     var body: some View {
+        
+      
         NavigationView {
+         
             VStack {
                 
              
@@ -56,7 +59,7 @@ struct ImportedNotes: View {
                 .fontWeight(.medium)
                
                 
-                // Navigation Tab Bar
+             
                 VStack {
                     Divider()
                         .padding()
@@ -86,6 +89,7 @@ struct ImportedNotes: View {
             }
             .background(Color.mmBackground)
           }
+  
        }
      
     }

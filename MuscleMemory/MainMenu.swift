@@ -50,6 +50,8 @@ struct MainMenu: View {
                     NavigationLink {
                         ImportedNotes()
                         
+                        
+                            .navigationBarBackButtonHidden(true)
                     } label: {
                         ZStack(alignment: .center) {
                             Rectangle()
@@ -66,10 +68,9 @@ struct MainMenu: View {
                             
                             HStack(spacing: 20) {
                                 
-                                Button(action: { }) { Image(systemName: "ellipsis.circle")}      //TO-DO: prompt "DynamicRep" settings popover
-                                    .foregroundStyle(Color.white)
+                                Button(action: { }) { Image(systemName: "ellipsis")}      //TO-DO: prompt "DynamicRep" settings popover
                                     .opacity(0.8)
-                                    .frame(width: 20, height: 24)
+                                    .frame(width: 25, height: 25)
                                 
                                 if let emojis = pageTitle.emojis?.emoji {
                                     Text("\(emojis)")
@@ -103,8 +104,11 @@ struct MainMenu: View {
                         .frame(width: 370, height: 57)
                         
                     }
+                
                 }
             }
+            .foregroundStyle(Color.white.opacity(0.8))
+          
             VStack {
                 Divider()
                     .padding()
