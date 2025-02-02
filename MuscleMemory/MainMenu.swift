@@ -8,6 +8,8 @@
 import SwiftUI
 import Foundation
 
+
+
 struct MainMenu: View {
     @State var searchKeywords = String()    //modify text field to search keywords later
     @Environment(\.colorScheme) var colorScheme
@@ -15,7 +17,7 @@ struct MainMenu: View {
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
     @StateObject private var pageTitle = searchPages.shared
- 
+    
     
     var body: some View {
         
@@ -45,59 +47,64 @@ struct MainMenu: View {
                 ScrollView {
                     
                     Spacer()
-                    ZStack(alignment: .center) {
-                        Rectangle()
-                            .fill(.white.opacity(elementOpacityDark))
-                            .stroke(Color.white, lineWidth: 0.2)
-                            .foregroundStyle(Color.mmDark)
-                            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
-                            .opacity(0.8)
-                            .cornerRadius(10)
+                    NavigationLink {
+                        ImportedNotes()
                         
-                        
-                        
-                        
-                        
-                        HStack(spacing: 20) {
-                            
-                            Button(action: { }) { Image(systemName: "ellipsis.circle")}      //TO-DO: prompt "DynamicRep" settings popover
-                                .foregroundStyle(Color.white)
+                    } label: {
+                        ZStack(alignment: .center) {
+                            Rectangle()
+                                .fill(.white.opacity(elementOpacityDark))
+                                .stroke(Color.white, lineWidth: 0.2)
+                                .foregroundStyle(Color.mmDark)
+                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
                                 .opacity(0.8)
-                                .frame(width: 20, height: 24)
+                                .cornerRadius(10)
                             
-                            if let emojis = pageTitle.emojis?.emoji {
-                                Text("\(emojis)")
-                            } else {
-                                Text("could not display emojis")
-                            }
                             
-                            if let title = pageTitle.displaying?.plain_text {
-                                Text("\(title)")
-                                    .fontWeight(.medium)
-                                    .opacity(0.8)
+                            
+                            
+                            
+                            HStack(spacing: 20) {
                                 
-                                
-                            } else {
-                                Text("-- --")
-                                    .fontWeight(.medium)
+                                Button(action: { }) { Image(systemName: "ellipsis.circle")}      //TO-DO: prompt "DynamicRep" settings popover
+                                    .foregroundStyle(Color.white)
                                     .opacity(0.8)
+                                    .frame(width: 20, height: 24)
+                                
+                                if let emojis = pageTitle.emojis?.emoji {
+                                    Text("\(emojis)")
+                                } else {
+                                    Text("--")
+                                }
+                                
+                                if let title = pageTitle.displaying?.plain_text {
+                                    Text("\(title)")
+                                        .fontWeight(.medium)
+                                        .opacity(0.8)
+                                    
+                                    
+                                } else {
+                                    Text("-- --")
+                                        .fontWeight(.medium)
+                                        .opacity(0.8)
+                                }
+                                
+                                Spacer()
+                                Image("arrowChevron")
+                                    .opacity(0.8)
+                                    .padding(.trailing)
+                                
                             }
+                            .padding(.leading)
                             
-                            Spacer()
-                            Image("arrowChevron")
-                                .opacity(0.8)
-                                .padding(.trailing)
+                            
                             
                         }
-                        .padding(.leading)
-                       
-                        
+                        .frame(width: 370, height: 57)
                         
                     }
-                    .frame(width: 370, height: 57)
                 }
             }
-            
             VStack {
                 Divider()
                     .padding()
