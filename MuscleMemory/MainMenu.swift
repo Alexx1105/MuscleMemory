@@ -72,22 +72,17 @@ struct MainMenu: View {
                                     .opacity(0.8)
                                     .frame(width: 25, height: 25)
                                 
-                                if let emojis = pageTitle.emojis?.emoji {
+                                if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text  {
                                     Text("\(emojis)")
-                                } else {
-                                    Text("--")
-                                }
-                                
-                                if let title = pageTitle.displaying?.plain_text {
                                     Text("\(title)")
                                         .fontWeight(.medium)
                                         .opacity(0.8)
-                                    
-                                    
                                 } else {
-                                    Text("-- --")
-                                        .fontWeight(.medium)
-                                        .opacity(0.8)
+                                    Rectangle()
+                                        .cornerRadius(5)
+                                        .frame(width: 150, height: 20)
+                                        .opacity(0.2)
+                                        
                                 }
                                 
                                 Spacer()
