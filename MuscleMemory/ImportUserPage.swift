@@ -40,7 +40,7 @@ struct MainBlockBody: Codable, Identifiable {
 }
 
 
-
+@MainActor
 class ImportUserPage: ObservableObject {
     
     public static let shared = ImportUserPage()
@@ -117,8 +117,9 @@ class ImportUserPage: ObservableObject {
                     returnDecodedResults[i].ExtractedFields = extractedFields
                 }
                
-                mainBlockBody = returnDecodedResults
-                
+                DispatchQueue.main.async {
+                    self.mainBlockBody = returnDecodedResults
+                }
                 
             } catch {
                 print("url session error:\(error)")
