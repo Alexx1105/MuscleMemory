@@ -54,7 +54,7 @@ struct MainMenu: View {
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         
-                        let emptyPage: String? = pageTitle.displaying?.plain_text
+                        let emptyPage: String? = pageTitle.displaying?.plain_text //broke up expressions to resolve compile-time error 
                         let emptyEmojis: String? = pageTitle.emojis?.type
                         
                         if let _emptyTab = emptyPage, emptyEmojis != nil {
@@ -65,7 +65,7 @@ struct MainMenu: View {
                                     .stroke(Color.white, lineWidth: 0.2)
                                     .foregroundStyle(Color.mmDark)
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
-                                    .opacity(0.8)
+                                    .opacity(0.1)
                                     .cornerRadius(10)
                                 
                                 
@@ -87,7 +87,7 @@ struct MainMenu: View {
                                         Rectangle()
                                             .cornerRadius(5)
                                             .frame(width: 150, height: 20)
-                                            .opacity(0.1)
+                                            .opacity(0.8)
                                         
                                     }
                                     
