@@ -55,7 +55,6 @@ class ImportUserPage: ObservableObject {
         let pagesEndpoint = "https://api.notion.com/v1/blocks/"
         let append = pagesEndpoint + "\(pageID)/children"
         
-       
         
         appendedID = append                                //assign before being compared so it is not nil by default
         

@@ -53,53 +53,58 @@ struct MainMenu: View {
                         
                             .navigationBarBackButtonHidden(true)
                     } label: {
-                        ZStack(alignment: .center) {
-                            Rectangle()
-                                .fill(.white.opacity(elementOpacityDark))
-                                .stroke(Color.white, lineWidth: 0.2)
-                                .foregroundStyle(Color.mmDark)
-                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
-                                .opacity(0.8)
-                                .cornerRadius(10)
+                        
+                        let emptyPage: String? = pageTitle.displaying?.plain_text
+                        let emptyEmojis: String? = pageTitle.emojis?.type
+                        
+                        if let _emptyTab = emptyPage, emptyEmojis != nil {
                             
-                            
-                            
-                            
-                            
-                            HStack(spacing: 20) {
-                                
-                                Button(action: { }) { Image(systemName: "ellipsis")}      //TO-DO: prompt "DynamicRep" settings popover
+                            ZStack(alignment: .center) {
+                                Rectangle()
+                                    .fill(.white.opacity(elementOpacityDark))
+                                    .stroke(Color.white, lineWidth: 0.2)
+                                    .foregroundStyle(Color.mmDark)
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
                                     .opacity(0.8)
-                                    .frame(width: 35, height: 35)
+                                    .cornerRadius(10)
                                 
-                                if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text {
-                                    Text("\(emojis)")
-                                    Text("\(title)")
-                                        .fontWeight(.medium)
-                           
-                                } else {
-                                    Rectangle()
-                                        .cornerRadius(5)
-                                        .frame(width: 150, height: 20)
-                                        .opacity(0.2)
+                                
+                                
+                                
+                                
+                                HStack(spacing: 20) {
+                                    
+                                    Button(action: { }) { Image(systemName: "ellipsis")}      //TO-DO: prompt "DynamicRep" settings popover
+                                        .opacity(0.8)
+                                        .frame(width: 35, height: 35)
+                                    
+                                    if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text {
+                                        Text("\(emojis)")
+                                        Text("\(title)")
+                                            .fontWeight(.medium)
                                         
+                                    } else {
+                                        Rectangle()
+                                            .cornerRadius(5)
+                                            .frame(width: 150, height: 20)
+                                            .opacity(0.1)
+                                        
+                                    }
+                                    
+                                    Spacer()
+                                    Image("arrowChevron")
+                                        .opacity(0.8)
+                                        .padding(.trailing)
+                                    
                                 }
+                                .padding(.leading)
                                 
-                                Spacer()
-                                Image("arrowChevron")
-                                    .opacity(0.8)
-                                    .padding(.trailing)
                                 
                             }
-                            .padding(.leading)
-                            
-                            
-                            
+                            .frame(width: 370, height: 57)
                         }
-                        .frame(width: 370, height: 57)
                         
                     }
-                
                 }
             }
             .foregroundStyle(Color.white.opacity(0.8))
