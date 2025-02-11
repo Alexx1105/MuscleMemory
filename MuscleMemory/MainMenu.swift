@@ -54,10 +54,10 @@ struct MainMenu: View {
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         
-                        let emptyPage: String? = pageTitle.displaying?.plain_text //broke up expressions to resolve compile-time error 
+                        let emptyPage: String? = pageTitle.displaying?.plain_text     //broke up expressions to resolve compile-time error
                         let emptyEmojis: String? = pageTitle.emojis?.type
                         
-                        if let _emptyTab = emptyPage, emptyEmojis != nil {
+                        if let emptyTab = emptyPage, emptyEmojis != nil {
                             
                             ZStack(alignment: .center) {
                                 Rectangle()
@@ -65,7 +65,7 @@ struct MainMenu: View {
                                     .stroke(Color.white, lineWidth: 0.2)
                                     .foregroundStyle(Color.mmDark)
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
-                                    .opacity(0.1)
+                                    .opacity(0.8)
                                     .cornerRadius(10)
                                 
                                 
@@ -74,9 +74,30 @@ struct MainMenu: View {
                                 
                                 HStack(spacing: 20) {
                                     
-                                    Button(action: { }) { Image(systemName: "ellipsis")}      //TO-DO: prompt "DynamicRep" settings popover
-                                        .opacity(0.8)
-                                        .frame(width: 35, height: 35)
+                                   
+                                    
+                                    Menu {
+                                        Text("DynamicRep Settings \nfor \(emptyTab) ")
+                                        
+                                            .fontWeight(.medium)
+                                            .foregroundStyle(Color.white)
+                                            .opacity(0.5)
+                                        
+                                        Button("Live activities", systemImage: "clock.badge") {}
+                                       
+                                        Button(role: .destructive, action: {
+                                        }) { Label("Disable", systemImage: "multiply.circle")
+                                              
+                                        }
+                           
+                                            
+                                    } label: {
+                                        
+                                        Image(systemName: "ellipsis")}
+                                    .opacity(0.8)
+                                    .frame(width: 35, height: 35)
+                                    
+            
                                     
                                     if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text {
                                         Text("\(emojis)")
@@ -87,7 +108,7 @@ struct MainMenu: View {
                                         Rectangle()
                                             .cornerRadius(5)
                                             .frame(width: 150, height: 20)
-                                            .opacity(0.8)
+                                            .opacity(0.1)
                                         
                                     }
                                     
@@ -102,8 +123,7 @@ struct MainMenu: View {
                                 
                             }
                             .frame(width: 370, height: 57)
-                        }
-                        
+                         }
                     }
                 }
             }

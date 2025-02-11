@@ -22,6 +22,9 @@
 		B22E10F62D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
 		B22E10F72D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
 		B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
+		B25152BF2D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
+		B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
+		B25152C12D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
 		B25FEAD92D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B25FEADA2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
@@ -82,6 +85,7 @@
 		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
 		B22E10F52D067E89003F3D9F /* SearchUserPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPages.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B25152BE2D542522000ACE71 /* CustomPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopover.swift; sourceTree = "<group>"; };
 		B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUserPage.swift; sourceTree = "<group>"; };
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */,
 				5D1B7FA42C6CD75F00B474B0 /* NotionCall.swift */,
 				B26842CE2CC704DB00471001 /* MainMenu.swift */,
+				B25152BE2D542522000ACE71 /* CustomPopover.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */,
 				B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */,
@@ -379,6 +384,7 @@
 				B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
 				B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */,
+				B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */,
 				B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
@@ -401,6 +407,7 @@
 				B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
 				B22E10EE2D04F723003F3D9F /* AuthBackend.swift in Sources */,
+				B25152BF2D54252E000ACE71 /* CustomPopover.swift in Sources */,
 				B25FEAD92D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1922CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */,
@@ -433,6 +440,7 @@
 				5D1B7FA72C6CD75F00B474B0 /* NotionCall.swift in Sources */,
 				B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */,
 				B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
+				B25152C12D54252E000ACE71 /* CustomPopover.swift in Sources */,
 				B22E10EF2D04F723003F3D9F /* AuthBackend.swift in Sources */,
 				B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */,
 			);
