@@ -11,7 +11,7 @@ import Foundation
 
 
 struct MainMenu: View {
-    @State var searchKeywords = String()    //modify text field to search keywords later
+    @State private var searchKeywords = String()    //modify text field to search keywords later
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
