@@ -22,15 +22,19 @@ struct MainMenu: View {
     var body: some View {
         
         VStack {
-            TextField("Search keywords", text: $searchKeywords)
-                .foregroundColor(.black)
-                .frame(maxWidth: .infinity)
-                .padding(13)
-                .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(elementOpacityDark)))
-                .overlay(RoundedRectangle(cornerRadius: 30)
-                    .stroke(Color.white, lineWidth: 0.2)
-                    .opacity(0.30))
-                .padding()
+            
+        
+            HStack {
+                
+                //TO-DO: display users email account assocsated with their Notion workspace here 
+                
+                Spacer()
+                Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
+                    Image("mmProIcon")
+                    
+                }
+            }
+            .frame(maxWidth: 370)
             
             
                 .padding(.bottom, 50)
