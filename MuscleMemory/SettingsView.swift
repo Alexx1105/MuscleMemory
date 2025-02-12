@@ -15,8 +15,12 @@ struct SettingsView: View {
     var body: some View {
         
         VStack {
-            HStack() {
-                    
+            HStack(spacing: 10) {
+                     
+                NavigationLink(destination: MainMenu()) {
+                    Image(systemName: "arrow.backward").foregroundStyle(Color.white.opacity(0.8))
+                }
+                
                     Text("Settings")
                        .fontWeight(.semibold)
                        .opacity(textOpacity)

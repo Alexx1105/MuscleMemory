@@ -19,8 +19,25 @@ struct NotionImportPageView: View {
     
     var body: some View {
         
+       
         
         VStack {
+            
+            HStack {
+                
+                NavigationLink(destination: MainMenu()) {
+                    Image(systemName: "arrow.backward").foregroundStyle(Color.white.opacity(0.8))
+                }
+                
+                Spacer()
+                
+                
+               
+            }
+            .frame(maxWidth: 370)
+            .padding(.top, 5)
+            
+            
             Spacer()
             ZStack(alignment: .center) {
                 

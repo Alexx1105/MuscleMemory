@@ -15,13 +15,19 @@ struct LightDarkView: View {
    
     var body: some View {
         
+       
+    
+        
         VStack(spacing: 20) {
-            Text("Appearence")            //add navigation view to go back later
+            
+            
+            Text("Appearence")
                 .fontWeight(.semibold)
                 .tracking(-1)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.trailing, 20)
                 .padding(.bottom, 30)
+            
             
             HStack(spacing: 35) {
                 VStack {
