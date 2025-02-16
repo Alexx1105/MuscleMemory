@@ -11,7 +11,7 @@ import Foundation
 
 
 struct MainMenu: View {
-    @State private var searchKeywords = String()    //modify text field to search keywords later
+   
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
@@ -23,10 +23,18 @@ struct MainMenu: View {
         
         VStack {
             
-        
-            HStack {
+         
                 
-                //TO-DO: display users email account assocsated with their Notion workspace here 
+                //TO-DO: display users email account assocsated with their Notion workspace here
+                
+                
+            
+            Spacer()
+            HStack {
+                Text("Your notes from Notion:")
+                    .fontWeight(.semibold)
+                    .opacity(textOpacity)
+             
                 
                 Spacer()
                 Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
@@ -34,16 +42,7 @@ struct MainMenu: View {
                     
                 }
             }
-            .frame(maxWidth: 370)
-            
-            
-                .padding(.bottom, 50)
-            HStack {
-                Text("Your notes from Notion:")
-                    .fontWeight(.semibold)
-                    .opacity(textOpacity)
-                    .padding(.trailing, 160)
-            }
+            .frame(maxWidth: 370, maxHeight: 150 )
             Spacer()
             
             
