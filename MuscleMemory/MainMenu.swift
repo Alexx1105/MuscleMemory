@@ -11,22 +11,57 @@ import Foundation
 
 
 struct MainMenu: View {
-    @State private var searchKeywords = String()    //modify text field to search keywords later
+   
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
     @StateObject private var pageTitle = searchPages.shared
-    
+    @StateObject private var showUserEmail = OAuthTokens.shared
     
     var body: some View {
         
         VStack {
             
-        
             HStack {
+                Rectangle()
+                    .cornerRadius(8)
+                    .frame(width: 35, height: 35)
+                    .foregroundStyle(Color.white).opacity(0.06)
+                    .padding(.leading)
+              
+                VStack(spacing: 3) {
+                Text("Workspace email")
+                    .fontWeight(.regular)
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.white)
+                    .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                    
                 
-                //TO-DO: display users email account assocsated with their Notion workspace here 
+                 
+              
+                    if let displayEmail = showUserEmail.email {
+                        Text("\(displayEmail)")
+                            .fontWeight(.regular)
+                            .font(.system(size: 14))
+                            .foregroundStyle(Color.white).opacity(0.25)
+                            .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                    }
+                   
+                    
+                }
+                Spacer()
+            }.frame(maxWidth: .infinity, maxHeight: 50)
+            
+                
+                
+            
+            Spacer()
+            HStack {
+                Text("Your notes from Notion:")
+                    .fontWeight(.semibold)
+                    .opacity(textOpacity)
+             
                 
                 Spacer()
                 Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
@@ -34,16 +69,7 @@ struct MainMenu: View {
                     
                 }
             }
-            .frame(maxWidth: 370)
-            
-            
-                .padding(.bottom, 50)
-            HStack {
-                Text("Your notes from Notion:")
-                    .fontWeight(.semibold)
-                    .opacity(textOpacity)
-                    .padding(.trailing, 160)
-            }
+            .frame(maxWidth: 370, maxHeight: 100 )
             Spacer()
             
             
