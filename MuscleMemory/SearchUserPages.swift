@@ -18,6 +18,7 @@ public struct NotionSearchRequest: Codable {    //add other properties (if neede
         public let object: String?
         public let properties: properties?
         public let icon: Icon?
+     
     }
     
     public struct Icon: Codable {
@@ -50,6 +51,7 @@ public class searchPages: ObservableObject {
     @Published var displaying: NotionSearchRequest.TitleItem?
     @Published var userBlocks: NotionSearchRequest.result?
    
+   
     let searchEndpoint = URL(string: "https://api.notion.com/v1/search")
     
     private init() { }
@@ -74,12 +76,13 @@ public class searchPages: ObservableObject {
                 throw URLError(.badServerResponse)
             }
             
+            print("EVERYTHIGN BELOW IS USER ENDPOINT RESPONSE: \n")
             if let dataString = String(data: userData, encoding: .utf8) {
                 print(dataString)
             } else {
                 print("empty data string")
             }
-           
+            
             let decodePageData = JSONDecoder()
             let decodedPageStrings = try decodePageData.decode(NotionSearchRequest.self, from: userData)
             returnedBlocks = decodedPageStrings.results
@@ -90,6 +93,7 @@ public class searchPages: ObservableObject {
             let text = getText?.title.first?.plain_text
             let emojis = title?.icon?.emoji
             let customType = title?.icon?.type
+           
           
            
             DispatchQueue.main.async {
@@ -115,9 +119,9 @@ public class searchPages: ObservableObject {
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
                 print("emoji from title:\(showEmoji)")
+            
                 } else {
-                    print("nil body params")
-                    print("title page could not be stored")
+                    print("an object is not being stored")
                 }
          
             

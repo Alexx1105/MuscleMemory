@@ -63,7 +63,7 @@ struct MuscleMemoryApp: App {
                            
                             Task {
                                 do {
-                                    try await exchangeToken(authorizationCode: codeParse)
+                                    try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse) 
                                     try await pages.userEndpoint()
                                     try await pageData.pageEndpoint()
                                     print(pageData.mainBlockBody)
