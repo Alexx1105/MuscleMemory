@@ -17,15 +17,44 @@ struct MainMenu: View {
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
     @StateObject private var pageTitle = searchPages.shared
-    
+    @StateObject private var showUserEmail = OAuthTokens.shared
     
     var body: some View {
         
         VStack {
             
-         
+
+            HStack {
+                Rectangle()
+                    .cornerRadius(8)
+                    .frame(width: 35, height: 35)
+                    .foregroundStyle(Color.white).opacity(0.06)
+                    .padding(.leading)
+              
+                VStack(spacing: 3) {
+                Text("Workspace email")
+                    .fontWeight(.regular)
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.white)
+                    .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                    
                 
-                //TO-DO: display users email account assocsated with their Notion workspace here
+                 
+              
+                    if let displayEmail = showUserEmail.email {
+                        Text("\(displayEmail)")
+                            .fontWeight(.regular)
+                            .font(.system(size: 14))
+                            .foregroundStyle(Color.white).opacity(0.25)
+                            .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                    }
+                   
+                    
+                }
+                Spacer()
+            }.frame(maxWidth: .infinity, maxHeight: 50)
+            
+
                 
                 
             
@@ -42,7 +71,9 @@ struct MainMenu: View {
                     
                 }
             }
-            .frame(maxWidth: 370, maxHeight: 150 )
+
+            .frame(maxWidth: 370, maxHeight: 100 )
+
             Spacer()
             
             
