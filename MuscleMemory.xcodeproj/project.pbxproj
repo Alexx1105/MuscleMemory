@@ -25,6 +25,9 @@
 		B254B0FD2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
 		B254B0FE2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
 		B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
+		B254B1012D6C1C5300A0541F /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B1002D6C1C4500A0541F /* LocalNotifications.swift */; };
+		B254B1022D6C1C5300A0541F /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B1002D6C1C4500A0541F /* LocalNotifications.swift */; };
+		B254B1032D6C1C5300A0541F /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B1002D6C1C4500A0541F /* LocalNotifications.swift */; };
 		B25FEAD92D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B25FEADA2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
@@ -93,6 +96,7 @@
 		B25152BE2D542522000ACE71 /* CustomPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopover.swift; sourceTree = "<group>"; };
 		B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleMemory.entitlements; sourceTree = "<group>"; };
 		B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
+		B254B1002D6C1C4500A0541F /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUserPage.swift; sourceTree = "<group>"; };
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
+				B254B1002D6C1C4500A0541F /* LocalNotifications.swift */,
 				B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */,
 				B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */,
 				B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */,
@@ -407,6 +412,7 @@
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
+				B254B1032D6C1C5300A0541F /* LocalNotifications.swift in Sources */,
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 				B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
@@ -432,6 +438,7 @@
 				B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */,
 				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
 				B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
+				B254B1022D6C1C5300A0541F /* LocalNotifications.swift in Sources */,
 				B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 				B22E10F72D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
@@ -450,6 +457,7 @@
 				B254B0FD2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
 				B26842D02CC704DB00471001 /* MainMenu.swift in Sources */,
 				B2177BB02CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
+				B254B1012D6C1C5300A0541F /* LocalNotifications.swift in Sources */,
 				B25FEADA2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B2A251992D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */,
 				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,

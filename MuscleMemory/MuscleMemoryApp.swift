@@ -43,6 +43,7 @@ import AuthenticationServices
             }
         }
 
+
 @main
 struct MuscleMemoryApp: App {
     
@@ -67,6 +68,11 @@ struct MuscleMemoryApp: App {
                                     try await pages.userEndpoint()
                                     try await pageData.pageEndpoint()
                                     print(pageData.mainBlockBody)
+                                    
+                                    let userToken = GetDeviceToken()  //TESTING
+                                    print("user token:\(userToken)")
+                                    let notificationTitle = LocalDynamicRepNotification()
+                                    print(notificationTitle.pageNotes)
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }

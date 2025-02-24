@@ -12,6 +12,8 @@ import Foundation
 import UIKit
 import UserNotifications
 
+
+
 @MainActor
 class GetDeviceToken {
   
@@ -30,7 +32,7 @@ class GetDeviceToken {
     
     private func sendDeviceTokenToServer(data: Data) {
         let convertTokenToString = data.map {String(format: "%02.2hhx", $0)}.joined()
-        
+        print("token was converted\(convertTokenToString)")
         
         
     }

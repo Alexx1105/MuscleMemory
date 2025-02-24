@@ -16,7 +16,8 @@ struct MainMenu: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    @StateObject private var pageTitle = searchPages.shared
+    
+    @StateObject var pageTitle = searchPages.shared
     @StateObject private var showUserEmail = OAuthTokens.shared
     
     var body: some View {
