@@ -71,8 +71,11 @@ struct MuscleMemoryApp: App {
                                     
                                     let userToken = GetDeviceToken()  //TESTING
                                     print("user token:\(userToken)")
+                                   
                                     let notificationTitle = LocalDynamicRepNotification()
                                     print(notificationTitle.pageNotes)
+                                    print(notificationTitle.notification.body)
+                               
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
