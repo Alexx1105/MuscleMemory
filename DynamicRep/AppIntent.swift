@@ -1,12 +1,15 @@
 //
-//  LocalNotifications.swift
-//  MuscleMemory
+//  AppIntent.swift
+//  DynamicRep
 //
-//  Created by alex haidar on 2/23/25.
+//  Created by alex haidar on 3/3/25.
 //
 
+import WidgetKit
+import AppIntents
 import Foundation
 import UserNotifications
+
 
 
 @MainActor
