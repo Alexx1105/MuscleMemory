@@ -9,6 +9,8 @@ import SwiftUI
 import AuthenticationServices
 import Foundation
 
+
+
 struct SignOutView: View {
     
     @ObservedObject var auth = authBackend()

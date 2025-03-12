@@ -7,92 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B205A9502D7176E500FFF047 /* DynamicRepWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205A94F2D7176E500FFF047 /* DynamicRepWidget.swift */; };
-		B205A9512D7176E500FFF047 /* DynamicRepWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205A94F2D7176E500FFF047 /* DynamicRepWidget.swift */; };
-		B205A9522D7176E500FFF047 /* DynamicRepWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B205A94F2D7176E500FFF047 /* DynamicRepWidget.swift */; };
-		B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
-		B2177BB02CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
 		B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */; };
-		B22E10EE2D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
-		B22E10EF2D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
 		B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
 		B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
-		B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
-		B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
-		B22E10F62D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
-		B22E10F72D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
 		B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
-		B24A27642D76621000BC3BF1 /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
-		B25152BF2D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
+		B234F0A82D7A83510087BA57 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */; };
 		B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
-		B25152C12D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
-		B254B0FD2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
-		B254B0FE2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
 		B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
-		B25FEAD92D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
-		B25FEADA2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
-		B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
-		B26842D02CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D12CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
-		B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
-		B26842D42CC9F5FC00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
 		B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
 		B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
-		B26A46642CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
-		B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46622CCFC4250064AF46 /* LaunchScreen.swift */; };
 		B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
-		B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
-		B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A46662CD04C210064AF46 /* SignOutView.swift */; };
-		B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
 		B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
-		B26A46712CD077950064AF46 /* LightDarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26A466E2CD077950064AF46 /* LightDarkView.swift */; };
+		B26E7AA92D821E670070D1E9 /* DynamicRepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */; };
+		B26E7AAA2D821FB80070D1E9 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */; };
+		B26E7AAB2D821FE50070D1E9 /* DynamicRepTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */; };
 		B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271C18F2CD1CEBB00710E70 /* NavPath.swift */; };
-		B271C1912CD1CEC400710E70 /* NavPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271C18F2CD1CEBB00710E70 /* NavPath.swift */; };
-		B271C1922CD1CEC400710E70 /* NavPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271C18F2CD1CEBB00710E70 /* NavPath.swift */; };
-		B2A251982D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */; };
-		B2A251992D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */; };
-		B2A2519A2D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */; };
-		B2A2519D2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */; };
-		B2A2519E2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */; };
 		B2A2519F2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */; };
 		B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */; };
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
 		B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */; };
-		B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837D72BCB103000BBC748 /* MuscleMemoryTests.swift */; };
-		B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */; };
-		B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */; };
-		B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
-		B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
-		B2E28C8B2D765EE600223F18 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
-		B2E28C8C2D765EE600223F18 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
-		B2E28C9D2D765EE700223F18 /* DynamicRepExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2E28C8A2D765EE600223F18 /* DynamicRepExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B2FF4B962CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
+		B2DC38152D795B73003A8B7E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
+		B2DC38162D795B73003A8B7E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
+		B2DC38272D795B74003A8B7E /* DynamicRepExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
-		B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B2B837D42BCB103000BBC748 /* PBXContainerItemProxy */ = {
+		B2DC38252D795B74003A8B7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2B837BB2BCB102F00BBC748 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B2B837C22BCB102F00BBC748;
-			remoteInfo = MuscleMemory;
-		};
-		B2B837DE2BCB103000BBC748 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B837BB2BCB102F00BBC748 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2B837C22BCB102F00BBC748;
-			remoteInfo = MuscleMemory;
-		};
-		B2E28C9B2D765EE700223F18 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B2B837BB2BCB102F00BBC748 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B2E28C892D765EE600223F18;
+			remoteGlobalIDString = B2DC38132D795B73003A8B7E;
 			remoteInfo = DynamicRepExtension;
 		};
 /* End PBXContainerItemProxy section */
@@ -104,7 +52,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B2E28C9D2D765EE700223F18 /* DynamicRepExtension.appex in Embed Foundation Extensions */,
+				B2DC38272D795B74003A8B7E /* DynamicRepExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,12 +60,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B205A94F2D7176E500FFF047 /* DynamicRepWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepWidget.swift; sourceTree = "<group>"; };
 		B205A9582D73B62D00FFF047 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
 		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
 		B22E10F52D067E89003F3D9F /* SearchUserPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPages.swift; sourceTree = "<group>"; };
+		B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B25152BE2D542522000ACE71 /* CustomPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopover.swift; sourceTree = "<group>"; };
 		B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleMemory.entitlements; sourceTree = "<group>"; };
@@ -128,36 +76,40 @@
 		B26A46622CCFC4250064AF46 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		B26A46662CD04C210064AF46 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		B26A466E2CD077950064AF46 /* LightDarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDarkView.swift; sourceTree = "<group>"; };
+		B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepLiveActivity.swift; sourceTree = "<group>"; };
+		B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepManager.swift; sourceTree = "<group>"; };
+		B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepTest.swift; sourceTree = "<group>"; };
 		B271C18F2CD1CEBB00710E70 /* NavPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPath.swift; sourceTree = "<group>"; };
-		B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepAttributes.swift; sourceTree = "<group>"; };
 		B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceToken.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryApp.swift; sourceTree = "<group>"; };
 		B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedNotes.swift; sourceTree = "<group>"; };
 		B2B837CA2BCB103000BBC748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B2B837D32BCB103000BBC748 /* MuscleMemoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuscleMemoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2B837D72BCB103000BBC748 /* MuscleMemoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryTests.swift; sourceTree = "<group>"; };
-		B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MuscleMemoryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITests.swift; sourceTree = "<group>"; };
-		B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleMemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B2E28C8A2D765EE600223F18 /* DynamicRepExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DynamicRepExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DynamicRepExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionImportPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B2E28C9E2D765EE700223F18 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		B26E7AA22D81AE250070D1E9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+			);
+			target = B2B837C22BCB102F00BBC748 /* MuscleMemory */;
+		};
+		B2DC38282D795B74003A8B7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = B2E28C892D765EE600223F18 /* DynamicRepExtension */;
+			target = B2DC38132D795B73003A8B7E /* DynamicRepExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B2E28C8D2D765EE600223F18 /* DynamicRep */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B2E28C9E2D765EE700223F18 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DynamicRep; sourceTree = "<group>"; };
+		B2DC38172D795B73003A8B7E /* DynamicRep */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B26E7AA22D81AE250070D1E9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, B2DC38282D795B74003A8B7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DynamicRep; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,26 +120,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B837D02BCB103000BBC748 /* Frameworks */ = {
+		B2DC38112D795B73003A8B7E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2B837DA2BCB103000BBC748 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2E28C872D765EE600223F18 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2E28C8C2D765EE600223F18 /* SwiftUI.framework in Frameworks */,
-				B2E28C8B2D765EE600223F18 /* WidgetKit.framework in Frameworks */,
+				B2DC38162D795B73003A8B7E /* SwiftUI.framework in Frameworks */,
+				B2DC38152D795B73003A8B7E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,9 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				B2B837C52BCB102F00BBC748 /* MuscleMemory */,
-				B2B837D62BCB103000BBC748 /* MuscleMemoryTests */,
-				B2B837E02BCB103000BBC748 /* MuscleMemoryUITests */,
-				B2E28C8D2D765EE600223F18 /* DynamicRep */,
+				B2DC38172D795B73003A8B7E /* DynamicRep */,
 				B2D220DA2BD981B800E55834 /* Frameworks */,
 				B2B837C42BCB102F00BBC748 /* Products */,
 			);
@@ -210,9 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				B2B837C32BCB102F00BBC748 /* MuscleMemory.app */,
-				B2B837D32BCB103000BBC748 /* MuscleMemoryTests.xctest */,
-				B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */,
-				B2E28C8A2D765EE600223F18 /* DynamicRepExtension.appex */,
+				B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,10 +154,12 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
-				B205A94F2D7176E500FFF047 /* DynamicRepWidget.swift */,
+				B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */,
+				B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */,
+				B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */,
+				B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */,
 				B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */,
 				B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */,
-				B2A251972D5D3B6400DC8BBA /* DynamicRepAttributes.swift */,
 				B22E10F52D067E89003F3D9F /* SearchUserPages.swift */,
 				B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */,
 				B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */,
@@ -255,23 +191,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B2B837D62BCB103000BBC748 /* MuscleMemoryTests */ = {
-			isa = PBXGroup;
-			children = (
-				B2B837D72BCB103000BBC748 /* MuscleMemoryTests.swift */,
-			);
-			path = MuscleMemoryTests;
-			sourceTree = "<group>";
-		};
-		B2B837E02BCB103000BBC748 /* MuscleMemoryUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B2B837E12BCB103000BBC748 /* MuscleMemoryUITests.swift */,
-				B2B837E32BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift */,
-			);
-			path = MuscleMemoryUITests;
-			sourceTree = "<group>";
-		};
 		B2D220DA2BD981B800E55834 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,69 +215,33 @@
 			buildRules = (
 			);
 			dependencies = (
-				B2E28C9C2D765EE700223F18 /* PBXTargetDependency */,
+				B2DC38262D795B74003A8B7E /* PBXTargetDependency */,
 			);
 			name = MuscleMemory;
 			productName = MuscleMemory;
 			productReference = B2B837C32BCB102F00BBC748 /* MuscleMemory.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B2B837D22BCB103000BBC748 /* MuscleMemoryTests */ = {
+		B2DC38132D795B73003A8B7E /* DynamicRepExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B2B837EA2BCB103000BBC748 /* Build configuration list for PBXNativeTarget "MuscleMemoryTests" */;
+			buildConfigurationList = B2DC38292D795B74003A8B7E /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */;
 			buildPhases = (
-				B2B837CF2BCB103000BBC748 /* Sources */,
-				B2B837D02BCB103000BBC748 /* Frameworks */,
-				B2B837D12BCB103000BBC748 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2B837D52BCB103000BBC748 /* PBXTargetDependency */,
-			);
-			name = MuscleMemoryTests;
-			productName = MuscleMemoryTests;
-			productReference = B2B837D32BCB103000BBC748 /* MuscleMemoryTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B2B837DC2BCB103000BBC748 /* MuscleMemoryUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2B837ED2BCB103000BBC748 /* Build configuration list for PBXNativeTarget "MuscleMemoryUITests" */;
-			buildPhases = (
-				B2B837D92BCB103000BBC748 /* Sources */,
-				B2B837DA2BCB103000BBC748 /* Frameworks */,
-				B2B837DB2BCB103000BBC748 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B2B837DF2BCB103000BBC748 /* PBXTargetDependency */,
-			);
-			name = MuscleMemoryUITests;
-			productName = MuscleMemoryUITests;
-			productReference = B2B837DD2BCB103000BBC748 /* MuscleMemoryUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
-		B2E28C892D765EE600223F18 /* DynamicRepExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2E28C9F2D765EE700223F18 /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */;
-			buildPhases = (
-				B2E28C862D765EE600223F18 /* Sources */,
-				B2E28C872D765EE600223F18 /* Frameworks */,
-				B2E28C882D765EE600223F18 /* Resources */,
+				B2DC38102D795B73003A8B7E /* Sources */,
+				B2DC38112D795B73003A8B7E /* Frameworks */,
+				B2DC38122D795B73003A8B7E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B2E28C8D2D765EE600223F18 /* DynamicRep */,
+				B2DC38172D795B73003A8B7E /* DynamicRep */,
 			);
 			name = DynamicRepExtension;
 			packageProductDependencies = (
 			);
 			productName = DynamicRepExtension;
-			productReference = B2E28C8A2D765EE600223F18 /* DynamicRepExtension.appex */;
+			productReference = B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -374,15 +257,7 @@
 					B2B837C22BCB102F00BBC748 = {
 						CreatedOnToolsVersion = 15.3;
 					};
-					B2B837D22BCB103000BBC748 = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = B2B837C22BCB102F00BBC748;
-					};
-					B2B837DC2BCB103000BBC748 = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = B2B837C22BCB102F00BBC748;
-					};
-					B2E28C892D765EE600223F18 = {
+					B2DC38132D795B73003A8B7E = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -401,9 +276,7 @@
 			projectRoot = "";
 			targets = (
 				B2B837C22BCB102F00BBC748 /* MuscleMemory */,
-				B2B837D22BCB103000BBC748 /* MuscleMemoryTests */,
-				B2B837DC2BCB103000BBC748 /* MuscleMemoryUITests */,
-				B2E28C892D765EE600223F18 /* DynamicRepExtension */,
+				B2DC38132D795B73003A8B7E /* DynamicRepExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -418,21 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B837D12BCB103000BBC748 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2B837DB2BCB103000BBC748 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2E28C882D765EE600223F18 /* Resources */ = {
+		B2DC38122D795B73003A8B7E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -454,13 +313,15 @@
 				B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */,
 				B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
+				B26E7AAA2D821FB80070D1E9 /* DynamicRepLiveActivity.swift in Sources */,
+				B234F0A82D7A83510087BA57 /* LocalNotifications.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
-				B2A251982D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,
+				B26E7AAB2D821FE50070D1E9 /* DynamicRepTest.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
-				B205A9512D7176E500FFF047 /* DynamicRepWidget.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
+				B26E7AA92D821E670070D1E9 /* DynamicRepManager.swift in Sources */,
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
@@ -468,84 +329,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2B837CF2BCB103000BBC748 /* Sources */ = {
+		B2DC38102D795B73003A8B7E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B26842D42CC9F5FC00471001 /* SettingsView.swift in Sources */,
-				B26A46652CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
-				B2A2519E2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */,
-				B26842CF2CC704DB00471001 /* MainMenu.swift in Sources */,
-				B22E10EE2D04F723003F3D9F /* AuthBackend.swift in Sources */,
-				B25152BF2D54252E000ACE71 /* CustomPopover.swift in Sources */,
-				B25FEAD92D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
-				B271C1922CD1CEC400710E70 /* NavPath.swift in Sources */,
-				B26A46682CD04C210064AF46 /* SignOutView.swift in Sources */,
-				B254B0FE2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
-				B2A2519A2D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */,
-				B26A46712CD077950064AF46 /* LightDarkView.swift in Sources */,
-				B2D220D02BD70B4400E55834 /* ImportedNotes.swift in Sources */,
-				B205A9502D7176E500FFF047 /* DynamicRepWidget.swift in Sources */,
-				B2B837D82BCB103000BBC748 /* MuscleMemoryTests.swift in Sources */,
-				B2FF4B982CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
-				B2177BAF2CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
-				B22E10F42D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
-				B22E10F72D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2B837D92BCB103000BBC748 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B205A9522D7176E500FFF047 /* DynamicRepWidget.swift in Sources */,
-				B26A46692CD04C210064AF46 /* SignOutView.swift in Sources */,
-				B26842D32CC9F5FC00471001 /* SettingsView.swift in Sources */,
-				B26A46642CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
-				B2B837E42BCB103000BBC748 /* MuscleMemoryUITestsLaunchTests.swift in Sources */,
-				B2A2519D2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */,
-				B254B0FD2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
-				B26842D02CC704DB00471001 /* MainMenu.swift in Sources */,
-				B2177BB02CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
-				B25FEADA2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
-				B2A251992D5D3B7800DC8BBA /* DynamicRepAttributes.swift in Sources */,
-				B2B837E22BCB103000BBC748 /* MuscleMemoryUITests.swift in Sources */,
-				B2FF4B962CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
-				B271C1912CD1CEC400710E70 /* NavPath.swift in Sources */,
-				B22E10F62D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
-				B2D220D12BD70B4500E55834 /* ImportedNotes.swift in Sources */,
-				B22E10F32D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
-				B25152C12D54252E000ACE71 /* CustomPopover.swift in Sources */,
-				B22E10EF2D04F723003F3D9F /* AuthBackend.swift in Sources */,
-				B26A466F2CD077950064AF46 /* LightDarkView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2E28C862D765EE600223F18 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B24A27642D76621000BC3BF1 /* SearchUserPages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B2B837D52BCB103000BBC748 /* PBXTargetDependency */ = {
+		B2DC38262D795B74003A8B7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B2B837C22BCB102F00BBC748 /* MuscleMemory */;
-			targetProxy = B2B837D42BCB103000BBC748 /* PBXContainerItemProxy */;
-		};
-		B2B837DF2BCB103000BBC748 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2B837C22BCB102F00BBC748 /* MuscleMemory */;
-			targetProxy = B2B837DE2BCB103000BBC748 /* PBXContainerItemProxy */;
-		};
-		B2E28C9C2D765EE700223F18 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B2E28C892D765EE600223F18 /* DynamicRepExtension */;
-			targetProxy = B2E28C9B2D765EE700223F18 /* PBXContainerItemProxy */;
+			target = B2DC38132D795B73003A8B7E /* DynamicRepExtension */;
+			targetProxy = B2DC38252D795B74003A8B7E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -665,6 +462,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = "-D DEBUG_PREVIEW\n";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -683,6 +481,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MuscleMemory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -717,6 +516,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MuscleMemory/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -738,81 +538,7 @@
 			};
 			name = Release;
 		};
-		B2B837EB2BCB103000BBC748 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemoryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MuscleMemory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MuscleMemory";
-			};
-			name = Debug;
-		};
-		B2B837EC2BCB103000BBC748 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemoryTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MuscleMemory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MuscleMemory";
-			};
-			name = Release;
-		};
-		B2B837EE2BCB103000BBC748 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemoryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MuscleMemory;
-			};
-			name = Debug;
-		};
-		B2B837EF2BCB103000BBC748 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MacGPT.MuscleMemoryUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MuscleMemory;
-			};
-			name = Release;
-		};
-		B2E28CA02D765EE700223F18 /* Debug */ = {
+		B2DC382A2D795B74003A8B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -840,7 +566,7 @@
 			};
 			name = Debug;
 		};
-		B2E28CA12D765EE700223F18 /* Release */ = {
+		B2DC382B2D795B74003A8B7E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -889,29 +615,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B2B837EA2BCB103000BBC748 /* Build configuration list for PBXNativeTarget "MuscleMemoryTests" */ = {
+		B2DC38292D795B74003A8B7E /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B2B837EB2BCB103000BBC748 /* Debug */,
-				B2B837EC2BCB103000BBC748 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2B837ED2BCB103000BBC748 /* Build configuration list for PBXNativeTarget "MuscleMemoryUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2B837EE2BCB103000BBC748 /* Debug */,
-				B2B837EF2BCB103000BBC748 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2E28C9F2D765EE700223F18 /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2E28CA02D765EE700223F18 /* Debug */,
-				B2E28CA12D765EE700223F18 /* Release */,
+				B2DC382A2D795B74003A8B7E /* Debug */,
+				B2DC382B2D795B74003A8B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
