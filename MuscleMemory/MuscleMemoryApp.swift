@@ -26,7 +26,7 @@ import AuthenticationServices
                     .navigationDestination(for: NavPathItem.self) { navigationPathItem in
                         switch navigationPathItem {
                         case .home:
-                            MainMenu()
+                            test()
                         case .settings:
                             SettingsView()
                         case .importPage:

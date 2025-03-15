@@ -13,8 +13,8 @@ import SwiftUI
 @main
 struct DynamicRepBundle: WidgetBundle {
     var body: some Widget {
-        DynamicRep()
-        //DynamicRepLiveActivity()
+        
+        DynamicRepLiveActivity()
     
     }
 }

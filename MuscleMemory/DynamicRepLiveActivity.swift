@@ -11,16 +11,6 @@ import SwiftUI
 
 
 
-
-struct compactAppIconView:  View {
-    var body: some View {
-        Image("AppIcon")
-            .resizable()
-            .frame(width: 44, height: 44)
-    }
-}
-
-
 struct DynamicRepAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties go here
@@ -45,43 +35,59 @@ struct DynamicRepLiveActivity: Widget {
     
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
-            // Lock screen/banner UI goes here
-            Text("title: \(context.attributes.titleName ?? "no title")")       //TO-DO: change later
-            Text("notes: \(context.attributes.contentBody ?? "no content")")
-
+            
             VStack {
-                Text("Hello")
+                
+                HStack(spacing: 257) {
+                   
+                    Text("from \(context.attributes.titleName ?? "no title")")     //TO-DO: populate content here
+                        .fontWeight(.light)
+                        .font(.system(size: 16))
+                        .foregroundStyle(Color.gray)
+                    Circle()
+                        .frame(width: 53, height: 50)
+                        .foregroundStyle(Color.gray).opacity(0.23)
+                        .overlay {
+                            Image("mmicon")
+                                
+                               
+                        }
+                }
+                .frame(maxWidth: 500, maxHeight: 210)
+                Spacer()
+                
+                
+                //Text("\(context.attributes.contentBody ?? "no content")")   //TO-DO: populate content here
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
-
+            .frame(width: 500, height: 300)
+            
         } dynamicIsland: { context in
             DynamicIsland {
-                
+           
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("")//empty for now
-                    compactAppIconView()
+                      Text("")    //empty for now
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     Circle()
-                        .frame(width: 91, height: 86)
                         
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("")    //empty for now
-     
+                        Text("")    //empty for now
                 }
             } compactLeading: {
-                Text("")     //empty for now
+                Image(systemName: "dynamicrep")
+                
             } compactTrailing: {
                 Text("")    //empty for now
             } minimal: {
-                Text("")    //empty for now
+                Text("hello")    //empty for now
             }
             .widgetURL(URL(string: "MuscleMemory.KimchiLabs.com"))
-            .keylineTint(Color.red)
+            .keylineTint(Color.white)
         }
     }
 }

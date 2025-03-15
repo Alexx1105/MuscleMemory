@@ -19,7 +19,7 @@ class DynamicRepAttribute {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             
             let activityAttributes = DynamicRepAttributes(titleName: titleName, contentBody: contentBody)
-            let initialState = DynamicRepAttributes.ContentState()  //TO-DO:  add initial state content later
+            let initialState = DynamicRepAttributes.ContentState()
             
             do {
                 let start = try Activity<DynamicRepAttributes>.request(attributes: activityAttributes, content: .init(state: initialState, staleDate: nil), pushType: nil)
@@ -30,11 +30,25 @@ class DynamicRepAttribute {
         }
     }
     
-    func updateDynamicRep(titleName: String?, contentBody: String?) {
+    func updateDynamicRep() {
         
-    }
-    
-    func killDynamicRep(titleName: String?, contentBody: String?) {
+            guard let updateActivity = staticActivity else { return }
+            let updatedState = DynamicRepAttributes.ContentState()
+            
+            Task {
+                await updateActivity.update(using: updatedState)  //fix deprecation later
+                print("activity is being successfully updated :D\(updateActivity.id)")
+            }
+        }
         
+        func killDynamicRep(titleName: String?, contentBody: String?) {
+            guard let endActivity = staticActivity else { return }
+            let endState = DynamicRepAttributes.ContentState()
+            
+            Task {
+                await endActivity.end(ActivityContent(state: endState, staleDate: nil), dismissalPolicy: .immediate)
+                print("activity is being successfully ended ❌ \(endActivity.id)")
+            }
+        }
     }
-}
+

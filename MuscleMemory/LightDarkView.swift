@@ -56,6 +56,7 @@ struct LightDarkView: View {
                         }
                         autoLight = false
                     }) {
+                   
                         Circle()
                             .fill(!autoLight ? Color.blue : Color.mmBackground)
                             .stroke(Color.gray, lineWidth: 1)
