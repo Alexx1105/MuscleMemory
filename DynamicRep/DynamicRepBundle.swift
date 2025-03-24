@@ -10,11 +10,10 @@ import SwiftUI
 
 
 
-@main
-struct DynamicRepBundle: WidgetBundle {
-    var body: some Widget {
-        
-        DynamicRepLiveActivity()
-    
-    }
-}
+//@main
+//struct DynamicRepBundle: WidgetBundle {
+    //var body: some Widget {
+        //DynamicRepLiveActivity()
+      
+    //}
+//}

@@ -13,8 +13,10 @@ import WidgetKit
 
 
 @MainActor
- class LocalDynamicRepNotification {
-     
+public class LocalDynamicRepNotification: ObservableObject {
+    
+   public static let notificationContent = LocalDynamicRepNotification()
+    
      let repeatEvent = UNTimeIntervalNotificationTrigger(timeInterval: 64 , repeats: false)
      let id = UUID().uuidString
 

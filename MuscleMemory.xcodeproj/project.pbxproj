@@ -11,7 +11,6 @@
 		B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */; };
 		B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
 		B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
-		B234F0A82D7A83510087BA57 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */; };
 		B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
 		B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
 		B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
@@ -26,12 +25,6 @@
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
 		B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */; };
-		B2BED4442D84FD7600C78CAA /* DynamicRepTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */; };
-		B2BED4452D84FD9100C78CAA /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */; };
-		B2BED4462D84FDAC00C78CAA /* DynamicRepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */; };
-		B2BED4472D85468700C78CAA /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */; };
-		B2BED4482D85469100C78CAA /* DynamicRepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */; };
-		B2BED4492D85469700C78CAA /* DynamicRepTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */; };
 		B2DC38152D795B73003A8B7E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
 		B2DC38162D795B73003A8B7E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
 		B2DC38272D795B74003A8B7E /* DynamicRepExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -68,7 +61,6 @@
 		B22E10ED2D04F71E003F3D9F /* AuthBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBackend.swift; sourceTree = "<group>"; };
 		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
 		B22E10F52D067E89003F3D9F /* SearchUserPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPages.swift; sourceTree = "<group>"; };
-		B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B25152BE2D542522000ACE71 /* CustomPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopover.swift; sourceTree = "<group>"; };
 		B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleMemory.entitlements; sourceTree = "<group>"; };
@@ -79,9 +71,6 @@
 		B26A46622CCFC4250064AF46 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		B26A46662CD04C210064AF46 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		B26A466E2CD077950064AF46 /* LightDarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightDarkView.swift; sourceTree = "<group>"; };
-		B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepLiveActivity.swift; sourceTree = "<group>"; };
-		B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepManager.swift; sourceTree = "<group>"; };
-		B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepTest.swift; sourceTree = "<group>"; };
 		B271C18F2CD1CEBB00710E70 /* NavPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPath.swift; sourceTree = "<group>"; };
 		B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeviceToken.swift; sourceTree = "<group>"; };
 		B2B837C32BCB102F00BBC748 /* MuscleMemory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleMemory.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,15 +88,21 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				DynamicRepLiveActivity.swift,
+				DynamicRepManager.swift,
+				DynamicRepTest.swift,
+				LocalNotifications.swift,
 			);
 			target = B2B837C22BCB102F00BBC748 /* MuscleMemory */;
 		};
 		B2DC38282D795B74003A8B7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
-				DynamicRepBundle.swift,
+				DynamicRepLiveActivity.swift,
+				DynamicRepManager.swift,
+				DynamicRepTest.swift,
 				Info.plist,
+				LocalNotifications.swift,
 			);
 			target = B2DC38132D795B73003A8B7E /* DynamicRepExtension */;
 		};
@@ -159,10 +154,6 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
-				B26E7A772D7F2AF70070D1E9 /* DynamicRepManager.swift */,
-				B26E7A762D7F2AF70070D1E9 /* DynamicRepLiveActivity.swift */,
-				B26E7A842D7FE26C0070D1E9 /* DynamicRepTest.swift */,
-				B234F0A52D7A82CF0087BA57 /* LocalNotifications.swift */,
 				B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */,
 				B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */,
 				B22E10F52D067E89003F3D9F /* SearchUserPages.swift */,
@@ -318,9 +309,6 @@
 				B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */,
 				B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
-				B2BED4462D84FDAC00C78CAA /* DynamicRepManager.swift in Sources */,
-				B2BED4452D84FD9100C78CAA /* DynamicRepLiveActivity.swift in Sources */,
-				B234F0A82D7A83510087BA57 /* LocalNotifications.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
 				B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,
@@ -330,7 +318,6 @@
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 				B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
-				B2BED4442D84FD7600C78CAA /* DynamicRepTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,9 +325,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2BED4472D85468700C78CAA /* DynamicRepLiveActivity.swift in Sources */,
-				B2BED4482D85469100C78CAA /* DynamicRepManager.swift in Sources */,
-				B2BED4492D85469700C78CAA /* DynamicRepTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

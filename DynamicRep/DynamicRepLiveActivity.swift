@@ -14,25 +14,31 @@ import SwiftUI
 struct DynamicRepAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties go here
-       
+        
     }
     // Fixed non-changing properties go here
     var titleName: String?
     var contentBody: String?
-       
-        
+    
+    
     init(titleName: String?, contentBody: String?) {
         self.titleName = titleName
         self.contentBody = contentBody
     }
-        
-    
 }
+
+struct AppLogo: View {
+    var body: some View {
+     
+        Image("dynamicrep")
+            .resizable()
+            .scaledToFit()
+            .clipShape(.circle)
+    }
+}
+
 struct DynamicRepLiveActivity: Widget {
-   
-    @State private var dynamicTitle: String? = ""
-    @State private var dynamicContent: String? = ""
-    
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             
@@ -40,7 +46,7 @@ struct DynamicRepLiveActivity: Widget {
                 
                 HStack(spacing: 257) {
                    
-                    Text("from \(context.attributes.titleName ?? "no title")")     //TO-DO: populate content here
+                    Text("from \(context.attributes.titleName ?? "no title")")
                         .fontWeight(.light)
                         .font(.system(size: 16))
                         .foregroundStyle(Color.gray)
@@ -57,11 +63,12 @@ struct DynamicRepLiveActivity: Widget {
                 Spacer()
                 
                 
-                //Text("\(context.attributes.contentBody ?? "no content")")   //TO-DO: populate content here
+                Text("\(context.attributes.contentBody ?? "no content")")
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
             .frame(width: 500, height: 300)
+            
             
         } dynamicIsland: { context in
             DynamicIsland {
@@ -69,17 +76,18 @@ struct DynamicRepLiveActivity: Widget {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                      Text("")    //empty for now
+                    Text("from \(context.attributes.titleName ?? "no title")")
+             
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     Circle()
                         
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                        Text("")    //empty for now
+                    Text("\(context.attributes.contentBody ?? "no content")")   
                 }
             } compactLeading: {
-                Image(systemName: "dynamicrep")
+                 AppLogo()
                 
             } compactTrailing: {
                 Text("")    //empty for now
@@ -113,5 +121,6 @@ extension DynamicRepAttributes.ContentState {
 } contentStates: {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody
+    
 }
   

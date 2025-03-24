@@ -9,6 +9,7 @@ import ActivityKit
 import Foundation
 
 
+
 @MainActor
 class DynamicRepAttribute {
     static let staticAttribute = DynamicRepAttribute()
@@ -30,13 +31,12 @@ class DynamicRepAttribute {
         }
     }
     
-    func updateDynamicRep() {
-        
+    func updateDynamicRep(titleName: String?, contentBody: String?) {
             guard let updateActivity = staticActivity else { return }
             let updatedState = DynamicRepAttributes.ContentState()
             
             Task {
-                await updateActivity.update(using: updatedState)  //fix deprecation later
+                await updateActivity.update(ActivityContent(state: updatedState, staleDate: nil))  
                 print("activity is being successfully updated :D\(updateActivity.id)")
             }
         }
