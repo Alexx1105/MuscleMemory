@@ -56,7 +56,7 @@ struct MuscleMemoryApp: App {
                            
                             let pageData = ImportUserPage.shared
                             let pages = searchPages.shared
-                            let notif = LocalDynamicRepNotification.notificationContent
+                            //let notif = LocalDynamicRepNotification.notificationContent
                           
                             Task {
                                 do {

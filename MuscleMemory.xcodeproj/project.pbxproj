@@ -13,6 +13,14 @@
 		B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
 		B25152C02D54252E000ACE71 /* CustomPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25152BE2D542522000ACE71 /* CustomPopover.swift */; };
 		B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
+		B25A0A542D91D9E300420892 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A492D91D9E300420892 /* LocalNotifications.swift */; };
+		B25A0A952D94FE3300420892 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
+		B25A0A962D94FE3300420892 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
+		B25A0AA72D94FE3400420892 /* DynamicRepExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B25A0A942D94FE3300420892 /* DynamicRepExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B25A0ABB2D9516C000420892 /* DynamicRepTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A472D91D9E300420892 /* DynamicRepTest.swift */; };
+		B25A0ABF2D95177900420892 /* DynamicRepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A462D91D9E300420892 /* DynamicRepManager.swift */; };
+		B25A0AC12D9517BA00420892 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */; };
+		B25A0AC22D9517DB00420892 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */; };
 		B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
 		B26842D12CC704DB00471001 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842CE2CC704DB00471001 /* MainMenu.swift */; };
 		B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26842D22CC9F5FC00471001 /* SettingsView.swift */; };
@@ -25,18 +33,15 @@
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
 		B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */; };
-		B2DC38152D795B73003A8B7E /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
-		B2DC38162D795B73003A8B7E /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D220DD2BD981B800E55834 /* SwiftUI.framework */; };
-		B2DC38272D795B74003A8B7E /* DynamicRepExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B2DC38252D795B74003A8B7E /* PBXContainerItemProxy */ = {
+		B25A0AA52D94FE3400420892 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2B837BB2BCB102F00BBC748 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B2DC38132D795B73003A8B7E;
+			remoteGlobalIDString = B25A0A932D94FE3300420892;
 			remoteInfo = DynamicRepExtension;
 		};
 /* End PBXContainerItemProxy section */
@@ -48,7 +53,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				B2DC38272D795B74003A8B7E /* DynamicRepExtension.appex in Embed Foundation Extensions */,
+				B25A0AA72D94FE3400420892 /* DynamicRepExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +70,11 @@
 		B25152BE2D542522000ACE71 /* CustomPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopover.swift; sourceTree = "<group>"; };
 		B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleMemory.entitlements; sourceTree = "<group>"; };
 		B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
+		B25A0A462D91D9E300420892 /* DynamicRepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepManager.swift; sourceTree = "<group>"; };
+		B25A0A472D91D9E300420892 /* DynamicRepTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepTest.swift; sourceTree = "<group>"; };
+		B25A0A492D91D9E300420892 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
+		B25A0A942D94FE3300420892 /* DynamicRepExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DynamicRepExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepLiveActivity.swift; sourceTree = "<group>"; };
 		B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportUserPage.swift; sourceTree = "<group>"; };
 		B26842CE2CC704DB00471001 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		B26842D22CC9F5FC00471001 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -79,53 +89,37 @@
 		B2B837CA2BCB103000BBC748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DynamicRepExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionImportPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B26E7AA22D81AE250070D1E9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+		B25A0AA82D94FE3400420892 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
-				DynamicRepLiveActivity.swift,
-				DynamicRepManager.swift,
-				DynamicRepTest.swift,
-				LocalNotifications.swift,
-			);
-			target = B2B837C22BCB102F00BBC748 /* MuscleMemory */;
-		};
-		B2DC38282D795B74003A8B7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				DynamicRepLiveActivity.swift,
-				DynamicRepManager.swift,
-				DynamicRepTest.swift,
 				Info.plist,
-				LocalNotifications.swift,
 			);
-			target = B2DC38132D795B73003A8B7E /* DynamicRepExtension */;
+			target = B25A0A932D94FE3300420892 /* DynamicRepExtension */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B2DC38172D795B73003A8B7E /* DynamicRep */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B26E7AA22D81AE250070D1E9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, B2DC38282D795B74003A8B7E /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DynamicRep; sourceTree = "<group>"; };
+		B25A0A972D94FE3300420892 /* DynamicRep */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B25A0AA82D94FE3400420892 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = DynamicRep; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B25A0A912D94FE3300420892 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25A0A962D94FE3300420892 /* SwiftUI.framework in Frameworks */,
+				B25A0A952D94FE3300420892 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B837C02BCB102F00BBC748 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2DC38112D795B73003A8B7E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B2DC38162D795B73003A8B7E /* SwiftUI.framework in Frameworks */,
-				B2DC38152D795B73003A8B7E /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				B2B837C52BCB102F00BBC748 /* MuscleMemory */,
-				B2DC38172D795B73003A8B7E /* DynamicRep */,
+				B25A0A972D94FE3300420892 /* DynamicRep */,
 				B2D220DA2BD981B800E55834 /* Frameworks */,
 				B2B837C42BCB102F00BBC748 /* Products */,
 			);
@@ -146,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				B2B837C32BCB102F00BBC748 /* MuscleMemory.app */,
-				B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */,
+				B25A0A942D94FE3300420892 /* DynamicRepExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +165,10 @@
 				B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */,
 				B26A46662CD04C210064AF46 /* SignOutView.swift */,
 				B26A46622CCFC4250064AF46 /* LaunchScreen.swift */,
+				B25A0A492D91D9E300420892 /* LocalNotifications.swift */,
+				B25A0A472D91D9E300420892 /* DynamicRepTest.swift */,
+				B25A0A462D91D9E300420892 /* DynamicRepManager.swift */,
+				B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */,
 				B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */,
 				B248E14F2CE052DF005B9649 /* Info.plist */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
@@ -199,6 +197,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B25A0A932D94FE3300420892 /* DynamicRepExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B25A0AA92D94FE3400420892 /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */;
+			buildPhases = (
+				B25A0A902D94FE3300420892 /* Sources */,
+				B25A0A912D94FE3300420892 /* Frameworks */,
+				B25A0A922D94FE3300420892 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B25A0A972D94FE3300420892 /* DynamicRep */,
+			);
+			name = DynamicRepExtension;
+			packageProductDependencies = (
+			);
+			productName = DynamicRepExtension;
+			productReference = B25A0A942D94FE3300420892 /* DynamicRepExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B2B837C22BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2B837E72BCB103000BBC748 /* Build configuration list for PBXNativeTarget "MuscleMemory" */;
@@ -211,34 +231,12 @@
 			buildRules = (
 			);
 			dependencies = (
-				B2DC38262D795B74003A8B7E /* PBXTargetDependency */,
+				B25A0AA62D94FE3400420892 /* PBXTargetDependency */,
 			);
 			name = MuscleMemory;
 			productName = MuscleMemory;
 			productReference = B2B837C32BCB102F00BBC748 /* MuscleMemory.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B2DC38132D795B73003A8B7E /* DynamicRepExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B2DC38292D795B74003A8B7E /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */;
-			buildPhases = (
-				B2DC38102D795B73003A8B7E /* Sources */,
-				B2DC38112D795B73003A8B7E /* Frameworks */,
-				B2DC38122D795B73003A8B7E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				B2DC38172D795B73003A8B7E /* DynamicRep */,
-			);
-			name = DynamicRepExtension;
-			packageProductDependencies = (
-			);
-			productName = DynamicRepExtension;
-			productReference = B2DC38142D795B73003A8B7E /* DynamicRepExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -250,11 +248,11 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
+					B25A0A932D94FE3300420892 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					B2B837C22BCB102F00BBC748 = {
 						CreatedOnToolsVersion = 15.3;
-					};
-					B2DC38132D795B73003A8B7E = {
-						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -272,12 +270,19 @@
 			projectRoot = "";
 			targets = (
 				B2B837C22BCB102F00BBC748 /* MuscleMemory */,
-				B2DC38132D795B73003A8B7E /* DynamicRepExtension */,
+				B25A0A932D94FE3300420892 /* DynamicRepExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B25A0A922D94FE3300420892 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B837C12BCB102F00BBC748 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -287,16 +292,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2DC38122D795B73003A8B7E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B25A0A902D94FE3300420892 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B25A0AC22D9517DB00420892 /* DynamicRepLiveActivity.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B837BF2BCB102F00BBC748 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,35 +316,88 @@
 				B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
+				B25A0ABF2D95177900420892 /* DynamicRepManager.swift in Sources */,
 				B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,
 				B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */,
+				B25A0A542D91D9E300420892 /* LocalNotifications.swift in Sources */,
 				B2B837C72BCB102F00BBC748 /* MuscleMemoryApp.swift in Sources */,
+				B25A0AC12D9517BA00420892 /* DynamicRepLiveActivity.swift in Sources */,
 				B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */,
 				B2177BB12CBB3DA500DDF4E7 /* AuthView.swift in Sources */,
 				B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */,
 				B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B2DC38102D795B73003A8B7E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				B25A0ABB2D9516C000420892 /* DynamicRepTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B2DC38262D795B74003A8B7E /* PBXTargetDependency */ = {
+		B25A0AA62D94FE3400420892 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B2DC38132D795B73003A8B7E /* DynamicRepExtension */;
-			targetProxy = B2DC38252D795B74003A8B7E /* PBXContainerItemProxy */;
+			target = B25A0A932D94FE3300420892 /* DynamicRepExtension */;
+			targetProxy = B25A0AA52D94FE3400420892 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B25A0AAA2D94FE3400420892 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L96XRPBK46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DynamicRep/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B25A0AAB2D94FE3400420892 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L96XRPBK46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DynamicRep/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B2B837E52BCB103000BBC748 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -530,65 +589,18 @@
 			};
 			name = Release;
 		};
-		B2DC382A2D795B74003A8B7E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DynamicRep/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		B2DC382B2D795B74003A8B7E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L96XRPBK46;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DynamicRep/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B25A0AA92D94FE3400420892 /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B25A0AAA2D94FE3400420892 /* Debug */,
+				B25A0AAB2D94FE3400420892 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B2B837BE2BCB102F00BBC748 /* Build configuration list for PBXProject "MuscleMemory" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -603,15 +615,6 @@
 			buildConfigurations = (
 				B2B837E82BCB103000BBC748 /* Debug */,
 				B2B837E92BCB103000BBC748 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B2DC38292D795B74003A8B7E /* Build configuration list for PBXNativeTarget "DynamicRepExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B2DC382A2D795B74003A8B7E /* Debug */,
-				B2DC382B2D795B74003A8B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
