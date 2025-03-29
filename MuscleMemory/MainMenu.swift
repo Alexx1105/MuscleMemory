@@ -16,13 +16,15 @@ struct MainMenu: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    @StateObject private var pageTitle = searchPages.shared
+    
+    @StateObject var pageTitle = searchPages.shared
     @StateObject private var showUserEmail = OAuthTokens.shared
     
     var body: some View {
         
         VStack {
             
+
             HStack {
                 Rectangle()
                     .cornerRadius(8)
@@ -53,6 +55,7 @@ struct MainMenu: View {
                 Spacer()
             }.frame(maxWidth: .infinity, maxHeight: 50)
             
+
                 
                 
             
@@ -69,7 +72,9 @@ struct MainMenu: View {
                     
                 }
             }
+
             .frame(maxWidth: 370, maxHeight: 100 )
+
             Spacer()
             
             
@@ -97,14 +102,9 @@ struct MainMenu: View {
                                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
                                     .opacity(0.8)
                                     .cornerRadius(10)
-                                
-                                
-                                
-                                
+                            
                                 
                                 HStack(spacing: 20) {
-                                    
-                                   
                                     
                                     Menu {
                                         Text("DynamicRep Settings \nfor \(emptyTab) ")
@@ -119,7 +119,6 @@ struct MainMenu: View {
                                         }) { Label("Disable", systemImage: "multiply.circle")
                                               
                                         }
-                           
                                             
                                     } label: {
                                         
@@ -127,7 +126,6 @@ struct MainMenu: View {
                                     .opacity(0.8)
                                     .frame(width: 35, height: 35)
                                     
-            
                                     
                                     if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text {
                                         Text("\(emojis)")

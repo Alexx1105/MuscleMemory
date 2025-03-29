@@ -9,14 +9,10 @@ import SwiftUI
 import AuthenticationServices
 
 
-
-    
-    
-    
     
     struct ContainerView: View {
         
-        
+       
         @StateObject var navigationPath = NavPath.shared
         
         var body: some View {
@@ -26,7 +22,7 @@ import AuthenticationServices
                     .navigationDestination(for: NavPathItem.self) { navigationPathItem in
                         switch navigationPathItem {
                         case .home:
-                            MainMenu()
+                            test()
                         case .settings:
                             SettingsView()
                         case .importPage:
@@ -43,15 +39,15 @@ import AuthenticationServices
             }
         }
 
+
 @main
 struct MuscleMemoryApp: App {
-    
+
     var body: some Scene {
         
         WindowGroup {
             ContainerView()
             
-
             
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
@@ -60,16 +56,24 @@ struct MuscleMemoryApp: App {
                            
                             let pageData = ImportUserPage.shared
                             let pages = searchPages.shared
-                           
+                            //let notif = LocalDynamicRepNotification.notificationContent
+                          
                             Task {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse) 
                                     try await pages.userEndpoint()
                                     try await pageData.pageEndpoint()
                                     print(pageData.mainBlockBody)
+                                
+                                    
+                                    let userToken = GetDeviceToken()  //TESTING
+                                    print("user token:\(userToken)")
+                                    
+                                    
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
+                            
                             }
                         } else {
                             print("code query is nil:\(parseCodeQuery)")

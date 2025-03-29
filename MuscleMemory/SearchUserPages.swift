@@ -45,7 +45,7 @@ public struct NotionSearchRequest: Codable {    //add other properties (if neede
 @MainActor
 public class searchPages: ObservableObject {
     
-    static let shared = searchPages()
+    public static let shared = searchPages()
    
     @Published var emojis: NotionSearchRequest.Icon?
     @Published var displaying: NotionSearchRequest.TitleItem?
