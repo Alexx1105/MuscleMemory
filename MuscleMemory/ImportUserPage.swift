@@ -7,7 +7,7 @@
 
 
 import Foundation
-
+import SwiftData
 
 
 struct MainBlockBody: Codable, Identifiable {

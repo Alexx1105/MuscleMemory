@@ -7,12 +7,12 @@
 
 import SwiftUI
 import AuthenticationServices
-
+import SwiftData
 
     
     struct ContainerView: View {
         
-       
+        
         @StateObject var navigationPath = NavPath.shared
         
         var body: some View {
@@ -42,12 +42,13 @@ import AuthenticationServices
 
 @main
 struct MuscleMemoryApp: App {
-
+   
     var body: some Scene {
         
         WindowGroup {
             ContainerView()
-            
+              
+
             
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
@@ -81,6 +82,7 @@ struct MuscleMemoryApp: App {
                     }
                 }
             }
+        .modelContainer(for: UserEmail.self)
         }
     }
 

@@ -9,13 +9,13 @@ import Foundation
 import SwiftData
 import SwiftUI
 
-//TO-DO: Add rest of attributes for each @Model
+
     
 @Model public class UserEmail {
-        @Attribute(.unique) public var accountEmail: String!
+    @Attribute(.unique) public var personEmail: String?
     
-    public init(accountEmail: String!) {
-        self.accountEmail = accountEmail
+    public init(personEmail: String?) {
+        self.personEmail = personEmail
     }
 }
 

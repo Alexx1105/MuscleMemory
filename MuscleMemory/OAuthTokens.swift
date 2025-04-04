@@ -7,15 +7,17 @@
 
 import Foundation
 import SwiftUI
-
+import SwiftData
 
 
 
 public var accessToken: String?
-class OAuthTokens: ObservableObject {
+public class OAuthTokens: ObservableObject {
     
     static let shared = OAuthTokens()
-    @Published var email: String?
+   
+    @Published public var email: String?
+    @Environment(\.modelContext) public var modelContext
     
     public func exchangeToken(authorizationCode: String) async throws {
         let tokenURL = URL(string: "https://api.notion.com/v1/oauth/token")!
@@ -29,7 +31,7 @@ class OAuthTokens: ObservableObject {
         
         request.addValue("Basic \(base64EncodedIDAndSecret)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue( "2022-06-28", forHTTPHeaderField: "Notion-Version")
+        request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
         
         let requestBody: [String: Any] = ["grant_type": "authorization_code", "code": authorizationCode, "redirect_uri": "https://notionauthbridge-rhuwa73w2a-uc.a.run.app/callback?code=AUTHORIZATION_CODE"]
         
@@ -46,7 +48,7 @@ class OAuthTokens: ObservableObject {
                         accessToken = storedToken
                         print("stored token: \(storedToken)")
                         
-                    }  else {
+                    } else {
                         print("access token could not be stored")
                     }
                     if let ownerData = dataDict["owner"] as? [String: Any] {
@@ -61,8 +63,13 @@ class OAuthTokens: ObservableObject {
                                 }
                             }
                         }
+                        
+                        let emailToString = UserEmail(personEmail: email)
+                            modelContext.insert(emailToString)
+                        
                     }
                 }
+                
             } catch {
                 print("token could not be parsed:\(error.localizedDescription)")
             }
