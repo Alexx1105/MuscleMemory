@@ -15,11 +15,13 @@ public var accessToken: String?
 public class OAuthTokens: ObservableObject {
     
     static let shared = OAuthTokens()
-   
+  
     @Published public var email: String?
-    @Environment(\.modelContext) public var modelContext
-    
-    public func exchangeToken(authorizationCode: String) async throws {
+    @Published public var personEmail: String?
+     
+    var modelContext: ModelContext?
+   
+    public func exchangeToken(authorizationCode: String, modelContext: ModelContext?) async throws {
         let tokenURL = URL(string: "https://api.notion.com/v1/oauth/token")!
         var request = URLRequest(url: tokenURL)
         
@@ -57,16 +59,17 @@ public class OAuthTokens: ObservableObject {
                                 if let personEmail = personDict["email"] as? String {
                                     print("GOT EMAIL WOO! \(personEmail)")
                                     
-                                    await MainActor.run {
-                                        email = personEmail
-                                    }
+                                    //await MainActor.run {
+                                    email = personEmail
+                                    //}
+                                    let storedEmail = UserEmail(personEmail: personEmail)
+                                    modelContext?.insert(storedEmail)
+                                  
+                                        print("EMAIL SAVED:\(personEmail)")
+                                    
                                 }
                             }
                         }
-                        
-                        let emailToString = UserEmail(personEmail: email)
-                            modelContext.insert(emailToString)
-                        
                     }
                 }
                 

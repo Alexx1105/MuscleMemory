@@ -10,24 +10,24 @@ import Foundation
 import SwiftData
 
 
-
+@MainActor
 struct MainMenu: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var showUserEmail: [UserEmail]
+    
+    @Environment(\.modelContext) var modelContext
+    @Query var showUserEmail: [UserEmail]
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    
     @StateObject var pageTitle = searchPages.shared
-    //@StateObject private var showUserEmail = OAuthTokens.shared
+    
+    
     
     var body: some View {
         
         VStack {
-            
-
+        
             HStack {
                 Rectangle()
                     .cornerRadius(8)
@@ -42,14 +42,23 @@ struct MainMenu: View {
                     .foregroundStyle(Color.white)
                     .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
                     
-                  
-                    if let displayEmail = showUserEmail.first {
-                        Text("\(displayEmail)")
-                            .fontWeight(.regular)
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color.white).opacity(0.25)
-                            .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                    .onAppear {
+                        Task {
+                            do {
+                                OAuthTokens.shared.modelContext = modelContext
+                                try await OAuthTokens.shared.exchangeToken(authorizationCode: "", modelContext: modelContext)
+                            
+                            }
+                        }
                     }
+                    
+                    if let email = showUserEmail.first?.personEmail {
+                        Text("\(email)")
+                                .fontWeight(.regular)
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.white).opacity(0.25)
+                                .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
+                        }
                 }
                 Spacer()
             }.frame(maxWidth: .infinity, maxHeight: 50)
@@ -188,6 +197,7 @@ struct MainMenu: View {
         
     }
 }
+
 
 #Preview {
     MainMenu()

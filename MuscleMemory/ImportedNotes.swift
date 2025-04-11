@@ -23,13 +23,9 @@ struct ImportedNotes: View {
   
 
     var body: some View {
-        
-      
         NavigationView {
          
             VStack {
-                
-            
                 HStack(spacing: 20) {
                     
                     NavigationLink(destination: MainMenu()) {
@@ -53,8 +49,6 @@ struct ImportedNotes: View {
                         Image("mmProIcon")
                             
                     }
-                    
-                   
                 }
                 .frame(maxWidth: 370)
                 .padding(.top, 5)

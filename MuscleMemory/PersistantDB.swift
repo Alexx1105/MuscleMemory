@@ -10,10 +10,10 @@ import SwiftData
 import SwiftUI
 
 
-    
+
 @Model public class UserEmail {
     @Attribute(.unique) public var personEmail: String?
-    
+
     public init(personEmail: String?) {
         self.personEmail = personEmail
     }

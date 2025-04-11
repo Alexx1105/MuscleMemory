@@ -10,9 +10,8 @@ import AuthenticationServices
 import SwiftData
 
     
+
     struct ContainerView: View {
-        
-        
         @StateObject var navigationPath = NavPath.shared
         
         var body: some View {
@@ -42,12 +41,10 @@ import SwiftData
 
 @main
 struct MuscleMemoryApp: App {
-   
     var body: some Scene {
         
         WindowGroup {
             ContainerView()
-              
 
             
                 .onOpenURL { url in
@@ -57,18 +54,18 @@ struct MuscleMemoryApp: App {
                            
                             let pageData = ImportUserPage.shared
                             let pages = searchPages.shared
+                            let context = OAuthTokens.shared.modelContext
+                    
                             //let notif = LocalDynamicRepNotification.notificationContent
-                          
+
+                            
                             Task {
                                 do {
-                                    try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse) 
+                                    try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
                                     try await pages.userEndpoint()
                                     try await pageData.pageEndpoint()
+                         
                                     print(pageData.mainBlockBody)
-                                
-                                    
-                                    let userToken = GetDeviceToken()  //TESTING
-                                    print("user token:\(userToken)")
                                     
                                     
                                 } catch {
@@ -81,8 +78,9 @@ struct MuscleMemoryApp: App {
                         }
                     }
                 }
+
             }
-        .modelContainer(for: UserEmail.self)
+            .modelContainer(for: UserEmail.self)
         }
     }
 
