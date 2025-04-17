@@ -34,6 +34,7 @@
 		B2B837C92BCB102F00BBC748 /* ImportedNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */; };
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
 		B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */; };
+		B2BB72602DAC1C9600EE857B /* tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB725F2DAC1C9600EE857B /* tab.swift */; };
 		B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportedNotes.swift; sourceTree = "<group>"; };
 		B2B837CA2BCB103000BBC748 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2BB725F2DAC1C9600EE857B /* tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tab.swift; sourceTree = "<group>"; };
 		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionImportPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +164,7 @@
 				B2177BAE2CBB3DA500DDF4E7 /* AuthView.swift */,
 				B2B837C82BCB102F00BBC748 /* ImportedNotes.swift */,
 				B26842CE2CC704DB00471001 /* MainMenu.swift */,
+				B2BB725F2DAC1C9600EE857B /* tab.swift */,
 				B25152BE2D542522000ACE71 /* CustomPopover.swift */,
 				B2B837C62BCB102F00BBC748 /* MuscleMemoryApp.swift */,
 				B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */,
@@ -320,6 +323,7 @@
 				B25FEADB2D18E18500BF4FC7 /* ImportUserPage.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
+				B2BB72602DAC1C9600EE857B /* tab.swift in Sources */,
 				B25A0ABF2D95177900420892 /* DynamicRepManager.swift in Sources */,
 				B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftData
 
 public struct NotionSearchRequest: Codable {    //add other properties (if needed) later
     public let results: [result]
@@ -50,13 +50,23 @@ public class searchPages: ObservableObject {
     @Published var emojis: NotionSearchRequest.Icon?
     @Published var displaying: NotionSearchRequest.TitleItem?
     @Published var userBlocks: NotionSearchRequest.result?
+    
+    @Published var id: String?
+    @Published var icon: String?
+    @Published var plain_text: String?
+    @Published var emoji: String?
+
    
+    var modelContextTitle: ModelContext?
+    public func modelContextTitleStored(context: ModelContext?) {
+        self.modelContextTitle = context
+    }
    
     let searchEndpoint = URL(string: "https://api.notion.com/v1/search")
     
     private init() { }
     
-    public func userEndpoint() async throws {
+    public func userEndpoint(modelContextTitle: ModelContext?) async throws {
         guard let url = searchEndpoint else { return }
         var request = URLRequest(url: url)
         
@@ -119,11 +129,17 @@ public class searchPages: ObservableObject {
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
                 print("emoji from title:\(showEmoji)")
+                
+                let storedTitle = UserPageTitle(id: pageID, icon: customType, plain_text: displayTitle, emoji: showEmoji)
+                modelContextTitle?.insert(storedTitle)
             
                 } else {
                     print("an object is not being stored")
                 }
          
+            
+            
+            
             
         } catch {
             print("bad response")

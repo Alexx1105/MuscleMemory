@@ -41,11 +41,13 @@ import SwiftData
 
 @main
 struct MuscleMemoryApp: App {
+   
+    let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self)
+    
     var body: some Scene {
         
         WindowGroup {
             ContainerView()
-
             
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
@@ -53,8 +55,9 @@ struct MuscleMemoryApp: App {
                             print("code Query recieved and parsed\(parseCodeQuery)")
                            
                             let pageData = ImportUserPage.shared
-                            let pages = searchPages.shared
-                            let context = OAuthTokens.shared.modelContext
+                            let pages = searchPages.shared.modelContextTitle
+                            let context = OAuthTokens.shared.modelContextEmail
+                            
                     
                             //let notif = LocalDynamicRepNotification.notificationContent
 
@@ -62,26 +65,25 @@ struct MuscleMemoryApp: App {
                             Task {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
-                                    try await pages.userEndpoint()
+                                    try await searchPages.shared.userEndpoint(modelContextTitle: pages)
                                     try await pageData.pageEndpoint()
                          
                                     print(pageData.mainBlockBody)
-                                    
-                                    
+                            
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
-                            
                             }
+                            
                         } else {
                             print("code query is nil:\(parseCodeQuery)")
-                        }
                     }
                 }
-
             }
-            .modelContainer(for: UserEmail.self)
         }
+        .modelContainer(centralContainer)
+       
+       }
     }
 
 #Preview {

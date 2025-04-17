@@ -14,20 +14,20 @@ import SwiftData
 struct MainMenu: View {
     
     @Environment(\.modelContext) var modelContext
+    
     @Query var showUserEmail: [UserEmail]
+    @Query var pageTitle: [UserPageTitle]
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    @StateObject var pageTitle = searchPages.shared
-    
-    
+    //@StateObject var pageTitle = searchPages.shared
+
     
     var body: some View {
-        
+    
         VStack {
-        
             HStack {
                 Rectangle()
                     .cornerRadius(8)
@@ -43,17 +43,14 @@ struct MainMenu: View {
                     .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
                     
                     .onAppear {
-                        Task {
-                            do {
-                                OAuthTokens.shared.modelContext = modelContext
-                                try await OAuthTokens.shared.exchangeToken(authorizationCode: "", modelContext: modelContext)
-                            
-                            }
-                        }
-                    }
-                    
-                    if let email = showUserEmail.first?.personEmail {
-                        Text("\(email)")
+                           Task {
+                                searchPages.shared.modelContextTitleStored(context: modelContext)
+                                OAuthTokens.shared.modelContextEmailStored(emailStored: modelContext)
+                           }
+                       }
+                  
+                        if let email = showUserEmail.first?.personEmail {
+                            Text("\(email)")
                                 .fontWeight(.regular)
                                 .font(.system(size: 14))
                                 .foregroundStyle(Color.white).opacity(0.25)
@@ -65,6 +62,7 @@ struct MainMenu: View {
         
             
             Spacer()
+            
             HStack {
                 Text("Your notes from Notion:")
                     .fontWeight(.semibold)
@@ -92,69 +90,9 @@ struct MainMenu: View {
                             .navigationBarBackButtonHidden(true)
                     } label: {
                         
-                        let emptyPage: String? = pageTitle.displaying?.plain_text     //broke up expressions to resolve compile-time error
-                        let emptyEmojis: String? = pageTitle.emojis?.type
+                            MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
+                            .opacity(pageTitle.first?.emoji != nil && pageTitle.first?.plain_text != nil ? 1 : 0)
                         
-                        if let emptyTab = emptyPage, emptyEmojis != nil {
-                            
-                            ZStack(alignment: .center) {
-                                Rectangle()
-                                    .fill(.white.opacity(elementOpacityDark))
-                                    .stroke(Color.white, lineWidth: 0.2)
-                                    .foregroundStyle(Color.mmDark)
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
-                                    .opacity(0.8)
-                                    .cornerRadius(10)
-                            
-                                
-                                HStack(spacing: 20) {
-                                    
-                                    Menu {
-                                        Text("DynamicRep Settings \nfor \(emptyTab) ")
-                                        
-                                            .fontWeight(.medium)
-                                            .foregroundStyle(Color.white)
-                                            .opacity(0.5)
-                                        
-                                        Button("Live activities", systemImage: "clock.badge") {}
-                                       
-                                        Button(role: .destructive, action: {
-                                        }) { Label("Disable", systemImage: "multiply.circle")
-                                              
-                                        }
-                                            
-                                    } label: {
-                                        
-                                        Image(systemName: "ellipsis")}
-                                    .opacity(0.8)
-                                    .frame(width: 35, height: 35)
-                                    
-                                    
-                                    if let emojis = pageTitle.emojis?.emoji, let title = pageTitle.displaying?.plain_text {
-                                        Text("\(emojis)")
-                                        Text("\(title)")
-                                            .fontWeight(.medium)
-                                        
-                                    } else {
-                                        Rectangle()
-                                            .cornerRadius(5)
-                                            .frame(width: 150, height: 20)
-                                            .opacity(0.1)
-                                        
-                                    }
-                                    
-                                    Spacer()
-                                    Image("arrowChevron")
-                                        .opacity(0.8)
-                                        .padding(.trailing)
-                                    
-                                }
-                                .padding(.leading)
-                                
-                                
-                            }
-                            .frame(width: 370, height: 57)
-                         }
                     }
                 }
             }
