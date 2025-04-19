@@ -82,17 +82,21 @@ struct MainMenu: View {
             
             VStack {
                 ScrollView {
+                        Spacer()
                     
-                    Spacer()
-                    NavigationLink {
-                        ImportedNotes()
-                        
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        
+                
+                    let tappable = pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil
+                    
+                    if tappable {
+                        NavigationLink {
+                            ImportedNotes()
+                            
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            
                             MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
-                            .opacity(pageTitle.first?.emoji != nil && pageTitle.first?.plain_text != nil ? 1 : 0)
-                        
+                                .opacity(pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil ? 1 : 0)
+                        }
                     }
                 }
             }
