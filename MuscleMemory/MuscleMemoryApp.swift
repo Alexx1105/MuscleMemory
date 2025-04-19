@@ -42,7 +42,7 @@ import SwiftData
 @main
 struct MuscleMemoryApp: App {
    
-    let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self)
+    let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self, UserPageContent.self)
     
     var body: some Scene {
         
@@ -54,7 +54,7 @@ struct MuscleMemoryApp: App {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
                             print("code Query recieved and parsed\(parseCodeQuery)")
                            
-                            let pageData = ImportUserPage.shared
+                        
                             let pages = searchPages.shared.modelContextTitle
                             let context = OAuthTokens.shared.modelContextEmail
                             
@@ -66,9 +66,9 @@ struct MuscleMemoryApp: App {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
                                     try await searchPages.shared.userEndpoint(modelContextTitle: pages)
-                                    try await pageData.pageEndpoint()
+                                 
                          
-                                    print(pageData.mainBlockBody)
+                                 
                             
                                 } catch {
                                     print("failed async operation(s):\(error)")

@@ -44,11 +44,16 @@ struct MainBlockBody: Codable, Identifiable {
 class ImportUserPage: ObservableObject {
     
     public static let shared = ImportUserPage()
-    
     @Published var mainBlockBody: [MainBlockBody.Block] = []
-  
     var appendedID: String?
     
+    var modelContextPage: ModelContext?
+    public func modelContextPagesStored(pagesContext: ModelContext?) {
+        self.modelContextPage = pagesContext
+    }
+    
+    var userContentPage: String?
+    var userPageId: String?
     
     public func pageEndpoint() async throws {
         let pageID = returnedBlocks.first?.id ?? "pageID is nil"
@@ -113,12 +118,26 @@ class ImportUserPage: ObservableObject {
                             }
                         }
                     }
-                    returnDecodedResults[i].ExtractedFields = extractedFields
-                }
-               
+                returnDecodedResults[i].ExtractedFields = extractedFields
+              }
+            
+                
                 DispatchQueue.main.async {
                     self.mainBlockBody = returnDecodedResults
                 }
+        
+               
+                
+                for i in returnDecodedResults {
+                        for concatStrings in i.ExtractedFields {
+                            
+                            let storedPages = UserPageContent(userContentPage: concatStrings, userPageId: i.id)
+                            modelContextPage?.insert(storedPages)
+                            try modelContextPage?.save()
+                        }
+                    
+                }
+        
                 
             } catch {
                 print("url session error:\(error)")

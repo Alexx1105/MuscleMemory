@@ -67,7 +67,8 @@ public class OAuthTokens: ObservableObject {
                                     }
                                     let storedEmail = UserEmail(personEmail: personEmail)
                                     modelContext?.insert(storedEmail)
-                                  
+                                    try modelContext?.save()
+                                    
                                         print("EMAIL SAVED:\(personEmail)")
                                     
                                 }

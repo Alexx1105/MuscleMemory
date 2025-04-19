@@ -11,7 +11,7 @@ import SwiftUI
 
 
 
-@Model public class UserEmail {
+@Model public class UserEmail {                                     //email from Oauth flow
     @Attribute(.unique) public var personEmail: String?
 
     public init(personEmail: String?) {
@@ -19,18 +19,17 @@ import SwiftUI
     }
 }
 
-//@Model public class UserPageTitles {
-//    @Attribute public var userTitle: String?
-//    @Attribute public var userTitleEmoji: String?
-//    //@Attribute public var
-//    
-//    public init(userTitle: String? = nil, userTitleEmoji: String? = nil) {
-//        self.userTitle = userTitle
-//        self.userTitleEmoji = userTitleEmoji
-//    }
-//}
+@Model public class UserPageContent {                               //imported notion body 
+    @Attribute public var userContentPage: String?
+    @Attribute public var userPageId: String?
+    
+    public init(userContentPage: String? = nil, userPageId: String? = nil) {
+        self.userContentPage = userContentPage
+        self.userPageId = userPageId
+    }
+}
 
-@Model public class UserPageTitle {
+@Model public class UserPageTitle {                             //tab title + optional emojis
     @Attribute public var id: String?
     @Attribute public var icon: String?
     @Attribute public var plain_text: String?
@@ -42,17 +41,17 @@ import SwiftUI
         self.plain_text = plain_text
         self.emoji = emoji
     }
-    //eventually, support for images and other structures will be added
 }
 
-@Model public class AuthKeys {                      //TO-DO: store OAuth key here
-    @Attribute(.unique) public var oauthPermanentKey: String!
-    
-    public init(oauthPermanentKey: String!) {
-        self.oauthPermanentKey = oauthPermanentKey
-    }
-}
 
-    
+//@Model public class AuthKeys {                                //TO-DO: store OAuth key here later
+//    @Attribute(.unique) public var oauthPermanentKey: String!
+//    
+//    public init(oauthPermanentKey: String!) {
+//        self.oauthPermanentKey = oauthPermanentKey
+//    }
+//}
+//
+//    
      
 

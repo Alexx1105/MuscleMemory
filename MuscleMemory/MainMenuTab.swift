@@ -33,7 +33,7 @@ struct MainMenuTab: View {
                 HStack(spacing: 20) {
                     
                     Menu {
-                        Text("DynamicRep Settings \nfor \(showTabTitle)")
+                        Text("DynamicRep Settings \nfor \(showTabTitle ?? "")")
                             .fontWeight(.medium)
                             .foregroundStyle(Color.white)
                             .opacity(0.5)
