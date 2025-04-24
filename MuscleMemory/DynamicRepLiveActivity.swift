@@ -9,19 +9,21 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
+
 struct DynamicRepAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
+        
         // Dynamic stateful properties about your activity go here!
-
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var titleName: String?
-    var contentBody: String?
     
-    init(titleName: String?, contentBody: String?) {
-        self.titleName = titleName
-        self.contentBody = contentBody
+// Fixed non-changing properties about your activity go here!
+    
+    var plain_text: String?
+    var userContentPage: String?
+    
+    init(plain_text: String?, userContentPage: String?) {
+        self.plain_text = plain_text
+        self.userContentPage = userContentPage
     }
 }
 
@@ -44,7 +46,7 @@ struct DynamicRepLiveActivity: Widget {
                 Spacer()
                 HStack {
             
-                               Text("from \(context.attributes.titleName ?? "no title")")     //TO-DO: populate content here
+                    Text("from \(context.attributes.plain_text ?? "no title")")
                                    .fontWeight(.light)
                                    .font(.system(size: 16))
                                    .foregroundStyle(Color.gray)
@@ -56,7 +58,7 @@ struct DynamicRepLiveActivity: Widget {
                             .padding(.horizontal)
                 
                 
-                           //Text("\(context.attributes.contentBody ?? "no content")")   //TO-DO: populate content here
+                           //Text("\(context.attributes.userContentPage ?? "--")")
                        }
                        Spacer()
                        .frame(height: 180)
@@ -69,11 +71,14 @@ struct DynamicRepLiveActivity: Widget {
                
                 DynamicIslandExpandedRegion(.leading) {
                    
-                    Text("from \(context.attributes.titleName ?? "no title")")
-                        .fontWeight(.light)
-                        .font(.system(size: 16))
-                        .foregroundStyle(Color.gray)
-                        .padding(.horizontal)
+                  
+                        Text("from \(context.attributes.plain_text ?? "--")")
+                            .fontWeight(.light)
+                            .font(.system(size: 14))
+                            .foregroundStyle(Color.gray)
+                            .padding(.leading, 4)
+                            .padding(.top, 1)
+                    
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                    
@@ -86,7 +91,7 @@ struct DynamicRepLiveActivity: Widget {
                             }
                         Spacer()
                     }
-                    
+                    .padding(.trailing, -4)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     
@@ -122,12 +127,13 @@ struct DynamicRepLiveActivity: Widget {
             .widgetURL(URL(string: "MuscleMemory.KimchiLabs.com"))
             .keylineTint(Color.white)
         }
+        
     }
 }
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
-        DynamicRepAttributes(titleName: "", contentBody: "")
+        DynamicRepAttributes(plain_text: "", userContentPage: "")
     
     }
 }

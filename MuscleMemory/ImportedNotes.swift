@@ -23,7 +23,6 @@ struct ImportedNotes: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
    
-   
 
     var body: some View {
         
@@ -69,8 +68,16 @@ struct ImportedNotes: View {
                             } catch {
                                 print("error fetching persisted page data")
                             }
+                            
+                            if let _ = pageTitle.first?.plain_text, pageContent.first?.userContentPage != nil {
+                                DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: pageContent.first?.userContentPage )
+                            } else {
+                                print("no persisted data is being passed to live activity")
+                            }
+                            
                         }
                     }
+                
         
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
@@ -83,7 +90,7 @@ struct ImportedNotes: View {
                                 .listRowSeparator(.hidden)
                                 
                         }
-                       
+                        
                     }
                     .listStyle(.plain)
                     Spacer()

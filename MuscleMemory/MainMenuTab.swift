@@ -47,9 +47,11 @@ struct MainMenuTab: View {
                         
                     } label: {
                         
-                        Image(systemName: "ellipsis")}
-                    .opacity(0.8)
-                    .frame(width: 35, height: 35)
+                        Image(systemName: "ellipsis")
+                            .opacity(0.8)
+                            .frame(width: 35, height: 35)
+                            .padding(10)
+                    }
                     
                     if let emojis = showEmoji, let showTitle = showTitle {
                         Text("\(emojis)")

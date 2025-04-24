@@ -16,10 +16,10 @@ class DynamicRepAttribute {
     var staticActivity: Activity<DynamicRepAttributes>?
     
     
-    func startDynamicRep(titleName: String?, contentBody: String?) {   //we are defining attributes for DynamicRep content here aswell as debug related tasks for dynamic island
+    func startDynamicRep(plain_text: String?, userContentPage: String?) {   //we are defining attributes for DynamicRep content here aswell as debug related tasks for dynamic island
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             
-            let activityAttributes = DynamicRepAttributes(titleName: titleName, contentBody: contentBody)
+            let activityAttributes = DynamicRepAttributes(plain_text: plain_text, userContentPage: userContentPage)
             let initialState = DynamicRepAttributes.ContentState()
             
             do {
@@ -31,7 +31,7 @@ class DynamicRepAttribute {
         }
     }
     
-    func updateDynamicRep(titleName: String?, contentBody: String?) {
+    func updateDynamicRep(plain_text: String?, userContentPage: String?) {
             guard let updateActivity = staticActivity else { return }
             let updatedState = DynamicRepAttributes.ContentState()
             
@@ -41,7 +41,7 @@ class DynamicRepAttribute {
             }
         }
         
-        func killDynamicRep(titleName: String?, contentBody: String?) {
+        func killDynamicRep(plain_text: String?, userContentPage: String?) {
             guard let endActivity = staticActivity else { return }
             let endState = DynamicRepAttributes.ContentState()
             
