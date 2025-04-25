@@ -42,44 +42,61 @@ struct DynamicRepLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
+            Spacer()
             VStack {
+              
                 Spacer()
-                HStack {
-            
+                HStack(alignment: .top) {
                     Text("from \(context.attributes.plain_text ?? "no title")")
                                    .fontWeight(.light)
                                    .font(.system(size: 16))
                                    .foregroundStyle(Color.gray)
-                                   .padding(.top, 45)
+                                   .padding(.top, 16)
                                    Spacer()
                            }
+                    
                             .frame(maxWidth: 500, maxHeight: 210)
                             .padding(.top)
                             .padding(.horizontal)
                 
-                
-                           //Text("\(context.attributes.userContentPage ?? "--")")
                        }
                        Spacer()
                        .frame(height: 180)
                        .activityBackgroundTint(Color.black)
                        .activitySystemActionForegroundColor(Color.black)
-
+            
+            
+            //Text("\(context.attributes.userContentPage ?? "--")")
+           
+                       
 
         } dynamicIsland: { context in
             DynamicIsland {
-               
                 DynamicIslandExpandedRegion(.leading) {
-                   
-                  
-                        Text("from \(context.attributes.plain_text ?? "--")")
+                      
+                    HStack {
+                        Text("from:")
                             .fontWeight(.light)
-                            .font(.system(size: 14))
+                            .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
-                            .padding(.leading, 4)
-                            .padding(.top, 1)
-                    
+                            .padding(.top, 17.5)
+                            .padding(.leading, 11)
+                            Spacer()
+                    }
                 }
+                
+                DynamicIslandExpandedRegion(.center) {
+                
+                    HStack {
+      
+                        Text(context.attributes.plain_text ?? "--")
+                            .fontWeight(.light)
+                            .font(.system(size: 16))
+                            .foregroundStyle(Color.gray)
+                            Spacer()
+                    }
+                }
+                
                 DynamicIslandExpandedRegion(.trailing) {
                    
                     VStack(alignment: .trailing) {
@@ -119,7 +136,7 @@ struct DynamicRepLiveActivity: Widget {
                 }
             } compactTrailing: {
                
-                Text("")
+               Text("")
                 
             } minimal: {
                 Text("")
