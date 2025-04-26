@@ -42,31 +42,35 @@ struct DynamicRepLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
-            Spacer()
-            VStack {
+           
+            VStack(alignment: .leading, spacing: 8) {
               
-                Spacer()
-                HStack(alignment: .top) {
+                VStack(alignment: .leading) {
                     Text("from \(context.attributes.plain_text ?? "no title")")
                                    .fontWeight(.light)
                                    .font(.system(size: 16))
                                    .foregroundStyle(Color.gray)
-                                   .padding(.top, 16)
-                                   Spacer()
+                            
                            }
-                    
-                            .frame(maxWidth: 500, maxHeight: 210)
-                            .padding(.top)
-                            .padding(.horizontal)
-                
+                            .frame(maxWidth: 500, alignment: .topLeading)
+                        
+                          
+               
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("\(context.attributes.userContentPage ?? "--")")
+                        .fontWeight(.regular)
+                        .font(.system(size: 16))
+                   
+                          }
                        }
-                       Spacer()
-                       .frame(height: 180)
+                       .padding(.top, 20.5)
+                       .padding(.leading, 14)
+                       .frame(height: 180, alignment: .topLeading)
                        .activityBackgroundTint(Color.black)
                        .activitySystemActionForegroundColor(Color.black)
+                   
             
             
-            //Text("\(context.attributes.userContentPage ?? "--")")
            
                        
 
