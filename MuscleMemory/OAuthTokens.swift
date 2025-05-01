@@ -11,6 +11,7 @@ import SwiftData
 
 
 
+
 public var accessToken: String?
 public class OAuthTokens: ObservableObject {
     
@@ -28,8 +29,8 @@ public class OAuthTokens: ObservableObject {
         let tokenURL = URL(string: "https://api.notion.com/v1/oauth/token")!
         var request = URLRequest(url: tokenURL)
         
-        let client = "138d872b-594c-8050-b985-0037723b58e0"
-        let secret = "secret_HgvrwXDCKSYBusm3UorlPpLu9fKWk5aKt5n6vxXo4SX"
+        let client = "138d872b-594c-8050-b985-0037723b58e0" 
+        let secret = "secret_HgvrwXDCKSYBusm3UorlPpLu9fKWk5aKt5n6vxXo4SX" 
         
         let idAndSecret = "\(client):\(secret)"
         let base64EncodedIDAndSecret = Data(idAndSecret.utf8).base64EncodedString()
