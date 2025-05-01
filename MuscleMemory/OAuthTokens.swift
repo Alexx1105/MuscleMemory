@@ -31,12 +31,13 @@ public class OAuthTokens: ObservableObject {
         
         let client = "138d872b-594c-8050-b985-0037723b58e0" 
         let secret = "secret_HgvrwXDCKSYBusm3UorlPpLu9fKWk5aKt5n6vxXo4SX" 
-        
+
         let idAndSecret = "\(client):\(secret)"
         let base64EncodedIDAndSecret = Data(idAndSecret.utf8).base64EncodedString()
         
         request.addValue("Basic \(base64EncodedIDAndSecret)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
         
         let requestBody: [String: Any] = ["grant_type": "authorization_code", "code": authorizationCode, "redirect_uri": "https://notionauthbridge-rhuwa73w2a-uc.a.run.app/callback?code=AUTHORIZATION_CODE"]
