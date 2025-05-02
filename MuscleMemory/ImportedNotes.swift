@@ -69,28 +69,31 @@ struct ImportedNotes: View {
                                 print("error fetching persisted page data")
                             }
                             
-                            if let _ = pageTitle.first?.plain_text, pageContent.first?.userContentPage != nil {
-                                DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: pageContent.first?.userContentPage )
-                            } else {
-                                print("no persisted data is being passed to live activity")
+                            var pageContentElements: [String] = []
+                            
+                            for element in pageContent {
+                                if let elements = element.userContentPage {
+                                    pageContentElements.append(elements)
+                                } else {
+                                    print("elements could not be appended to non optional array")
+                                }
                             }
                             
-                        }
+                            let joinStrings = pageContentElements.joined(separator: "\n")
+                            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+                       }
                     }
                 
-        
+                
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
                        
-                        let concatPage = (block.userContentPage ?? "").split(separator: "\n").map(String.init)
-                        ForEach(concatPage, id: \.self) { textField in
-                            Text(textField)
-                                .lineSpacing(-7)
+                        Text(block.userContentPage ?? "")
+                            .font(.system(size: 16)).lineSpacing(12)
+                             
                                 .listRowBackground(Color.mmBackground)
                                 .listRowSeparator(.hidden)
-                                
-                        }
-                        
+                            
                     }
                     .listStyle(.plain)
                     Spacer()

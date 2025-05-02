@@ -19,21 +19,21 @@ class DynamicRepAttribute {
     func startDynamicRep(plain_text: String?, userContentPage: String?) {   //we are defining attributes for DynamicRep content here aswell as debug related tasks for dynamic island
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             
-            let activityAttributes = DynamicRepAttributes(plain_text: plain_text, userContentPage: userContentPage)
-            let initialState = DynamicRepAttributes.ContentState()
-            
-            do {
-                let start = try Activity<DynamicRepAttributes>.request(attributes: activityAttributes, content: .init(state: initialState, staleDate: nil), pushType: nil)
-                print("activity started: \(start.id)")
-            } catch {
-                print("activity attribute could not started: \(error)")
+                let activityAttributes = DynamicRepAttributes()
+                let initialState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
+                
+                do {
+                    let start = try Activity<DynamicRepAttributes>.request(attributes: activityAttributes, content: .init(state: initialState, staleDate: nil), pushType: nil)
+                    print("activity started: \(start.id)")
+                } catch {
+                    print("activity attribute could not started: \(error)")
+                }
             }
         }
-    }
     
     func updateDynamicRep(plain_text: String?, userContentPage: String?) {
             guard let updateActivity = staticActivity else { return }
-            let updatedState = DynamicRepAttributes.ContentState()
+            let updatedState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
             
             Task {
                 await updateActivity.update(ActivityContent(state: updatedState, staleDate: nil))  
@@ -43,7 +43,7 @@ class DynamicRepAttribute {
         
         func killDynamicRep(plain_text: String?, userContentPage: String?) {
             guard let endActivity = staticActivity else { return }
-            let endState = DynamicRepAttributes.ContentState()
+            let endState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
             
             Task {
                 await endActivity.end(ActivityContent(state: endState, staleDate: nil), dismissalPolicy: .immediate)

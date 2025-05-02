@@ -129,9 +129,9 @@ class ImportUserPage: ObservableObject {
                
                 
                 for i in returnDecodedResults {
-                        for concatStrings in i.ExtractedFields {
+                        for storeStrings in i.ExtractedFields {
                             
-                            let storedPages = UserPageContent(userContentPage: concatStrings, userPageId: i.id)
+                            let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
                             modelContextPage?.insert(storedPages)
                             try modelContextPage?.save()
                         }

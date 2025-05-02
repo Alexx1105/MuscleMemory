@@ -13,18 +13,20 @@ import SwiftUI
 struct DynamicRepAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         
+        var plain_text: String?
+        var userContentPage: String?
+        
+        init(plain_text: String?, userContentPage: String?) {
+            self.plain_text = plain_text
+            self.userContentPage = userContentPage
+        }
+        
         // Dynamic stateful properties about your activity go here!
     }
     
-// Fixed non-changing properties about your activity go here!
+    // Fixed non-changing properties about your activity go here!
     
-    var plain_text: String?
-    var userContentPage: String?
     
-    init(plain_text: String?, userContentPage: String?) {
-        self.plain_text = plain_text
-        self.userContentPage = userContentPage
-    }
 }
 
 struct AppLogo: View {
@@ -44,25 +46,29 @@ struct DynamicRepLiveActivity: Widget {
             // Lock screen/banner UI goes here
            
             VStack(alignment: .leading, spacing: 8) {
-              
+                
                 VStack(alignment: .leading) {
-                    Text("from \(context.attributes.plain_text ?? "no title")")
-                                   .fontWeight(.light)
-                                   .font(.system(size: 16))
-                                   .foregroundStyle(Color.gray)
-                            
-                           }
-                            .frame(maxWidth: 500, alignment: .topLeading)
-                        
-                          
-               
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("\(context.attributes.userContentPage ?? "--")")
-                        .fontWeight(.regular)
+                    Text("from \(context.state.plain_text ?? "no title")")
+                        .fontWeight(.light)
                         .font(.system(size: 16))
-                   
-                          }
-                       }
+                        .foregroundStyle(Color.gray)
+                    
+                }
+                .frame(maxWidth: 500, alignment: .topLeading)
+                
+                
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    
+                    if let content = context.state.userContentPage {
+        
+                        Text(content)
+                            .fontWeight(.regular)
+                            .font(.system(size: 16))
+                        
+                    }
+                }
+            }
                        .padding(.top, 20.5)
                        .padding(.leading, 14)
                        .frame(height: 180, alignment: .topLeading)
@@ -93,7 +99,7 @@ struct DynamicRepLiveActivity: Widget {
                 
                     HStack {
       
-                        Text(context.attributes.plain_text ?? "--")
+                        Text(context.state.plain_text ?? "--")
                             .fontWeight(.light)
                             .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
@@ -154,19 +160,19 @@ struct DynamicRepLiveActivity: Widget {
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
-        DynamicRepAttributes(plain_text: "", userContentPage: "")
+        DynamicRepAttributes()
     
     }
 }
 
 extension DynamicRepAttributes.ContentState {
     fileprivate static var titleName: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState()
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
       
      }
      
      fileprivate static var contentBody: DynamicRepAttributes.ContentState {
-         DynamicRepAttributes.ContentState()
+         DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
      }
 }
 
