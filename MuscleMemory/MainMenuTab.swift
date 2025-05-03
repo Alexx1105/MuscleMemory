@@ -50,7 +50,7 @@ struct MainMenuTab: View {
                         Image(systemName: "ellipsis")
                             .opacity(0.8)
                             .frame(width: 35, height: 35)
-                            .padding(10)
+                            .padding(5)
                     }
                     
                     if let emojis = showEmoji, let showTitle = showTitle {

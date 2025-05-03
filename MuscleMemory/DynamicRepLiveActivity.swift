@@ -31,7 +31,7 @@ struct DynamicRepAttributes: ActivityAttributes {
 
 struct AppLogo: View {
     var body: some View {
-     
+        
         Image("appicon")
             .resizable()
             .scaledToFit()
@@ -44,46 +44,47 @@ struct DynamicRepLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
-           
-            VStack(alignment: .leading, spacing: 8) {
+            
+            
+            VStack(alignment: .leading, spacing: 3) {
                 
                 VStack(alignment: .leading) {
                     Text("from \(context.state.plain_text ?? "no title")")
                         .fontWeight(.light)
                         .font(.system(size: 16))
                         .foregroundStyle(Color.gray)
+                        .padding(.leading, 11)
+                        .padding(.top, 12)
                     
-                }
-                .frame(maxWidth: 500, alignment: .topLeading)
-                
-                
-                
-                VStack(alignment: .leading, spacing: 4) {
                     
-                    if let content = context.state.userContentPage {
-        
-                        Text(content)
-                            .fontWeight(.regular)
-                            .font(.system(size: 16))
-                        
+                    VStack(alignment: .leading) {
+                        if let content = context.state.userContentPage {
+                            Text("\n\(content)")
+                                .fontWeight(.regular)
+                                .font(.system(size: 16))
+                                .lineSpacing(3)
+                                .lineLimit(7)
+                                .padding(.leading, 11)
+                        }
                     }
+                    .padding(.trailing, 30)
                 }
             }
-                       .padding(.top, 20.5)
-                       .padding(.leading, 14)
-                       .frame(height: 180, alignment: .topLeading)
-                       .activityBackgroundTint(Color.black)
-                       .activitySystemActionForegroundColor(Color.black)
-                   
+            
+            .padding(.bottom)
+            .frame(alignment: .topLeading)
+            .activityBackgroundTint(Color.black)
+            .activitySystemActionForegroundColor(Color.black)
             
             
-           
-                       
-
+            
+            
+            
+            
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                      
+                    
                     HStack {
                         Text("from:")
                             .fontWeight(.light)
@@ -91,24 +92,34 @@ struct DynamicRepLiveActivity: Widget {
                             .foregroundStyle(Color.gray)
                             .padding(.top, 17.5)
                             .padding(.leading, 11)
-                            Spacer()
+                        Spacer()
                     }
                 }
                 
                 DynamicIslandExpandedRegion(.center) {
-                
+                    
                     HStack {
-      
                         Text(context.state.plain_text ?? "--")
                             .fontWeight(.light)
                             .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
-                            Spacer()
+                        Spacer()
+                    }
+                    
+                    HStack(alignment: .top) {
+                        
+                        if let content = context.state.userContentPage {
+                            Text("\(content)")
+                                .fontWeight(.regular)
+                                .font(.system(size: 16))
+                                .padding(.top, -8)
+                            
+                        }
                     }
                 }
                 
                 DynamicIslandExpandedRegion(.trailing) {
-                   
+                    
                     VStack(alignment: .trailing) {
                         Circle()
                             .frame(width: 53, height: 50)
@@ -123,11 +134,11 @@ struct DynamicRepLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.bottom) {
                     
                     HStack(spacing: 250) {
-                       
+                        
                         Button(action: {}) {  //add functionality later
                             Image(systemName: "arrow.left")
                                 .foregroundStyle(Color.white)
-                                
+                            
                         }
                         .buttonStyle(PlainButtonStyle())
                         
@@ -139,14 +150,15 @@ struct DynamicRepLiveActivity: Widget {
                         .buttonStyle(PlainButtonStyle())
                     }
                     
+                    
                 }
             } compactLeading: {
                 ZStack {
                     AppLogo()
                 }
             } compactTrailing: {
-               
-               Text("")
+                
+                Text("")
                 
             } minimal: {
                 Text("")
@@ -161,23 +173,23 @@ struct DynamicRepLiveActivity: Widget {
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
         DynamicRepAttributes()
-    
+        
     }
 }
 
 extension DynamicRepAttributes.ContentState {
     fileprivate static var titleName: DynamicRepAttributes.ContentState {
         DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
-      
-     }
-     
-     fileprivate static var contentBody: DynamicRepAttributes.ContentState {
-         DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
-     }
+        
+    }
+    
+    fileprivate static var contentBody: DynamicRepAttributes.ContentState {
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
+    }
 }
 
 #Preview("Notification", as: .content, using: DynamicRepAttributes.preview) {
-   DynamicRepLiveActivity()
+    DynamicRepLiveActivity()
 } contentStates: {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody
