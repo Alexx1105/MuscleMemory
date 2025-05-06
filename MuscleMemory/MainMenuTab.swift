@@ -38,7 +38,10 @@ struct MainMenuTab: View {
                             .foregroundStyle(Color.white)
                             .opacity(0.5)
                         
-                        Button("Live activities", systemImage: "clock.badge") {}
+                        NavigationLink(destination: DynamicRepControlsView()) {
+                            Label("Live activities", systemImage: "clock.badge")
+                        }
+
                         
                         Button(role: .destructive, action: {
                         }) { Label("Disable", systemImage: "multiply.circle")

@@ -17,7 +17,7 @@ struct ImportedNotes: View {
     
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
-    
+    let timed = DynamicRepScheduler()
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
@@ -69,9 +69,7 @@ struct ImportedNotes: View {
                                 print("error fetching persisted page data")
                             }
                             
-                            //for live activities
                             var pageContentElements: [String] = []
-                            
                             for element in pageContent {
                                 if let elements = element.userContentPage {
                                     pageContentElements.append(elements)
@@ -80,17 +78,42 @@ struct ImportedNotes: View {
                                 }
                             }
                             
-                            let joinStrings = pageContentElements.joined()
-                            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+                    
+                            
+                           enum selectTimer {
+                               case oneHr
+                               case twoThreeHr
+                               case threeFourHr
+                           
+                               var interval: TimeInterval {
+                                   switch self {
+                                       case .oneHr: return 3600.0
+                                       case .twoThreeHr: return 8280.0
+                                       case .threeFourHr: return 12240.0
+                                         
+                                   }
+                               }
+                            }
+                        
+                            let timerSelected: selectTimer = .oneHr
+                            
+                                let joinStrings = pageContentElements.joined()
+                            
+                                 //finish linking timers to function after front end is done 
+                            
+                                DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+                            
                         }
                     }
+                
+      
                 
                 
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
                         
                         Text(block.userContentPage ?? "")
-                            .font(.system(size: 16)).lineSpacing(12)
+                            .font(.system(size: 16)).lineSpacing(3)
                         
                             .listRowBackground(Color.mmBackground)
                             .listRowSeparator(.hidden)

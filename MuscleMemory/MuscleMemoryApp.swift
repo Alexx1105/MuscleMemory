@@ -57,8 +57,8 @@ struct MuscleMemoryApp: App {
                         
                             let pages = searchPages.shared.modelContextTitle
                             let context = OAuthTokens.shared.modelContextEmail
-                            
-                    
+                        
+                  
                             //let notif = LocalDynamicRepNotification.notificationContent
 
                             
@@ -66,8 +66,8 @@ struct MuscleMemoryApp: App {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
                                     try await searchPages.shared.userEndpoint(modelContextTitle: pages)
-                                 
-                         
+                                    
+                                  
                                  
                             
                                 } catch {

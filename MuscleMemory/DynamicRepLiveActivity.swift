@@ -49,8 +49,8 @@ struct DynamicRepLiveActivity: Widget {
             VStack(alignment: .leading, spacing: 3) {
                 
                 VStack(alignment: .leading) {
-                    Text("from \(context.state.plain_text ?? "no title")")
-                        .fontWeight(.light)
+                    Text("from: \(context.state.plain_text ?? "no title")")
+                        .fontWeight(.regular)
                         .font(.system(size: 16))
                         .foregroundStyle(Color.gray)
                         .padding(.leading, 11)
@@ -60,7 +60,7 @@ struct DynamicRepLiveActivity: Widget {
                     VStack(alignment: .leading) {
                         if let content = context.state.userContentPage {
                             Text("\n\(content)")
-                                .fontWeight(.regular)
+                                .fontWeight(.semibold)
                                 .font(.system(size: 16))
                                 .lineSpacing(3)
                                 .lineLimit(7)
@@ -87,11 +87,11 @@ struct DynamicRepLiveActivity: Widget {
                     
                     HStack {
                         Text("from:")
-                            .fontWeight(.light)
+                            .fontWeight(.regular)
                             .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
                             .padding(.top, 17.5)
-                            .padding(.leading, 11)
+                            .padding(.leading, 10)
                         Spacer()
                     }
                 }
@@ -100,7 +100,7 @@ struct DynamicRepLiveActivity: Widget {
                     
                     HStack {
                         Text(context.state.plain_text ?? "--")
-                            .fontWeight(.light)
+                            .fontWeight(.regular)
                             .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
                         Spacer()
@@ -110,9 +110,9 @@ struct DynamicRepLiveActivity: Widget {
                         
                         if let content = context.state.userContentPage {
                             Text("\(content)")
-                                .fontWeight(.regular)
+                                .fontWeight(.semibold)
                                 .font(.system(size: 16))
-                                .padding(.top, -8)
+                                .padding(.top, -5)
                             
                         }
                     }
@@ -158,7 +158,14 @@ struct DynamicRepLiveActivity: Widget {
                 }
             } compactTrailing: {
                 
-                Text("")
+                HStack {
+                    Text(context.state.plain_text ?? "--")
+                        .fontWeight(.regular)
+                        .foregroundStyle(Color.gray)
+                        
+                    Spacer()
+                }
+                
                 
             } minimal: {
                 Text("")
