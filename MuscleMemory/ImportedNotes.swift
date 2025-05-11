@@ -17,7 +17,9 @@ struct ImportedNotes: View {
     
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
-    let timed = DynamicRepScheduler()
+    
+    public static let timed = DynamicRepScheduler()
+    public init() {}
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
@@ -96,12 +98,10 @@ struct ImportedNotes: View {
                             }
                         
                             let timerSelected: selectTimer = .oneHr
-                            
                                 let joinStrings = pageContentElements.joined()
                             
-                                 //finish linking timers to function after front end is done 
-                            
-                                DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+                        
+                            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
                             
                         }
                     }
