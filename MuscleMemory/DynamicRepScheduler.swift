@@ -7,22 +7,27 @@
 
 import Foundation
 
-
-
- class DynamicRepScheduler {
+class DynamicRepScheduler {
     var controlTimer: [Timer] = []
-  
-      func startTimer(interval: TimeInterval, mode: RunLoop.Mode = .common, handler: @escaping()  -> (Void)) -> Timer {
+    
+    static let shared = DynamicRepScheduler()
+    init() {}
+    
+    @discardableResult
+    func startTimer(interval: TimeInterval, mode: RunLoop.Mode = .common, handler: @escaping() -> (Void)) -> Timer {
         let storeTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { _ in handler() }
         controlTimer.append(storeTimer)
+        print("timer successfully started")
         return storeTimer
+        
     }
-
-     func stopTimer(storeTimer: Timer) {
-         if let stopTimer = controlTimer.firstIndex(of: storeTimer) {
-             controlTimer.remove(at: stopTimer)
-         
-         }
+    
+    func stopTimer(storeTimer: Timer) {
+        if let stopTimer = controlTimer.firstIndex(of: storeTimer) {
+            controlTimer.remove(at: stopTimer)
+            
+        }
+        print("timer successfully stopped")
     }
 }
 

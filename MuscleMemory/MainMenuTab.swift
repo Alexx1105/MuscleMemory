@@ -13,6 +13,7 @@ import Foundation
 struct MainMenuTab: View {
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
+    let getTimer =  DynamicRepScheduler.shared.controlTimer
     
     let showEmoji: String?
     let showTitle: String?
@@ -38,7 +39,7 @@ struct MainMenuTab: View {
                             .foregroundStyle(Color.white)
                             .opacity(0.5)
                         
-                        NavigationLink(destination: DynamicRepControlsView()) {
+                        NavigationLink(destination: DynamicRepControlsView(activeTimerObjects: getTimer)) {
                             Label("Live activities", systemImage: "clock.badge")
                         }
 

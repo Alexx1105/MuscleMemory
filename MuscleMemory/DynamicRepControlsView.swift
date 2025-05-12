@@ -15,6 +15,9 @@ struct DynamicRepControlsView: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
+    @Environment(\.modelContext) var modelContextPage
+    
+    @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
     
     @State var drag: CGFloat = 0
@@ -23,16 +26,43 @@ struct DynamicRepControlsView: View {
     let stops: [CGFloat] = [-160, -70, 28, 151]
     let stopsOne: [CGFloat] = [-160, -13, 146]
     
-    
     @State var dragOne: CGFloat = 0
     @State var fullDragOne: CGFloat = 0
     
     let timers = DynamicRepScheduler()
-    @State private var activeTimerObjects: Timer
     
+    let activeTimerObjects: [Timer]
+    init(activeTimerObjects: [Timer] = []) {
+        self.activeTimerObjects = activeTimerObjects
+    }
+    
+    func liveActivityTrigger() async {
+        do {
+            ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
+            try await ImportUserPage.shared.pageEndpoint()
+        } catch {
+            print("error fetching persisted page data")
+        }
+        
+        var pageContentElements: [String] = []
+        for element in pageContent {
+            if let elements = element.userContentPage {
+                pageContentElements.append(elements)
+            } else {
+                print("elements could not be appended to non optional array")
+            }
+        }
+        
+        
+        let joinStrings = pageContentElements.joined()
+        DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+        
+    }
+    
+    
+
     var body: some View {
         VStack(spacing: 70) {
-            
             
             HStack(alignment: .top, spacing: 100) {
                 
@@ -99,17 +129,23 @@ struct DynamicRepControlsView: View {
                                         drag = 0
                                     }
                                     
-//                                    switch nearest {
-//                                    case stops[0]: timers.stopTimer(storeTimer: activeTimerObjects)
-//                                    case stops[1]: timers.startTimer(interval: 1 * 60 * 60) {
-//                                        
-//                                    }
-//                                        
-//                                    }
+                                    switch nearest {
+                                    case stops[0]: timers.stopTimer(storeTimer: timers.controlTimer.first!)
+                                        
+                                    case stops[1]: timers.startTimer(interval: 3600) {
+                                        Task { await liveActivityTrigger() }
+                                    }
+                                        
+                                    case stops[2]: timers.startTimer(interval: 8280.0) {
+                                        Task { await liveActivityTrigger() }
+                                    }
+                                    case stops[3]: timers.startTimer(interval: 12240.0) {
+                                        Task { await liveActivityTrigger() }
+                                    }
+                                    default: break
+                                    }
                                 })
                     
-                    
-                   
                             
                     RoundedRectangle(cornerRadius: 50)
                         .frame(width: 370, height: 50)
@@ -268,14 +304,10 @@ struct DynamicRepControlsView: View {
                             
                             
                         }
-                        
-                        
                     }
-                    
                 }
                 Spacer()
-                
-                
+
             }
             
             

@@ -62,52 +62,7 @@ struct ImportedNotes: View {
                 Spacer()
                 Divider()
                 
-                    .onAppear {
-                        Task {
-                            do {
-                                ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-                                try await ImportUserPage.shared.pageEndpoint()
-                            } catch {
-                                print("error fetching persisted page data")
-                            }
-                            
-                            var pageContentElements: [String] = []
-                            for element in pageContent {
-                                if let elements = element.userContentPage {
-                                    pageContentElements.append(elements)
-                                } else {
-                                    print("elements could not be appended to non optional array")
-                                }
-                            }
-                            
-                    
-                            
-                           enum selectTimer {
-                               case oneHr
-                               case twoThreeHr
-                               case threeFourHr
-                           
-                               var interval: TimeInterval {
-                                   switch self {
-                                       case .oneHr: return 3600.0
-                                       case .twoThreeHr: return 8280.0
-                                       case .threeFourHr: return 12240.0
-                                         
-                                   }
-                               }
-                            }
-                        
-                            let timerSelected: selectTimer = .oneHr
-                                let joinStrings = pageContentElements.joined()
-                            
-                        
-                            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
-                            
-                        }
-                    }
-                
-      
-                
+                   
                 
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
