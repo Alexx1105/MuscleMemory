@@ -104,30 +104,41 @@ struct SettingsView: View {
             Spacer()
             VStack {
                 Divider()
-                    .padding()
+                    .padding(.bottom, 10)
                 
-                HStack {
+                HStack(spacing: 30) {
                     
                     NavigationLink(destination: MainMenu()) {
-                            Image("menuButton")
-                           
-                        }
-                        .frame(maxWidth: .infinity)
+                        Image("menuButton")
                         
+                    }
+                    .frame(maxWidth: .infinity)
                     
-                        NavigationLink(destination: SettingsView()) {
-                            Image("settingsButton")
-                            
-                        }
-                        .frame(maxWidth: .infinity)
+                    
+                    
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
+                        
+                    }
+                    .frame(maxWidth: .infinity)
                     
                     NavigationLink(destination: NotionImportPageView()) {
-                            Image("notionImportButton")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
+                        Image(systemName: "plus.app")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
+             
+                        
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+                    
                 }
-            }
+                
+            }.background(Material.ultraThin)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)

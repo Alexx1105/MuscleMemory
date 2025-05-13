@@ -59,6 +59,7 @@ struct MainMenu: View {
                 }
                 Spacer()
             }.frame(maxWidth: .infinity, maxHeight: 50)
+                .opacity(showUserEmail.first?.personEmail != nil ? 1 : 0)
         
             
             Spacer()
@@ -104,9 +105,9 @@ struct MainMenu: View {
           
             VStack {
                 Divider()
-                    .padding()
+                    .padding(.bottom, 10)
                 
-                HStack {
+                HStack(spacing: 30) {
                     
                     NavigationLink(destination: MainMenu()) {
                         Image("menuButton")
@@ -117,13 +118,20 @@ struct MainMenu: View {
                     
                     
                     NavigationLink(destination: SettingsView()) {
-                        Image("settingsButton")
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
                         
                     }
                     .frame(maxWidth: .infinity)
                     
                     NavigationLink(destination: NotionImportPageView()) {
-                        Image("notionImportButton")
+                        Image(systemName: "plus.app")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
+             
                         
                     }
                     .frame(maxWidth: .infinity)
@@ -131,7 +139,7 @@ struct MainMenu: View {
                     
                 }
                 
-            }
+            }.background(Material.ultraThin)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)

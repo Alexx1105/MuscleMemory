@@ -83,7 +83,7 @@ struct ImportedNotes: View {
                 
                 VStack {
                     Divider()
-                        .padding()
+                        .padding(.bottom, 10)
                     
                     HStack {
                         

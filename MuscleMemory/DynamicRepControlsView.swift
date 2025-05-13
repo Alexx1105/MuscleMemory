@@ -154,6 +154,7 @@ struct DynamicRepControlsView: View {
                         .frame(width: 370, height: 50)
                         .opacity(0.06)
                         .padding(.top, 5)
+                  
                 }
                 
                 .overlay {
@@ -317,9 +318,9 @@ struct DynamicRepControlsView: View {
             
             VStack {
                 Divider()
-                    .padding()
+                    .padding(.bottom, 10)
                 
-                HStack {
+                HStack(spacing: 30) {
                     
                     NavigationLink(destination: MainMenu()) {
                         Image("menuButton")
@@ -330,13 +331,20 @@ struct DynamicRepControlsView: View {
                     
                     
                     NavigationLink(destination: SettingsView()) {
-                        Image("settingsButton")
+                        Image(systemName: "gear")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
                         
                     }
                     .frame(maxWidth: .infinity)
                     
                     NavigationLink(destination: NotionImportPageView()) {
-                        Image("notionImportButton")
+                        Image(systemName: "plus.app")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundStyle(Color.white.opacity(0.8))
+             
                         
                     }
                     .frame(maxWidth: .infinity)
@@ -344,7 +352,7 @@ struct DynamicRepControlsView: View {
                     
                 }
                 
-            }
+            }.background(Material.ultraThin)
             
         }
         
