@@ -41,14 +41,16 @@ class DynamicRepAttribute {
             }
         }
         
-        func killDynamicRep(plain_text: String?, userContentPage: String?) {
-            guard let endActivity = staticActivity else { return }
-            let endState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
-            
-            Task {
-                await endActivity.end(ActivityContent(state: endState, staleDate: nil), dismissalPolicy: .immediate)
-                print("activity is being successfully ended ❌ \(endActivity.id)")
-            }
+    func killDynamicRep(plain_text: String?, userContentPage: String?) {
+        guard let endActivity = staticActivity else { return }
+        let endState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
+        
+        Task {
+            await endActivity.end(ActivityContent(state: endState, staleDate: nil), dismissalPolicy: .immediate)
+            print("activity is being successfully ended ❌ \(endActivity.id)")
         }
+        print("end activity successfully ended on main thread")
+        
     }
+}
 

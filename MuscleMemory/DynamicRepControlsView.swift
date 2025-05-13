@@ -20,13 +20,13 @@ struct DynamicRepControlsView: View {
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
     
-    @State var drag: CGFloat = 0
+    @State var drag: CGFloat = -160
     @State var fullDrag: CGFloat = 0
     
     let stops: [CGFloat] = [-160, -70, 28, 151]
     let stopsOne: [CGFloat] = [-160, -13, 146]
     
-    @State var dragOne: CGFloat = 0
+    @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
     
     let timers = DynamicRepScheduler()
@@ -36,6 +36,14 @@ struct DynamicRepControlsView: View {
         self.activeTimerObjects = activeTimerObjects
     }
     
+    private var pageContentElements: [String] {
+        pageContent.compactMap { $0.userContentPage }
+    }
+    
+    private var joinStrings: String {
+        pageContentElements.joined()
+    }
+    
     func liveActivityTrigger() async {
         do {
             ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
@@ -43,24 +51,15 @@ struct DynamicRepControlsView: View {
         } catch {
             print("error fetching persisted page data")
         }
-        
-        var pageContentElements: [String] = []
-        for element in pageContent {
-            if let elements = element.userContentPage {
-                pageContentElements.append(elements)
-            } else {
-                print("elements could not be appended to non optional array")
-            }
-        }
-        
-        
-        let joinStrings = pageContentElements.joined()
         DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
-        
+    }
+    
+    func teardownTrigger() async {
+        DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
     }
     
     
-
+    
     var body: some View {
         VStack(spacing: 70) {
             
@@ -113,27 +112,31 @@ struct DynamicRepControlsView: View {
                         .gesture(
                             DragGesture()
                                 .onChanged { value in
-          
+                                    
                                     let proposed = fullDrag + value.translation.width
                                     let clamped = min(max(proposed, stops.first!), stops.last!)
                                     drag = clamped - fullDrag
                                 }
                                 .onEnded { _ in
-                 
+                                    
                                     let endPosition = fullDrag + drag
                                     let nearest = stops.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                     
-                             
+                                    
                                     withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
                                         fullDrag = nearest
                                         drag = 0
                                     }
                                     
                                     switch nearest {
-                                    case stops[0]: timers.stopTimer(storeTimer: timers.controlTimer.first!)
+                                    case stops[0]: break
                                         
-                                    case stops[1]: timers.startTimer(interval: 3600) {
-                                        Task { await liveActivityTrigger() }
+                                    case stops[1]: timers.startTimer(interval: 5.0) {   //change to 5.0 during testing, 3600.0 during prod
+                                        Task { await liveActivityTrigger()
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {    //change to 3 during testing, 15 sec during prod
+                                                Task { await teardownTrigger() }
+                                            }
+                                        }
                                     }
                                         
                                     case stops[2]: timers.startTimer(interval: 8280.0) {
@@ -146,7 +149,7 @@ struct DynamicRepControlsView: View {
                                     }
                                 })
                     
-                            
+                    
                     RoundedRectangle(cornerRadius: 50)
                         .frame(width: 370, height: 50)
                         .opacity(0.06)
@@ -219,23 +222,23 @@ struct DynamicRepControlsView: View {
                                 .gesture(
                                     DragGesture()
                                         .onChanged { value in
-                                  
+                                            
                                             let proposed = fullDragOne + value.translation.width
                                             let clamped = min(max(proposed, stopsOne.first!), stopsOne.last!)
                                             dragOne = clamped - fullDragOne
                                         }
                                         .onEnded { _ in
-                                 
+                                            
                                             let endPosition = fullDragOne + dragOne
                                             let nearest = stopsOne.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                             
-                                     
+                                            
                                             withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
                                                 fullDragOne = nearest
                                                 dragOne = 0
                                             }
                                         })
-                                    
+                            
                             
                             RoundedRectangle(cornerRadius: 50)
                                 .frame(width: 370, height: 50)
@@ -258,7 +261,7 @@ struct DynamicRepControlsView: View {
                         }
                         
                         .overlay {
-                         
+                            
                             HStack(spacing: 140) {
                                 Image(systemName: "multiply.circle").foregroundStyle(Color.white).offset(x: -10)
                                 Image(systemName: "timer").foregroundStyle(Color.white).offset(x: -23)
@@ -281,7 +284,7 @@ struct DynamicRepControlsView: View {
                                     .frame(width: 122, height: 35)
                                     .padding(.leading, 16)
                                     .opacity(0.06)
-                                   
+                                
                                 
                                     .overlay {
                                         HStack(spacing: 20) {
@@ -296,7 +299,7 @@ struct DynamicRepControlsView: View {
                                         }.padding(.leading, 15)
                                         
                                     }
-                                  
+                                
                                 
                                 Spacer()
                                 
@@ -307,7 +310,7 @@ struct DynamicRepControlsView: View {
                     }
                 }
                 Spacer()
-
+                
             }
             
             
