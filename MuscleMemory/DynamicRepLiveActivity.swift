@@ -9,25 +9,29 @@ import ActivityKit
 import WidgetKit
 import SwiftUI
 
+
 struct DynamicRepAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
+        
+        var plain_text: String?
+        var userContentPage: String?
+        
+        init(plain_text: String?, userContentPage: String?) {
+            self.plain_text = plain_text
+            self.userContentPage = userContentPage
+        }
+        
         // Dynamic stateful properties about your activity go here!
-
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var titleName: String?
-    var contentBody: String?
     
-    init(titleName: String?, contentBody: String?) {
-        self.titleName = titleName
-        self.contentBody = contentBody
-    }
+    // Fixed non-changing properties about your activity go here!
+    
+    
 }
 
 struct AppLogo: View {
     var body: some View {
-     
+        
         Image("appicon")
             .resizable()
             .scaledToFit()
@@ -40,43 +44,82 @@ struct DynamicRepLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
-                Spacer()
-                HStack {
             
-                               Text("from \(context.attributes.titleName ?? "no title")")     //TO-DO: populate content here
-                                   .fontWeight(.light)
-                                   .font(.system(size: 16))
-                                   .foregroundStyle(Color.gray)
-                                   .padding(.top, 45)
-                                   Spacer()
-                           }
-                            .frame(maxWidth: 500, maxHeight: 210)
-                            .padding(.top)
-                            .padding(.horizontal)
+            
+            VStack(alignment: .leading, spacing: 3) {
                 
-                
-                           //Text("\(context.attributes.contentBody ?? "no content")")   //TO-DO: populate content here
-                       }
-                       Spacer()
-                       .frame(height: 180)
-                       .activityBackgroundTint(Color.black)
-                       .activitySystemActionForegroundColor(Color.black)
-
-
-        } dynamicIsland: { context in
-            DynamicIsland {
-               
-                DynamicIslandExpandedRegion(.leading) {
-                   
-                    Text("from \(context.attributes.titleName ?? "no title")")
-                        .fontWeight(.light)
+                VStack(alignment: .leading) {
+                    Text("from: \(context.state.plain_text ?? "no title")")
+                        .fontWeight(.regular)
                         .font(.system(size: 16))
                         .foregroundStyle(Color.gray)
-                        .padding(.horizontal)
+                        .padding(.leading, 11)
+                        .padding(.top, 12)
+                    
+                    
+                    VStack(alignment: .leading) {
+                        if let content = context.state.userContentPage {
+                            Text("\n\(content)")
+                                .fontWeight(.semibold)
+                                .font(.system(size: 16))
+                                .lineSpacing(3)
+                                .lineLimit(7)
+                                .padding(.leading, 11)
+                        }
+                    }
+                    .padding(.trailing, 30)
                 }
+            }
+            
+            .padding(.bottom)
+            .frame(alignment: .topLeading)
+            .activityBackgroundTint(Color.black)
+            .activitySystemActionForegroundColor(Color.black)
+            
+            
+            
+            
+            
+            
+        } dynamicIsland: { context in
+            DynamicIsland {
+                DynamicIslandExpandedRegion(.leading) {
+                    
+                    HStack {
+                        Text("from:")
+                            .fontWeight(.regular)
+                            .font(.system(size: 16))
+                            .foregroundStyle(Color.gray)
+                            .padding(.top, 17.5)
+                            .padding(.leading, 10)
+                        Spacer()
+                    }
+                }
+                
+                DynamicIslandExpandedRegion(.center) {
+                    
+                    HStack {
+                        Text(context.state.plain_text ?? "--")
+                            .fontWeight(.regular)
+                            .font(.system(size: 16))
+                            .foregroundStyle(Color.gray)
+                        Spacer()
+                    }
+                    
+                    HStack(alignment: .top) {
+                        
+                        if let content = context.state.userContentPage {
+                            Text("\(content)")
+                                .fontWeight(.semibold)
+                                .font(.system(size: 16))
+                                .padding(.top, -5)
+                            
+                        }
+                    }
+                }
+                
                 DynamicIslandExpandedRegion(.trailing) {
-                   
+                    
                     VStack(alignment: .trailing) {
                         Circle()
                             .frame(width: 53, height: 50)
@@ -86,16 +129,16 @@ struct DynamicRepLiveActivity: Widget {
                             }
                         Spacer()
                     }
-                    
+                    .padding(.trailing, -4)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     
                     HStack(spacing: 250) {
-                       
+                        
                         Button(action: {}) {  //add functionality later
                             Image(systemName: "arrow.left")
                                 .foregroundStyle(Color.white)
-                                
+                            
                         }
                         .buttonStyle(PlainButtonStyle())
                         
@@ -107,14 +150,22 @@ struct DynamicRepLiveActivity: Widget {
                         .buttonStyle(PlainButtonStyle())
                     }
                     
+                    
                 }
             } compactLeading: {
                 ZStack {
                     AppLogo()
                 }
             } compactTrailing: {
-               
-                Text("")
+                
+                HStack {
+                    Text(context.state.plain_text ?? "--")
+                        .fontWeight(.regular)
+                        .foregroundStyle(Color.gray)
+                        
+                    Spacer()
+                }
+                
                 
             } minimal: {
                 Text("")
@@ -122,29 +173,30 @@ struct DynamicRepLiveActivity: Widget {
             .widgetURL(URL(string: "MuscleMemory.KimchiLabs.com"))
             .keylineTint(Color.white)
         }
+        
     }
 }
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
-        DynamicRepAttributes(titleName: "", contentBody: "")
-    
+        DynamicRepAttributes()
+        
     }
 }
 
 extension DynamicRepAttributes.ContentState {
     fileprivate static var titleName: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState()
-      
-     }
-     
-     fileprivate static var contentBody: DynamicRepAttributes.ContentState {
-         DynamicRepAttributes.ContentState()
-     }
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
+        
+    }
+    
+    fileprivate static var contentBody: DynamicRepAttributes.ContentState {
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
+    }
 }
 
 #Preview("Notification", as: .content, using: DynamicRepAttributes.preview) {
-   DynamicRepLiveActivity()
+    DynamicRepLiveActivity()
 } contentStates: {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody

@@ -17,14 +17,15 @@ struct ImportedNotes: View {
     
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
- 
+    
+    public static let timed = DynamicRepScheduler()
+    public init() {}
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
-   
-   
-
+    
+    
     var body: some View {
         
         NavigationView {
@@ -51,47 +52,35 @@ struct ImportedNotes: View {
                     Spacer()
                     Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
                         Image("mmProIcon")
-                            
+                        
                     }
                 }
                 .frame(maxWidth: 370)
                 .padding(.top, 5)
                 
-                     
+                
                 Spacer()
-                    Divider()
-                     
-                    .onAppear {
-                        Task {
-                            do {
-                                ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-                                try await ImportUserPage.shared.pageEndpoint()
-                            } catch {
-                                print("error fetching persisted page data")
-                            }
-                        }
-                    }
-        
+                Divider()
+                
+                   
+                
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
-                       
-                        let concatPage = (block.userContentPage ?? "").split(separator: "\n").map(String.init)
-                        ForEach(concatPage, id: \.self) { textField in
-                            Text(textField)
-                                .lineSpacing(-7)
-                                .listRowBackground(Color.mmBackground)
-                                .listRowSeparator(.hidden)
-                                
-                        }
-                       
+                        
+                        Text(block.userContentPage ?? "")
+                            .font(.system(size: 16)).lineSpacing(3)
+                        
+                            .listRowBackground(Color.mmBackground)
+                            .listRowSeparator(.hidden)
+                        
                     }
                     .listStyle(.plain)
                     Spacer()
                 }
                 .fontWeight(.medium)
-               
                 
-             
+                
+                
                 VStack {
                     Divider()
                         .padding()
@@ -120,12 +109,12 @@ struct ImportedNotes: View {
                 }
             }
             .background(Color.mmBackground)
-          }
-  
-       }
-     
+        }
+        
     }
     
+}
+
 
 
 

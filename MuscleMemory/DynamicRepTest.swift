@@ -13,12 +13,10 @@ import ActivityKit
 
 
 struct test: View {
-    
-    
     var body: some View {
         
         Button {
-            DynamicRepAttribute.staticAttribute.startDynamicRep(titleName: "", contentBody: "")
+            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: "", userContentPage: "" )
         } label: {
             Rectangle()
                 .fill(Color.blue)
@@ -26,7 +24,7 @@ struct test: View {
         }
         
         Button {
-            DynamicRepAttribute.staticAttribute.updateDynamicRep(titleName: "title", contentBody: "content")
+            DynamicRepAttribute.staticAttribute.updateDynamicRep(plain_text: "title",  userContentPage: "")
         } label: {
             Rectangle()
             .fill(Color.yellow)
@@ -34,7 +32,7 @@ struct test: View {
         }
         
         Button {
-            DynamicRepAttribute.staticAttribute.killDynamicRep(titleName: "updated title", contentBody: "updated content")
+            DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: "updated title",  userContentPage: "")
         } label: {
             Rectangle()
             .fill(Color.red)

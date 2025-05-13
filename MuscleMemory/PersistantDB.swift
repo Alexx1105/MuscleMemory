@@ -22,10 +22,12 @@ import SwiftUI
 @Model public class UserPageContent {                               //imported notion body 
     @Attribute public var userContentPage: String?
     @Attribute public var userPageId: String?
+    @Attribute public var rich_text: String?
     
-    public init(userContentPage: String? = nil, userPageId: String? = nil) {
+    public init(userContentPage: String? = nil, userPageId: String? = nil,  rich_text: String? = nil) {
         self.userContentPage = userContentPage
         self.userPageId = userPageId
+        self.rich_text = rich_text
     }
 }
 
@@ -40,11 +42,12 @@ import SwiftUI
         self.icon = icon
         self.plain_text = plain_text
         self.emoji = emoji
+
     }
 }
 
 
-//@Model public class AuthKeys {                                //TO-DO: store OAuth key here later
+//@Model public class AuthKeys {                                   //TO-DO: store OAuth key here later
 //    @Attribute(.unique) public var oauthPermanentKey: String!
 //    
 //    public init(oauthPermanentKey: String!) {

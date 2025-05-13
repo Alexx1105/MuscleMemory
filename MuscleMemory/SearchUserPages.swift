@@ -35,6 +35,7 @@ public struct NotionSearchRequest: Codable {    //add other properties (if neede
     }
     public struct TitleItem: Codable {
         public let plain_text: String?
+        
     }
 }
 
@@ -103,7 +104,7 @@ public class searchPages: ObservableObject {
             let text = getText?.title.first?.plain_text
             let emojis = title?.icon?.emoji
             let customType = title?.icon?.type
-           
+        
           
            
             DispatchQueue.main.async {
