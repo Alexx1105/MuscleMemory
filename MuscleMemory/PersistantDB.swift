@@ -19,7 +19,7 @@ import SwiftUI
     }
 }
 
-@Model public class UserPageContent {                               //imported notion body 
+@Model public class UserPageContent {                               //imported notion body
     @Attribute public var userContentPage: String?
     @Attribute public var userPageId: String?
     @Attribute public var rich_text: String?

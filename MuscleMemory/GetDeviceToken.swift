@@ -5,14 +5,13 @@
 //  Created by alex haidar on 2/16/25.
 
 //
-//CURRENT WIP not needed as of 2/27/2025
-//Delete this shi
+//CURRENT WIP not needed as of 2/27/2025 re-started 5/14/2025
+
 
 
 import Foundation
 import UIKit
 import UserNotifications
-
 
 
 @MainActor
@@ -34,7 +33,6 @@ class GetDeviceToken {
     private func sendDeviceTokenToServer(data: Data) {
         let convertTokenToString = data.map {String(format: "%02.2hhx", $0)}.joined()
         print("token was converted\(convertTokenToString)")
-        
         
     }
 }
