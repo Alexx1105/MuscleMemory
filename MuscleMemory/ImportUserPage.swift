@@ -129,16 +129,15 @@ class ImportUserPage: ObservableObject {
                
                 
                 for i in returnDecodedResults {
-                        for storeStrings in i.ExtractedFields {
-                            
-                            let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
-                            modelContextPage?.insert(storedPages)
-                            try modelContextPage?.save()
-                        }
-                    
+                    for storeStrings in i.ExtractedFields {
+                        
+                        let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
+                        modelContextPage?.insert(storedPages)
+                        
+                    }
                 }
-        
-                
+                try modelContextPage?.save()
+            
             } catch {
                 print("url session error:\(error)")
                 if let decodeBlocksError = error as? DecodingError {

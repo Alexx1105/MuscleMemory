@@ -3,23 +3,18 @@
 //  MuscleMemory
 //
 //  Created by alex haidar on 3/6/25.
-//CURRENT WIP
+//CURRENT WIP re-started 5/14/2025
 
 import Foundation
 import UserNotifications
-import ActivityKit
-import WidgetKit
-
 
 
 @MainActor
 public class LocalDynamicRepNotification: ObservableObject {
-    
-   public static let notificationContent = LocalDynamicRepNotification()
-    
+    public static let notificationContent = LocalDynamicRepNotification()
+
      let repeatEvent = UNTimeIntervalNotificationTrigger(timeInterval: 64 , repeats: false)
      let id = UUID().uuidString
-
      
      let pageNotes = searchPages.shared
      let notification = UNMutableNotificationContent()

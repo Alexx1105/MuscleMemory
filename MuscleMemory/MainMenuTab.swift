@@ -39,7 +39,7 @@ struct MainMenuTab: View {
                             .foregroundStyle(Color.white)
                             .opacity(0.5)
                         
-                        NavigationLink(destination: DynamicRepControlsView(activeTimerObjects: getTimer)) {
+                        NavigationLink(destination: DynamicRepControlsView()) {
                             Label("Live activities", systemImage: "clock.badge")
                         }
 

@@ -25,7 +25,16 @@ struct ImportedNotes: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    
+    func callEndpoint() async {
+        Task {
+            do {
+                ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
+                try await ImportUserPage.shared.pageEndpoint()
+            } catch {
+                print("error fetching persisted page data")
+            }
+        }
+    }
     var body: some View {
         
         NavigationView {
@@ -66,13 +75,13 @@ struct ImportedNotes: View {
                 
                 VStack {
                     List(pageContent, id: \.userPageId) { block in
-                        
+                
                         Text(block.userContentPage ?? "")
                             .font(.system(size: 16)).lineSpacing(3)
                         
                             .listRowBackground(Color.mmBackground)
                             .listRowSeparator(.hidden)
-                        
+                            
                     }
                     .listStyle(.plain)
                     Spacer()
@@ -80,37 +89,49 @@ struct ImportedNotes: View {
                 .fontWeight(.medium)
                 
                 
-                
                 VStack {
                     Divider()
                         .padding(.bottom, 10)
                     
-                    HStack {
+                    HStack(spacing: 30) {
                         
                         NavigationLink(destination: MainMenu()) {
                             Image("menuButton")
+                            
                         }
                         .frame(maxWidth: .infinity)
                         
                         
+                        
                         NavigationLink(destination: SettingsView()) {
-                            Image("settingsButton")
+                            Image(systemName: "gear")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(Color.white.opacity(0.8))
                             
                         }
                         .frame(maxWidth: .infinity)
                         
                         NavigationLink(destination: NotionImportPageView()) {
-                            Image("notionImportButton")
+                            Image(systemName: "plus.app")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(Color.white.opacity(0.8))
+                            
+                            
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.horizontal)
+                        
                     }
-                    .padding(.horizontal)
-                }
+                    
+                }.background(Material.ultraThin)
+                
             }
             .background(Color.mmBackground)
         }
-        
+        .task {await callEndpoint()
+        }
     }
     
 }

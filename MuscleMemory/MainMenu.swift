@@ -61,10 +61,13 @@ struct MainMenu: View {
             }.frame(maxWidth: .infinity, maxHeight: 50)
                 .opacity(showUserEmail.first?.personEmail != nil ? 1 : 0)
         
+   
             
             Spacer()
+        
             
             HStack {
+                
                 Text("Your notes from Notion:")
                     .fontWeight(.semibold)
                     .opacity(textOpacity)
