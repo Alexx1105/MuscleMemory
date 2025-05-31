@@ -24,6 +24,12 @@ fileprivate struct FrequencyOption: Identifiable {
     }
 }
 
+class ChunkedArray: ObservableObject {
+    static let chunkedArray = ChunkedArray()
+    @Published var blockArray: [String] = []
+    let blockLimit: Int = 100
+}
+                
 struct DynamicRepControlsView: View {
     
     @Environment(\.colorScheme) var colorScheme
@@ -56,6 +62,8 @@ struct DynamicRepControlsView: View {
         pageContentElements.joined()
     }
     
+
+  
     func liveActivityTrigger() async {
         do {
             ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
@@ -141,15 +149,15 @@ struct DynamicRepControlsView: View {
                                     
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
                                         let selectedOption = frequencyOptions[index]
-                                       
+                                        
                                         Task {
+                                            
                                             await liveActivityTrigger()
                                             print("option selected: \(selectedOption)")
+                                            
                                         }
                                     }
                                 })
-                    
-                    
                     
                     
                     RoundedRectangle(cornerRadius: 50)
@@ -351,9 +359,38 @@ struct DynamicRepControlsView: View {
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
         
+        	
+        .onAppear {
+            let chunked = ChunkedArray.chunkedArray
+            chunked.blockArray = joinStrings.breakUpArray(maxBytes: 4000 , length: chunked.blockLimit)
+        }
     }
-    
 }
+
+extension String {
+    func breakUpArray(maxBytes: Int, length: Int) -> [String] {
+        guard length > 0 && maxBytes > 0 else { return [] }
+        var indexStart = startIndex
+        var arrayChuncks: [String] = []
+        
+        while indexStart < endIndex {
+            let arrayIndex = index(indexStart, offsetBy: length, limitedBy: endIndex) ?? endIndex
+            arrayChuncks.append(String(self[indexStart..<arrayIndex]))
+            indexStart = arrayIndex
+            
+            while arrayChuncks.description.utf8.count > maxBytes {
+                arrayChuncks.removeLast()
+            }
+        }
+        
+        let chunkCount = arrayChuncks.description.utf8.count     //making sure string chunks dont exceed byte limit for DynamicIsland(MAX LIMIT: 4 096)
+        print("BYTES: \(chunkCount)")
+        print("array chuncked successfully: \(arrayChuncks)")
+        return arrayChuncks
+    }
+}
+
+
 
 #Preview {
     DynamicRepControlsView()

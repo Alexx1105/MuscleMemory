@@ -11,8 +11,8 @@ import SwiftUI
 
 
 struct DynamicRepAttributes: ActivityAttributes {
+  
     public struct ContentState: Codable, Hashable {
-        
         var plain_text: String?
         var userContentPage: String?
         
@@ -25,9 +25,9 @@ struct DynamicRepAttributes: ActivityAttributes {
     }
     
     // Fixed non-changing properties about your activity go here!
-    
-    
+
 }
+
 
 struct AppLogo: View {
     var body: some View {
@@ -113,7 +113,7 @@ struct DynamicRepLiveActivity: Widget {
                                 .fontWeight(.semibold)
                                 .font(.system(size: 16))
                                 .padding(.top, -5)
-                            
+                       
                         }
                     }
                 }
