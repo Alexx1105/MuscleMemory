@@ -30,7 +30,7 @@ class ChunkedArray: ObservableObject {
     let blockLimit: Int = 150
 }
 
-                
+
 struct DynamicRepControlsView: View {
     
     @Environment(\.colorScheme) var colorScheme
