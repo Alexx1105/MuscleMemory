@@ -8,7 +8,28 @@
 import SwiftUI
 import SwiftData
 
+fileprivate struct FrequencyOption: Identifiable {
+    var id: String { label }
+    let label: String
+    let timeInSeconds: Int
+    
+    init(label: String, timeInSeconds: Int) {
+        self.label = label
+        self.timeInSeconds = timeInSeconds
+    }
+    
+    init(label: String, timeInHours: Double) {
+        self.label = label
+        self.timeInSeconds = Int(timeInHours * 3600)
+    }
+}
 
+class ChunkedArray: ObservableObject {
+    static let chunkedArray = ChunkedArray()
+    @Published var blockArray: [String] = []
+    let blockLimit: Int = 100
+}
+                
 struct DynamicRepControlsView: View {
     
     @Environment(\.colorScheme) var colorScheme
@@ -23,18 +44,15 @@ struct DynamicRepControlsView: View {
     @State var drag: CGFloat = -160
     @State var fullDrag: CGFloat = 0
     
-    let stops: [CGFloat] = [-160, -70, 28, 151]
-    let stopsOne: [CGFloat] = [-160, -13, 146]
+    let frequencyStopsPositions: [CGFloat] = [-160, -70, 28, 151]
+    let autoDisableStopsPositions: [CGFloat] = [-160, -13, 146]
+    fileprivate let frequencyOptions: [FrequencyOption] = [.init(label: "Off", timeInHours: 0),
+                                                           .init(label: "1hr", timeInSeconds: 2),
+                                                           .init(label: "2.3hrs", timeInHours: 2.3),
+                                                           .init(label: "3.4hrs", timeInHours: 3.4)]
     
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
-    
-    let timers = DynamicRepScheduler()
-    
-    let activeTimerObjects: [Timer]
-    init(activeTimerObjects: [Timer] = []) {
-        self.activeTimerObjects = activeTimerObjects
-    }
     
     private var pageContentElements: [String] {
         pageContent.compactMap { $0.userContentPage }
@@ -44,6 +62,8 @@ struct DynamicRepControlsView: View {
         pageContentElements.joined()
     }
     
+
+  
     func liveActivityTrigger() async {
         do {
             ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
@@ -57,7 +77,6 @@ struct DynamicRepControlsView: View {
     func teardownTrigger() async {
         DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
     }
-    
     
     
     var body: some View {
@@ -114,13 +133,13 @@ struct DynamicRepControlsView: View {
                                 .onChanged { value in
                                     
                                     let proposed = fullDrag + value.translation.width
-                                    let clamped = min(max(proposed, stops.first!), stops.last!)
+                                    let clamped = min(max(proposed, frequencyStopsPositions.first!), frequencyStopsPositions.last!)
                                     drag = clamped - fullDrag
                                 }
                                 .onEnded { _ in
                                     
                                     let endPosition = fullDrag + drag
-                                    let nearest = stops.min { abs($0 - endPosition) < abs($1 - endPosition) }!
+                                    let nearest = frequencyStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                     
                                     
                                     withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
@@ -128,24 +147,15 @@ struct DynamicRepControlsView: View {
                                         drag = 0
                                     }
                                     
-                                    switch nearest {
-                                    case stops[0]: break
+                                    if let index = frequencyStopsPositions.firstIndex(of: nearest) {
+                                        let selectedOption = frequencyOptions[index]
                                         
-                                    case stops[1]: timers.startTimer(interval: 5.0) {   //change to 5.0 during testing, 3600.0 during prod
-                                        Task { await liveActivityTrigger()
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {    //change to 3 during testing, 15 sec during prod
-                                                Task { await teardownTrigger() }
-                                            }
+                                        Task {
+                                            
+                                            await liveActivityTrigger()
+                                            print("option selected: \(selectedOption)")
+                                            
                                         }
-                                    }
-                                        
-                                    case stops[2]: timers.startTimer(interval: 8280.0) {
-                                        Task { await liveActivityTrigger() }
-                                    }
-                                    case stops[3]: timers.startTimer(interval: 12240.0) {
-                                        Task { await liveActivityTrigger() }
-                                    }
-                                    default: break
                                     }
                                 })
                     
@@ -154,7 +164,7 @@ struct DynamicRepControlsView: View {
                         .frame(width: 370, height: 50)
                         .opacity(0.06)
                         .padding(.top, 5)
-                  
+                    
                 }
                 
                 .overlay {
@@ -169,22 +179,11 @@ struct DynamicRepControlsView: View {
                 
                 
                 HStack(alignment: .top, spacing: 65) {
-                    Text("Off")
-                        .fontWeight(.semibold)
-                        .opacity(textOpacity)
-                    
-                    Text("1hr")
-                        .fontWeight(.semibold)
-                        .opacity(textOpacity)
-                    
-                    Text("2.3hrs")
-                        .fontWeight(.semibold)
-                        .opacity(textOpacity)
-                    
-                    Text("3.4hrs")
-                        .fontWeight(.semibold)
-                        .opacity(textOpacity)
-                    
+                    ForEach(frequencyOptions) { frequencyOption in
+                        Text(frequencyOption.label)
+                            .fontWeight(.semibold)
+                            .opacity(textOpacity)
+                    }
                 }
             }
             
@@ -225,13 +224,13 @@ struct DynamicRepControlsView: View {
                                         .onChanged { value in
                                             
                                             let proposed = fullDragOne + value.translation.width
-                                            let clamped = min(max(proposed, stopsOne.first!), stopsOne.last!)
+                                            let clamped = min(max(proposed, autoDisableStopsPositions.first!), autoDisableStopsPositions.last!)
                                             dragOne = clamped - fullDragOne
                                         }
                                         .onEnded { _ in
                                             
                                             let endPosition = fullDragOne + dragOne
-                                            let nearest = stopsOne.min { abs($0 - endPosition) < abs($1 - endPosition) }!
+                                            let nearest = autoDisableStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                             
                                             
                                             withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
@@ -344,7 +343,7 @@ struct DynamicRepControlsView: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                             .foregroundStyle(Color.white.opacity(0.8))
-             
+                        
                         
                     }
                     .frame(maxWidth: .infinity)
@@ -359,9 +358,39 @@ struct DynamicRepControlsView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
+        
+        	
+        .onAppear {
+            let chunked = ChunkedArray.chunkedArray
+            chunked.blockArray = joinStrings.breakUpArray(maxBytes: 4000 , length: chunked.blockLimit)
+        }
     }
-    
 }
+
+extension String {
+    func breakUpArray(maxBytes: Int, length: Int) -> [String] {
+        guard length > 0 && maxBytes > 0 else { return [] }
+        var indexStart = startIndex
+        var arrayChuncks: [String] = []
+        
+        while indexStart < endIndex {
+            let arrayIndex = index(indexStart, offsetBy: length, limitedBy: endIndex) ?? endIndex
+            arrayChuncks.append(String(self[indexStart..<arrayIndex]))
+            indexStart = arrayIndex
+            
+            while arrayChuncks.description.utf8.count > maxBytes {
+                arrayChuncks.removeLast()
+            }
+        }
+        
+        let chunkCount = arrayChuncks.description.utf8.count     //making sure string chunks dont exceed byte limit for DynamicIsland(MAX LIMIT: 4 096)
+        print("BYTES: \(chunkCount)")
+        print("array chuncked successfully: \(arrayChuncks)")
+        return arrayChuncks
+    }
+}
+
+
 
 #Preview {
     DynamicRepControlsView()
