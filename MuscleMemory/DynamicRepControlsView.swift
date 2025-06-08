@@ -27,8 +27,9 @@ fileprivate struct FrequencyOption: Identifiable {
 class ChunkedArray: ObservableObject {
     static let chunkedArray = ChunkedArray()
     @Published var blockArray: [String] = []
-    let blockLimit: Int = 100
+    let blockLimit: Int = 150
 }
+
                 
 struct DynamicRepControlsView: View {
     
@@ -359,34 +360,44 @@ struct DynamicRepControlsView: View {
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
         
-        	
+       
         .onAppear {
-            let chunked = ChunkedArray.chunkedArray
-            chunked.blockArray = joinStrings.breakUpArray(maxBytes: 4000 , length: chunked.blockLimit)
+            let chunked = ChunkedArray.chunkedArray.blockLimit
+            let breakUpArray = joinStrings.breakUpArray(maxBytes: 4000 , length: chunked)
+            print("CHUNKED BLOCKS: \(breakUpArray.count)") //TO-DO: USE TO CONTROL BLOCK LINES AMOUNT
+             
+            for (i,chunking) in breakUpArray.enumerated() {
+                print([i], chunking)
+            }
         }
     }
 }
+
 
 extension String {
     func breakUpArray(maxBytes: Int, length: Int) -> [String] {
         guard length > 0 && maxBytes > 0 else { return [] }
         var indexStart = startIndex
-        var arrayChuncks: [String] = []
+        var arrayChunks: [String] = []
         
         while indexStart < endIndex {
             let arrayIndex = index(indexStart, offsetBy: length, limitedBy: endIndex) ?? endIndex
-            arrayChuncks.append(String(self[indexStart..<arrayIndex]))
-            indexStart = arrayIndex
+            var localArrayChunk = String(self[indexStart..<arrayIndex])
             
-            while arrayChuncks.description.utf8.count > maxBytes {
-                arrayChuncks.removeLast()
+            localArrayChunk = localArrayChunk.trimmingCharacters(in: .whitespacesAndNewlines)
+            indexStart = arrayIndex
+
+            while localArrayChunk.utf8.count > maxBytes {
+                localArrayChunk.removeLast()
+
+            }
+            
+            if !localArrayChunk.isEmpty {
+                arrayChunks.append(localArrayChunk)
+                //print(localArrayChunk)
             }
         }
-        
-        let chunkCount = arrayChuncks.description.utf8.count     //making sure string chunks dont exceed byte limit for DynamicIsland(MAX LIMIT: 4 096)
-        print("BYTES: \(chunkCount)")
-        print("array chuncked successfully: \(arrayChuncks)")
-        return arrayChuncks
+        return arrayChunks
     }
 }
 

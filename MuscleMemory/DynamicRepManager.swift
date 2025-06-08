@@ -26,16 +26,19 @@ class DynamicRepAttribute {
     let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
                                           supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
     
-    func startDynamicRep(plain_text: String? , userContentPage: String?) {   //we are defining attributes for DynamicRep content here aswell as debug related tasks for dynamic island
+    func startDynamicRep(plain_text: String? , userContentPage: String?) {
         let arrayChunked = ChunkedArray.chunkedArray.blockLimit
-        let firstChunk = (plain_text ?? "").breakUpArray(maxBytes: 4000, length: arrayChunked)
+        let firstChunk = (userContentPage ?? "").breakUpArray(maxBytes: 4000, length: arrayChunked)
+        let titleChunk = (plain_text ?? "").breakUpArray(maxBytes: 4000, length: arrayChunked)
+        let chunkTitle = titleChunk
+        let chunkTitleFirst = chunkTitle.first ?? ""
         let chunk = firstChunk
         let chunkFirst = chunk.first ?? ""
         if ActivityAuthorizationInfo().areActivitiesEnabled {
         
             let activityAttributes = DynamicRepAttributes()
-            let initialState = DynamicRepAttributes.ContentState(plain_text: chunkFirst, userContentPage: chunkFirst)
- 
+            let initialState = DynamicRepAttributes.ContentState(plain_text: chunkTitleFirst, userContentPage: chunkFirst)
+             print("PLAIN TEXT: \(titleChunk)")
             do {
                 let start = try Activity<DynamicRepAttributes>.request(attributes: activityAttributes, content: .init(state: initialState, staleDate: nil), pushType: .token)
                 print("activity started: \(start.id)")
@@ -51,7 +54,7 @@ class DynamicRepAttribute {
                           
                             let formatTimeStamp = TimeStamps(token: formatPushToken, created_at: Date(), chunks: chunk)
                             let sendToken = try? await supabaseDBClient.from("push_tokens").insert([formatTimeStamp]).select("token").select("created_at").select("chunks").execute()
-                            
+                        
                             Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")       //wrapped in String describing: because .execute() doesn't work with CustomStringConvertible
                             Logger().log("TIME STAMP: \(String(describing:(formatTimeStamp)))")
                         }
