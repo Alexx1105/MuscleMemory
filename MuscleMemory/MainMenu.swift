@@ -148,6 +148,15 @@ struct MainMenu: View {
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
         
+        .task {
+            let pushTokenNotifications = UNUserNotificationCenter.current()                //TO-DO: move later
+            do {
+                try await pushTokenNotifications.requestAuthorization(options: [.alert, .sound, .badge])
+            } catch {
+                print("user could not register: \(error)")
+            }
+        }
+        
     }
 }
 

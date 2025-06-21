@@ -16,7 +16,7 @@ struct test: View {
     var body: some View {
         
         Button {
-            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: "", userContentPage: "" )
+            DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: "", userContentPage: [])
         } label: {
             Rectangle()
                 .fill(Color.blue)
@@ -24,7 +24,7 @@ struct test: View {
         }
         
         Button {
-            DynamicRepAttribute.staticAttribute.updateDynamicRep(plain_text: "title",  userContentPage: "")
+            DynamicRepAttribute.staticAttribute.updateDynamicRep(plain_text: "title",  userContentPage: [])
         } label: {
             Rectangle()
             .fill(Color.yellow)
@@ -32,7 +32,7 @@ struct test: View {
         }
         
         Button {
-            DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: "updated title",  userContentPage: "")
+            DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: "updated title",  userContentPage: [])
         } label: {
             Rectangle()
             .fill(Color.red)

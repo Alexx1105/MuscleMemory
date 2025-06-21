@@ -1,4 +1,4 @@
-//
+    //
 //  ImportUserPage.swift
 //  MuscleMemory
 //
@@ -8,6 +8,10 @@
 
 import Foundation
 import SwiftData
+import Supabase
+import OSLog
+import NotificationCenter
+import ActivityKit
 
 
 struct MainBlockBody: Codable, Identifiable {
@@ -39,9 +43,18 @@ struct MainBlockBody: Codable, Identifiable {
     }
 }
 
+let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
+                                      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
+
 
 @MainActor
 class ImportUserPage: ObservableObject {
+    
+    struct TimeStamps: Encodable {
+        let token: String
+        let created_at: Date
+    
+    }
     
     public static let shared = ImportUserPage()
     @Published var mainBlockBody: [MainBlockBody.Block] = []
@@ -51,7 +64,7 @@ class ImportUserPage: ObservableObject {
     public func modelContextPagesStored(pagesContext: ModelContext?) {
         self.modelContextPage = pagesContext
     }
-    
+    var storeStrings: String?
     var userContentPage: String?
     var userPageId: String?
     
@@ -127,16 +140,22 @@ class ImportUserPage: ObservableObject {
                 }
         
                
-                
+            do {
                 for i in returnDecodedResults {
                     for storeStrings in i.ExtractedFields {
                         
                         let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
                         modelContextPage?.insert(storedPages)
+                        print("SEND THIS TO SUPABASE: \(storeStrings)")
                         
+                    
+                        let sendPage = try? await supabaseDBClient.from("push_tokens").insert([storeStrings]).select("page_data").execute()
+                        Logger().log("page data sent to supabase: \(String(describing:(sendPage)))")
+            
                     }
                 }
                 try modelContextPage?.save()
+                
             
             } catch {
                 print("url session error:\(error)")
@@ -144,6 +163,25 @@ class ImportUserPage: ObservableObject {
                     print("error in decoding blocks\(decodeBlocksError)")
                 }
             }
+          
+                
+                Task {
+                    for await token in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
+                        let formattedTokenString = token.map {String(format: "%02x", $0)}.joined()
+                        Logger().log("new push token created: \(token)")
+                        
+                        let formatTimeStamp = TimeStamps(token: formattedTokenString, created_at: Date())
+                        let sendToken = try? await supabaseDBClient.from("push_tokens").insert([formatTimeStamp]).select("token").select("created_at").execute()
+                        
+                        Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
+                        Logger().log("TIME STAMP: \(String(describing:(formatTimeStamp)))")
+                    }
+                }
+            } catch {
+                print("page data did not send to supabase: \(error)")
+        }
+        
+        
         }
     }
 

@@ -24,12 +24,6 @@ fileprivate struct FrequencyOption: Identifiable {
     }
 }
 
-class ChunkedArray: ObservableObject {
-    static let chunkedArray = ChunkedArray()
-    @Published var blockArray: [String] = []
-    let blockLimit: Int = 150
-}
-
 
 struct DynamicRepControlsView: View {
     
@@ -59,8 +53,8 @@ struct DynamicRepControlsView: View {
         pageContent.compactMap { $0.userContentPage }
     }
     
-    private var joinStrings: String {
-        pageContentElements.joined()
+    private var joinStrings: [String] {
+        pageContentElements.compactMap { $0 }
     }
     
 
@@ -361,45 +355,9 @@ struct DynamicRepControlsView: View {
         .navigationBarBackButtonHidden()
         
        
-        .onAppear {
-            let chunked = ChunkedArray.chunkedArray.blockLimit
-            let breakUpArray = joinStrings.breakUpArray(maxBytes: 4000 , length: chunked)
-            print("CHUNKED BLOCKS: \(breakUpArray.count)") //TO-DO: USE TO CONTROL BLOCK LINES AMOUNT
-             
-            for (i,chunking) in breakUpArray.enumerated() {
-                print([i], chunking)
+       
             }
         }
-    }
-}
-
-
-extension String {
-    func breakUpArray(maxBytes: Int, length: Int) -> [String] {
-        guard length > 0 && maxBytes > 0 else { return [] }
-        var indexStart = startIndex
-        var arrayChunks: [String] = []
-        
-        while indexStart < endIndex {
-            let arrayIndex = index(indexStart, offsetBy: length, limitedBy: endIndex) ?? endIndex
-            var localArrayChunk = String(self[indexStart..<arrayIndex])
-            
-            localArrayChunk = localArrayChunk.trimmingCharacters(in: .whitespacesAndNewlines)
-            indexStart = arrayIndex
-
-            while localArrayChunk.utf8.count > maxBytes {
-                localArrayChunk.removeLast()
-
-            }
-            
-            if !localArrayChunk.isEmpty {
-                arrayChunks.append(localArrayChunk)
-                //print(localArrayChunk)
-            }
-        }
-        return arrayChunks
-    }
-}
 
 
 
