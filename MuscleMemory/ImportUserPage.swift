@@ -10,7 +10,6 @@ import Foundation
 import SwiftData
 import Supabase
 import OSLog
-import NotificationCenter
 import ActivityKit
 
 
@@ -53,6 +52,7 @@ class ImportUserPage: ObservableObject {
     struct TimeStamps: Encodable {
         let token: String
         let created_at: Date
+        let page_data: String
     
     }
     
@@ -139,49 +139,43 @@ class ImportUserPage: ObservableObject {
                     self.mainBlockBody = returnDecodedResults
                 }
         
-               
-            do {
-                for i in returnDecodedResults {
-                    for storeStrings in i.ExtractedFields {
-                        
-                        let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
-                        modelContextPage?.insert(storedPages)
-                        print("SEND THIS TO SUPABASE: \(storeStrings)")
-                        
+                
+                do {
+                    for i in returnDecodedResults {
+                        for storeStrings in i.ExtractedFields {
+                            
+                            let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
+                            modelContextPage?.insert(storedPages)
+                            print("SEND THIS TO SUPABASE: \(storeStrings)")
+                            
+                            Task {
+                                for await token in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
+                                    let formattedTokenString = token.map {String(format: "%02x", $0)}.joined()
+                                    Logger().log("new push token created: \(token)")
+                                    
+                                    let formatTimeStamp = TimeStamps(token: formattedTokenString, created_at: Date(), page_data: storeStrings)
+                                    let sendToken = try? await supabaseDBClient.from("push_tokens").insert([formatTimeStamp]).select("token").select("created_at").select("page_data").execute()
+                                    
+                                    Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
+                                    Logger().log("TIME STAMP: \(String(describing:(formatTimeStamp)))")
+                                }
+                            }
+                        }
+                    }
+                    try modelContextPage?.save()
                     
-                        let sendPage = try? await supabaseDBClient.from("push_tokens").insert([storeStrings]).select("page_data").execute()
-                        Logger().log("page data sent to supabase: \(String(describing:(sendPage)))")
-            
+                } catch {
+                    print("url session error:\(error)")
+                    if let decodeBlocksError = error as? DecodingError {
+                        print("error in decoding blocks\(decodeBlocksError)")
                     }
                 }
-                try modelContextPage?.save()
                 
-            
-            } catch {
-                print("url session error:\(error)")
-                if let decodeBlocksError = error as? DecodingError {
-                    print("error in decoding blocks\(decodeBlocksError)")
-                }
-            }
-          
-                
-                Task {
-                    for await token in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
-                        let formattedTokenString = token.map {String(format: "%02x", $0)}.joined()
-                        Logger().log("new push token created: \(token)")
-                        
-                        let formatTimeStamp = TimeStamps(token: formattedTokenString, created_at: Date())
-                        let sendToken = try? await supabaseDBClient.from("push_tokens").insert([formatTimeStamp]).select("token").select("created_at").execute()
-                        
-                        Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                        Logger().log("TIME STAMP: \(String(describing:(formatTimeStamp)))")
-                    }
-                }
             } catch {
                 print("page data did not send to supabase: \(error)")
-        }
+            }
         
         
-        }
     }
+}
 

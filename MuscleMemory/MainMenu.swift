@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import SwiftData
+import NotificationCenter
 
 
 @MainActor
@@ -149,7 +150,7 @@ struct MainMenu: View {
         .navigationBarBackButtonHidden()
         
         .task {
-            let pushTokenNotifications = UNUserNotificationCenter.current()                //TO-DO: move later
+            let pushTokenNotifications = UNUserNotificationCenter.current()             
             do {
                 try await pushTokenNotifications.requestAuthorization(options: [.alert, .sound, .badge])
             } catch {
