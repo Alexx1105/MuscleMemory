@@ -14,6 +14,15 @@ import Supabase
 @MainActor
 class DynamicRepAttribute {
     
+//    struct TimeStamps: Encodable {
+//        let created_at: Date
+//        let offset_date: Date
+//    }
+    
+    let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
+                                          supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
+   
+
     static let staticAttribute = DynamicRepAttribute()
     var staticActivity: Activity<DynamicRepAttributes>?
     
@@ -27,7 +36,6 @@ class DynamicRepAttribute {
             let activityAttributes = DynamicRepAttributes()
             let initialState = DynamicRepAttributes.ContentState(plain_text: chunkTitleFirst, userContentPage: userContentPage)
       
-          
             do {
                 let start = try Activity<DynamicRepAttributes>.request(attributes: activityAttributes, content: .init(state: initialState, staleDate: nil), pushType: .token)
                 print("activity started: \(start.id)")
@@ -41,7 +49,8 @@ class DynamicRepAttribute {
     func updateDynamicRep(plain_text: String?, userContentPage: [String?]) {
         guard let updateActivity = staticActivity else { return }
         let updatedState = DynamicRepAttributes.ContentState(plain_text: plain_text, userContentPage: userContentPage)
-        
+
+
         Task {
             await updateActivity.update(ActivityContent(state: updatedState, staleDate: nil))
             print("activity is being successfully updated :D\(updateActivity.id)")

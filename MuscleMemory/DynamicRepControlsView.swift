@@ -7,23 +7,28 @@
 
 import SwiftUI
 import SwiftData
+import Supabase
+import OSLog
+
 
 fileprivate struct FrequencyOption: Identifiable {
     var id: String { label }
     let label: String
-    let timeInSeconds: Int
+    let interval: DateComponents
     
-    init(label: String, timeInSeconds: Int) {
+    init(label: String, interval: DateComponents) {
         self.label = label
-        self.timeInSeconds = timeInSeconds
-    }
-    
-    init(label: String, timeInHours: Double) {
-        self.label = label
-        self.timeInSeconds = Int(timeInHours * 3600)
+        self.interval = interval
     }
 }
 
+struct QueryIDs: Codable {
+    let id: Int
+}
+
+struct Offset: Codable {
+    let offset_date: Date
+}
 
 struct DynamicRepControlsView: View {
     
@@ -41,10 +46,11 @@ struct DynamicRepControlsView: View {
     
     let frequencyStopsPositions: [CGFloat] = [-160, -70, 28, 151]
     let autoDisableStopsPositions: [CGFloat] = [-160, -13, 146]
-    fileprivate let frequencyOptions: [FrequencyOption] = [.init(label: "Off", timeInHours: 0),
-                                                           .init(label: "1hr", timeInSeconds: 2),
-                                                           .init(label: "2.3hrs", timeInHours: 2.3),
-                                                           .init(label: "3.4hrs", timeInHours: 3.4)]
+    fileprivate let frequencyOptions: [FrequencyOption] = [.init(label: "Off", interval: DateComponents(minute: 1)),
+                                                           .init(label: "1hr", interval: DateComponents(minute: 60)),
+                                                           .init(label: "2.5hrs", interval: DateComponents(hour: 2, minute: 30)),
+                                                           .init(label: "3.4hrs", interval: DateComponents(hour: 3, minute: 40))]
+
     
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
@@ -104,8 +110,7 @@ struct DynamicRepControlsView: View {
                     Text("Frequency")
                         .fontWeight(.semibold)
                         .opacity(textOpacity)
-                    
-                    Spacer()
+                        Spacer()
                 }
                 .padding(.leading, 15)
                 
@@ -144,26 +149,45 @@ struct DynamicRepControlsView: View {
                                     
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
                                         let selectedOption = frequencyOptions[index]
-                                        
-                                        Task {
+                                        let now = Date()
+                                        if let computedOffset = Calendar.current.date(byAdding: selectedOption.interval, to: now) {
+                                        let iso = computedOffset.ISO8601Format()
                                             
-                                            await liveActivityTrigger()
-                                            print("option selected: \(selectedOption)")
-                                            
+                                            Task {
+                                                do {
+                                                    let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
+                                                    let result = selectQuery.value
+                                                    let queryID = result.map(\.id)
+                                                    print("ID HERE: \(queryID)")
+                                                    
+                                                    
+                                                    do {
+                                                       
+                                                        let send: PostgrestResponse<[Offset]> = try await supabaseDBClient.from("push_tokens").update(["offset_date" : iso]).eq("id", value: queryID).select("id, offset_date").execute()
+                                                            print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
+                                                
+                                                    } catch {
+                                                        print("failed to send offset date to supabase ❗️: \(error)")
+                                                        
+                                                    }
+                                                } catch {
+                                                    print("failed to query id's from supabase ❌: \(error)")
+                                                }
+                                                
+                                                await liveActivityTrigger()
+                                                print("option selected: \(selectedOption)")
+                                            }
                                         }
                                     }
                                 })
-                    
                     
                     RoundedRectangle(cornerRadius: 50)
                         .frame(width: 370, height: 50)
                         .opacity(0.06)
                         .padding(.top, 5)
-                    
                 }
                 
                 .overlay {
-                    
                     HStack(spacing: 80) {
                         Image(systemName: "multiply.circle").foregroundStyle(Color.white).offset(x: -10)
                         Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.white).offset(x: -20)
@@ -171,7 +195,6 @@ struct DynamicRepControlsView: View {
                         Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.white)
                     }.offset(y: 3)
                 }
-                
                 
                 HStack(alignment: .top, spacing: 65) {
                     ForEach(frequencyOptions) { frequencyOption in
@@ -200,14 +223,10 @@ struct DynamicRepControlsView: View {
                         .fontWeight(.medium)
                         .opacity(0.25)
                         .padding(.leading, 1)
-                    
                 }
                 
-                
                 ZStack {
-                    
                     VStack {
-                        
                         ZStack {
                             
                             Circle()
@@ -244,7 +263,6 @@ struct DynamicRepControlsView: View {
                                 .fontWeight(.semibold)
                                 .opacity(textOpacity)
                             
-                            
                             Text("24hrs")
                                 .fontWeight(.semibold)
                                 .opacity(textOpacity)
@@ -262,7 +280,7 @@ struct DynamicRepControlsView: View {
                                 Image(systemName: "timer").foregroundStyle(Color.white).offset(x: -23)
                                 Image(systemName: "timer").foregroundStyle(Color.white).offset(x: -23)
                                 
-                            }.offset(x: 9 , y: -41)
+                            }.offset(x: 9, y: -41)
                         }
                         
                         Spacer()
@@ -354,11 +372,8 @@ struct DynamicRepControlsView: View {
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
         
-       
-       
             }
         }
-
 
 
 #Preview {

@@ -42,19 +42,31 @@ struct MainBlockBody: Codable, Identifiable {
     }
 }
 
+
+public struct PushToSupabase: Encodable {
+    var token: String
+    var page_data: String
+    var page_id: String
+}
+
+private var iSOEncode: JSONEncoder {
+    let encode = JSONEncoder()
+    encode.dateEncodingStrategy = .iso8601
+    return encode
+}
+
+private var iSODecode: JSONDecoder {
+    let decode = JSONDecoder()
+    decode.dateDecodingStrategy = .iso8601
+    return decode
+}
+
 let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
-                                      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
+                                      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ", options: SupabaseClientOptions(db: .init(schema: "public", encoder: iSOEncode, decoder: iSODecode)))
 
 
 @MainActor
 class ImportUserPage: ObservableObject {
-    
-    struct TimeStamps: Encodable {
-        let token: String
-        let created_at: Date
-        let page_data: String
-    
-    }
     
     public static let shared = ImportUserPage()
     @Published var mainBlockBody: [MainBlockBody.Block] = []
@@ -73,9 +85,7 @@ class ImportUserPage: ObservableObject {
         let pagesEndpoint = "https://api.notion.com/v1/blocks/"
         let append = pagesEndpoint + "\(pageID)/children"
         
-        
-        appendedID = append                                //assign before being compared so it is not nil by default
-        
+        appendedID = append                             //assign before being compared so it is not nil by default
         if appendedID == append {                        
             print("page ID was appended")
         } else {
@@ -88,7 +98,6 @@ class ImportUserPage: ObservableObject {
         
         let addURL = URL(string: appendedID ?? "appendedID could not be converted back into a URL (nill)")
       
-       
         guard let url = addURL else { return }
             var request = URLRequest(url: url)
             
@@ -127,19 +136,16 @@ class ImportUserPage: ObservableObject {
                         for text in richText {
                             if let content = text.text?.content {
                                 extractedFields.append(content)
-                                
                             }
                         }
                     }
                 returnDecodedResults[i].ExtractedFields = extractedFields
               }
             
-                
                 DispatchQueue.main.async {
                     self.mainBlockBody = returnDecodedResults
                 }
         
-                
                 do {
                     for i in returnDecodedResults {
                         for storeStrings in i.ExtractedFields {
@@ -153,11 +159,15 @@ class ImportUserPage: ObservableObject {
                                     let formattedTokenString = token.map {String(format: "%02x", $0)}.joined()
                                     Logger().log("new push token created: \(token)")
                                     
-                                    let formatTimeStamp = TimeStamps(token: formattedTokenString, created_at: Date(), page_data: storeStrings)
-                                    let sendToken = try? await supabaseDBClient.from("push_tokens").insert([formatTimeStamp]).select("token").select("created_at").select("page_data").execute()
+                                    let pageIDString = i.id
+                               
+                                    print("PAGE ID HERE: \(pageIDString)")
+                                    let pushAndPageData = PushToSupabase(token: formattedTokenString, page_data: storeStrings, page_id: pageIDString)
+                                    let sendToken = try await supabaseDBClient.from("push_tokens").insert([pushAndPageData]).select("token, page_data").execute()
+                                    let sendID = try await supabaseDBClient.from("push_tokens").upsert([pushAndPageData]).select("page_id").execute()
                                     
+                                    Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
                                     Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                                    Logger().log("TIME STAMP: \(String(describing:(formatTimeStamp)))")
                                 }
                             }
                         }
