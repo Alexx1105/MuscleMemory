@@ -49,20 +49,9 @@ public struct PushToSupabase: Encodable {
     var page_id: String
 }
 
-private var iSOEncode: JSONEncoder {
-    let encode = JSONEncoder()
-    encode.dateEncodingStrategy = .iso8601
-    return encode
-}
-
-private var iSODecode: JSONDecoder {
-    let decode = JSONDecoder()
-    decode.dateDecodingStrategy = .iso8601
-    return decode
-}
 
 let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
-                                      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ", options: SupabaseClientOptions(db: .init(schema: "public", encoder: iSOEncode, decoder: iSODecode)))
+                                      supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
 
 
 @MainActor

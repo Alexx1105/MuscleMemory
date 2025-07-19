@@ -151,7 +151,6 @@ struct DynamicRepControlsView: View {
                                         let selectedOption = frequencyOptions[index]
                                         let now = Date()
                                         if let computedOffset = Calendar.current.date(byAdding: selectedOption.interval, to: now) {
-                                        let iso = computedOffset.ISO8601Format()
                                             
                                             Task {
                                                 do {
@@ -160,15 +159,13 @@ struct DynamicRepControlsView: View {
                                                     let queryID = result.map(\.id)
                                                     print("ID HERE: \(queryID)")
                                                     
-                                                    
-                                                    do {
-                                                       
-                                                        let send: PostgrestResponse<[Offset]> = try await supabaseDBClient.from("push_tokens").update(["offset_date" : iso]).eq("id", value: queryID).select("id, offset_date").execute()
-                                                            print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
                                                 
+                                                    do {
+                                                        let send = try await supabaseDBClient.from("push_tokens").update(["offset_date" : computedOffset]).in("id", values: queryID).execute()
+                                                        print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
+                                                        
                                                     } catch {
                                                         print("failed to send offset date to supabase ❗️: \(error)")
-                                                        
                                                     }
                                                 } catch {
                                                     print("failed to query id's from supabase ❌: \(error)")
