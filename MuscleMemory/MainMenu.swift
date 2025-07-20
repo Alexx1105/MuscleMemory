@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import SwiftData
+import NotificationCenter
 
 
 @MainActor
@@ -147,6 +148,15 @@ struct MainMenu: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
+        
+        .task {
+            let pushTokenNotifications = UNUserNotificationCenter.current()             
+            do {
+                try await pushTokenNotifications.requestAuthorization(options: [.alert, .sound, .badge])
+            } catch {
+                print("user could not register: \(error)")
+            }
+        }
         
     }
 }

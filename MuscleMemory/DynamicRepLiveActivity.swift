@@ -14,9 +14,9 @@ struct DynamicRepAttributes: ActivityAttributes {
   
     public struct ContentState: Codable, Hashable {
         var plain_text: String?
-        var userContentPage: String?
+        var userContentPage: [String?]
         
-        init(plain_text: String?, userContentPage: String?) {
+        init(plain_text: String?, userContentPage: [String?]) {
             self.plain_text = plain_text
             self.userContentPage = userContentPage
         }
@@ -58,14 +58,16 @@ struct DynamicRepLiveActivity: Widget {
                     
                     
                     VStack(alignment: .leading) {
-                        if let content = context.state.userContentPage {
+                        let contentArray: [String?] = context.state.userContentPage
+                        let array = contentArray.compactMap { $0 }
+                        let content = array.joined(separator: "\n")
                             Text("\n\(content)")
                                 .fontWeight(.semibold)
                                 .font(.system(size: 16))
                                 .lineSpacing(3)
                                 .lineLimit(7)
                                 .padding(.leading, 11)
-                        }
+                        
                     }
                     .padding(.trailing, 30)
                 }
@@ -108,13 +110,15 @@ struct DynamicRepLiveActivity: Widget {
                     
                     HStack(alignment: .top) {
                         
-                        if let content = context.state.userContentPage {
+                        let contentArray: [String?] = context.state.userContentPage
+                        let array = contentArray.compactMap { $0 }
+                        let content = array.joined(separator: "\n")
                             Text("\(content)")
                                 .fontWeight(.semibold)
                                 .font(.system(size: 16))
                                 .padding(.top, -5)
                        
-                        }
+                        
                     }
                 }
                 
@@ -186,12 +190,12 @@ extension DynamicRepAttributes {
 
 extension DynamicRepAttributes.ContentState {
     fileprivate static var titleName: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: [])
         
     }
     
     fileprivate static var contentBody: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: "")
+        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: [])
     }
 }
 
@@ -201,3 +205,4 @@ extension DynamicRepAttributes.ContentState {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody
 }
+

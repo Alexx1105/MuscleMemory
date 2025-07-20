@@ -51,7 +51,7 @@ struct MainMenuTab: View {
                         
                     } label: {
                         
-                        Image(systemName: "ellipsis")
+                        Image(systemName: "clock.arrow.2.circlepath")
                             .opacity(0.8)
                             .frame(width: 35, height: 35)
                             .padding(5)
