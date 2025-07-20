@@ -36,6 +36,7 @@
 		B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CA2BCB103000BBC748 /* Assets.xcassets */; };
 		B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */; };
 		B2BB72602DAC1C9600EE857B /* MainMenuTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BB725F2DAC1C9600EE857B /* MainMenuTab.swift */; };
+		B2D362FF2E2C856400C3012C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = B2D362FE2E2C855900C3012C /* .gitignore */; };
 		B2FF4B972CCD5C3A00A26EC7 /* NotionImportPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 		B2B837CD2BCB103000BBC748 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B2BB725F2DAC1C9600EE857B /* MainMenuTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuTab.swift; sourceTree = "<group>"; };
 		B2D220DD2BD981B800E55834 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B2D362FE2E2C855900C3012C /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		B2FF4B952CCD5C3A00A26EC7 /* NotionImportPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionImportPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 		B2B837C52BCB102F00BBC748 /* MuscleMemory */ = {
 			isa = PBXGroup;
 			children = (
+				B2D362FE2E2C855900C3012C /* .gitignore */,
 				B205064F2D98A3CC0082FEA2 /* PersistantDB.swift */,
 				B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */,
 				B2A2519C2D6236B600DC8BBA /* GetDeviceToken.swift */,
@@ -275,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2B837CE2BCB103000BBC748 /* Preview Assets.xcassets in Resources */,
+				B2D362FF2E2C856400C3012C /* .gitignore in Resources */,
 				B2B837CB2BCB103000BBC748 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

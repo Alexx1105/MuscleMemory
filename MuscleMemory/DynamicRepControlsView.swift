@@ -4,6 +4,7 @@
 import SwiftData
 import Supabase
 import OSLog
+import SwiftUI
 
 
 fileprivate struct FrequencyOption: Identifiable {
@@ -381,4 +382,5 @@ struct DynamicRepControlsView: View {
 #Preview {
     DynamicRepControlsView()
 }
+
 
