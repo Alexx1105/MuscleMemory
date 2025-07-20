@@ -1,0 +1,16 @@
+name: Push Live Activities Every 5 Minutes
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # every 5 minutes
+
+jobs:
+  invoke-edge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          curl -X POST https://oxgumwqxnghqccazzqvw.supabase.co/functions/v1/APN-POST-req-function-- \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json"
+

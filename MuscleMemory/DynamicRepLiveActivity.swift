@@ -205,3 +205,4 @@ extension DynamicRepAttributes.ContentState {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody
 }
+

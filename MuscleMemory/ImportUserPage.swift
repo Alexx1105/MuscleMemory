@@ -1,4 +1,4 @@
-    //
+
 //  ImportUserPage.swift
 //  MuscleMemory
 //
@@ -175,7 +175,7 @@ class ImportUserPage: ObservableObject {
                 print("page data did not send to supabase: \(error)")
             }
         
-        
     }
 }
+
 

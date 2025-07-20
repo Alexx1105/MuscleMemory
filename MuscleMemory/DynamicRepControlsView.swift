@@ -1,11 +1,6 @@
 //
 //  DynamicRepControlsView.swift
-//  MuscleMemory
-//
-//  Created by alex haidar on 5/4/25.
-//
-
-import SwiftUI
+// import SwiftUI
 import SwiftData
 import Supabase
 import OSLog
@@ -386,3 +381,4 @@ struct DynamicRepControlsView: View {
 #Preview {
     DynamicRepControlsView()
 }
+
