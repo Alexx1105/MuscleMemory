@@ -30,6 +30,7 @@ struct Offset: Codable {
     let offset_date: Date
 }
 
+
 struct DynamicRepControlsView: View {
     
     @Environment(\.colorScheme) var colorScheme
@@ -50,7 +51,7 @@ struct DynamicRepControlsView: View {
                                                            .init(label: "1hr", interval: DateComponents(minute: 60)),
                                                            .init(label: "2.5hrs", interval: DateComponents(hour: 2, minute: 30)),
                                                            .init(label: "3.4hrs", interval: DateComponents(hour: 3, minute: 40))]
-
+    
     
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
@@ -63,8 +64,8 @@ struct DynamicRepControlsView: View {
         pageContentElements.compactMap { $0 }
     }
     
-
-  
+    
+    
     func liveActivityTrigger() async {
         do {
             ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
@@ -110,7 +111,7 @@ struct DynamicRepControlsView: View {
                     Text("Frequency")
                         .fontWeight(.semibold)
                         .opacity(textOpacity)
-                        Spacer()
+                    Spacer()
                 }
                 .padding(.leading, 15)
                 
@@ -150,31 +151,40 @@ struct DynamicRepControlsView: View {
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
                                         let selectedOption = frequencyOptions[index]
                                         let now = Date()
-                                        if let computedOffset = Calendar.current.date(byAdding: selectedOption.interval, to: now) {
+                                        let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
+                                        
+                                        Task {
                                             
-                                            Task {
-                                                do {
-                                                    let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
-                                                    let result = selectQuery.value
-                                                    let queryID = result.map(\.id)
-                                                    print("ID HERE: \(queryID)")
-                                                    
+                                            do {
+                                                let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
+                                                let result = selectQuery.value
+                                                let queryID = result.map(\.id)
+                                                print("ID HERE: \(queryID)")
                                                 
+                                                if selectedOption.label == "Off" {
                                                     do {
-                                                        let send = try await supabaseDBClient.from("push_tokens").update(["offset_date" : computedOffset]).in("id", values: queryID).execute()
-                                                        print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
-                                                        
+                                                        let disable = try await supabaseDBClient.from("push_tokens").update(["offset_date" : "1970-01-01T00:00:00Z"]).in("id", values: queryID).execute()
+                                                        print("slider off: \(disable)")
                                                     } catch {
-                                                        print("failed to send offset date to supabase ❗️: \(error)")
+                                                        print("failed to disable: \(error)")
                                                     }
-                                                } catch {
-                                                    print("failed to query id's from supabase ❌: \(error)")
                                                 }
                                                 
-                                                await liveActivityTrigger()
-                                                print("option selected: \(selectedOption)")
+                                                do {
+                                                    let send = try await supabaseDBClient.from("push_tokens").update(["offset_date" : computedOffset]).in("id", values: queryID).execute()
+                                                    print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
+                                                } catch {
+                                                    print("failed to send offset date to supabase ❗️: \(error)")
+                                                }
+                                            } catch {
+                                                print("failed to query id's from supabase ❌: \(error)")
                                             }
+                                            
+                                            await liveActivityTrigger()
+                                            print("option selected: \(selectedOption)")
+                                            
                                         }
+                                        
                                     }
                                 })
                     
@@ -369,8 +379,8 @@ struct DynamicRepControlsView: View {
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
         
-            }
-        }
+    }
+}
 
 
 #Preview {
