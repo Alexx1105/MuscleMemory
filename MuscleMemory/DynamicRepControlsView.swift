@@ -47,7 +47,8 @@ struct DynamicRepControlsView: View {
                                                            .init(label: "1hr", interval: DateComponents(minute: 60)),
                                                            .init(label: "2.5hrs", interval: DateComponents(hour: 2, minute: 30)),
                                                            .init(label: "3.4hrs", interval: DateComponents(hour: 3, minute: 40))]
-    
+   
+
     
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
@@ -138,16 +139,16 @@ struct DynamicRepControlsView: View {
                                     let endPosition = fullDrag + drag
                                     let nearest = frequencyStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                     
-                                    
-                                    withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 1)) {
                                         fullDrag = nearest
                                         drag = 0
                                     }
                                     
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
-                                        let selectedOption = frequencyOptions[index]
-                                        let now = Date()
-                                        let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
+                                        
+//                                        let selectedOption = frequencyOptions[index]
+//                                        let now = Date()
+//                                        let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
                                         
                                         Task {
                                             
@@ -157,6 +158,12 @@ struct DynamicRepControlsView: View {
                                                 let queryID = result.map(\.id)
                                                 print("ID HERE: \(queryID)")
                                                 
+                                                let selectedOption = frequencyOptions[index]
+                                                let now = Date()
+                                                let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
+                                                
+                                                
+                                             
                                                 if selectedOption.label == "Off" {
                                                     do {
                                                         let disable = try await supabaseDBClient.from("push_tokens").update(["offset_date" : "1970-01-01T00:00:00Z"]).in("id", values: queryID).execute()
@@ -177,7 +184,7 @@ struct DynamicRepControlsView: View {
                                             }
                                             
                                             await liveActivityTrigger()
-                                            print("option selected: \(selectedOption)")
+                                            //print("option selected: \(selectedOption)")
                                             
                                         }
                                         
@@ -250,7 +257,7 @@ struct DynamicRepControlsView: View {
                                             let nearest = autoDisableStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
                                             
                                             
-                                            withAnimation(.spring(response: 0.4, dampingFraction: 1)) {
+                                            withAnimation(.spring(response: 0.3, dampingFraction: 0.9)) {
                                                 fullDragOne = nearest
                                                 dragOne = 0
                                             }
