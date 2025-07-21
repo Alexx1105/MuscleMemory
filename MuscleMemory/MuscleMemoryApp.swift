@@ -41,7 +41,7 @@ import SwiftData
 
 @main
 struct MuscleMemoryApp: App {
-   
+    
     let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self, UserPageContent.self)
     
     var body: some Scene {
@@ -53,23 +53,18 @@ struct MuscleMemoryApp: App {
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
                             print("code Query recieved and parsed\(parseCodeQuery)")
-                           
-                        
+                            
+                            
                             let pages = searchPages.shared.modelContextTitle
                             let context = OAuthTokens.shared.modelContextEmail
-                        
-                  
-                            //let notif = LocalDynamicRepNotification.notificationContent
-
+                            
                             
                             Task {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
                                     try await searchPages.shared.userEndpoint(modelContextTitle: pages)
-                                    
-                                  
-                                 
-                            
+                                    try await ImportUserPage.shared.pageEndpoint()
+                                   
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
@@ -77,14 +72,14 @@ struct MuscleMemoryApp: App {
                             
                         } else {
                             print("code query is nil:\(parseCodeQuery)")
+                        }
                     }
                 }
-            }
         }
         .modelContainer(centralContainer)
-       
-       }
+        
     }
+}
 
 #Preview {
     ContainerView()

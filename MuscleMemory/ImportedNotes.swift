@@ -25,7 +25,7 @@ struct ImportedNotes: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
-    func callEndpoint() async {
+    public func callEndpoint() async {
         Task {
             do {
                 ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
@@ -74,17 +74,19 @@ struct ImportedNotes: View {
                    
                 
                 VStack {
+                   
                     List(pageContent, id: \.userPageId) { block in
-                
+                        
                         Text(block.userContentPage ?? "")
                             .font(.system(size: 16)).lineSpacing(3)
                         
                             .listRowBackground(Color.mmBackground)
                             .listRowSeparator(.hidden)
-                            
+                        
                     }
                     .listStyle(.plain)
                     Spacer()
+                
                 }
                 .fontWeight(.medium)
                 
@@ -130,12 +132,10 @@ struct ImportedNotes: View {
             }
             .background(Color.mmBackground)
         }
-        .task {await callEndpoint()
-        }
+        .task { await callEndpoint()}
     }
-    
+        
 }
-
 
 
 
