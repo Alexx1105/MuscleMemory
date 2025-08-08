@@ -1,6 +1,6 @@
 //
 //  DynamicRepControlsView.swift
-// import SwiftUI
+
 import SwiftData
 import Supabase
 import OSLog
@@ -64,17 +64,15 @@ struct DynamicRepControlsView: View {
     
     
     func liveActivityTrigger() async {
-        do {
-            ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-            try await ImportUserPage.shared.pageEndpoint()
-        } catch {
-            print("error fetching persisted page data")
-        }
+        
         DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+        print("Dynamic rep successfully invoked ✅")
+        
     }
     
     func teardownTrigger() async {
         DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
+        print("Dynamic rep successfully killed ✅")
     }
     
     
@@ -134,7 +132,7 @@ struct DynamicRepControlsView: View {
                                     let clamped = min(max(proposed, frequencyStopsPositions.first!), frequencyStopsPositions.last!)
                                     drag = clamped - fullDrag
                                 }
-                                .onEnded { _ in
+                                .onEnded { _ in   //TO-DO: add conditional to prevent re-sending of same notion page after each slider action
                                     
                                     let endPosition = fullDrag + drag
                                     let nearest = frequencyStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
@@ -145,13 +143,9 @@ struct DynamicRepControlsView: View {
                                     }
                                     
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
-                                        
-//                                        let selectedOption = frequencyOptions[index]
-//                                        let now = Date()
-//                                        let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
+                
                                         
                                         Task {
-                                            
                                             do {
                                                 let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
                                                 let result = selectQuery.value
@@ -184,7 +178,7 @@ struct DynamicRepControlsView: View {
                                             }
                                             
                                             await liveActivityTrigger()
-                                            //print("option selected: \(selectedOption)")
+                                          
                                             
                                         }
                                         

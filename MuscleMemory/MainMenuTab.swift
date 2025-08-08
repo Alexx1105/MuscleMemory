@@ -13,13 +13,11 @@ import Foundation
 struct MainMenuTab: View {
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
-    let getTimer =  DynamicRepScheduler.shared.controlTimer
     
     let showEmoji: String?
     let showTitle: String?
     let showTabTitle: String?
 
-    
     var body: some View {
         
             ZStack(alignment: .center) {
@@ -57,9 +55,9 @@ struct MainMenuTab: View {
                             .padding(5)
                     }
                     
-                    if let emojis = showEmoji, let showTitle = showTitle {
-                        Text("\(emojis)")
-                        Text("\(showTitle)")
+                    if showEmoji != nil || showTitle != nil {
+                        Text(String("\(showEmoji ?? "")"))
+                        Text(String("\(showTitle ?? "")"))
                             .fontWeight(.medium)
                         
                     } else {

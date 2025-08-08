@@ -12,7 +12,7 @@ import SwiftData
 
 
 struct ImportedNotes: View {
-    
+ 
     @Environment(\.modelContext) var modelContextPage
     
     @Query var pageContent: [UserPageContent]
@@ -35,6 +35,7 @@ struct ImportedNotes: View {
             }
         }
     }
+
     var body: some View {
         
         NavigationView {
