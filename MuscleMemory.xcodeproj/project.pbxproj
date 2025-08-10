@@ -13,10 +13,9 @@
 		B22E10F22D04F7C0003F3D9F /* OAuthTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */; };
 		B22E10F82D067E9A003F3D9F /* SearchUserPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22E10F52D067E89003F3D9F /* SearchUserPages.swift */; };
 		B24EBC862E463BAC00E7FB01 /* ImportUserPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FEAD82D18E17100BF4FC7 /* ImportUserPage.swift */; };
-		B24EBC892E463F1800E7FB01 /* DynamicRepManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A462D91D9E300420892 /* DynamicRepManager.swift */; };
 		B24EBC8A2E463F3C00E7FB01 /* DynamicRepTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A472D91D9E300420892 /* DynamicRepTest.swift */; };
-		B24EBC8E2E46523E00E7FB01 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */; };
-		B253F53B2DB6E2DC00EF2497 /* DynamicRepScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B253F53A2DB6E2BF00EF2497 /* DynamicRepScheduler.swift */; };
+		B24EBC922E47E87500E7FB01 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */; };
+		B24EBC932E47E91D00E7FB01 /* DynamicRepLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */; };
 		B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */; };
 		B25A0A542D91D9E300420892 /* LocalNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25A0A492D91D9E300420892 /* LocalNotifications.swift */; };
 		B25A0A952D94FE3300420892 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B205A9582D73B62D00FFF047 /* WidgetKit.framework */; };
@@ -47,10 +46,8 @@
 		B22E10F12D04F7AF003F3D9F /* OAuthTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokens.swift; sourceTree = "<group>"; };
 		B22E10F52D067E89003F3D9F /* SearchUserPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserPages.swift; sourceTree = "<group>"; };
 		B248E14F2CE052DF005B9649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B253F53A2DB6E2BF00EF2497 /* DynamicRepScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepScheduler.swift; sourceTree = "<group>"; };
 		B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleMemory.entitlements; sourceTree = "<group>"; };
 		B254B0FC2D6A1FD500A0541F /* UserPermissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPermissions.swift; sourceTree = "<group>"; };
-		B25A0A462D91D9E300420892 /* DynamicRepManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepManager.swift; sourceTree = "<group>"; };
 		B25A0A472D91D9E300420892 /* DynamicRepTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicRepTest.swift; sourceTree = "<group>"; };
 		B25A0A492D91D9E300420892 /* LocalNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotifications.swift; sourceTree = "<group>"; };
 		B25A0A942D94FE3300420892 /* DynamicRepExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DynamicRepExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,11 +149,9 @@
 				B26A46662CD04C210064AF46 /* SignOutView.swift */,
 				B26A46622CCFC4250064AF46 /* LaunchScreen.swift */,
 				B25A0A492D91D9E300420892 /* LocalNotifications.swift */,
-				B253F53A2DB6E2BF00EF2497 /* DynamicRepScheduler.swift */,
 				B2A0EFC42DC7D8F60076DBC0 /* DynamicRepControlsView.swift */,
-				B25A0A462D91D9E300420892 /* DynamicRepManager.swift */,
-				B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */,
 				B25A0A472D91D9E300420892 /* DynamicRepTest.swift */,
+				B25A0A982D94FE3300420892 /* DynamicRepLiveActivity.swift */,
 				B254B0F72D6A1D2F00A0541F /* MuscleMemory.entitlements */,
 				B248E14F2CE052DF005B9649 /* Info.plist */,
 				B2B837CA2BCB103000BBC748 /* Assets.xcassets */,
@@ -289,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B24EBC922E47E87500E7FB01 /* DynamicRepLiveActivity.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,18 +292,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B24EBC8E2E46523E00E7FB01 /* DynamicRepLiveActivity.swift in Sources */,
+				B24EBC932E47E91D00E7FB01 /* DynamicRepLiveActivity.swift in Sources */,
 				B26842D52CC9F5FD00471001 /* SettingsView.swift in Sources */,
 				B26A46632CCFC4250064AF46 /* LaunchScreen.swift in Sources */,
 				B2A2519F2D6236BD00DC8BBA /* GetDeviceToken.swift in Sources */,
 				B2A0EFC52DC7D8F60076DBC0 /* DynamicRepControlsView.swift in Sources */,
 				B26842D12CC704DB00471001 /* MainMenu.swift in Sources */,
 				B22E10F02D04F723003F3D9F /* AuthBackend.swift in Sources */,
-				B253F53B2DB6E2DC00EF2497 /* DynamicRepScheduler.swift in Sources */,
 				B20506502D98A3E50082FEA2 /* PersistantDB.swift in Sources */,
 				B271C1902CD1CEC400710E70 /* NavPath.swift in Sources */,
 				B26A46672CD04C210064AF46 /* SignOutView.swift in Sources */,
-				B24EBC892E463F1800E7FB01 /* DynamicRepManager.swift in Sources */,
 				B2BB72602DAC1C9600EE857B /* MainMenuTab.swift in Sources */,
 				B254B0FF2D6A1FE100A0541F /* UserPermissions.swift in Sources */,
 				B26A46702CD077950064AF46 /* LightDarkView.swift in Sources */,

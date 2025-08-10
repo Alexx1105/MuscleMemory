@@ -11,6 +11,7 @@ import SwiftData
 import Supabase
 import OSLog
 import ActivityKit
+import UIKit
 
 
 struct MainBlockBody: Codable, Identifiable {

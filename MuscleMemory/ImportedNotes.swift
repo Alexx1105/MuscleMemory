@@ -18,8 +18,6 @@ struct ImportedNotes: View {
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
     
-    public static let timed = DynamicRepScheduler()
-    public init() {}
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }

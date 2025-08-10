@@ -49,33 +49,11 @@ struct DynamicRepControlsView: View {
                                                            .init(label: "3.4hrs", interval: DateComponents(hour: 3, minute: 40))]
    
 
-    
+
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
     
-    private var pageContentElements: [String] {
-        pageContent.compactMap { $0.userContentPage }
-    }
-    
-    private var joinStrings: [String] {
-        pageContentElements.compactMap { $0 }
-    }
-    
-    
-    
-    func liveActivityTrigger() async {
-        
-        DynamicRepAttribute.staticAttribute.startDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
-        print("Dynamic rep successfully invoked ✅")
-        
-    }
-    
-    func teardownTrigger() async {
-        DynamicRepAttribute.staticAttribute.killDynamicRep(plain_text: pageTitle.first?.plain_text, userContentPage: joinStrings)
-        print("Dynamic rep successfully killed ✅")
-    }
-    
-    
+ 
     var body: some View {
         VStack(spacing: 70) {
             
@@ -144,7 +122,6 @@ struct DynamicRepControlsView: View {
                                     
                                     if let index = frequencyStopsPositions.firstIndex(of: nearest) {
                 
-                                        
                                         Task {
                                             do {
                                                 let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
@@ -157,7 +134,7 @@ struct DynamicRepControlsView: View {
                                                 let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
                                                 
                                                 
-                                             
+                                                
                                                 if selectedOption.label == "Off" {
                                                     do {
                                                         let disable = try await supabaseDBClient.from("push_tokens").update(["offset_date" : "1970-01-01T00:00:00Z"]).in("id", values: queryID).execute()
@@ -176,12 +153,7 @@ struct DynamicRepControlsView: View {
                                             } catch {
                                                 print("failed to query id's from supabase ❌: \(error)")
                                             }
-                                            
-                                            await liveActivityTrigger()
-                                          
-                                            
                                         }
-                                        
                                     }
                                 })
                     
