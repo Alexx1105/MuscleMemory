@@ -11,7 +11,7 @@ import SwiftData
 import Supabase
 import OSLog
 import ActivityKit
-import UIKit
+import KimchiKit
 
 
 struct MainBlockBody: Codable, Identifiable {
@@ -159,7 +159,8 @@ class ImportUserPage: ObservableObject {
                                     
                                     Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
                                     Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                                    
+                                    print("CONTENT-STATE:", String(reflecting: DynamicRepAttributes.ContentState.self))              ///for debugging push-driven LiveActivities
+                                    print("ATTRIBUTES-TYPE:", String(reflecting: DynamicRepAttributes.self))
                                 }
                             }
                         }

@@ -30,7 +30,6 @@ struct LaunchScreen: View {
         
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline:.now() + 0.7) {
-                //navPath.path.append(NavPathItem.home)
                 navPath.navigate(to: .home)
             }
         }

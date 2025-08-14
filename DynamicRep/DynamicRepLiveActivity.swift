@@ -8,26 +8,9 @@
 import ActivityKit
 import WidgetKit
 import SwiftUI
+import KimchiKit
 
-
-struct DynamicRepAttributes: ActivityAttributes {
-    
-    public struct ContentState: Codable, Hashable {
-        var plain_text: String?
-        var userContentPage: [String?]
-        
-        init(plain_text: String?, userContentPage: [String?]) {
-            self.plain_text = plain_text
-            self.userContentPage = userContentPage
-        }
-        
-        // Dynamic stateful properties about your activity go here!
-    }
-    
-    // Fixed non-changing properties about your activity go here!
-    
-}
-
+//content state struct exists in the KimchiKit internal package now
 
 struct AppLogo: View {
     var body: some View {
@@ -45,7 +28,6 @@ struct DynamicRepLiveActivity: Widget {
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
             
-            
             VStack(alignment: .leading, spacing: 3) {
                 
                 VStack(alignment: .leading) {
@@ -58,7 +40,7 @@ struct DynamicRepLiveActivity: Widget {
                     
                     
                     VStack(alignment: .leading) {
-                        let contentArray: [String?] = context.state.userContentPage
+                        let contentArray: [String] = context.state.userContentPage
                         let array = contentArray.compactMap { $0 }
                         let content = array.joined(separator: "\n")
                             Text("\n\(content)")
@@ -110,7 +92,7 @@ struct DynamicRepLiveActivity: Widget {
                     
                     HStack(alignment: .top) {
                         
-                        let contentArray: [String?] = context.state.userContentPage
+                        let contentArray: [String] = context.state.userContentPage
                         let array = contentArray.compactMap { $0 }
                         let content = array.joined(separator: "\n")
                             Text("\(content)")
@@ -179,7 +161,10 @@ struct DynamicRepLiveActivity: Widget {
         }
         
     }
+    
 }
+
+    
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
