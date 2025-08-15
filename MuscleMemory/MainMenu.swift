@@ -13,7 +13,7 @@ import NotificationCenter
 
 
 @MainActor
-struct MainMenu: View {	    
+struct MainMenu: View {
     
     @Environment(\.modelContext) var modelContext
     
@@ -26,7 +26,7 @@ struct MainMenu: View {
     
     @State private var loading = false
     @State private var didLoad = false
-   
+    
     
     var body: some View {
         
@@ -91,18 +91,18 @@ struct MainMenu: View {
                     
                     
                     let tappable = pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil
-                        if tappable {
-                            NavigationLink {
-                                ImportedNotes()
-                                
-                                    .navigationBarBackButtonHidden(true)
-                            } label: {
-                                
-                                MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
-                                    .opacity(pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil ? 1 : 0)
-                                
-                            }
+                    if tappable {
+                        NavigationLink {
+                            ImportedNotes()
+                            
+                                .navigationBarBackButtonHidden(true)
+                        } label: {
+                            
+                            MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
+                                .opacity(pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil ? 1 : 0)
+                            
                         }
+                    }
                     
                 }
             }

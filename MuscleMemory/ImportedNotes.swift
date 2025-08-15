@@ -12,7 +12,7 @@ import SwiftData
 
 
 struct ImportedNotes: View {
- 
+    
     @Environment(\.modelContext) var modelContextPage
     
     @Query var pageContent: [UserPageContent]
@@ -26,17 +26,20 @@ struct ImportedNotes: View {
     @State private var loading = false
     @State private var didLoad = false
     
-    public func callEndpoint() async {
-        Task {
-            do {
-                ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-                try await ImportUserPage.shared.pageEndpoint()
-            } catch {
-                print("error fetching persisted page data")
+    
+        public func callEndpoint() async {
+            Task {
+                do {
+                    ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
+                    try await ImportUserPage.shared.pageEndpoint()
+                } catch {
+                    print("error fetching persisted page data")
+                }
             }
         }
-    }
-
+    
+   
+    
     var body: some View {
         
         NavigationView {
@@ -73,10 +76,10 @@ struct ImportedNotes: View {
                 Spacer()
                 Divider()
                 
-                   
+                
                 
                 VStack {
-                   
+                    
                     List(pageContent, id: \.userPageId) { block in
                         
                         Text(block.userContentPage ?? "")
@@ -88,7 +91,7 @@ struct ImportedNotes: View {
                     }
                     .listStyle(.plain)
                     Spacer()
-                
+                    
                 }
                 .fontWeight(.medium)
                 
@@ -141,12 +144,11 @@ struct ImportedNotes: View {
             defer { loading = false }
             await callEndpoint()
             didLoad = true
-            
         }
-        
     }
-       
 }
+
+
 
 
 
