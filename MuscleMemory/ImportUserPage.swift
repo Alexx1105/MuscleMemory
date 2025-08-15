@@ -146,9 +146,9 @@ class ImportUserPage: ObservableObject {
                             print("SEND THIS TO SUPABASE: \(storeStrings)")
                             
                             Task {
-                                for await token in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
-                                    let formattedTokenString = token.map {String(format: "%02x", $0)}.joined()
-                                    Logger().log("new push token created: \(token)")
+                               if let data = Activity<DynamicRepAttributes>.pushToStartToken {
+                                    let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
+                                    Logger().log("new push token created: \(data)")
                                     
                                     let pageIDString = i.id
                                

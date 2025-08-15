@@ -24,6 +24,9 @@ struct MainMenu: View {
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     
+    @State private var loading = false
+    @State private var didLoad = false
+   
     
     var body: some View {
         
@@ -97,6 +100,7 @@ struct MainMenu: View {
                                 
                                 MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
                                     .opacity(pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil ? 1 : 0)
+                                
                             }
                         }
                     
@@ -156,6 +160,7 @@ struct MainMenu: View {
         }
     }
 }
+
 
 
 #Preview {

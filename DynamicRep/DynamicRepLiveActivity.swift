@@ -40,7 +40,7 @@ struct DynamicRepLiveActivity: Widget {
                     
                     
                     VStack(alignment: .leading) {
-                        let contentArray: [String] = context.state.userContentPage
+                        let contentArray: [String?] = context.state.userContentPage
                         let array = contentArray.compactMap { $0 }
                         let content = array.joined(separator: "\n")
                             Text("\n\(content)")
@@ -92,7 +92,7 @@ struct DynamicRepLiveActivity: Widget {
                     
                     HStack(alignment: .top) {
                         
-                        let contentArray: [String] = context.state.userContentPage
+                        let contentArray: [String?] = context.state.userContentPage
                         let array = contentArray.compactMap { $0 }
                         let content = array.joined(separator: "\n")
                             Text("\(content)")
