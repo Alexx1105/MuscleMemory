@@ -42,68 +42,41 @@ struct NotionImportPageView: View {
             ZStack(alignment: .center) {
                 
                 RoundedRectangle(cornerRadius: 30)
+                    .background(Material.ultraThin)
                     .frame(width: 370, height: 228)
                     .foregroundStyle(Color.white)
                     .opacity(elementOpacityDark)
                     .overlay(RoundedRectangle(cornerRadius: 30)
                         .stroke(Color.white, lineWidth: 0.2)
-                        .opacity(0.50)
+                   
+                       
                     )
                 
-                
-                
-                
-                Text("Import notes from your notion")
-                    .fontWeight(.semibold)
-                    .opacity(textOpacity)
-                    .padding(.bottom, 160)
-                
-                HStack {
-                    Image(systemName: "tray.and.arrow.down")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40, height: 40)
-                        .opacity(textOpacity)
-                        .padding(.bottom, 60)
-                    
+                HStack(alignment: .top) {
+                    VStack(spacing: 20 ) {
+                        Text("Import notes from your notion")
+                            .fontWeight(.medium)
+                            .opacity(textOpacity)
+                        
+                        Text("Grant Notion access to your\naccount to import your notes")
+                            .font(.system(size: 14))
+                            .fontWeight(.regular)
+                            .opacity(textOpacity)
+                            .padding(.horizontal)
+                            Spacer()
+                    }.frame(maxHeight: 185)
+                       
+                        
                 }
-                .padding(.trailing, 200)
-                
-                Text("Grant Notion access \nto your account.")
-                    .font(.system(size: 14))
-                    .fontWeight(.medium)
-                    .opacity(0.25)
-                    .padding(.horizontal)
-                    .padding(.leading, 20)
-                    .padding(.bottom, 60)
-                
+            
                 
                 
                 VStack {
                     
                     ZStack {
                         
-                        Rectangle()
-                            .frame(width: 320, height: 0.4)
-                            .opacity(0.2)
-                            .padding(.bottom, 70)
                         
                         Button {
-                            maskHeight = 0
-                            borderOpacity = 1.0
-                            
-                            
-                            withAnimation(.easeInOut(duration: 0.1)) {
-                                maskHeight = 60
-                            } completion: {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                    withAnimation(.linear(duration: 0.2)) {
-                                        borderOpacity = 0.0
-                                    } completion: {
-                                        maskHeight = 0
-                                    }
-                                }
-                            }
                             
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 if let redirect = URL(string: "https://api.notion.com/v1/oauth/authorize?client_id=138d872b-594c-8050-b985-0037723b58e0&response_type=code&owner=user&redirect_uri=https%3A%2F%2Fnotionauthbridge-rhuwa73w2a-uc.a.run.app%2Fcallback%3Fcode%3DAUTHORIZATION_CODE") {
@@ -113,17 +86,17 @@ struct NotionImportPageView: View {
                                 
                             }
                         } label: {
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(Color.white)
-                                .frame(width: 297, height: 43)
-                                .foregroundStyle(Color.white)
-                                .opacity(0.75)
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(Color.gray).opacity(0.5)
+                                .frame(width: 297, height: 50)
+                                .opacity(textOpacity)
+                                
+                               
                             
                                 .padding(3)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 24)
                                         .stroke(Color.white, lineWidth: 2)
-                                        .opacity(borderOpacity)
                                         .blur(radius: 0.5)
                                         .mask(
                                             VStack {
@@ -137,8 +110,9 @@ struct NotionImportPageView: View {
                         }
                         
                         Text("Import page")
-                            .foregroundStyle(Color.black)
+                            .opacity(textOpacity)
                             .fontWeight(.medium)
+        
  
                     }
                     .padding(.top, 150)
@@ -157,7 +131,7 @@ struct NotionImportPageView: View {
                     
                     NavigationLink(destination: MainMenu()) {
                         Image("menuButton")
-                        
+                         
                     }
                     .frame(maxWidth: .infinity)
                     
