@@ -139,19 +139,19 @@ class ImportUserPage: ObservableObject {
                 do {
                     for i in returnDecodedResults {
                         for storeStrings in i.ExtractedFields {
-                          
+                            
                             
                             let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
                             modelContextPage?.insert(storedPages)
                             print("SEND THIS TO SUPABASE: \(storeStrings)")
                             
                             Task {
-                               if let data = Activity<DynamicRepAttributes>.pushToStartToken {
+                                if let data = Activity<DynamicRepAttributes>.pushToStartToken {
                                     let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
                                     Logger().log("new push token created: \(data)")
                                     
                                     let pageIDString = i.id
-                               
+                                    
                                     print("PAGE ID HERE: \(pageIDString)")
                                     let pushAndPageData = PushToSupabase(token: formattedTokenString, page_data: storeStrings, page_id: pageIDString)
                                     let sendToken = try await supabaseDBClient.from("push_tokens").insert([pushAndPageData]).select("token, page_data").execute()
@@ -161,6 +161,8 @@ class ImportUserPage: ObservableObject {
                                     Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
                                     print("CONTENT-STATE:", String(reflecting: DynamicRepAttributes.ContentState.self))              ///for debugging push-driven LiveActivities
                                     print("ATTRIBUTES-TYPE:", String(reflecting: DynamicRepAttributes.self))
+                                    
+                                    
                                 }
                             }
                         }
@@ -170,12 +172,12 @@ class ImportUserPage: ObservableObject {
                 } catch {
                     print("url session error:\(error)")
                     if let decodeBlocksError = error as? DecodingError {
-                        print("error in decoding blocks\(decodeBlocksError)")
+                        print("error in decoding blocks\(decodeBlocksError.localizedDescription)")
                     }
                 }
                 
             } catch {
-                print("page data did not send to supabase: \(error)")
+                print("page data did not send to supabase: \(error.localizedDescription)")
             }
         
     }

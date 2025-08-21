@@ -26,7 +26,6 @@ struct ImportedNotes: View {
     @State private var loading = false
     @State private var didLoad = false
     
-    
         public func callEndpoint() async {
             Task {
                 do {

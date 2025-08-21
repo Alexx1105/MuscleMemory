@@ -8,7 +8,7 @@
 import SwiftUI
 import AuthenticationServices
 import SwiftData
-
+import ActivityKit
 
 
     struct ContainerView: View {
@@ -21,7 +21,7 @@ import SwiftData
                     .navigationDestination(for: NavPathItem.self) { navigationPathItem in
                         switch navigationPathItem {
                         case .home:
-                            MainMenu()
+                              MainMenu()
                         case .settings:
                             SettingsView()
                         case .importPage:
@@ -43,20 +43,7 @@ import SwiftData
 struct MuscleMemoryApp: App {
     
     let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self, UserPageContent.self)
-    @Environment(\.modelContext) var modelContextPage
     
-    @MainActor
-    public func callEndpoint() async {
-        
-        do {
-            ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-            try await ImportUserPage.shared.pageEndpoint()
-        } catch {
-            print("error fetching persisted page data")
-        }
-    }
-    
-
     var body: some Scene {
         
         WindowGroup {
@@ -70,15 +57,14 @@ struct MuscleMemoryApp: App {
                             
                             let pages = searchPages.shared.modelContextTitle
                             let context = OAuthTokens.shared.modelContextEmail
-                       
+                               
                             
                             Task {
                                 do {
                                     try await OAuthTokens.shared.exchangeToken(authorizationCode: codeParse, modelContext: context)
                                     try await searchPages.shared.userEndpoint(modelContextTitle: pages)
                                     try await ImportUserPage.shared.pageEndpoint()
-                                    await callEndpoint()
-                            
+                                    
                                 } catch {
                                     print("failed async operation(s):\(error)")
                                 }
@@ -89,6 +75,7 @@ struct MuscleMemoryApp: App {
                         }
                     }
                 }
+        
         }
         .modelContainer(centralContainer)
         

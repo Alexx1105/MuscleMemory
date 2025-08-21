@@ -7,14 +7,15 @@
 
 import WidgetKit
 import SwiftUI
+import ActivityKit
+
 
 @main
 struct DynamicRepBundle: WidgetBundle {
     var body: some Widget {
-        DynamicRep()
-        DynamicRepControl()
         DynamicRepLiveActivity()
     }
 }
+
 
 

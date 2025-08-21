@@ -1,6 +1,6 @@
 //
 //  DynamicRepLiveActivity.swift
-//  DynamicRep
+//  DynamicRep/Users/alexhaidar/Documents/Developer/MuscleMemory/DynamicRepExtension.entitlements
 //
 //  Created by alex haidar on 3/26/25.
 //
@@ -18,13 +18,14 @@ struct AppLogo: View {
         Image("appicon")
             .resizable()
             .scaledToFit()
-            .clipShape(.circle)
+        
     }
 }
 
 
 struct DynamicRepLiveActivity: Widget {
     var body: some WidgetConfiguration {
+        
         ActivityConfiguration(for: DynamicRepAttributes.self) { context in
             // Lock screen/banner UI goes here
             
@@ -40,15 +41,15 @@ struct DynamicRepLiveActivity: Widget {
                     
                     
                     VStack(alignment: .leading) {
-                        let contentArray: [String?] = context.state.userContentPage
+                        let contentArray: [String] = context.state.userContentPage
                         let array = contentArray.compactMap { $0 }
                         let content = array.joined(separator: "\n")
-                            Text("\n\(content)")
-                                .fontWeight(.semibold)
-                                .font(.system(size: 16))
-                                .lineSpacing(3)
-                                .lineLimit(7)
-                                .padding(.leading, 11)
+                        Text("\n\(content)")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 16))
+                            .lineSpacing(3)
+                            .lineLimit(7)
+                            .padding(.leading, 11)
                         
                     }
                     .padding(.trailing, 30)
@@ -62,45 +63,31 @@ struct DynamicRepLiveActivity: Widget {
             
             
             
-            
-            
-            
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
                     
-                    HStack {
+                    HStack() {
                         Text("from:")
                             .fontWeight(.regular)
                             .font(.system(size: 16))
                             .foregroundStyle(Color.gray)
-                            .padding(.top, 17.5)
-                            .padding(.leading, 10)
-                        Spacer()
+                            .padding(.leading, 7)
+                            .padding(.top, 32)
+                        
                     }
                 }
                 
                 DynamicIslandExpandedRegion(.center) {
-                    
                     HStack {
-                        Text(context.state.plain_text ?? "--")
-                            .fontWeight(.regular)
-                            .font(.system(size: 16))
-                            .foregroundStyle(Color.gray)
-                        Spacer()
-                    }
-                    
-                    HStack(alignment: .top) {
-                        
-                        let contentArray: [String?] = context.state.userContentPage
-                        let array = contentArray.compactMap { $0 }
-                        let content = array.joined(separator: "\n")
-                            Text("\(content)")
-                                .fontWeight(.semibold)
+                        VStack(alignment: .leading) {
+                            Text(context.state.plain_text ?? "--")
+                                .fontWeight(.regular)
                                 .font(.system(size: 16))
-                                .padding(.top, -5)
-                       
-                        
+                                .foregroundStyle(Color.gray)
+                                .padding(.top, 14)
+                            
+                        }.frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
                 
@@ -118,53 +105,42 @@ struct DynamicRepLiveActivity: Widget {
                     .padding(.trailing, -4)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    
-                    HStack(spacing: 250) {
-                        
-                        Button(action: {}) {  //add functionality later
-                            Image(systemName: "arrow.left")
-                                .foregroundStyle(Color.white)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            let contentArray: [String] = context.state.userContentPage
+                            let array = contentArray.compactMap { $0 }
+                            let content = array.joined(separator: "\n")
+                            Text("\(content)")
+                                .fontWeight(.semibold)
+                                .font(.system(size: 16))
+                                .padding(.leading, 7)
                             
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        
-                        Button(action: {}) {  //add functionality later
-                            Image(systemName: "arrow.right")
-                                .foregroundStyle(Color.white)
-                                .buttonStyle(.plain)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                        }.frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    
-                    
                 }
             } compactLeading: {
-                ZStack {
-                    AppLogo()
-                }
+                AppLogo()
+                
             } compactTrailing: {
                 
                 HStack {
                     Text(context.state.plain_text ?? "--")
                         .fontWeight(.regular)
                         .foregroundStyle(Color.gray)
-                        
+                    
                     Spacer()
                 }
                 
-                
             } minimal: {
-                Text("")
+                
             }
             .widgetURL(URL(string: "MuscleMemory.KimchiLabs.com"))
             .keylineTint(Color.white)
         }
-        
     }
-    
 }
 
-    
+
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
@@ -190,4 +166,6 @@ extension DynamicRepAttributes.ContentState {
     DynamicRepAttributes.ContentState.titleName
     DynamicRepAttributes.ContentState.contentBody
 }
+
+
 
