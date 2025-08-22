@@ -7,12 +7,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 		<key>NSExtensionAttributes</key>
-		<dict>
-			<key>NSLiveActivity</key>
-			<true/>
-			<key>WKSupportsLiveActivities</key>
-			<true/>
-		</dict>
+		<dict/>
 	</dict>
 </dict>
 </plist>

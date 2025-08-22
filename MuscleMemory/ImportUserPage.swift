@@ -146,6 +146,9 @@ class ImportUserPage: ObservableObject {
                             print("SEND THIS TO SUPABASE: \(storeStrings)")
                             
                             Task {
+                                
+                            guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
+                                
                                 if let data = Activity<DynamicRepAttributes>.pushToStartToken {
                                     let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
                                     Logger().log("new push token created: \(data)")
@@ -159,10 +162,8 @@ class ImportUserPage: ObservableObject {
                                     
                                     Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
                                     Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                                    print("CONTENT-STATE:", String(reflecting: DynamicRepAttributes.ContentState.self))              ///for debugging push-driven LiveActivities
-                                    print("ATTRIBUTES-TYPE:", String(reflecting: DynamicRepAttributes.self))
-                                    
-                                    
+                                    //print("CONTENT-STATE:", String(reflecting: DynamicRepAttributes.ContentState.self))              ///for debugging push-driven LiveActivities
+                                    //print("ATTRIBUTES-TYPE:", String(reflecting: DynamicRepAttributes.self))
                                 }
                             }
                         }

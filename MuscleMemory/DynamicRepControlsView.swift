@@ -40,6 +40,7 @@ struct DynamicRepControlsView: View {
     
     @State var drag: CGFloat = -160
     @State var fullDrag: CGFloat = 0
+    @GestureState var fingerTracking: CGFloat = 0
     
     let frequencyStopsPositions: [CGFloat] = [-160, -70, 28, 151]
     let autoDisableStopsPositions: [CGFloat] = [-160, -13, 146]
@@ -98,12 +99,26 @@ struct DynamicRepControlsView: View {
                 
                 ZStack(alignment: .top) {
                     
-                    Circle()
+                    Circle().glassEffect()
                         .foregroundStyle(Color.blue)
                         .frame(width: 42, height: 42)
                         .offset(x: fullDrag + drag, y: 9)
+                      
                         .gesture(
                             DragGesture()
+                             
+                                .updating($fingerTracking) { value, state , transaction in
+                                    let minStop = frequencyStopsPositions.first!
+                                    let maxStop = frequencyStopsPositions.last!
+
+                                    let proposed = fullDrag + value.translation.width
+                                    let clamped = min(max(proposed, minStop), maxStop)
+
+                                    state = clamped - fullDrag
+                                    
+                                }
+                            
+                            
                                 .onChanged { value in
                                     
                                     let proposed = fullDrag + value.translation.width
@@ -155,12 +170,13 @@ struct DynamicRepControlsView: View {
                                             }
                                         }
                                     }
-                                })
+                                }).animation(nil, value: fingerTracking)
                     
                     RoundedRectangle(cornerRadius: 50)
                         .frame(width: 370, height: 50)
                         .opacity(0.06)
                         .padding(.top, 5)
+                        
                 }
                 
                 .overlay {
@@ -205,7 +221,7 @@ struct DynamicRepControlsView: View {
                     VStack {
                         ZStack {
                             
-                            Circle()
+                            Circle().glassEffect()
                                 .foregroundStyle(Color.blue)
                                 .frame(width: 42, height: 42)
                                 .offset(x: fullDragOne + dragOne, y: 0)
@@ -271,10 +287,8 @@ struct DynamicRepControlsView: View {
                             } label: {
                                 RoundedRectangle(cornerRadius: 50)
                                     .frame(width: 122, height: 35)
-                                    .padding(.leading, 16)
                                     .opacity(0.06)
-                                
-                                
+                  
                                     .overlay {
                                         HStack(spacing: 20) {
                                             
@@ -285,14 +299,15 @@ struct DynamicRepControlsView: View {
                                             Image(systemName: "chevron.up.chevron.down")
                                                 .opacity(textOpacity)
                                             
-                                        }.padding(.leading, 15)
+                                        }.padding(.leading, 2)
                                         
-                                    }
-                                
+                                    }.glassEffect()
+                                    .frame(maxWidth: 170)
                                 
                                 Spacer()
                                 
                             }.buttonStyle(PlainButtonStyle())
+                           
                             
                             
                         }

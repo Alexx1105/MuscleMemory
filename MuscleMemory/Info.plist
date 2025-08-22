@@ -16,6 +16,10 @@
 		</dict>
 		<dict/>
 		<dict/>
+		<dict>
+			<key>NSSupportsLiveActivities</key>
+			<true/>
+		</dict>
 	</array>
 </dict>
 </plist>
