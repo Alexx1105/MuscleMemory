@@ -76,7 +76,7 @@ class ImportUserPage: ObservableObject {
         let append = pagesEndpoint + "\(pageID)/children"
         
         appendedID = append                             //assign before being compared so it is not nil by default
-        if appendedID == append {                        
+        if appendedID == append {
             print("page ID was appended")
         } else {
             print("page id could not be appended")
@@ -87,100 +87,125 @@ class ImportUserPage: ObservableObject {
         }
         
         let addURL = URL(string: appendedID ?? "appendedID could not be converted back into a URL (nill)")
-      
+        
         guard let url = addURL else { return }
-            var request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        
+        if let authToken = accessToken {
+            let appendToken = "Bearer " + authToken
+            request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
+            request.addValue(appendToken, forHTTPHeaderField: "Authorization")
+            print("page ID was successfully appended to the url")
+            print(appendToken)
+        } else {
+            print("headers could not be added or token could not be appended")
+        }
+        
+        
+        do {
+            request.httpMethod = "GET"
             
-            if let authToken = accessToken {
-                let appendToken = "Bearer " + authToken
-                request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
-                request.addValue(appendToken, forHTTPHeaderField: "Authorization")
-                print("page ID was successfully appended to the url")
-                print(appendToken)
+            let (userData, response) = try await URLSession.shared.data(for: request)
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                throw URLError(.badServerResponse)
+            }
+            if let decodeString = String(data: userData, encoding: .utf8) {
+                print(decodeString)
             } else {
-                print("headers could not be added or token could not be appended")
+                print("error decoding string")
             }
             
+            let decodePageData = JSONDecoder()
+            let decodePage = try decodePageData.decode(MainBlockBody.self, from: userData)
+            var returnDecodedResults = decodePage.results
             
-            do {
-                request.httpMethod = "GET"
-                
-                let (userData, response) = try await URLSession.shared.data(for: request)
-                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                    throw URLError(.badServerResponse)
-                }
-                if let decodeString = String(data: userData, encoding: .utf8) {
-                    print(decodeString)
-                } else {
-                    print("error decoding string")
-                }
-                
-                let decodePageData = JSONDecoder()
-                let decodePage = try decodePageData.decode(MainBlockBody.self, from: userData)
-                var returnDecodedResults = decodePage.results
-                
-                
-                for i in 0..<returnDecodedResults.count {
-                    var extractedFields: [String] = []
-                    if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.rich_text {
-                        for text in richText {
-                            if let content = text.text?.content {
-                                extractedFields.append(content)
-                            }
+            
+            for i in 0..<returnDecodedResults.count {
+                var extractedFields: [String] = []
+                if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.rich_text {
+                    for text in richText {
+                        if let content = text.text?.content {
+                            extractedFields.append(content)
                         }
                     }
-                returnDecodedResults[i].ExtractedFields = extractedFields
-              }
-            
-                DispatchQueue.main.async {
-                    self.mainBlockBody = returnDecodedResults
                 }
-        
-                do {
-                    for i in returnDecodedResults {
-                        for storeStrings in i.ExtractedFields {
+                returnDecodedResults[i].ExtractedFields = extractedFields
+            }
+            
+            DispatchQueue.main.async {
+                self.mainBlockBody = returnDecodedResults
+            }
+            
+            do {
+                for i in returnDecodedResults {
+                    for storeStrings in i.ExtractedFields {
+                        
+                        let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
+                        modelContextPage?.insert(storedPages)
+                        print("SEND THIS TO SUPABASE: \(storeStrings)")
+                        
+                        Task {
                             
+                            for await data in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
+                                let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
+                                Logger().log("new push token created: \(String(describing: data))")
+                                
+//                                do {
+//                                    let content = Data("{}".utf8)
+//                                    let decoding = JSONDecoder()
+//                                     _ = try decoding.decode(DynamicRepAttributes.self, from: content)
+//                                    
+//                                    print("CONTENT: \(decoding.keyDecodingStrategy)")
+//                                } catch {
+//                                    print("error decoding: \(error)")
+//                                }
+                                
+//                                do {
+//                                    let contentTypes = Data(#"{"plain_text":"hello world","userContentPage":["hello world"]}"#.utf8)
+//                                    let decoding = JSONDecoder()
+//                                    _ = try decoding.decode(DynamicRepAttributes.self, from: contentTypes)
+//                                    
+//                                    print("content sate has no issue decoding")
+//                                } catch {
+//                                    print("error decoding content state", error)
+//                                }
+                                
+                                let pageIDString = i.id
+                                
+                                print("PAGE ID HERE: \(pageIDString)")
+                                let pushAndPageData = PushToSupabase(token: formattedTokenString, page_data: storeStrings, page_id: pageIDString)
+                                let sendToken = try await supabaseDBClient.from("push_tokens").insert([pushAndPageData]).select("token, page_data").execute()
+                                let sendID = try await supabaseDBClient.from("push_tokens").upsert([pushAndPageData]).select("page_id").execute()
+                                
+                                Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
+                                Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
+                            }
                             
-                            let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
-                            modelContextPage?.insert(storedPages)
-                            print("SEND THIS TO SUPABASE: \(storeStrings)")
                             
                             Task {
-                                
-                            guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-                                
-                                if let data = Activity<DynamicRepAttributes>.pushToStartToken {
-                                    let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
-                                    Logger().log("new push token created: \(data)")
-                                    
-                                    let pageIDString = i.id
-                                    
-                                    print("PAGE ID HERE: \(pageIDString)")
-                                    let pushAndPageData = PushToSupabase(token: formattedTokenString, page_data: storeStrings, page_id: pageIDString)
-                                    let sendToken = try await supabaseDBClient.from("push_tokens").insert([pushAndPageData]).select("token, page_data").execute()
-                                    let sendID = try await supabaseDBClient.from("push_tokens").upsert([pushAndPageData]).select("page_id").execute()
-                                    
-                                    Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
-                                    Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                                    //print("CONTENT-STATE:", String(reflecting: DynamicRepAttributes.ContentState.self))              ///for debugging push-driven LiveActivities
-                                    //print("ATTRIBUTES-TYPE:", String(reflecting: DynamicRepAttributes.self))
+                                for await activity in Activity<DynamicRepAttributes>.activityUpdates {  /// acts as a event listener, updates token stream
+                                    Task {
+                                        for await token in activity.pushTokenUpdates {
+                                            let hex = token.map {String(format: "%02x", $0)}.joined()
+                                            print("OBSERVED TOKEN: \(hex)")
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                    try modelContextPage?.save()
-                    
-                } catch {
-                    print("url session error:\(error)")
-                    if let decodeBlocksError = error as? DecodingError {
-                        print("error in decoding blocks\(decodeBlocksError.localizedDescription)")
-                    }
                 }
+                try modelContextPage?.save()
                 
             } catch {
-                print("page data did not send to supabase: \(error.localizedDescription)")
+                print("url session error:\(error)")
+                if let decodeBlocksError = error as? DecodingError {
+                    print("error in decoding blocks\(decodeBlocksError.localizedDescription)")
+                }
             }
-        
+        } catch {
+            print("page data did not send to supabase: \(error.localizedDescription)")
+        }
     }
 }
 

@@ -89,21 +89,20 @@ struct MainMenu: View {
                 ScrollView {
                     Spacer()
                     
-                    
-                    let tappable = pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil
-                    if tappable {
-                        NavigationLink {
-                            ImportedNotes()
-                            
-                                .navigationBarBackButtonHidden(true)
-                        } label: {
-                            
-                            MainMenuTab(showEmoji: pageTitle.first?.emoji, showTitle: pageTitle.first?.plain_text, showTabTitle: pageTitle.first?.plain_text)
-                                .opacity(pageTitle.first?.plain_text != nil && pageTitle.first?.emoji != nil ? 1 : 0)
-                            
+                    ForEach(pageTitle.indices, id: \.self) { index in
+                        
+                        let isolatedContent = pageTitle[index]
+                        if isolatedContent.plain_text != nil || isolatedContent.emoji != nil {
+                            NavigationLink {
+                                ImportedNotes()
+                                
+                                    .navigationBarBackButtonHidden(true)
+                                
+                            } label: {
+                                MainMenuTab(showEmoji: isolatedContent.emoji ?? "", showTitle: isolatedContent.plain_text ?? "", showTabTitle: isolatedContent.emoji ?? "")
+                            }
                         }
                     }
-                    
                 }
             }
             .foregroundStyle(Color.white.opacity(0.8))

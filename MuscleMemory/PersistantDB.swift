@@ -11,7 +11,7 @@ import SwiftUI
 
 
 
-@Model public class UserEmail {                                     //email from Oauth flow
+@Model public class UserEmail {                                     ///email from Oauth flow
     @Attribute(.unique) public var personEmail: String?
 
     public init(personEmail: String?) {
@@ -19,7 +19,7 @@ import SwiftUI
     }
 }
 
-@Model public class UserPageContent {                               //imported notion body
+@Model public class UserPageContent {                               ///imported notion body
     @Attribute public var userContentPage: String?
     @Attribute public var userPageId: String?
     @Attribute public var rich_text: String?
@@ -31,7 +31,7 @@ import SwiftUI
     }
 }
 
-@Model public class UserPageTitle {                             //tab title + optional emojis
+@Model public class UserPageTitle {                             ///tab title + optional emojis
     @Attribute public var id: String?
     @Attribute public var icon: String?
     @Attribute public var plain_text: String?

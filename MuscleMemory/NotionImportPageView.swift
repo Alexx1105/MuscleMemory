@@ -83,7 +83,7 @@ struct NotionImportPageView: View {
                         } label: {
                             RoundedRectangle(cornerRadius: 30)
                                 .fill(Color.white).opacity(elementOpacityDark)
-                                .frame(width: 297, height: 50)
+                                .frame(width: 297, height: 48)
                               
                         }
                         
@@ -94,9 +94,11 @@ struct NotionImportPageView: View {
                     
                     }
                 }.frame(maxHeight: 165)
+                 .padding()
             }
             
             Spacer()
+           
            
             
             VStack {

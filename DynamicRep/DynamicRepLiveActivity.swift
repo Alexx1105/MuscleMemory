@@ -10,7 +10,7 @@ import WidgetKit
 import SwiftUI
 import KimchiKit
 
-//content state struct exists in the KimchiKit internal package now
+///content state struct exists in the KimchiKit internal package now
 
 struct AppLogo: View {
     var body: some View {
@@ -32,7 +32,7 @@ struct DynamicRepLiveActivity: Widget {
             VStack(alignment: .leading, spacing: 3) {
                 
                 VStack(alignment: .leading) {
-                    Text("from: \(context.state.plain_text ?? "no title")")
+                    Text("from: \(context.state.plainText)")
                         .fontWeight(.regular)
                         .font(.system(size: 16))
                         .foregroundStyle(Color.gray)
@@ -62,7 +62,6 @@ struct DynamicRepLiveActivity: Widget {
             .activitySystemActionForegroundColor(Color.black)
             
             
-            
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
@@ -81,7 +80,7 @@ struct DynamicRepLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.center) {
                     HStack {
                         VStack(alignment: .leading) {
-                            Text(context.state.plain_text ?? "--")
+                            Text(context.state.plainText)
                                 .fontWeight(.regular)
                                 .font(.system(size: 16))
                                 .foregroundStyle(Color.gray)
@@ -124,7 +123,7 @@ struct DynamicRepLiveActivity: Widget {
             } compactTrailing: {
                 
                 HStack {
-                    Text(context.state.plain_text ?? "--")
+                    Text(context.state.plainText)
                         .fontWeight(.regular)
                         .foregroundStyle(Color.gray)
                     
@@ -134,12 +133,10 @@ struct DynamicRepLiveActivity: Widget {
             } minimal: {
                 
             }
-            .widgetURL(URL(string: "MuscleMemory.KimchiLabs.com"))
             .keylineTint(Color.white)
         }
     }
 }
-
 
 
 extension DynamicRepAttributes {
@@ -151,12 +148,12 @@ extension DynamicRepAttributes {
 
 extension DynamicRepAttributes.ContentState {
     fileprivate static var titleName: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: [])
+        DynamicRepAttributes.ContentState(plainText: "", userContentPage: [])
         
     }
     
     fileprivate static var contentBody: DynamicRepAttributes.ContentState {
-        DynamicRepAttributes.ContentState(plain_text: "", userContentPage: [])
+        DynamicRepAttributes.ContentState(plainText: "", userContentPage: [])
     }
 }
 

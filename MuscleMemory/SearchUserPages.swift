@@ -105,7 +105,7 @@ public class searchPages: ObservableObject {
             let emojis = title?.icon?.emoji
             let customType = title?.icon?.type
         
-          
+            let optionalEmoji = emojis ?? ""
            
             DispatchQueue.main.async {
                 
@@ -116,10 +116,12 @@ public class searchPages: ObservableObject {
                     } else {
                         print("plain text is not being run on main")
                     }
-                
-                if let storeEmoji = emojis {
-                    self.emojis = NotionSearchRequest.Icon(type: customType, emoji: storeEmoji)
-                    print("emoji has been stored🫡\(storeEmoji)")
+               
+                self.emojis = NotionSearchRequest.Icon(type: customType ?? "", emoji: optionalEmoji)
+               
+                if emojis != nil {
+                    self.emojis = NotionSearchRequest.Icon(type: customType, emoji: optionalEmoji)
+                    print("emoji has been stored🫡\(optionalEmoji)")
                 } else {
                     print("emoji could not be successfully stored")
                 }

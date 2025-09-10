@@ -267,7 +267,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					B25A0A932D94FE3300420892 = {
 						CreatedOnToolsVersion = 16.2;
@@ -382,16 +382,14 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = DynamicRepExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L96XRPBK46;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DynamicRep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				"INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes[sdk=*]" = "";
+				INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes = "";
+				"INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes[sdk=iphone*]" = KimchiKit.DynamicRepAttributes;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -402,7 +400,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DynamicIsland New";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -417,15 +414,13 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = DynamicRepExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = L96XRPBK46;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DynamicRep/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = DynamicRep;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				"INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes[sdk=iphone*]" = KimchiKit.DynamicRepAttributes;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -436,7 +431,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = MuscleMemory.KimchiLabs.com.DynamicRep;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DynamicIsland New";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -479,6 +473,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -505,6 +500,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -545,6 +541,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = L96XRPBK46;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -563,6 +560,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[arch=*]" = "-D DEBUG_PREVIEW_START";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
@@ -591,6 +589,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				"INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes[sdk=iphoneos*]" = KimchiKit.DynamicRepAttributes;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -627,6 +626,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				"INFOPLIST_KEY_WKSupportsLiveActivityLaunchAttributeTypes[sdk=iphoneos*]" = KimchiKit.DynamicRepAttributes;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
