@@ -92,14 +92,17 @@ struct MainMenu: View {
                     ForEach(pageTitle.indices, id: \.self) { index in
                         
                         let isolatedContent = pageTitle[index]
-                        if isolatedContent.plain_text != nil || isolatedContent.emoji != nil {
+                        let tabContent = isolatedContent.plain_text ?? ""
+                        let tabEmoji = isolatedContent.emoji ?? ""
+                        
+                        if !tabContent.isEmpty || !tabEmoji.isEmpty {
                             NavigationLink {
                                 ImportedNotes()
                                 
                                     .navigationBarBackButtonHidden(true)
                                 
                             } label: {
-                                MainMenuTab(showEmoji: isolatedContent.emoji ?? "", showTitle: isolatedContent.plain_text ?? "", showTabTitle: isolatedContent.emoji ?? "")
+                                MainMenuTab(showEmoji: tabEmoji, showTitle: tabContent, showTabTitle: tabEmoji)
                             }
                         }
                     }

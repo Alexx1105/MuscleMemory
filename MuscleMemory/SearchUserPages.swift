@@ -119,21 +119,21 @@ public class searchPages: ObservableObject {
                
                 self.emojis = NotionSearchRequest.Icon(type: customType ?? "", emoji: optionalEmoji)
                
-                if emojis != nil {
+                //if let emojis = emojis, !emojis.isEmpty {
                     self.emojis = NotionSearchRequest.Icon(type: customType, emoji: optionalEmoji)
                     print("emoji has been stored🫡\(optionalEmoji)")
-                } else {
-                    print("emoji could not be successfully stored")
-                }
+//                } else {
+//                    print("emoji could not be successfully stored")
+//                }
             }
           
-            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text, let showEmoji = emojis {
+            if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text {
                 print("page ID: \(pageID)")
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
-                print("emoji from title:\(showEmoji)")
+                print("emoji from title:\(optionalEmoji)")
                 
-                let storedTitle = UserPageTitle(id: pageID, icon: customType, plain_text: displayTitle, emoji: showEmoji)
+                let storedTitle = UserPageTitle(id: pageID, icon: customType, plain_text: displayTitle, emoji: optionalEmoji)
                 modelContextTitle?.insert(storedTitle)
                 try modelContextTitle?.save()
             
