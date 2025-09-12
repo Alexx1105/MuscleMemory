@@ -10,14 +10,21 @@ import Foundation
 import SwiftData
 
 
-
 struct ImportedNotes: View {
+    
+    var pageID: String
+    var filterPage: [UserPageContent] {
+        pageContent.filter{($0.userPageId) == pageID }
+    }
+    
+    var filterTitle: [UserPageTitle] {
+        pageTitle.filter{($0.titleID) == pageID }
+    }
     
     @Environment(\.modelContext) var modelContextPage
     
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
-    
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
@@ -26,18 +33,18 @@ struct ImportedNotes: View {
     @State private var loading = false
     @State private var didLoad = false
     
-        public func callEndpoint() async {
-            Task {
-                do {
-                    ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
-                    try await ImportUserPage.shared.pageEndpoint()
-                } catch {
-                    print("error fetching persisted page data")
-                }
+    public func callEndpoint() async {
+        Task {
+            do {
+                ImportUserPage.shared.modelContextPagesStored(pagesContext: modelContextPage)
+                try await ImportUserPage.shared.pageEndpoint()
+            } catch {
+                print("error fetching persisted page data", error.localizedDescription)
             }
         }
+    }
     
-   
+    
     
     var body: some View {
         
@@ -50,7 +57,7 @@ struct ImportedNotes: View {
                         Image(systemName: "arrow.backward").foregroundStyle(Color.white.opacity(0.8))
                     }
                     
-                    if let emojis = pageTitle.first?.emoji , let title = pageTitle.first?.plain_text {
+                    if let emojis = filterTitle.first?.emoji, let title = filterTitle.first?.plain_text {
                         Text("\(emojis)")
                         Text("\(title)")
                             .fontWeight(.semibold)
@@ -76,10 +83,9 @@ struct ImportedNotes: View {
                 Divider()
                 
                 
-                
                 VStack {
                     
-                    List(pageContent, id: \.userPageId) { block in
+                    List(filterPage, id: \.self) { block in
                         
                         Text(block.userContentPage ?? "")
                             .font(.system(size: 16)).lineSpacing(3)
@@ -149,10 +155,8 @@ struct ImportedNotes: View {
 
 
 
-
-
 #Preview {
-    ImportedNotes()
+    ImportedNotes(pageID: "")
 }
 
 

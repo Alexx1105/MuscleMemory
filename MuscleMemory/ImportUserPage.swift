@@ -119,7 +119,6 @@ class ImportUserPage: ObservableObject {
             let decodePage = try decodePageData.decode(MainBlockBody.self, from: userData)
             var returnDecodedResults = decodePage.results
             
-            
             for i in 0..<returnDecodedResults.count {
                 var extractedFields: [String] = []
                 if let paragraph = returnDecodedResults[i].paragraph, let richText = paragraph.rich_text {
@@ -140,35 +139,36 @@ class ImportUserPage: ObservableObject {
                 for i in returnDecodedResults {
                     for storeStrings in i.ExtractedFields {
                         
-                        let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: i.id)
+                        let pageID = returnedBlocks.first?.id ?? ""
+                        let storedPages = UserPageContent(userContentPage: storeStrings, userPageId: pageID)
                         modelContextPage?.insert(storedPages)
                         print("SEND THIS TO SUPABASE: \(storeStrings)")
-                        
+                        print("block id persited: \(pageID)")
                         Task {
                             
                             for await data in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
                                 let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
                                 Logger().log("new push token created: \(String(describing: data))")
                                 
-//                                do {
-//                                    let content = Data("{}".utf8)
-//                                    let decoding = JSONDecoder()
-//                                     _ = try decoding.decode(DynamicRepAttributes.self, from: content)
-//                                    
-//                                    print("CONTENT: \(decoding.keyDecodingStrategy)")
-//                                } catch {
-//                                    print("error decoding: \(error)")
-//                                }
+                                //                                do {
+                                //                                    let content = Data("{}".utf8)
+                                //                                    let decoding = JSONDecoder()
+                                //                                     _ = try decoding.decode(DynamicRepAttributes.self, from: content)
+                                //
+                                //                                    print("CONTENT: \(decoding.keyDecodingStrategy)")
+                                //                                } catch {
+                                //                                    print("error decoding: \(error)")
+                                //                                }
                                 
-//                                do {
-//                                    let contentTypes = Data(#"{"plain_text":"hello world","userContentPage":["hello world"]}"#.utf8)
-//                                    let decoding = JSONDecoder()
-//                                    _ = try decoding.decode(DynamicRepAttributes.self, from: contentTypes)
-//                                    
-//                                    print("content sate has no issue decoding")
-//                                } catch {
-//                                    print("error decoding content state", error)
-//                                }
+                                //                                do {
+                                //                                    let contentTypes = Data(#"{"plain_text":"hello world","userContentPage":["hello world"]}"#.utf8)
+                                //                                    let decoding = JSONDecoder()
+                                //                                    _ = try decoding.decode(DynamicRepAttributes.self, from: contentTypes)
+                                //
+                                //                                    print("content sate has no issue decoding")
+                                //                                } catch {
+                                //                                    print("error decoding content state", error)
+                                //                                }
                                 
                                 let pageIDString = i.id
                                 

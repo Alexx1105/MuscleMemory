@@ -116,31 +116,26 @@ public class searchPages: ObservableObject {
                     } else {
                         print("plain text is not being run on main")
                     }
-               
+                
                 self.emojis = NotionSearchRequest.Icon(type: customType ?? "", emoji: optionalEmoji)
-               
-                //if let emojis = emojis, !emojis.isEmpty {
-                    self.emojis = NotionSearchRequest.Icon(type: customType, emoji: optionalEmoji)
-                    print("emoji has been stored🫡\(optionalEmoji)")
-//                } else {
-//                    print("emoji could not be successfully stored")
-//                }
+                self.emojis = NotionSearchRequest.Icon(type: customType, emoji: optionalEmoji)
+                print("emoji has been stored🫡\(optionalEmoji)")
             }
-          
+            
             if let pageID = returnedBlocks.first?.id, let objectBlocks = accessObject, let displayTitle = text {
                 print("page ID: \(pageID)")
                 print("content: \(objectBlocks)")
                 print("title of page: \(displayTitle)")
                 print("emoji from title:\(optionalEmoji)")
                 
-                let storedTitle = UserPageTitle(id: pageID, icon: customType, plain_text: displayTitle, emoji: optionalEmoji)
+                let storedTitle = UserPageTitle(titleID: pageID, icon: customType, plain_text: displayTitle, emoji: optionalEmoji)
                 modelContextTitle?.insert(storedTitle)
                 try modelContextTitle?.save()
+                
+            } else {
+                print("an object is not being stored")
+            }
             
-                } else {
-                    print("an object is not being stored")
-                }
-         
             
             
             

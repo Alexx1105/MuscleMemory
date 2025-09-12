@@ -21,7 +21,7 @@ import ActivityKit
                     .navigationDestination(for: NavPathItem.self) { navigationPathItem in
                         switch navigationPathItem {
                         case .home:
-                              MainMenu()
+                            MainMenu()
                         case .settings:
                             SettingsView()
                         case .importPage:
@@ -31,7 +31,7 @@ import ActivityKit
                         case .appearence:
                             LightDarkView()
                         case .importpageUser:
-                            ImportedNotes()
+                            ImportedNotes(pageID: "")
                         }
                     }
                 }

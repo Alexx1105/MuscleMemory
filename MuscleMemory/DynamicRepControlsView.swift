@@ -49,12 +49,11 @@ struct DynamicRepControlsView: View {
                                                            .init(label: "2.5hrs", interval: DateComponents(hour: 2, minute: 30)),
                                                            .init(label: "3.4hrs", interval: DateComponents(hour: 3, minute: 40))]
    
-
-
+    
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
     
- 
+    
     var body: some View {
         VStack(spacing: 70) {
             
@@ -70,7 +69,6 @@ struct DynamicRepControlsView: View {
                         .opacity(textOpacity)
                     
                     if let title = pageTitle.first?.plain_text {
-                        
                         Text("\(title)")
                             .font(.system(size: 16)).lineSpacing(3)
                             .fontWeight(.medium)
