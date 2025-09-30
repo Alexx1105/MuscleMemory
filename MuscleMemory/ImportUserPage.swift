@@ -50,7 +50,6 @@ public struct PushToSupabase: Encodable {
     var page_id: String
 }
 
-
 let supabaseDBClient = SupabaseClient(supabaseURL: URL(string: "https://oxgumwqxnghqccazzqvw.supabase.co")!,
                                       supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94Z3Vtd3F4bmdocWNjYXp6cXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc0MTE0MjQsImV4cCI6MjA2Mjk4NzQyNH0.gt_S5p_sGgAEN1fJSPYIKEpDMMvo3PNx-pnhlC_2fKQ")
 
@@ -144,53 +143,20 @@ class ImportUserPage: ObservableObject {
                         modelContextPage?.insert(storedPages)
                         print("SEND THIS TO SUPABASE: \(storeStrings)")
                         print("block id persited: \(pageID)")
-                        Task {
+                        
+                        Task { [pageIDString = i.id] in
                             
                             for await data in Activity<DynamicRepAttributes>.pushToStartTokenUpdates {
                                 let formattedTokenString = data.map {String(format: "%02x", $0)}.joined()
-                                Logger().log("new push token created: \(String(describing: data))")
+                                Logger().log("new push token created: \(data)")
                                 
-                                //                                do {
-                                //                                    let content = Data("{}".utf8)
-                                //                                    let decoding = JSONDecoder()
-                                //                                     _ = try decoding.decode(DynamicRepAttributes.self, from: content)
-                                //
-                                //                                    print("CONTENT: \(decoding.keyDecodingStrategy)")
-                                //                                } catch {
-                                //                                    print("error decoding: \(error)")
-                                //                                }
-                                
-                                //                                do {
-                                //                                    let contentTypes = Data(#"{"plain_text":"hello world","userContentPage":["hello world"]}"#.utf8)
-                                //                                    let decoding = JSONDecoder()
-                                //                                    _ = try decoding.decode(DynamicRepAttributes.self, from: contentTypes)
-                                //
-                                //                                    print("content sate has no issue decoding")
-                                //                                } catch {
-                                //                                    print("error decoding content state", error)
-                                //                                }
-                                
-                                let pageIDString = i.id
-                                
-                                print("PAGE ID HERE: \(pageIDString)")
                                 let pushAndPageData = PushToSupabase(token: formattedTokenString, page_data: storeStrings, page_id: pageIDString)
                                 let sendToken = try await supabaseDBClient.from("push_tokens").insert([pushAndPageData]).select("token, page_data").execute()
                                 let sendID = try await supabaseDBClient.from("push_tokens").upsert([pushAndPageData]).select("page_id").execute()
                                 
                                 Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
                                 Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                            }
-                            
-                            
-                            Task {
-                                for await activity in Activity<DynamicRepAttributes>.activityUpdates {  /// acts as a event listener, updates token stream
-                                    Task {
-                                        for await token in activity.pushTokenUpdates {
-                                            let hex = token.map {String(format: "%02x", $0)}.joined()
-                                            print("OBSERVED TOKEN: \(hex)")
-                                        }
-                                    }
-                                }
+                                
                             }
                         }
                     }

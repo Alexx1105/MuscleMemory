@@ -60,7 +60,7 @@ struct NotionImportPageView: View {
                         Text("Grant Notion access to your\naccount to import your notes")
                             .font(.system(size: 16))
                             .fontWeight(.regular)
-                            .opacity(textOpacity).opacity(0.50)
+                            .opacity(textOpacity).opacity(0.8)
                             .padding(.horizontal)
                             Spacer()
                     }.frame(maxHeight: 175)
