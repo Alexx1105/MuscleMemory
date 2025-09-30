@@ -141,7 +141,7 @@ struct DynamicRepLiveActivity: Widget {
 
 extension DynamicRepAttributes {
     fileprivate static var preview: DynamicRepAttributes {
-        DynamicRepAttributes()
+        DynamicRepAttributes(activityID: "12345")
         
     }
 }

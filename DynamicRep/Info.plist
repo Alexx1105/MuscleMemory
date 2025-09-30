@@ -6,11 +6,15 @@
 	<dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
-		<key>NSExtensionAttributes</key>
-		<dict>
-			<key>WKSupportsLiveActivities</key>
-			<true/>
-		</dict>
+	</dict>
+	<key>NSExtensionAttributes</key>
+	<dict>
+		<key>WKSupportsLiveActivities </key>
+		<true/>
+		<key>NSSupportsLiveActivitiesFrequentUpdates</key>
+		<true/>
+		<key>NSExtensionLiveActivityAllowRemoteNotifications</key>
+		<true/>
 	</dict>
 </dict>
 </plist>
