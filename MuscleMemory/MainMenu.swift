@@ -104,7 +104,7 @@ struct MainMenu: View {
                                     .navigationBarBackButtonHidden(true)
                                 
                             } label: {
-                                MainMenuTab(showEmoji: tabEmoji, showTitle: tabContent, showTabTitle: tabEmoji)
+                                MainMenuTab(showEmoji: tabEmoji, showTitle: tabContent)
                             }
                         }
                     }

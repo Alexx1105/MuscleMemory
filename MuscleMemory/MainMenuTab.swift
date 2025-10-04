@@ -16,8 +16,8 @@ struct MainMenuTab: View {
     
     let showEmoji: String?
     let showTitle: String?
-    let showTabTitle: String?
 
+    
     var body: some View {
         
             ZStack(alignment: .center) {
@@ -32,7 +32,7 @@ struct MainMenuTab: View {
                 HStack(spacing: 20) {
                     
                     Menu {
-                        Text("DynamicRep Settings \nfor \(showTabTitle ?? "")")
+                        Text("DynamicRep Settings")
                             .fontWeight(.medium)
                             .foregroundStyle(Color.white)
                             .opacity(0.5)
@@ -40,9 +40,24 @@ struct MainMenuTab: View {
                         NavigationLink(destination: DynamicRepControlsView()) {
                             Label("Live activities", systemImage: "clock.badge")
                         }
-
+     
                         
                         Button(role: .destructive, action: {
+                            Task {
+                                do {
+                                    let toInt = Query.accessQuery.queryID
+                                    print(toInt)
+                                    let convert = toInt.compactMap{Int($0)}
+                                    print("converted id: \(convert)")
+                                    let _ = try await supabaseDBClient.from("push_tokens").update(["offset_date" : "1970-01-01T00:00:00Z"]).in("id", values: convert).execute()
+                                    
+                                    print("Dynamic rep disabled from menu popover")
+                                } catch {
+                                    print("nil query id's or type mismatch error", error.localizedDescription)
+                                }
+                            }
+                        
+                            
                         }) { Label("Disable", systemImage: "multiply.circle")
                             
                         }
@@ -86,5 +101,5 @@ struct MainMenuTab: View {
 }
 
 #Preview {
-    MainMenuTab(showEmoji: "", showTitle: "", showTabTitle: "")
+    MainMenuTab(showEmoji: "", showTitle: "")
 }

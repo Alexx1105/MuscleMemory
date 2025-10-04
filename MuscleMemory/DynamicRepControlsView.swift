@@ -26,8 +26,16 @@ struct Offset: Codable {
     let offset_date: Date
 }
 
+final class Query: ObservableObject {
+    @Published var queryID: [String] = []
+    static let accessQuery = Query()
+}
+
 
 struct DynamicRepControlsView: View {
+    
+    @AppStorage("frequencyStopIndex") private var frequencyStopIndex: Int = 0 
+    @ObservedObject public var childQuery = Query.accessQuery
     
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
@@ -52,7 +60,6 @@ struct DynamicRepControlsView: View {
     
     @State var dragOne: CGFloat = -160
     @State var fullDragOne: CGFloat = 0
-    
     
     var body: some View {
         VStack(spacing: 70) {
@@ -139,13 +146,16 @@ struct DynamicRepControlsView: View {
                                             do {
                                                 let selectQuery: PostgrestResponse<[QueryIDs]> = try await supabaseDBClient.from("push_tokens").select("id").execute()
                                                 let result = selectQuery.value
-                                                let queryID = result.map(\.id)
+                                                let queryID = result.map{String($0.id)}
                                                 print("ID HERE: \(queryID)")
                                                 
+                                                await MainActor.run {
+                                                 Query.accessQuery.queryID = queryID
+                                                }
+                                            
                                                 let selectedOption = frequencyOptions[index]
                                                 let now = Date()
                                                 let computedOffset: Date? = selectedOption.label == "Off" ? nil : Calendar.current.date(byAdding: selectedOption.interval, to: now)
-                                                
                                                 
                                                 
                                                 if selectedOption.label == "Off" {
@@ -159,7 +169,7 @@ struct DynamicRepControlsView: View {
                                                 
                                                 do {
                                                     let send = try await supabaseDBClient.from("push_tokens").update(["offset_date" : computedOffset]).in("id", values: queryID).execute()
-                                                    print("OFFSET DATE SENT TO SUPABASE: \(send.value)")
+                                                    print("OFFSET DATE SENT TO SUPABASE: \(send)")
                                                 } catch {
                                                     print("failed to send offset date to supabase ❗️: \(error)")
                                                 }
@@ -241,6 +251,11 @@ struct DynamicRepControlsView: View {
                                                 fullDragOne = nearest
                                                 dragOne = 0
                                             }
+                                            
+                                            
+                                            //TO-DO: add functionality when we can confirm server iterates element collections repeatibly
+                                            
+                                            
                                         })
                             
                             
