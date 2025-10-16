@@ -69,8 +69,8 @@ struct DynamicRepControlsView: View {
                 Button {
                     dismissControlsTab()
                 } label: {
-                    Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark)
-                }
+                    Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark).padding(8)
+                }.glassEffect()
                 
                 VStack(alignment: .trailing ,spacing: 5) {
                     Text("DynamicRep flashcard controls")
@@ -84,7 +84,7 @@ struct DynamicRepControlsView: View {
                             .opacity(0.25)
                     }
                 }
-            }
+            }.padding(.top, 5)
             
             
             VStack(spacing: 5) {

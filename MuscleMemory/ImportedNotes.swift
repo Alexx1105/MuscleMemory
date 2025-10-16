@@ -50,13 +50,13 @@ struct ImportedNotes: View {
         NavigationView {
             
             VStack {
-                HStack(spacing: 20) {
+                HStack(spacing: 7) {
                     
                     Button {
                            dismissTab()
                     } label: {
-                        Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark.opacity(0.8))
-                    }
+                        Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark.opacity(0.8)).padding(8)
+                    }.glassEffect()
                     
                     if let emojis = filterTitle.first?.emoji, let title = filterTitle.first?.plain_text {
                         Text("\(emojis)")
@@ -74,7 +74,7 @@ struct ImportedNotes: View {
                     Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
                         Image("mmProIcon")
                         
-                    }
+                    }.glassEffect()
                 }
                 .frame(maxWidth: 370)
                 .padding(.top, 5)
@@ -96,13 +96,10 @@ struct ImportedNotes: View {
                         
                     }
                     .listStyle(.plain)
-                    Spacer()
                     
                 }
                 .fontWeight(.medium)
-                
-          
-                
+               
             }
             .background(Color.mmBackground)
         }

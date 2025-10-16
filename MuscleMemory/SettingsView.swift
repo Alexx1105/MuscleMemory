@@ -12,11 +12,17 @@ struct SettingsView: View {
     @Environment(\.dismiss) var dismissSettingsTab
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
+    @AppStorage("appearence.toggle") private var toggleEnabled = false
+    @Environment(\.modelContext) var modelContext
+     var showUserEmail: [UserEmail] = []
     
     var body: some View {
+        
         NavigationView {
-            VStack {
+            VStack(alignment: .leading) {
+                
                 HStack(spacing: 10) {
+                    
                     
                     Text("Settings")
                         .fontWeight(.semibold)
@@ -26,84 +32,44 @@ struct SettingsView: View {
                     NavigationLink(destination: SignOutView()) {
                         Text("Log out")
                             .fontWeight(.regular)
-                            .foregroundStyle(Color.gray)
+                            .foregroundStyle(Color.red)
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .frame(maxHeight: 230)
                 .padding(.horizontal, 25)
+               
                 
-                
-                HStack {
-                    ZStack {
+                VStack(alignment: .leading) {
+                    Divider()
+                    HStack(alignment: .top) {
                         
-                        Rectangle()
-                            .frame(width: 370, height: 78)
-                            .cornerRadius(18)
-                            .foregroundStyle(.white)
-                            .opacity(elementOpacityDark)
-                            .overlay(RoundedRectangle(cornerRadius: 18)
-                                .stroke(Color.white, lineWidth: 0.2)
-                                .opacity(0.30)
-                            )
-                        
-                        Image(systemName: "clock.badge.exclamationmark")
-                            .padding(.trailing, 335)
-                            .padding(.bottom,36)
-                        
-                        Text("Live flashcards")
-                            .padding(.trailing, 170)
-                            .padding(.bottom, 38)
+                        Toggle("Appearence", isOn: $toggleEnabled)
+                            .fontWeight(.semibold)
                             .opacity(textOpacity)
+                            .tint(.blue)
                         
-                        Image("arrowChevron")
-                            .padding(.leading, 330)
-                            .padding(.bottom, 38)
-                            .opacity(textOpacity)
-                        
-                        ZStack {
-                            
-                            Spacer()
-                            Rectangle()
-                                .frame(width: 345, height: 0.5)
-                                .foregroundStyle(Color.gray)
-                                .padding(.leading, 24)
-                            
-                        }
-                        Image(systemName: "circle.lefthalf.filled")
-                            .padding(.trailing, 335)
-                            .padding(.top, 36)
-                            .opacity(textOpacity)
-                        
-                        Text("Appearence")
-                            .padding(.trailing, 190)
-                            .padding(.top, 38)
-                            .opacity(textOpacity)
-                        
-                        NavigationLink(destination: LightDarkView()) {
-                            Rectangle()
-                            
-                                .foregroundStyle(Color.clear)
-                                .frame(width: 370, height: 37)
-                                .padding(.top, 38)
-                        }
-                        
-                        
-                        
-                        Image("arrowChevron")
-                            .padding(.leading, 330)
-                            .padding(.top, 38)
-                            .opacity(textOpacity)
-                    }
+                    }.frame(maxWidth: 370)
+                        .padding(.leading)
+                    
+                    
+                    Text("Toggle appearence to have\ndark mode as the standard")
+                        .font(.system(size: 16)).lineSpacing(3)
+                        .fontWeight(.medium)
+                        .opacity(0.25)
+                        .padding(.leading)
+                       
+                    
+                    Divider()
+                    
                 }
-                
-                
                 Spacer()
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.mmBackground)
-            .navigationBarBackButtonHidden()
+         
+            
         }
     }
 }

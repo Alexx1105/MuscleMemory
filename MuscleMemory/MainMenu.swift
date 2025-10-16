@@ -19,7 +19,7 @@ struct MainMenu: View {
     
     @Query var showUserEmail: [UserEmail]
     @Query var pageTitle: [UserPageTitle]
-    
+      
     var pageID: String = ""
     var filterTabTitle: [UserPageTitle] {
         pageTitle.filter{($0.titleID == pageID)}
@@ -78,13 +78,16 @@ struct MainMenu: View {
                 Text("Your notes from Notion:")
                     .fontWeight(.semibold)
                     .opacity(textOpacity)
-                
+            
                 
                 Spacer()
-                Button(action: {}) {         //TO-DO: modify to prompt premium tier panel
-                    Image("mmProIcon")
-                    
-                }
+                Menu {
+                    Button(action: {}) { Label("Delete tabs", systemImage: "trash")}
+                } label: {
+                    Circle().frame(height: 35)}.glassEffect().buttonStyle(PlainButtonStyle())
+                    .overlay {
+                        Image(systemName: "ellipsis")
+                    }
             }
             .frame(maxWidth: 370, maxHeight: 100 )
             Spacer()

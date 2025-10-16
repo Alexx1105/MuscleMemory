@@ -29,8 +29,6 @@ import SwiftData
                             NotionImportPageView()
                         case .logOut:
                             SignOutView()
-                        case .appearence:
-                            LightDarkView()
                         case .importpageUser:
                             ImportedNotes(pageID: "")
                         }
@@ -44,12 +42,12 @@ import SwiftData
 struct MuscleMemoryApp: App {
     
     let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self, UserPageContent.self)
-    @State private var showRootTab: Bool = false
+    @AppStorage("appearence.toggle") private var toggleEnabled = false
     
     var body: some Scene {
-
+        
         WindowGroup {
-              RootTabs()
+            RootTabs()
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
@@ -76,10 +74,10 @@ struct MuscleMemoryApp: App {
                         }
                     }
                 }
- 
-
+                .preferredColorScheme(toggleEnabled ? .dark : .light)
         }
         .modelContainer(centralContainer)
+        
         
     }
 }
