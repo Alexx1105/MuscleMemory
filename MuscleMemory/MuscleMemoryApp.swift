@@ -13,11 +13,12 @@ import SwiftData
 
     struct ContainerView: View {
         @StateObject var navigationPath = NavPath.shared
-        
+
         var body: some View {
             
             NavigationStack(path: $navigationPath.path) {
                 LaunchScreen()
+               
                     .navigationDestination(for: NavPathItem.self) { navigationPathItem in
                         switch navigationPathItem {
                         case .home:
@@ -43,12 +44,12 @@ import SwiftData
 struct MuscleMemoryApp: App {
     
     let centralContainer = try! ModelContainer(for: UserEmail.self , UserPageTitle.self, UserPageContent.self)
+    @State private var showRootTab: Bool = false
     
     var body: some Scene {
-        
+
         WindowGroup {
-            ContainerView()
-            
+              RootTabs()
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
                         if let codeParse = parseCodeQuery.queryItems?.first(where: {$0.name == "code" })?.value {
@@ -75,6 +76,8 @@ struct MuscleMemoryApp: App {
                         }
                     }
                 }
+ 
+
         }
         .modelContainer(centralContainer)
         

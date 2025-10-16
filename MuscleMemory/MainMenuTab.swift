@@ -13,7 +13,7 @@ import Foundation
 struct MainMenuTab: View {
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
-    
+    private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
     let showEmoji: String?
     let showTitle: String?
 
@@ -23,9 +23,9 @@ struct MainMenuTab: View {
             ZStack(alignment: .center) {
                 Rectangle()
                     .fill(.white.opacity(elementOpacityDark))
-                    .stroke(Color.white, lineWidth: 0.2)
+                    .stroke(Color.mmBackground, lineWidth: 0.2)
                     .foregroundStyle(Color.mmDark)
-                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.white, lineWidth: 0.2))
+                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.mmDark, lineWidth: 0.2))
                     .opacity(0.8)
                     .cornerRadius(10)
                 
@@ -65,6 +65,7 @@ struct MainMenuTab: View {
                     } label: {
                         
                         Image(systemName: "clock.arrow.2.circlepath")
+                            .foregroundStyle(Color.mmDark)
                             .opacity(0.8)
                             .frame(width: 35, height: 35)
                             .padding(5)
@@ -74,7 +75,7 @@ struct MainMenuTab: View {
                         Text(String("\(showEmoji ?? "")"))
                         Text(String("\(showTitle ?? "")"))
                             .fontWeight(.medium)
-                        
+                            .foregroundStyle(Color.mmDark)
                     } else {
                         Rectangle()
                             .cornerRadius(5)

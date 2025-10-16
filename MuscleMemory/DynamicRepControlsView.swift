@@ -34,9 +34,9 @@ final class Query: ObservableObject {
 
 struct DynamicRepControlsView: View {
     
-    @AppStorage("frequencyStopIndex") private var frequencyStopIndex: Int = 0 
+    @AppStorage("frequencyStopIndex") private var frequencyStopIndex: Int = 0
     @ObservedObject public var childQuery = Query.accessQuery
-    
+    @Environment(\.dismiss) var dismissControlsTab
     @Environment(\.colorScheme) var colorScheme
     private var elementOpacityDark: Double { colorScheme == .dark ? 0.1 : 0.5 }
     private var textOpacity: Double { colorScheme == .dark ? 0.8 : 0.8 }
@@ -45,7 +45,7 @@ struct DynamicRepControlsView: View {
     
     @Query var pageContent: [UserPageContent]
     @Query var pageTitle: [UserPageTitle]
-    
+  
     @State var drag: CGFloat = -160
     @State var fullDrag: CGFloat = 0
     @GestureState var fingerTracking: CGFloat = 0
@@ -66,8 +66,10 @@ struct DynamicRepControlsView: View {
             
             HStack(alignment: .top, spacing: 100) {
                 
-                NavigationLink(destination: MainMenu()) {
-                    Image(systemName: "arrow.backward").foregroundStyle(Color.white.opacity(0.8))
+                Button {
+                    dismissControlsTab()
+                } label: {
+                    Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark)
                 }
                 
                 VStack(alignment: .trailing ,spacing: 5) {
@@ -111,18 +113,6 @@ struct DynamicRepControlsView: View {
                       
                         .gesture(
                             DragGesture()
-                             
-                                .updating($fingerTracking) { value, state , transaction in
-                                    let minStop = frequencyStopsPositions.first!
-                                    let maxStop = frequencyStopsPositions.last!
-
-                                    let proposed = fullDrag + value.translation.width
-                                    let clamped = min(max(proposed, minStop), maxStop)
-
-                                    state = clamped - fullDrag
-                                    
-                                }
-                            
                             
                                 .onChanged { value in
                                     
@@ -132,9 +122,10 @@ struct DynamicRepControlsView: View {
                                 }
                                 .onEnded { _ in   //TO-DO: add conditional to prevent re-sending of same notion page after each slider action
                                     
+                              
                                     let endPosition = fullDrag + drag
                                     let nearest = frequencyStopsPositions.min { abs($0 - endPosition) < abs($1 - endPosition) }!
-                                    
+
                                     withAnimation(.spring(response: 0.3, dampingFraction: 1)) {
                                         fullDrag = nearest
                                         drag = 0
@@ -189,10 +180,10 @@ struct DynamicRepControlsView: View {
                 
                 .overlay {
                     HStack(spacing: 80) {
-                        Image(systemName: "multiply.circle").foregroundStyle(Color.white).offset(x: -10)
-                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.white).offset(x: -20)
-                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.white).offset(x: -23)
-                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.white)
+                        Image(systemName: "multiply.circle").foregroundStyle(Color.mmDark).offset(x: -10)
+                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.mmDark).offset(x: -20)
+                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.mmDark).offset(x: -23)
+                        Image(systemName: "clock.arrow.trianglehead.2.counterclockwise.rotate.90").foregroundStyle(Color.mmDark)
                     }.offset(y: 3)
                 }
                 
@@ -281,9 +272,9 @@ struct DynamicRepControlsView: View {
                         .overlay {
                             
                             HStack(spacing: 140) {
-                                Image(systemName: "multiply.circle").foregroundStyle(Color.white).offset(x: -10)
-                                Image(systemName: "timer").foregroundStyle(Color.white).offset(x: -23)
-                                Image(systemName: "timer").foregroundStyle(Color.white).offset(x: -23)
+                                Image(systemName: "multiply.circle").foregroundStyle(Color.mmDark).offset(x: -10)
+                                Image(systemName: "timer").foregroundStyle(Color.mmDark).offset(x: -23)
+                                Image(systemName: "timer").foregroundStyle(Color.mmDark).offset(x: -23)
                                 
                             }.offset(x: 9, y: -41)
                         }
@@ -320,62 +311,18 @@ struct DynamicRepControlsView: View {
                                 Spacer()
                                 
                             }.buttonStyle(PlainButtonStyle())
-                           
                             
-                            
-                        }
+                        }.frame(maxHeight: .infinity)
+                         .padding(.top, 5)
                     }
                 }
                 Spacer()
                 
             }
-            
-            
-            
-            VStack {
-                Divider()
-                    .padding(.bottom, 10)
-                
-                HStack(spacing: 30) {
-                    
-                    NavigationLink(destination: MainMenu()) {
-                        Image("menuButton")
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    
-                    
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.white.opacity(0.8))
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    NavigationLink(destination: NotionImportPageView()) {
-                        Image(systemName: "plus.app")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.white.opacity(0.8))
-                        
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    
-                }
-                
-            }.background(Material.ultraThin)
-            
         }
-        
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
         .navigationBarBackButtonHidden()
-        
     }
 }
 

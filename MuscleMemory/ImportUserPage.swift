@@ -156,7 +156,6 @@ class ImportUserPage: ObservableObject {
                                 
                                 Logger().log("page_id successfully sent up to Supabase: \(String(describing:(sendID)))")
                                 Logger().log("push token successfully sent up to Supabase: \(String(describing:(sendToken)))")
-                                
                             }
                         }
                     }

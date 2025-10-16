@@ -11,7 +11,6 @@ import SwiftData
 
 
 struct ImportedNotes: View {
-    
     var pageID: String
     var filterPage: [UserPageContent] {
         pageContent.filter{($0.userPageId) == pageID }
@@ -20,7 +19,7 @@ struct ImportedNotes: View {
     var filterTitle: [UserPageTitle] {
         pageTitle.filter{($0.titleID) == pageID }
     }
-    
+    @Environment(\.dismiss) var dismissTab
     @Environment(\.modelContext) var modelContextPage
     
     @Query var pageContent: [UserPageContent]
@@ -53,8 +52,10 @@ struct ImportedNotes: View {
             VStack {
                 HStack(spacing: 20) {
                     
-                    NavigationLink(destination: MainMenu()) {
-                        Image(systemName: "arrow.backward").foregroundStyle(Color.white.opacity(0.8))
+                    Button {
+                           dismissTab()
+                    } label: {
+                        Image(systemName: "arrow.backward").foregroundStyle(Color.mmDark.opacity(0.8))
                     }
                     
                     if let emojis = filterTitle.first?.emoji, let title = filterTitle.first?.plain_text {
@@ -100,44 +101,7 @@ struct ImportedNotes: View {
                 }
                 .fontWeight(.medium)
                 
-                
-                VStack {
-                    Divider()
-                        .padding(.bottom, 10)
-                    
-                    HStack(spacing: 30) {
-                        
-                        NavigationLink(destination: MainMenu()) {
-                            Image("menuButton")
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        
-                        
-                        NavigationLink(destination: SettingsView()) {
-                            Image(systemName: "gear")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundStyle(Color.white.opacity(0.8))
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                        
-                        NavigationLink(destination: NotionImportPageView()) {
-                            Image(systemName: "plus.app")
-                                .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundStyle(Color.white.opacity(0.8))
-                            
-                            
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                        
-                    }
-                    
-                }.background(Material.ultraThin)
+          
                 
             }
             .background(Color.mmBackground)

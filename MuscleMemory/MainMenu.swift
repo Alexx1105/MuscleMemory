@@ -39,14 +39,14 @@ struct MainMenu: View {
                 Rectangle()
                     .cornerRadius(8)
                     .frame(width: 35, height: 35)
-                    .foregroundStyle(Color.white).opacity(0.06)
+                    .opacity(0.25)
                     .padding(.leading)
                 
                 VStack(spacing: 3) {
                     Text("Workspace email")
                         .fontWeight(.regular)
                         .font(.system(size: 14))
-                        .foregroundStyle(Color.white)
+                        .opacity(textOpacity)
                         .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
                     
                         .onAppear {
@@ -60,7 +60,7 @@ struct MainMenu: View {
                         Text("\(email)")
                             .fontWeight(.regular)
                             .font(.system(size: 14))
-                            .foregroundStyle(Color.white).opacity(0.25)
+                            .opacity(0.25)
                             .frame(maxWidth: .infinity,maxHeight: 17, alignment: .leading)
                     }
                 }
@@ -111,44 +111,7 @@ struct MainMenu: View {
                 }
             }
             .foregroundStyle(Color.white.opacity(0.8))
-            
-            VStack {
-                Divider()
-                    .padding(.bottom, 10)
-                
-                HStack(spacing: 30) {
-                    
-                    NavigationLink(destination: MainMenu(pageID: "")) {
-                        Image("menuButton")
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    
-                    
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gear")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.white.opacity(0.8))
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    
-                    NavigationLink(destination: NotionImportPageView()) {
-                        Image(systemName: "plus.app")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundStyle(Color.white.opacity(0.8))
-                        
-                        
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.horizontal)
-                    
-                }
-                
-            }.background(Material.ultraThin)
+                   
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.mmBackground)
