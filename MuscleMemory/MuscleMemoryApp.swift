@@ -47,6 +47,7 @@ struct MuscleMemoryApp: App {
     var body: some Scene {
         
         WindowGroup {
+            Test()
             RootTabs()
                 .onOpenURL { url in
                     if let parseCodeQuery = URLComponents(url: url, resolvingAgainstBaseURL: true ) {
