@@ -19,7 +19,7 @@ struct MacHelperDirections: View {
                 
                 VStack(spacing: 15) {
                     HStack {
-                        Text("Transcribe On Mac").font(.system(size: 14, weight: .bold, design: .rounded))
+                        Text("Use Rep Desktop on your Mac").font(.system(size: 14, weight: .bold, design: .rounded))
                             .foregroundStyle(Color.mmDark)
                     }
                     
@@ -59,13 +59,12 @@ struct MacHelperDirections: View {
                         .font(.system(size: 15, weight: .regular))
                 }
                 
-                Text("2.  Open App Store on Mac")
+                Text("2.  Open the App Store on your Mac")
                 
-                Text("3.  Search for Rep Desktop Helper and download")
+                Text("3.  Search for Rep Desktop Helper and download\n(or use the download button below)")
                 
-                Text("4.  Sign in with Apple ID to auto sync Rep between your Mac and iPhone to receive summarized notes")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.center)
+                Text("4.  Sign in with Apple in both apps to receive and sync your summarized notes.")
+                 
                 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text("5.  Allow accessibility permissions")
@@ -75,34 +74,32 @@ struct MacHelperDirections: View {
                 }
                 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Text("6.  Enable Notifications for Rep on Mac")
+                    Text("6.  Enable notifications for Rep Desktop.")
                     
                     Image(systemName: "bell.badge")
                         .font(.system(size: 15, weight: .regular))
                 }
                 
-                let appStoreURL: URL = URL(string: "testing")!  //TODO: replace with app store url
+                let appStoreURL: URL = URL(string: "https://www.apple.com/app-store/")!
                 ShareLink(item: appStoreURL) {
-                    ZStack {
-                        Capsule(style: .continuous)
-                            .fill(Color.intervalBlue)
-                            .frame(width: 145, height: 30)
-                            .glassEffect(.clear)
-                        
-                        HStack(spacing: 5) {
-                            Text("Mac Download")
-                            Image(systemName: "arrow.up.right")
-                        }
-                        .foregroundStyle(Color.kimchiLabs)
+                    
+                    HStack(spacing: 8) {
+                        Text("Download Rep Desktop")
+                        Image(systemName: "arrow.up.right")
                     }
+                    .foregroundStyle(Color.kimchiLabs)
                 }
-                .buttonStyle(.plain)
+                .tint(Color.intervalBlue)
+                .buttonStyle(.glassProminent)
+                .padding(.top)
+                
+                
             }
             .font(.system(size: 14, weight: .regular, design: .rounded))
             .foregroundStyle(Color.mmDark)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top)
-            .padding(.horizontal, 24)
+            .padding(.horizontal, 28)
             
             Spacer()
         }
