@@ -5,15 +5,16 @@ import AVFoundation
 import KimchiKit
 import ActivityKit
 
+
 struct MacHelperDirections: View {
     var body: some View  {
         VStack {
             HStack(alignment: .top) {
-                Capsule().frame(width: 50, height: 5)
-            }.padding(.top)
+                Capsule().frame(width: 50, height: 5).padding(.top, 10)
+            }
             
             ZStack {
-                RoundedRectangle(cornerRadius: 30).foregroundStyle(Color.gray).opacity(0.2)
+                RoundedRectangle(cornerRadius: 25).foregroundStyle(Color.gray).opacity(0.2)
                     .frame(maxWidth: .infinity, maxHeight: 100)
                     .padding(.horizontal)
                 
@@ -50,7 +51,7 @@ struct MacHelperDirections: View {
                 }
             }.padding(.top)
             
-            VStack(alignment: .leading, spacing: 14) {
+            VStack(alignment: .leading, spacing: 12) {
                 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
                     Text("1.  Enable Rep Desktop toggle in settings")
@@ -62,8 +63,10 @@ struct MacHelperDirections: View {
                 Text("2.  Open the App Store on your Mac")
                 
                 Text("3.  Search for Rep Desktop Helper and download\n(or use the download button below)")
+                    .fixedSize(horizontal: false, vertical: true)
                 
                 Text("4.  Sign in with Apple in both apps to receive and sync your summarized notes.")
+                    .fixedSize(horizontal: false, vertical: true)
                  
                 
                 HStack(alignment: .firstTextBaseline, spacing: 8) {
@@ -84,14 +87,15 @@ struct MacHelperDirections: View {
                 ShareLink(item: appStoreURL) {
                     
                     HStack(spacing: 8) {
-                        Text("Download Rep Desktop")
-                        Image(systemName: "arrow.up.right")
+                        Text("Download Rep Desktop").fontWeight(.semibold)
+                        Image(systemName: "arrow.up.right").fontWeight(.semibold)
                     }
                     .foregroundStyle(Color.kimchiLabs)
                 }
                 .tint(Color.intervalBlue)
                 .buttonStyle(.glassProminent)
-                .padding(.top)
+                .padding(.top, 10)
+             
                 
                 
             }
@@ -99,9 +103,9 @@ struct MacHelperDirections: View {
             .foregroundStyle(Color.mmDark)
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.top)
+
             .padding(.horizontal, 28)
             
-            Spacer()
         }
     }
 }
